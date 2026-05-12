@@ -48,6 +48,8 @@ function vimeoEmbedUrl(v: Video): string {
     player_id: "0",
     app_id: "58479",
     autoplay: "1",
+    muted: "0",
+    playsinline: "1",
   });
   if (v.hash) params.set("h", v.hash);
   return `${base}?${params.toString()}`;
