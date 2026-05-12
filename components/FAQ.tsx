@@ -12,7 +12,12 @@ const QA = [
   },
   {
     q: "Co když mi to nebude sedět?",
-    a: "Po prvních 60 minutách víte, jestli jste správně. Pokud ne, odpojte se z workshopu, napište mi email a vrátím 100 % ceny. Riziko beru na sebe.",
+    a: "Po prvních 60 minutách víte, jestli jste správně. Pokud ne, odpojte se z workshopu, napište mi hned po odpojení email na ales@coachville.eu a vrátím 100 % ceny. Riziko beru na sebe.",
+  },
+  
+  {
+    q: "Tento termín se mi nehodí, budou jiné termíny?",
+    a: "Ano, ale v této chvíli není příští termín vypsán. Podívejte se na tuto stránku za dva týdny.",
   },
   {
     q: "Musím mít zapnutou kameru?",
