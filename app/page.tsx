@@ -23,6 +23,9 @@ export default function HomePage() {
         <CoachQuote />
       </Reveal>
       <Reveal>
+        <ProKoho />
+      </Reveal>
+      <Reveal>
         <Pochybnosti />
       </Reveal>
       <Reveal>
