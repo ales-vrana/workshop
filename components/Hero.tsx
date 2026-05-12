@@ -96,7 +96,7 @@ export function Hero() {
           </CTAButton>
           {/* Garance line */}
           <p className="text-xs sm:text-sm text-white/70 text-center max-w-md">
-            ✓ Garance vrácení peněz — pokud po prvních 45 minutách necítíte přínos,
+            ✓ Garance vrácení peněz — pokud po prvních 60 minutách necítíte přínos,
             stačí napsat na {WORKSHOP.contactEmail} a peníze vrátím ten samý den.
           </p>
         </div>
