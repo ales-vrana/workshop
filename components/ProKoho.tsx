@@ -27,6 +27,12 @@ const PROFILY = [
     title: "Podnikatelé hledající druhý směr",
     sub: "kteří chtějí budovat příjem ze smysluplné práce",
   },
+
+  {
+  icon: Bot,
+  title: "Profesionálové, jejichž obor proměňuje AI",
+  sub: "kteří chtějí budovat na tom, co AI nenahradí — hluboké lidské porozumění",
+  },
 ];
 
 export function ProKoho() {
