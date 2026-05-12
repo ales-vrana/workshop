@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { EventSchema } from "@/components/EventSchema";
 import { DevWarning } from "@/components/ui/DevWarning";
 import "./globals.css";
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white text-dark antialiased">
         {children}
         <DevWarning />
+        <Analytics />
       </body>
     </html>
   );
