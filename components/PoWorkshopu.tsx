@@ -18,12 +18,12 @@ const CESTY = [
     body: "Naprosto v pořádku. Po workshopu dostanete kompletní bonusový balíček pro další studium, kalkulačku příjmů a případové studie dalších koučů, kteří už se přidali. Začnete v čase, který si zvolíte.",
     accent: "border-gold-500",
   },
-  {
+ {
     label: "Cesta C",
     icon: X,
     iconBg: "bg-navy-100 text-navy-600",
-    title: '„Není to pro mě."',
-    body: "Nejcennější odpověď. Ušetřili jste 100 000+ Kč a měsíce přemýšlení. Workshop byl nejlevnější rozhodovací nástroj, jaký pro tuhle otázku existuje.",
+    title: '„Tohle není moje cesta."',
+    body: "Cenná jasnost. Workshop Vás ušetřil 100 000+ Kč na výcvik, který by nebyl pro Vás, a měsíce pochybností. To je výsledek, který má hodnotu mnohem více než 1 500 Kč.",
     accent: "border-navy-300",
   },
 ];
