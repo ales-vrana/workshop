@@ -106,7 +106,7 @@ function VideoCard({ video }: { video: Video }) {
       </div>
       <div className="px-4 py-3 bg-white">
         <p className="font-semibold text-navy-600 text-sm sm:text-base">{video.name}</p>
-        <p className="text-xs text-dark/60 mt-0.5">Účastnice / účastník workshopu</p>
+        <p className="text-xs text-dark/60 mt-0.5">Student CoachVille</p>
       </div>
     </article>
   );
@@ -120,7 +120,7 @@ export function Zkusenosti() {
         <h2 className="h-display text-h2 text-navy-600 mb-4">Zkušenosti účastníků</h2>
         <p className="text-base sm:text-lg text-dark/70">
           Krátké video-reference od lidí, kteří workshop prošli. Klikněte na libovolnou kartu
-          a poslechněte si jejich příběh.
+          a poslechněte si jejich sdílení.
         </p>
       </div>
 
