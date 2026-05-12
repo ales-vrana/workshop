@@ -4,8 +4,8 @@ import { WORKSHOP, COACH } from "@/lib/config";
 
 const VALUE_ITEMS = [
   {
-    title: "3hodinový živý workshop",
-    sub: "s ICF MCC koučem a trenérem koučů",
+    title: "3hodinový živý workshop s ICF MCC koučem",
+    sub: "interaktivní praxe v roli kouče i klienta",
   },
   {
     title: "Živá ukázka koučování",
@@ -14,6 +14,18 @@ const VALUE_ITEMS = [
   {
     title: "Záznam workshopu",
     sub: "ke kterému se můžete vrátit i později",
+  },
+  {
+    title: "Kalkulačka příjmů kouče (CZ data 2025/26)",
+    sub: "konkrétní čísla pro ACC, PCC, MCC úroveň",
+  },
+  {
+    title: "Případové studie 10 koučů",
+    sub: "kteří prošli touto cestou od nuly k praxi",
+  },
+  {
+    title: "Sleva 1 500 Kč na vstup do výcviku CoachVille",
+    sub: "pokud se rozhodnete pokračovat",
   },
 ];
 
