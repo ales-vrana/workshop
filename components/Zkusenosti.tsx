@@ -22,22 +22,22 @@ type Video = {
 };
 
 const VIDEOS: Video[] = [
-  { name: "Jana K.", vimeoId: "1139977428", hash: "3d7f98bfbb" },
-  { name: "Petra Z.", vimeoId: "1139977179", hash: "2e5a492d00" },
-  { name: "Markéta P.", vimeoId: "1139977735", hash: "0153cc4844" },
-  { name: "Dana K.", vimeoId: "1144317177" },
-  { name: "Zuzana B.", vimeoId: "1144317475" },
-  { name: "Milan K.", vimeoId: "1144317762" },
-  { name: "Lenka A.", vimeoId: "1139978057", hash: "aeb9369525" },
-  { name: "Petra V.", vimeoId: "1139978207", hash: "bcd27dbdd0" },
-  { name: "Martin K.", vimeoId: "1139978479", hash: "5714a17543" },
+  { name: "Silva Ptašková", vimeoId: "1139977428", hash: "3d7f98bfbb" },
+  { name: "Michaela Hozáková", vimeoId: "1139977179", hash: "2e5a492d00" },
+  { name: "Ernest Novák", vimeoId: "1139977735", hash: "0153cc4844" },
+  { name: "Anna Beranová", vimeoId: "1144317177" },
+  { name: "Michaela Hrešková", vimeoId: "1144317475" },
+  { name: "Pavlína", vimeoId: "1144317762" },
+  { name: "Lubo Sabo", vimeoId: "1139978057", hash: "aeb9369525" },
+  { name: "Katka Pořízková", vimeoId: "1139978207", hash: "bcd27dbdd0" },
+  { name: "Irena Vágnerová", vimeoId: "1139978479", hash: "5714a17543" },
   { name: "Adam V.", vimeoId: "1144317958" },
-  { name: "Pavla R.", vimeoId: "1144318064" },
-  { name: "Marek L.", vimeoId: "1144318197" },
-  { name: "Michal D.", vimeoId: "1139978160", hash: "e3ca9bdd64" },
-  { name: "Michaela S.", vimeoId: "1140004608", hash: "1539eaf4c2" },
+  { name: "Monika Janáčová", vimeoId: "1144318064" },
+  { name: "Jaroslav Cecha", vimeoId: "1144318197" },
+  { name: "Míla Hájek", vimeoId: "1139978160", hash: "e3ca9bdd64" },
+  { name: "Ernest Novák", vimeoId: "1140004608", hash: "1539eaf4c2" },
   { name: "Ingrid T.", vimeoId: "1139977878", hash: "6634b5c6ae" },
-  { name: "Kristýna B.", vimeoId: "1139978271", hash: "aaa69c29fb" },
+  { name: "Irena Vágnerová", vimeoId: "1139978271", hash: "aaa69c29fb" },
 ];
 
 function vimeoEmbedUrl(v: Video): string {
