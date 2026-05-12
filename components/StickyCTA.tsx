@@ -25,7 +25,7 @@ export function StickyCTA() {
       <div className="flex items-center gap-3">
         <div className="flex-1 min-w-0">
           <p className="text-[11px] uppercase tracking-wider text-navy-600/70 font-bold leading-none">
-            Workshop {WORKSHOP.dateShort}
+            Workshop {WORKSHOP.dateShort} 18:30
           </p>
           <p className="text-sm font-bold text-navy-600 truncate mt-1">{WORKSHOP.price} • {WORKSHOP.duration}</p>
         </div>
