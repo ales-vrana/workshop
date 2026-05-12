@@ -44,16 +44,14 @@ export function OLektorovi() {
         <div className="grid sm:grid-cols-[auto,1fr] gap-8 sm:gap-12 items-start">
           <div className="flex justify-center sm:justify-start">
             <div className="relative w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-2xl overflow-hidden ring-4 ring-white/10 shadow-lifted">
-              <Image
-                src="/ales-vrana-portrait.jpg"
+              <img
+                src="/workshop/ales-vrana-portrait.jpg"
                 alt={`Portrét: ${COACH.fullName}`}
-                fill
-                unoptimized
-                sizes="(max-width: 640px) 160px, (max-width: 1024px) 208px, 240px"
-                className="object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
-          </div>
+           </div>
+          
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-1">{COACH.name}</h3>
             <p className="text-teal-300 text-base sm:text-lg font-semibold mb-6 tracking-wide">
