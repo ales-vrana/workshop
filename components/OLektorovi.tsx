@@ -48,6 +48,7 @@ export function OLektorovi() {
                 src="/ales-vrana-portrait.jpg"
                 alt={`Portrét: ${COACH.fullName}`}
                 fill
+                unoptimized
                 sizes="(max-width: 640px) 160px, (max-width: 1024px) 208px, 240px"
                 className="object-cover"
               />
