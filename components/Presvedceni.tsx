@@ -52,8 +52,8 @@ const PRESVEDCENI = [
         </p>
         <p>
           Workshop funguje jako rozcestí. Buďto zjistíte, že to <strong>JE</strong> pro Vás,
-          a nebo <strong>NENÍ</strong>. Pokud je to pro Vás, cena workshopu je slevou na vstup
-          do výcviku.
+          a nebo <strong>NENÍ</strong>. Pokud je to pro Vás, cenu workshopu Vám započteme
+          jako slevu z první platby výcviku.
         </p>
       </>
     ),
