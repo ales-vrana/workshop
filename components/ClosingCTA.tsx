@@ -19,10 +19,9 @@ export function ClosingCTA() {
 
         <ul className="text-left space-y-4 max-w-2xl mx-auto mb-10">
           <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
-            <span className="text-white/90 text-base sm:text-lg">
+          <span className="text-white/90 text-base sm:text-lg">
               Pokud uvidíte, že <strong className="text-teal-300">ANO</strong> — máte jasno
-              pro vstup do výcviku a cenu workshopu Vám odečteme z první platby.
+              pro vstup do výcviku a cenu workshopu Vám započteme jako slevu z první platby výcviku.
             </span>
           </li>
           <li className="flex items-start gap-3">
