@@ -10,13 +10,10 @@ export function CoachQuote() {
         <div className="grid sm:grid-cols-[auto,1fr] gap-6 sm:gap-8 items-start">
           <div className="flex justify-center sm:justify-start">
             <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-4 ring-white shadow-lifted bg-navy-100">
-              <Image
-                src="/ales-vrana.jpg"
+              <img
+                src="/workshop/ales-vrana.jpg"
                 alt={`Portrét: ${COACH.fullName}`}
-                fill
-                unoptimized
-                sizes="(max-width: 640px) 96px, 128px"
-                className="object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
           </div>
