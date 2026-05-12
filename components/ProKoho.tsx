@@ -1,5 +1,5 @@
 import { Section } from "@/components/ui/Section";
-import { Briefcase, Users, Compass, HeartHandshake, Rocket } from "lucide-react";
+import { Briefcase, Users, Compass, HeartHandshake, Rocket, Bot } from "lucide-react";
 
 const PROFILY = [
   {
