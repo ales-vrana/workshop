@@ -5,7 +5,7 @@ import { WORKSHOP, COACH } from "@/lib/config";
 const VALUE_ITEMS = [
   {
     title: "3hodinový živý workshop s ICF MCC koučem",
-    sub: "interaktivní praxe v roli kouče i klienta",
+    sub: "interaktivní praxe v roli kouče i klienta ",
   },
   {
     title: "Živá ukázka koučování",
