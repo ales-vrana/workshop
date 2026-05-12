@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Calendar, Clock, Monitor, Check, Star } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { WORKSHOP, COACH } from "@/lib/config";
@@ -21,18 +20,15 @@ const VALUE_ITEMS = [
 export function Hero() {
   return (
     <header className="relative isolate overflow-hidden text-white">
-      {/* Background image placeholder + overlay */}
+      {/* Background image + overlay */}
       <div className="absolute inset-0 -z-10">
         {/* Solid navy fallback pod blur/transparent vrstvami (pro starší zařízení) */}
         <div className="absolute inset-0 bg-navy-900" aria-hidden />
-        {/* Hero image — SVG mountain landscape s rozpaženou postavou */}
-        <Image
-          src="/hero-placeholder.svg"
+        {/* Hero image — AI vygenerovaná fotka hora + silueta */}
+        <img
+          src="/workshop/hero.jpg"
           alt="Východ slunce nad horami — silueta postavy na vrcholu s rozpaženýma rukama"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 hero-overlay" aria-hidden />
       </div>
@@ -98,7 +94,6 @@ export function Hero() {
           <CTAButton href={WORKSHOP.paymentLink} variant="on-dark" className="w-full sm:w-auto group">
             Zajistit si místo — {WORKSHOP.price}
           </CTAButton>
-
           {/* Garance line */}
           <p className="text-xs sm:text-sm text-white/70 text-center max-w-md">
             ✓ Garance vrácení peněz — pokud po prvních 45 minutách necítíte přínos,
