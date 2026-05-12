@@ -7,7 +7,7 @@ const CESTY = [
     icon: ArrowUpRight,
     iconBg: "bg-teal-400/15 text-teal-500",
     title: '„Tohle je jasně moje hra. Chci výcvik."',
-    body: "Pokud Vám workshop sedne, ušetřili jste roky váhání. Cenu workshopu Vám uznáme jako slevu na první platbu v CoachVille.",
+    body: "Pokud Vám workshop sedne, ušetřili jste roky váhání. Cenu workshopu Vám započteme jako slevu z první platby výcviku.",
     accent: "border-teal-400",
   },
   {
