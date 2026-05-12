@@ -14,6 +14,7 @@ export function CoachQuote() {
                 src="/ales-vrana.jpg"
                 alt={`Portrét: ${COACH.fullName}`}
                 fill
+                unoptimized
                 sizes="(max-width: 640px) 96px, 128px"
                 className="object-cover"
               />
