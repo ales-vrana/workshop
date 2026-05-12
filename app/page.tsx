@@ -1,5 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { CoachQuote } from "@/components/CoachQuote";
+import { ProKoho } from "@/components/ProKoho";
 import { Pochybnosti } from "@/components/Pochybnosti";
 import { Presvedceni } from "@/components/Presvedceni";
 import { CoZazijete } from "@/components/CoZazijete";
