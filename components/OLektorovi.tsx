@@ -32,10 +32,10 @@ export function OLektorovi() {
       <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
         <p className="h-label text-gold-400 mb-3">Lektor</p>
         <h2 className="h-display text-h2 text-white mb-4">
-          O lektorovi — možná mě už znáte
+          O lektorovi — možná mě už znáš
         </h2>
         <p className="text-base sm:text-lg text-white/70">
-          Pokud čtete moje emaily nebo jste mě potkali na FB, většinu pravděpodobně víte.
+          Pokud čteš moje emaily nebo jsi mě potkal/a na FB, většinu pravděpodobně víš.
           Pro úplnost a pro ty, kdo se připojí poprvé:
         </p>
       </div>
@@ -44,14 +44,15 @@ export function OLektorovi() {
         <div className="grid sm:grid-cols-[auto,1fr] gap-8 sm:gap-12 items-start">
           <div className="flex justify-center sm:justify-start">
             <div className="relative w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-2xl overflow-hidden ring-4 ring-white/10 shadow-lifted">
-              <img
-                src="/workshop/ales-vrana-portrait.jpg"
+              <Image
+                src="/ales-vrana-portrait.jpg"
                 alt={`Portrét: ${COACH.fullName}`}
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 208px, 240px"
+                className="object-cover"
               />
             </div>
-           </div>
-          
+          </div>
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-1">{COACH.name}</h3>
             <p className="text-teal-300 text-base sm:text-lg font-semibold mb-6 tracking-wide">
@@ -81,7 +82,7 @@ export function OLektorovi() {
 
         {/* Osobní citát */}
         <div className="mt-12 sm:mt-14 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6 sm:p-8">
-          <p className="h-label text-gold-400 mb-3">Co o mně neuvidíte na CV</p>
+          <p className="h-label text-gold-400 mb-3">Co o mně neuvidíš na CV</p>
           <p className="text-base sm:text-lg text-white/90 leading-relaxed">
             Nejsem coach, který „změnil svůj život koučováním ze dne na den". Tahle profese
             mě baví, protože mě každý klient přinutí přemýšlet. Žiju koučováním 14 let každý

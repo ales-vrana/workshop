@@ -4,33 +4,33 @@ import { Eye, UserCheck, Heart, Sparkles, Map, Wrench } from "lucide-react";
 const KARTY = [
   {
     icon: Eye,
-    headline: "ŽIVÁ UKÁZKA KOUČOVÁNÍ S MCC KOUČEM",
-    body: 'Uvidíte koučování naživo, jak vypadá u držitele nejvyšší ICF certifikace. Můžete se přihlásit jako „klient ukázky" a zažít koučování přímo se mnou. To, co vidíte v knihách jako „ideál", uvidíte v praxi.',
+    headline: "ŽIVÁ UKÁZKA KOUČOVÁNÍ NAŽIVO",
+    body: "Uvidíš koučování, jak vypadá u držitele nejvyšší ICF certifikace MCC. Můžeš se přihlásit jako klient ukázky a zažít koučování přímo se mnou. Co vidíš v knihách jako ideální, uvidíš v praxi.",
   },
   {
     icon: UserCheck,
-    headline: "VYZKOUŠÍTE SI ROLI KOUČE",
-    body: "Pravděpodobně poprvé budete v roli kouče. Dostanete jasnou strukturu, jak vést koučovací rozhovor, a okamžitě ji zkusíte. Zjistíte, jak Vám tato role sedí — fyzicky, emočně, mentálně.",
+    headline: "VYZKOUŠÍŠ SI ROLI KOUČE",
+    body: "Pravděpodobně poprvé budeš v roli kouče. Dostaneš jasnou strukturu, jak vést koučovací rozhovor, a okamžitě ji zkusíš. Zjistíš, jak ti tato role sedí — fyzicky, emočně, mentálně.",
   },
   {
     icon: Heart,
-    headline: "ZAŽIJETE KOUČOVÁNÍ JAKO KLIENT",
-    body: "Druhá strana zkušenosti. Někdo Vás bude koučovat na téma, které si vyberete. V bezpečném prostředí. Zjistíte, jak silný zážitek to může být — a proč si stále více lidí ze všech sfér společnosti najímá svého kouče.",
+    headline: "ZAŽIJEŠ KOUČOVÁNÍ JAKO KLIENT",
+    body: "Druhá strana zkušenosti. Někdo tě bude koučovat na téma, které si vybereš. V bezpečném prostředí. Zjistíš, jak silný zážitek to může být — a proč si stále více lidí ze všech sfér společnosti najímá svého kouče.",
   },
   {
     icon: Sparkles,
-    headline: "KONKRÉTNÍ TÉMA Z VAŠEHO ŽIVOTA",
-    body: "Žádné modelové situace. Pracujete s reálným tématem, které je důležité právě teď ve Vašem životě. Možná odejdete s posunem, který jste nečekali — workshop je živá praxe, ne simulace.",
+    headline: "PRACUJEŠ NA SVÉM SKUTEČNÉM TÉMATU",
+    body: "Žádné modelové situace. Pracuješ s reálným tématem, které je důležité právě teď ve tvém životě nebo práci. Možná odejdeš s posunem, který jsi nečekal/a — workshop je živá praxe, ne simulace.",
   },
   {
     icon: Map,
-    headline: "MAPA: JAK SE STÁT PROFESIONÁLNÍM KOUČEM",
-    body: "Ukážu Vám cestu od první koučovací zkušenosti přes výcvik a certifikaci až k vlastní praxi s platícími klienty. Konkrétní kroky, časový rámec, investice. Žádná hype — pouze česká realita. Na českém trhu jako kouč působím 14 let.",
+    headline: "JAK KOUČOVÁNÍ POUŽÍVAT V PRÁCI I DOMA",
+    body: "Mnoho lidí chce koučovací dovednosti používat ve své současné práci — v rozhovorech s kolegy, ve vedení týmu, s partnerem, s dětmi. Někoho zaujme natolik, že chce postupně koučovat profesionálně. Ukážu ti obě cesty — ať si vybereš, která dává smysl pro tvůj život.",
   },
   {
     icon: Wrench,
-    headline: "PRAKTICKÉ CVIČENÍ PO WORKSHOPU — 5 KOUČOVACÍCH KONVERZACÍ",
-    body: "Bez studených kontaktů. Bez prodejních triků. Konkrétní postup, jak můžete už druhý den s někým dalším udělat první koučovací konverzaci. Jak si můžete s lidmi ve svém okolí ověřit, jaké to je, když koučujete. Otázky, které můžete položit, a jak získat užitečnou zpětnou vazbu.",
+    headline: "5 KOUČOVACÍCH KONVERZACÍ PO WORKSHOPU",
+    body: "Bez studených kontaktů. Bez prodejních triků. Konkrétní postup, jak můžeš už druhý den s někým dalším udělat první koučovací konverzaci. Otázky, které můžeš položit, a jak získat užitečnou zpětnou vazbu.",
   },
 ];
 
@@ -38,7 +38,7 @@ export function CoZazijete() {
   return (
     <Section id="co-zazijete" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-        <p className="h-label mb-3">Co Vás čeká</p>
+        <p className="h-label mb-3">Co tě čeká</p>
         <h2 className="h-display text-h2 text-navy-600">
           Co přesně se za ty 3 hodiny stane
         </h2>
@@ -53,7 +53,6 @@ export function CoZazijete() {
               key={idx}
               className="card group relative overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 hover:border-teal-400/40"
             >
-              {/* Velká cifra v pozadí — vizuální rytmus */}
               <div
                 aria-hidden
                 className="absolute -top-4 -right-2 text-[7rem] sm:text-[8rem] font-extrabold leading-none text-gold-500/8 select-none pointer-events-none"

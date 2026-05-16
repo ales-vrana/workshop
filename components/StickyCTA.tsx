@@ -24,8 +24,8 @@ export function StickyCTA() {
     >
       <div className="flex items-center gap-3">
         <div className="flex-1 min-w-0">
-          <p className="text-[11px] uppercase tracking-wider text-navy-600/70 font-bold leading-none">
-            Workshop {WORKSHOP.dateShort} 18:30
+          <p className="text-[11px] uppercase tracking-wider text-gold-600 font-bold leading-none">
+            Zbývá 9 / 16 míst
           </p>
           <p className="text-sm font-bold text-navy-600 truncate mt-1">{WORKSHOP.price} • {WORKSHOP.duration}</p>
         </div>
@@ -35,7 +35,7 @@ export function StickyCTA() {
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-4 py-3 bg-teal-400 hover:bg-teal-500 active:bg-teal-600 text-white font-bold text-sm rounded-lg shadow-soft min-h-[44px] whitespace-nowrap"
         >
-          Zajistit si místo 
+          Zajisti si místo
         </a>
       </div>
     </div>

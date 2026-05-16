@@ -10,10 +10,12 @@ export function CoachQuote() {
         <div className="grid sm:grid-cols-[auto,1fr] gap-6 sm:gap-8 items-start">
           <div className="flex justify-center sm:justify-start">
             <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-4 ring-white shadow-lifted bg-navy-100">
-              <img
-                src="/workshop/ales-vrana.jpg"
+              <Image
+                src="/ales-vrana.jpg"
                 alt={`Portrét: ${COACH.fullName}`}
-                className="absolute inset-0 w-full h-full object-cover"
+                fill
+                sizes="(max-width: 640px) 96px, 128px"
+                className="object-cover"
               />
             </div>
           </div>
@@ -21,9 +23,9 @@ export function CoachQuote() {
             <Quote className="h-8 w-8 text-teal-400 mb-3" aria-hidden />
             <blockquote className="text-lg sm:text-xl text-dark leading-relaxed">
               <p>
-                <span className="font-semibold">Workshop nezjistí, jestli jste „už hotový kouč".</span>{" "}
-                Zjistíte prakticky, jestli s Vámi koučování rezonuje, jak se cítíte v roli
-                kouče i v roli koučovaného. Zjistíte, jestli Vás to bude bavit. To stačí.
+                <span className="font-semibold">Workshop nezjistí, jestli jsi už hotový kouč.</span>{" "}
+                Zjistíš prakticky, jestli s tebou koučování rezonuje, jak se cítíš v roli
+                kouče i v roli koučovaného. Zjistíš, jestli tě to bude bavit. To stačí.
                 Zbytek se dá vytrénovat.
               </p>
             </blockquote>
