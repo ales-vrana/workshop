@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { MetaPixel } from "@/components/MetaPixel";
 import { EventSchema } from "@/components/EventSchema";
 import { DevWarning } from "@/components/ui/DevWarning";
 import "./globals.css";
@@ -16,9 +17,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://workshop.coachville
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Workshop "Půjde mi koučování?" | Aleš Vrána MCC | 19. 5. 2026',
+  title: "Zažij koučování a začni koučovat už teď | Aleš Vrána MCC | 19. 5. 2026",
   description:
-    "3hodinový online workshop pro lidi, kteří zvažují koučování jako kariéru. Živá praxe v roli kouče i klienta s držitelem nejvyšší ICF certifikace MCC. 19. 5. 2026, 18:30–21:30, 1 500 Kč. Garance vrácení peněz.",
+    "3hodinový online workshop pro lidi, kteří chtějí koučování zažít v praxi. Živá praxe v roli kouče i klienta s držitelem nejvyšší ICF certifikace MCC. 19. 5. 2026, 18:30–21:30, 1 500 Kč. Garance vrácení peněz.",
   keywords: [
     "koučování",
     "workshop koučování",
@@ -26,15 +27,15 @@ export const metadata: Metadata = {
     "CoachVille",
     "Aleš Vrána",
     "koučovací výcvik",
-    "stát se koučem",
+    "začít koučovat",
   ],
   authors: [{ name: "Aleš Vrána" }],
   openGraph: {
     type: "website",
     locale: "cs_CZ",
-    title: 'Workshop "Půjde mi koučování?" | 19. 5. 2026',
+    title: "Zažij koučování a začni koučovat už teď | 19. 5. 2026",
     description:
-      "3 hodiny živé praxe s držitelem ICF MCC. Otázka, na kterou si nejde odpovědět v hlavě — odejdete s odpovědí.",
+      "3 hodiny živé praxe s držitelem ICF MCC. Bez teorie. Bez závazku. Vyzkoušej si koučovat na vlastní kůži.",
     siteName: "CoachVille Europe",
     images: [
       {
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: 'Workshop "Půjde mi koučování?" | 19. 5. 2026',
+    title: "Zažij koučování a začni koučovat už teď | 19. 5. 2026",
     description: "3 hodiny živé praxe s držitelem ICF MCC. Cena 1 500 Kč. Garance vrácení peněz.",
     images: ["/og-image.jpg"],
   },
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <EventSchema />
       </head>
       <body className="bg-white text-dark antialiased">
+        <MetaPixel />
         {children}
         <DevWarning />
         <Analytics />

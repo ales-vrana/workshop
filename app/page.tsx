@@ -1,12 +1,10 @@
 import { Hero } from "@/components/Hero";
 import { CoachQuote } from "@/components/CoachQuote";
-import { ProKoho } from "@/components/ProKoho";
 import { Pochybnosti } from "@/components/Pochybnosti";
-import { Presvedceni } from "@/components/Presvedceni";
+import { ProKoho } from "@/components/ProKoho";
 import { CoZazijete } from "@/components/CoZazijete";
 import { OLektorovi } from "@/components/OLektorovi";
 import { Zkusenosti } from "@/components/Zkusenosti";
-import { PoWorkshopu } from "@/components/PoWorkshopu";
 import { FAQ } from "@/components/FAQ";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { StickyCTA } from "@/components/StickyCTA";
@@ -24,13 +22,10 @@ export default function HomePage() {
         <CoachQuote />
       </Reveal>
       <Reveal>
-        <ProKoho />
-      </Reveal>
-      <Reveal>
         <Pochybnosti />
       </Reveal>
       <Reveal>
-        <Presvedceni />
+        <ProKoho />
       </Reveal>
       <Reveal>
         <CoZazijete />
@@ -40,9 +35,6 @@ export default function HomePage() {
       </Reveal>
       <Reveal>
         <Zkusenosti />
-      </Reveal>
-      <Reveal>
-        <PoWorkshopu />
       </Reveal>
       <Reveal>
         <FAQ />
