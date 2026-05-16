@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { Trophy, GraduationCap, Users, Flag } from "lucide-react";
 import { COACH } from "@/lib/config";
@@ -44,12 +43,10 @@ export function OLektorovi() {
         <div className="grid sm:grid-cols-[auto,1fr] gap-8 sm:gap-12 items-start">
           <div className="flex justify-center sm:justify-start">
             <div className="relative w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-2xl overflow-hidden ring-4 ring-white/10 shadow-lifted">
-              <Image
-                src="/ales-vrana-portrait.jpg"
+              <img
+                src="/workshop/ales-vrana-portrait.jpg"
                 alt={`Portrét: ${COACH.fullName}`}
-                fill
-                sizes="(max-width: 640px) 160px, (max-width: 1024px) 208px, 240px"
-                className="object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
           </div>
