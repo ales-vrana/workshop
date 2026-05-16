@@ -35,9 +35,9 @@ const VIDEOS: Video[] = [
   { name: "Monika Janáčová", vimeoId: "1144318064" },
   { name: "Jaroslav Cecha", vimeoId: "1144318197" },
   { name: "Míla Hájek", vimeoId: "1139978160", hash: "e3ca9bdd64" },
-  { name: "Ernest Novák", vimeoId: "1140004608", hash: "1539eaf4c2" },
-  { name: "Ernest Novák", vimeoId: "1139977878", hash: "6634b5c6ae" },
-  { name: "Irena Vágnerová", vimeoId: "1139978271", hash: "aaa69c29fb" },
+  { name: "Ernest Novák 2", vimeoId: "1140004608", hash: "1539eaf4c2" },
+  { name: "Ernest Novák 3", vimeoId: "1139977878", hash: "6634b5c6ae" },
+  { name: "Irena Vágnerová 2", vimeoId: "1139978271", hash: "aaa69c29fb" },
 ];
 
 function vimeoEmbedUrl(v: Video): string {
