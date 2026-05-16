@@ -4,34 +4,33 @@ import { Briefcase, Users, Compass, HeartHandshake, Rocket, Bot } from "lucide-r
 const PROFILY = [
   {
     icon: Briefcase,
-    title: "Manažeři, kteří hledají smysl",
-    sub: "víc než reportování KPI a meetingy",
+    title: "Manažeři, lídři, HR profesionálové",
+    sub: "kteří chtějí lépe vést — sebe i druhé",
   },
   {
     icon: Users,
-    title: "HR profesionálové",
-    sub: "kteří chtějí rozšířit své kompetence o koučování",
+    title: "Lidé, kteří se o koučování zajímají",
+    sub: "ale nikdy ho neviděli v praxi zblízka",
   },
   {
     icon: Compass,
     title: "Lidé na kariérní křižovatce",
-    sub: "kteří zvažují zásadní změnu směru",
+    sub: "kteří hledají směr s lidským kontaktem",
   },
   {
     icon: HeartHandshake,
-    title: "Terapeuti, lektoři, lidé z pomáhajících profesí",
-    sub: "kteří chtějí rozšířit paletu nástrojů",
+    title: "Terapeuti, lektoři, mentoři",
+    sub: "kteří chtějí rozšířit svoje nástroje o koučování",
   },
   {
     icon: Rocket,
     title: "Podnikatelé hledající druhý směr",
     sub: "kteří chtějí budovat příjem ze smysluplné práce",
   },
-
   {
-  icon: Bot,
-  title: "Profesionálové, jejichž obor proměňuje AI",
-  sub: "kteří chtějí budovat na tom, co AI nenahradí — hluboké lidské porozumění",
+    icon: Bot,
+    title: "Profesionálové v oborech, které proměňuje AI",
+    sub: "kteří chtějí budovat na tom, co AI nenahradí — hluboké lidské porozumění",
   },
 ];
 
@@ -41,7 +40,7 @@ export function ProKoho() {
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <p className="h-label mb-3">Pro koho je workshop</p>
         <h2 className="h-display text-h2 text-navy-600">
-          Tohle je pro Vás, pokud jste:
+          Workshop je pro tebe, pokud jsi
         </h2>
       </div>
 
@@ -68,7 +67,7 @@ export function ProKoho() {
       </div>
 
       <p className="text-center text-sm text-dark/55 mt-8 italic max-w-xl mx-auto">
-        Pokud nic z toho nesedí — workshop pravděpodobně není pro Vás. To je v pořádku.
+        Pokud nic z toho nesedí — workshop pravděpodobně není pro tebe. To je v pořádku.
       </p>
     </Section>
   );

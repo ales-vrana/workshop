@@ -8,20 +8,15 @@ import { WORKSHOP } from "@/lib/config";
 const QA = [
   {
     q: "Nikdy jsem nekoučoval/a. Bude to pro mě?",
-    a: "Ano — workshop je primárně pro lidi bez předchozí zkušenosti. Dostanete jednoduchý rámec a jasné instrukce. Účast na workshopu nevyžaduje předchozí zkušenost s koučováním.",
+    a: "Ano — workshop je primárně pro lidi bez předchozí zkušenosti. Dostaneš jednoduchý rámec a jasné instrukce. Účast na workshopu nevyžaduje předchozí zkušenost s koučováním.",
   },
   {
     q: "Co když mi to nebude sedět?",
-    a: "Po prvních 60 minutách víte, jestli jste správně. Pokud ne, odpojte se z workshopu, napište mi hned po odpojení email na ales@coachville.eu a vrátím 100 % ceny. Riziko beru na sebe.",
-  },
-  
-  {
-    q: "Tento termín se mi nehodí, budou jiné termíny?",
-    a: "Ano, ale v této chvíli není příští termín vypsán. Podívejte se na tuto stránku za dva týdny.",
+    a: "Po prvních 60 minutách víš, jestli jsi správně. Pokud ne, odpoj se z workshopu, napiš mi email a vrátím 100 % ceny. Riziko beru na sebe.",
   },
   {
     q: "Musím mít zapnutou kameru?",
-    a: "Ano. Workshop je interaktivní, koučujete a jste koučováni — to bez kamery nejde. Připojit se můžete z počítače, tabletu nebo telefonu, workshop probíhá na Zoomu.",
+    a: "Ano. Workshop je interaktivní, koučuješ a jsi koučován/a — to bez kamery nejde. Připojit se můžeš z počítače, tabletu nebo telefonu, workshop probíhá na Zoomu.",
   },
   {
     q: "Co když nemůžu být celé 3 hodiny online?",
@@ -29,19 +24,19 @@ const QA = [
   },
   {
     q: "Je workshop vhodný pro pokročilé kouče?",
-    a: "Tento konkrétní formát je orientován na začátečníky a zájemce o vstup do koučování. Pokud už koučujete, jste ve výcviku, nebo jste profesionálním koučem, tento workshop není pro Vás.",
+    a: "Tento konkrétní formát je orientován na začátečníky a zájemce o koučování. Pokud už koučuješ, jsi ve výcviku, nebo jsi profesionálním koučem, tento workshop není pro tebe.",
   },
   {
     q: "Můžu workshop dát někomu jako dárek?",
-    a: `Ano, napište mi e-mail na ${WORKSHOP.contactEmail} — připravím dárkový voucher na jeho jméno.`,
+    a: `Ano, napiš mi e-mail na ${WORKSHOP.contactEmail} — připravím dárkový voucher na jeho jméno.`,
   },
   {
-    q: "Po workshopu na mě budete tlačit, abych šel do výcviku?",
-    a: "Ne. Princip workshopu je opačný: dát Vám pravdivou odpověď, jestli má pro Vás výcvik smysl. Pokud po workshopu rozhodnete, že to není pro Vás, je to legitimní výsledek. Workshop neobsahuje prodejní část.",
+    q: "Bude na workshopu nějaký prodejní pitch?",
+    a: "Ne. Princip workshopu je dát ti zážitek, který se sám prodá nebo neprodá. Pokud po workshopu chceš vědět, jak pokračovat dál — řekneme si všechny možnosti. Pokud ne, máš zážitek a 5 nástrojů, které můžeš použít už zítra.",
   },
   {
     q: "Večerní slot 18:30–21:30 je dlouhý. Stihnu to po práci?",
-    a: "Pokud máte dojezd domů do 18:00, jste v pohodě. V průběhu první hodiny je v pořádku si vzít občerstvení, ve druhé hodině budeme praktikovat, takže tam se hodí být plně přítomen. Pokud potřebujete skončit dříve, můžete se podívat na zbytek workshopu ze záznamu.",
+    a: "Pokud máš dojezd domů do 18:00, jsi v pohodě. V průběhu první hodiny je v pořádku si vzít občerstvení, ve druhé hodině budeme praktikovat, takže tam se hodí být plně přítomen/přítomna. Pokud potřebuješ skončit dříve, můžeš se podívat na zbytek workshopu ze záznamu.",
   },
 ];
 
@@ -91,12 +86,12 @@ export function FAQ() {
         {/* Máte další otázku */}
         <div className="mt-8 text-center">
           <p className="text-sm sm:text-base text-dark/70">
-            Máte další otázku, která tu není?{" "}
+            Máš další otázku, která tu není?{" "}
             <a
               href={`mailto:${WORKSHOP.contactEmail}?subject=Workshop%20kou%C4%8Dov%C3%A1n%C3%AD%20-%20dotaz`}
               className="text-teal-500 hover:text-teal-600 font-semibold underline-offset-4 hover:underline"
             >
-              Napište mi přímo →
+              Napiš mi přímo →
             </a>
           </p>
         </div>
