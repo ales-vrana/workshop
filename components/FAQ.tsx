@@ -35,7 +35,7 @@ const QA = [
     a: "Ne. Princip workshopu je dát ti zážitek, který se sám prodá nebo neprodá. Pokud po workshopu chceš vědět, jak pokračovat dál — řekneme si všechny možnosti. Pokud ne, máš zážitek a 5 nástrojů, které můžeš použít už zítra.",
   },
   {
-    q: "Večerní slot 18:30–21:30 je dlouhý. Stihnu to po práci?",
+    q: "Stihnu to po práci?",
     a: "Pokud máš dojezd domů do 18:00, jsi v pohodě. V průběhu první hodiny je v pořádku si vzít občerstvení, ve druhé hodině budeme praktikovat, takže tam se hodí být plně přítomen/přítomna. Pokud potřebuješ skončit dříve, můžeš se podívat na zbytek workshopu ze záznamu.",
   },
 ];
