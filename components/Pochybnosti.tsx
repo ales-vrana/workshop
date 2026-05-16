@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/Section";
 const SITUACE = [
   {
     num: "1",
-    headline: '„Práce mi dává míň, než mi bere."',
+    headline: "Práce mi dává míň, než mi bere.",
     body: (
       <>
         Možná ti to v posledních měsících přijde čím dál víc. Ten pocit, že trávíš dny děláním věcí,
@@ -18,14 +18,14 @@ const SITUACE = [
   },
   {
     num: "2",
-    headline: '„Lidi mi často přijdou pro radu. A baví mě to."',
+    headline: "Lidi mi často přijdou pro radu. A baví mě to.",
     body: (
       <>
         Možná jsi v práci nebo v okruhu přátel ten/ta, kdo umí naslouchat. Lidi ti přicházejí
         s problémy, ty jim pomáháš najít řešení. A užíváš si to.
         <br /><br />
         Tohle není náhoda. Je to dovednost, kterou koučování formálně rozvíjí. Workshop ti ukáže,
-        jaký rozdíl je mezi <em>„dávat rady"</em> a <em>„koučovat"</em> — a co tě baví víc.
+        jaký je rozdíl mezi <em>dáváním rad</em> a <em>koučováním</em> — a co tě baví víc.
       </>
     ),
     highlight:
@@ -33,7 +33,7 @@ const SITUACE = [
   },
   {
     num: "3",
-    headline: '„Chci porozumět tomu, jak koučování funguje."',
+    headline: "Chci porozumět tomu, jak koučování funguje.",
     body: (
       <>
         Většina lidí má o koučování pouze knihy, podcasty, příběhy z YouTube. To je{" "}
@@ -44,11 +44,11 @@ const SITUACE = [
       </>
     ),
     highlight:
-      "Co konkrétně: Uvidíš živou ukázku koučování s držitelem nejvyšší ICF MCC certifikace. Co vidíš v knihách jako „ideál", uvidíš v praxi.",
+      "Co konkrétně: Uvidíš živou ukázku koučování s držitelem nejvyšší ICF MCC certifikace. Co vidíš v knihách jako ideál, uvidíš v praxi.",
   },
   {
     num: "4",
-    headline: '„Chci se naučit lépe vést tým, partnera, sebe."',
+    headline: "Chci se naučit lépe vést tým, partnera, sebe.",
     body: (
       <>
         Koučovací dovednosti nejsou jen pro profesionální kouče. Jsou pro každého, kdo chce lépe
@@ -59,7 +59,7 @@ const SITUACE = [
       </>
     ),
     highlight:
-      'Co konkrétně: PDF „5 koučovacích otázek, které můžeš použít hned zítra" je součástí workshopu. Jednoduché otázky, které vedou hlubší rozhovor.',
+      "Co konkrétně: PDF s 5 koučovacími otázkami, které můžeš použít hned zítra, je součástí workshopu. Jednoduché otázky, které vedou hlubší rozhovor.",
   },
 ];
 
