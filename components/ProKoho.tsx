@@ -4,33 +4,33 @@ import { Briefcase, Users, Compass, HeartHandshake, Rocket, Bot } from "lucide-r
 const PROFILY = [
   {
     icon: Briefcase,
-    title: "Manažeři, lídři, HR profesionálové",
-    sub: "kteří chtějí lépe vést — sebe i druhé",
+    title: "Manažer, lídr, HR profesionál",
+    sub: "Chceš lépe vést tým a rozvíjet talenty",
   },
   {
     icon: Users,
-    title: "Lidé, kteří se o koučování zajímají",
-    sub: "ale nikdy ho neviděli v praxi zblízka",
+    title: "Zájemce o koučování",
+    sub: "Slyšel/a jsi o něm, ale nikdy jsi ho neviděl/a v praxi zblízka",
   },
   {
     icon: Compass,
-    title: "Lidé na kariérní křižovatce",
-    sub: "kteří hledají směr s lidským kontaktem",
+    title: "Na kariérní křižovatce",
+    sub: "Hledáš směr s lidským kontaktem",
   },
   {
     icon: HeartHandshake,
-    title: "Terapeuti, lektoři, mentoři",
-    sub: "kteří chtějí rozšířit svoje nástroje o koučování",
+    title: "Terapeut, lektor, mentor",
+    sub: "Chceš rozšířit svoje nástroje o koučování",
   },
   {
     icon: Rocket,
-    title: "Podnikatelé hledající druhý směr",
-    sub: "kteří chtějí budovat příjem ze smysluplné práce",
+    title: "Podnikatel hledající druhý směr",
+    sub: "Chceš budovat příjem ze smysluplné práce",
   },
   {
     icon: Bot,
-    title: "Profesionálové v oborech, které proměňuje AI",
-    sub: "kteří chtějí budovat na tom, co AI nenahradí — hluboké lidské porozumění",
+    title: "Profesionál v oboru, který proměňuje AI",
+    sub: "Chceš budovat na tom, co AI nenahradí — hluboké lidské porozumění",
   },
 ];
 
