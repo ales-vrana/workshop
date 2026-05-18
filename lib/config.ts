@@ -22,7 +22,7 @@ export const WORKSHOP = {
   zoomPassword: process.env.NEXT_PUBLIC_ZOOM_PASSWORD || "",
   paymentLink:
     process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK ||
-    "https://buy.stripe.com/REPLACE_ME",
+    "https://buy.stripe.com/3cI00i1YQ3dZ3a6gA1ejK1J",
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "ales@coachville.eu",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://workshop.coachville.eu",
 } as const;
@@ -38,4 +38,4 @@ export const COACH = {
   mccCountInCzechia: 6,
 } as const;
 
-export const isPaymentLinkConfigured = !WORKSHOP.paymentLink.includes("REPLACE_ME");
+export const isPaymentLinkConfigured = !WORKSHOP.paymentLink.includes("REPLACE_ME") && WORKSHOP.paymentLink.startsWith("https://buy.stripe.com/");
