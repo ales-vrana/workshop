@@ -66,7 +66,11 @@ export function ProKoho() {
         })}
       </div>
 
-      <p className="text-center text-sm text-dark/55 mt-8 italic max-w-xl mx-auto">
+      <p className="text-center text-base sm:text-lg text-navy-700 mt-10 max-w-2xl mx-auto font-medium">
+        Pokud aspoň jeden z nich je tvůj, staneš se součástí komunity{" "}
+        <span className="text-teal-500 font-bold">600+ lidí</span>, kteří touto cestou prošli.
+      </p>
+      <p className="text-center text-sm text-dark/55 mt-4 italic max-w-xl mx-auto">
         Pokud nic z toho nesedí — workshop pravděpodobně není pro tebe. To je v pořádku.
       </p>
     </Section>

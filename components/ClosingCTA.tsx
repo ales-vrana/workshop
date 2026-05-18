@@ -11,11 +11,17 @@ export function ClosingCTA() {
         <h2 className="h-display text-h2 text-white mb-6">
           Tři hodiny, které se nedají získat z knih
         </h2>
-        <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-6 max-w-2xl mx-auto">
           Koučování je dovednost, kterou si nelze přečíst. Stejně jako nelze přečíst plavání.
           Můžeš se o něm dozvědět hodně. Ale dokud se nevykoupeš, nevíš, jak ti to půjde.
           <br /><br />
           <strong className="text-white">Tenhle workshop je tvoje první ponoření.</strong>
+        </p>
+        <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-10 max-w-2xl mx-auto">
+          Patříš mezi lidi, kteří se rozhodují <strong className="text-teal-300">v praxi, ne v hlavě</strong>.
+          To je vzácnost. Workshop ti dá důkaz.
+          <br /><br />
+          Staneš se <strong className="text-gold-300">hráčem koučování</strong> — ne pozorovatelem.
         </p>
 
         <ul className="text-left space-y-4 max-w-2xl mx-auto mb-10">

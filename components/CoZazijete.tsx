@@ -10,12 +10,12 @@ const KARTY = [
   {
     icon: UserCheck,
     headline: "VYZKOUŠÍŠ SI ROLI KOUČE",
-    body: "Pravděpodobně poprvé budeš v roli kouče. Dostaneš jasnou strukturu, jak vést koučovací rozhovor, a okamžitě ji zkusíš. Zjistíš, jak ti tato role sedí — fyzicky, emočně, mentálně.",
+    body: "Pravděpodobně poprvé v životě budeš sedět naproti člověku, kterého máš koučovat. Cítíš mírné napětí. Pak položíš první otázku. A další. Postupně přestaneš přemýšlet, jestli to děláš správně — začneš poslouchat. Zjistíš, jak ti tato role sedí — fyzicky, emočně, mentálně.",
   },
   {
     icon: Heart,
     headline: "ZAŽIJEŠ KOUČOVÁNÍ JAKO KLIENT",
-    body: "Druhá strana zkušenosti. Někdo tě bude koučovat na téma, které si vybereš. V bezpečném prostředí. Zjistíš, jak silný zážitek to může být — a proč si stále více lidí ze všech sfér společnosti najímá svého kouče.",
+    body: "Druhá strana zkušenosti. Někdo tě bude koučovat na téma, které si sám vybereš. Možná na téma, které sis nikdy nahlas neřekl/a. Pět minut do rozhovoru zjistíš, že tě někdo skutečně poslouchá. Pak přijde otázka, na kterou jsi sám/sama nepřišel/a. A pochopíš, proč si stále více lidí najímá svého kouče.",
   },
   {
     icon: Sparkles,

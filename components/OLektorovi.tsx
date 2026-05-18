@@ -79,7 +79,7 @@ export function OLektorovi() {
 
         {/* Osobní citát */}
         <div className="mt-12 sm:mt-14 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6 sm:p-8">
-          <p className="h-label text-gold-400 mb-3">Co o mně neuvidíš na CV</p>
+          <p className="h-label text-gold-400 mb-3">Něco, co o mně asi nevíš</p>
           <p className="text-base sm:text-lg text-white/90 leading-relaxed">
             Nejsem coach, který „změnil svůj život koučováním ze dne na den". Tahle profese
             mě baví, protože mě každý klient přinutí přemýšlet. Žiju koučováním 14 let každý
