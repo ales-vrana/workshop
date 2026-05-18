@@ -9,7 +9,7 @@ export function ClosingCTA() {
       <div className="max-w-3xl mx-auto text-center">
         <p className="h-label text-gold-400 mb-3">Závěrečné CTA</p>
         <h2 className="h-display text-h2 text-white mb-6">
-          Tři hodiny, které se nedají získat z knih
+          Dvě a půl hodiny, které se nedají získat z knih
         </h2>
         <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-6 max-w-2xl mx-auto">
           Koučování je dovednost, kterou si nelze přečíst. Stejně jako nelze přečíst plavání.
@@ -28,7 +28,7 @@ export function ClosingCTA() {
           <li className="flex items-start gap-3">
             <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
             <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-teal-300">3 hodiny živé praxe</strong> — v roli kouče i klienta
+              <strong className="text-teal-300">2,5 hodiny živé praxe + Q&amp;A</strong> — v roli kouče i klienta
             </span>
           </li>
           <li className="flex items-start gap-3">
