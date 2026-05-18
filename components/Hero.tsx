@@ -44,7 +44,7 @@ export function Hero() {
           <span className="inline-flex items-center gap-2 rounded-full bg-navy-900/60 backdrop-blur-sm px-4 py-2 border border-white/15">
             <Star className="h-3.5 w-3.5 text-gold-400 fill-gold-400" aria-hidden />
             <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-white/90">
-              Zbývá 9 / 16 míst • 3 hodiny online • úterý 19. 5.
+               16 míst • 2,5 hodiny online • pátek 22. 5. 17:30 - 20:00
             </span>
           </span>
         </div>
