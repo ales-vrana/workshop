@@ -8,7 +8,7 @@ import { WORKSHOP, COACH } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Děkujeme — vaše místo na workshop je rezervováno | CoachVille",
   description:
-    'Platba potvrzena. Vidíme se 19. 5. 2026 na workshopu „Půjde mi koučování?". Uložte si termín do kalendáře a najdete tu i Zoom odkaz.',
+    'Platba potvrzena. Vidíme se 22. 5. 2026 na workshopu „Zažij koučování a začni koučovat už teď". Uložte si termín do kalendáře a najdete tu i Zoom odkaz.',
   robots: { index: false, follow: false }, // Thank-you page se neindexuje
 };
 
@@ -27,7 +27,7 @@ const PREP_STEPS = [
   },
   {
     title: "Den před: vypněte notifikace",
-    body: "Workshop staví na hluboké pozornosti. 3 hodiny offline od Slacku/emailu udělají obrovský rozdíl ve výsledku.",
+    body: "Workshop staví na hluboké pozornosti. 2,5 hodiny offline od Slacku/emailu udělají obrovský rozdíl ve výsledku.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function ThankYouPage() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-white/85 font-medium">
-            Vidíme se v {WORKSHOP.dateFull} v 18:30.
+            Vidíme se v {WORKSHOP.dateFull} v 17:30.
           </p>
 
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal-400/15 border border-teal-300/30 px-4 py-2">
@@ -100,7 +100,7 @@ export default function ThankYouPage() {
             Připojte se přes Zoom
           </h2>
           <p className="text-sm sm:text-base text-dark/70 mb-5 leading-relaxed">
-            Otevřete tento odkaz <strong className="text-navy-700">v {WORKSHOP.dateFull} ve 18:25</strong>{" "}
+            Otevřete tento odkaz <strong className="text-navy-700">v {WORKSHOP.dateFull} v 17:25</strong>{" "}
             (5 minut před začátkem). Tentýž odkaz jsme vám poslali i e-mailem pro jistotu.
           </p>
 
@@ -148,7 +148,7 @@ export default function ThankYouPage() {
             3 minuty na přípravu pro nejlepší zážitek
           </h2>
           <p className="text-sm sm:text-base text-dark/70 mb-5 leading-relaxed">
-            Workshop je intenzivní 3hodinová živá praxe. Krátká příprava zvedne hodnotu výrazně.
+            Workshop je intenzivní 2,5hodinová živá praxe + Q&A. Krátká příprava zvedne hodnotu výrazně.
           </p>
 
           <ol className="space-y-4">
@@ -178,7 +178,7 @@ export default function ThankYouPage() {
           <p className="text-sm sm:text-base text-dark/75 leading-relaxed">
             Napište mi na{" "}
             <a
-              href={`mailto:${WORKSHOP.contactEmail}?subject=Workshop%2019.%205.%20-%20dotaz`}
+              href={`mailto:${WORKSHOP.contactEmail}?subject=Workshop%2022.%205.%20-%20dotaz`}
               className="text-teal-600 font-semibold underline-offset-4 hover:underline break-words"
             >
               {WORKSHOP.contactEmail}
