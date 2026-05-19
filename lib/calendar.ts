@@ -1,13 +1,13 @@
 import { WORKSHOP } from "@/lib/config";
 
-const EVENT_TITLE = "Workshop koučování: Půjde mi to vůbec?";
-const EVENT_DESCRIPTION = `3hodinový online workshop s Alešem Vránou (ICF MCC).
+const EVENT_TITLE = "Workshop Zažij koučování v roli kouče i klienta";
+const EVENT_DESCRIPTION = `2,5hodinový online workshop + Q&A s Alešem Vránou (ICF MCC).
 
 Zoom odkaz: ${WORKSHOP.zoomUrl}
 Meeting ID: ${WORKSHOP.zoomId}
 Heslo: ${WORKSHOP.zoomPassword}
 
-Připojte se 5 minut před začátkem (18:25). Workshop je interaktivní — zapněte si kameru a připravte si téma, které právě řešíte.
+Připojte se 5 minut před začátkem (17:25). Workshop je interaktivní — zapněte si kameru a připravte si téma, které právě řešíte.
 
 Otázky? ${WORKSHOP.contactEmail}`;
 
@@ -35,8 +35,8 @@ export function googleCalendarUrl(): string {
  */
 export function outlookCalendarUrl(): string {
   // Outlook potřebuje ISO formát bez "Z" suffixu a v lokálním čase
-  const start = "2026-05-19T18:30:00";
-  const end = "2026-05-19T21:30:00";
+  const start = "2026-05-22T17:30:00";
+  const end = "2026-05-22T20:00:00";
   const params = new URLSearchParams({
     path: "/calendar/action/compose",
     rru: "addevent",
@@ -62,7 +62,7 @@ export function buildIcsFileContent(): string {
     s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
 
   // UID musí být jedinečné — používáme termín + doménu
-  const uid = `workshop-2026-05-19@coachville.eu`;
+  const uid = `workshop-2026-05-22@coachville.eu`;
   // DTSTAMP = kdy byl event vygenerován (povinné)
   const dtstamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 
@@ -86,7 +86,7 @@ export function buildIcsFileContent(): string {
     "TRANSP:OPAQUE",
     "BEGIN:VALARM",
     "ACTION:DISPLAY",
-    `DESCRIPTION:${escape("Workshop koučování za 1 hodinu — připravte se a otevřete Zoom v 18:25")}`,
+    `DESCRIPTION:${escape("Workshop koučování za 1 hodinu — připravte se a otevřete Zoom v 17:25")}`,
     "TRIGGER:-PT1H",
     "END:VALARM",
     "END:VEVENT",
