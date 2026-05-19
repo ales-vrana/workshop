@@ -190,6 +190,19 @@ export default function ThankYouPage() {
           </p>
         </article>
 
+        {/* Finální připomenutí */}
+        <div className="text-center pt-6 pb-2">
+          <div className="inline-flex items-center gap-3 rounded-2xl bg-navy-600 px-6 py-4 shadow-lifted">
+            <Calendar className="h-5 w-5 text-gold-400" aria-hidden />
+            <p className="text-base sm:text-lg font-semibold text-white">
+              Vidíme se v pátek 22. 5. 2026 v 17:25
+            </p>
+          </div>
+          <p className="mt-3 text-xs sm:text-sm text-dark/55 italic">
+            5 minut před začátkem — start workshopu v 17:30
+          </p>
+        </div>
+
         {/* Zpět odkaz */}
         <div className="text-center pt-4">
           <Link
