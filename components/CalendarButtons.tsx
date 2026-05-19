@@ -55,7 +55,7 @@ export function CalendarButtons() {
       {/* Apple / .ics download */}
       <a
         href={icsHref || "#"}
-        download="workshop-koucovani-19-5-2026.ics"
+        download="workshop-koucovani-22-5-2026.ics"
         className="flex items-center gap-3 p-4 bg-white border-2 border-navy-100/60 hover:border-teal-400 hover:bg-cream rounded-xl transition-all min-h-[64px] touch-manipulation group focus-visible:border-teal-400"
         aria-label="Stáhnout .ics soubor pro Apple Calendar nebo jinou aplikaci"
       >
