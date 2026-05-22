@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { MetaPixel } from "@/components/MetaPixel";
 import { EventSchema } from "@/components/EventSchema";
 import { DevWarning } from "@/components/ui/DevWarning";
+import { WORKSHOP } from "@/lib/config";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -17,9 +18,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://workshop.coachville
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Zažij koučování a začni koučovat už teď | Aleš Vrána MCC | 22. 5. 2026",
+  title: `Zažij koučování a začni koučovat už teď | Aleš Vrána MCC | ${WORKSHOP.dateShort}`,
   description:
-    "2,5hodinový online workshop + Q&A pro lidi, kteří chtějí koučování zažít v praxi. Živá praxe v roli kouče i klienta s držitelem nejvyšší ICF certifikace MCC. 22. 5. 2026, 17:30–20:00, 1 000 Kč. Garance vrácení peněz.",
+    `${WORKSHOP.duration} online workshop pro lidi, kteří chtějí koučování zažít v praxi. Živá praxe v roli kouče i klienta s držitelem nejvyšší ICF certifikace MCC. ${WORKSHOP.dateFull}, ${WORKSHOP.timeRange}, ${WORKSHOP.price}. Garance vrácení peněz.`,
   keywords: [
     "koučování",
     "workshop koučování",
@@ -33,9 +34,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "cs_CZ",
-    title: "Zažij koučování a začni koučovat už teď | 22. 5. 2026",
+    title: `Zažij koučování a začni koučovat už teď | ${WORKSHOP.dateShort}`,
     description:
-      "2,5 hodiny živé praxe + Q&A s držitelem ICF MCC. Bez teorie. Bez závazku. Vyzkoušej si koučovat na vlastní kůži.",
+      `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Bez teorie. Bez závazku. Vyzkoušej si koučovat na vlastní kůži.`,
     siteName: "CoachVille Europe",
     images: [
       {
@@ -48,8 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zažij koučování a začni koučovat už teď | 22. 5. 2026",
-    description: "2,5 hodiny živé praxe + Q&A s držitelem ICF MCC. Cena 1 000 Kč. Garance vrácení peněz.",
+    title: `Zažij koučování a začni koučovat už teď | ${WORKSHOP.dateShort}`,
+    description: `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Cena ${WORKSHOP.price}. Garance vrácení peněz.`,
     images: ["/og-image.jpg"],
   },
   robots: {
