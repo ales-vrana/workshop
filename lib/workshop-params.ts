@@ -48,6 +48,16 @@ export const PARAMS = {
   /** Momentální volná místa — manuálně upravuj */
   spotsLeft: 16,
 
+  /**
+   * Práh pro zobrazování scarcity hlášky „Zbývá X / Y míst".
+   * Hláška se zobrazí POUZE pokud `spotsLeft <= scarcityThreshold`.
+   * Default 9 = "zbývá 9 a méně" je real scarcity, vše vyšší je marketingový bullshit.
+   *
+   * Když je workshop plný 16/16 nebo 14/16, raději nic neukazujeme než
+   * vzbuzovat dojem, že nikdo o workshop nestojí.
+   */
+  scarcityThreshold: 9,
+
   // ━━━ NÁZVY ━━━
 
   /** Marketingový název workshopu (na webu, emailech) */

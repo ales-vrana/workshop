@@ -188,6 +188,12 @@ export const WORKSHOP = {
   spotsLeft: PARAMS.spotsLeft,                                    // 16
   spotsLabel: `${PARAMS.spotsLeft} / ${PARAMS.capacity}`,         // "16 / 16"
 
+  /**
+   * True jen pokud `spotsLeft <= scarcityThreshold` (default ≤ 9).
+   * Použij v komponentech: `{WORKSHOP.showSpotsScarcity && <div>Zbývá X míst</div>}`
+   */
+  showSpotsScarcity: PARAMS.spotsLeft <= PARAMS.scarcityThreshold,
+
   // ─── Platforma ───
   platform: PARAMS.platform,                                      // "Zoom"
   timeZone: PARAMS.timeZone,                                      // "Europe/Prague"
