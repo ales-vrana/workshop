@@ -26,12 +26,25 @@ export function StickyCTA() {
       >
         <div className="flex items-center gap-3">
           <div className="flex-1 min-w-0">
-            <p className="text-[11px] uppercase tracking-wider text-gold-600 font-bold leading-none">
-              Zbývá {WORKSHOP.spotsLabel} míst
-            </p>
-            <p className="text-sm font-bold text-navy-600 truncate mt-1">
-              {WORKSHOP.price} • {WORKSHOP.duration}
-            </p>
+            {WORKSHOP.showSpotsScarcity ? (
+              <>
+                <p className="text-[11px] uppercase tracking-wider text-gold-600 font-bold leading-none">
+                  Zbývá {WORKSHOP.spotsLabel} míst
+                </p>
+                <p className="text-sm font-bold text-navy-600 truncate mt-1">
+                  {WORKSHOP.price} • {WORKSHOP.duration}
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-[11px] uppercase tracking-wider text-navy-500 font-bold leading-none">
+                  {WORKSHOP.dayOfWeek} {WORKSHOP.dateShort}
+                </p>
+                <p className="text-sm font-bold text-navy-600 truncate mt-1">
+                  {WORKSHOP.price} • {WORKSHOP.duration}
+                </p>
+              </>
+            )}
           </div>
           <a
             href={WORKSHOP.paymentLink}
@@ -54,15 +67,17 @@ export function StickyCTA() {
           <div className="mx-auto max-w-2xl rounded-2xl bg-white/95 backdrop-blur-md shadow-lifted border border-navy-100/60 px-5 py-4 flex items-center gap-5">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 mb-1">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500/15 px-2.5 py-1 text-[11px] uppercase tracking-wider text-gold-600 font-bold">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-gold-500 opacity-60 animate-ping" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-500" />
+                {WORKSHOP.showSpotsScarcity && (
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500/15 px-2.5 py-1 text-[11px] uppercase tracking-wider text-gold-600 font-bold">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-gold-500 opacity-60 animate-ping" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-500" />
+                    </span>
+                    Zbývá {WORKSHOP.spotsLabel} míst
                   </span>
-                  Zbývá {WORKSHOP.spotsLabel} míst
-                </span>
+                )}
                 <span className="text-xs text-dark/60 font-medium">
-                  {WORKSHOP.dateShort} • {WORKSHOP.timeRange}
+                  {WORKSHOP.dayOfWeek} {WORKSHOP.dateShort} • {WORKSHOP.timeRange}
                 </span>
               </div>
               <p className="text-base lg:text-lg font-bold text-navy-700 truncate">

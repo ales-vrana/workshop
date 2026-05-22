@@ -51,11 +51,13 @@ export function ClosingCTA() {
           </li>
         </ul>
 
-        <div className="rounded-xl bg-gold-500/15 border border-gold-500/30 px-5 py-4 max-w-2xl mx-auto mb-6">
-          <p className="text-base sm:text-lg font-semibold text-gold-300">
-            ⏳ Zbývá {WORKSHOP.spotsLabel} míst — workshop má omezenou kapacitu
-          </p>
-        </div>
+        {WORKSHOP.showSpotsScarcity && (
+          <div className="rounded-xl bg-gold-500/15 border border-gold-500/30 px-5 py-4 max-w-2xl mx-auto mb-6">
+            <p className="text-base sm:text-lg font-semibold text-gold-300">
+              ⏳ Zbývá {WORKSHOP.spotsLabel} míst — workshop má omezenou kapacitu
+            </p>
+          </div>
+        )}
 
         <div className="rounded-xl bg-white/5 border border-white/15 px-5 py-4 max-w-2xl mx-auto mb-10">
           <p className="text-sm sm:text-base text-white/80">
