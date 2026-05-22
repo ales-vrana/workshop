@@ -8,7 +8,7 @@ import { WORKSHOP, COACH } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Děkujeme — vaše místo na workshop je rezervováno | CoachVille",
   description:
-    'Platba potvrzena. Vidíme se 22. 5. 2026 na workshopu „Zažij koučování a začni koučovat už teď". Uložte si termín do kalendáře a najdete tu i Zoom odkaz.',
+    `Platba potvrzena. Vidíme se ${WORKSHOP.dateFull} na workshopu „${WORKSHOP.name}". Uložte si termín do kalendáře a najdete tu i Zoom odkaz.`,
   robots: { index: false, follow: false }, // Thank-you page se neindexuje
 };
 
@@ -27,11 +27,14 @@ const PREP_STEPS = [
   },
   {
     title: "Den před: vypněte notifikace",
-    body: "Workshop staví na hluboké pozornosti. 2,5 hodiny offline od Slacku/emailu udělají obrovský rozdíl ve výsledku.",
+    body: `Workshop staví na hluboké pozornosti. ${WORKSHOP.duration} offline od Slacku/emailu udělají obrovský rozdíl ve výsledku.`,
   },
 ];
 
 export default function ThankYouPage() {
+  // URL-encoded subject pro mailto
+  const mailSubject = encodeURIComponent(`Workshop ${WORKSHOP.dateShort} - dotaz`);
+
   return (
     <main className="min-h-screen bg-cream">
       {/* HERO se success indikátorem */}
@@ -53,7 +56,7 @@ export default function ThankYouPage() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-white/85 font-medium">
-            Vidíme se v {WORKSHOP.dateFull} v 17:30.
+            Vidíme se v {WORKSHOP.dateFull} v {WORKSHOP.timeStart}.
           </p>
 
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal-400/15 border border-teal-300/30 px-4 py-2">
@@ -100,7 +103,7 @@ export default function ThankYouPage() {
             Připojte se přes Zoom
           </h2>
           <p className="text-sm sm:text-base text-dark/70 mb-5 leading-relaxed">
-            Otevřete tento odkaz <strong className="text-navy-700">v {WORKSHOP.dateFull} v 17:25</strong>{" "}
+            Otevřete tento odkaz <strong className="text-navy-700">v {WORKSHOP.dateFull} v {WORKSHOP.joinTime}</strong>{" "}
             (5 minut před začátkem). Tentýž odkaz jsme vám poslali i e-mailem pro jistotu.
           </p>
 
@@ -148,7 +151,7 @@ export default function ThankYouPage() {
             3 minuty na přípravu pro nejlepší zážitek
           </h2>
           <p className="text-sm sm:text-base text-dark/70 mb-5 leading-relaxed">
-            Workshop je intenzivní 2,5hodinová živá praxe + Q&A. Krátká příprava zvedne hodnotu výrazně.
+            Workshop je intenzivní {WORKSHOP.duration} živá praxe. Krátká příprava zvedne hodnotu výrazně.
           </p>
 
           <ol className="space-y-4">
@@ -178,7 +181,7 @@ export default function ThankYouPage() {
           <p className="text-sm sm:text-base text-dark/75 leading-relaxed">
             Napište mi na{" "}
             <a
-              href={`mailto:${WORKSHOP.contactEmail}?subject=Workshop%2022.%205.%20-%20dotaz`}
+              href={`mailto:${WORKSHOP.contactEmail}?subject=${mailSubject}`}
               className="text-teal-600 font-semibold underline-offset-4 hover:underline break-words"
             >
               {WORKSHOP.contactEmail}
@@ -195,11 +198,11 @@ export default function ThankYouPage() {
           <div className="inline-flex items-center gap-3 rounded-2xl bg-navy-600 px-6 py-4 shadow-lifted">
             <Calendar className="h-5 w-5 text-gold-400" aria-hidden />
             <p className="text-base sm:text-lg font-semibold text-white">
-              Vidíme se v pátek 22. 5. 2026 v 17:25
+              Vidíme se v {WORKSHOP.dateFull} v {WORKSHOP.joinTime}
             </p>
           </div>
           <p className="mt-3 text-xs sm:text-sm text-dark/55 italic">
-            5 minut před začátkem — start workshopu v 17:30
+            5 minut před začátkem — start workshopu v {WORKSHOP.timeStart}
           </p>
         </div>
 
