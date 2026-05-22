@@ -1,17 +1,18 @@
 import { WORKSHOP } from "@/lib/config";
 
-const EVENT_TITLE = "Workshop Zažij koučování v roli kouče i klienta";
-const EVENT_DESCRIPTION = `2,5hodinový online workshop + Q&A s Alešem Vránou (ICF MCC).
+const EVENT_TITLE = WORKSHOP.calendarEventTitle;
+
+const EVENT_DESCRIPTION = `${WORKSHOP.duration} online workshop s Alešem Vránou (ICF MCC).
 
 Zoom odkaz: ${WORKSHOP.zoomUrl}
 Meeting ID: ${WORKSHOP.zoomId}
 Heslo: ${WORKSHOP.zoomPassword}
 
-Připojte se 5 minut před začátkem (17:25). Workshop je interaktivní — zapněte si kameru a připravte si téma, které právě řešíte.
+Připojte se 5 minut před začátkem (${WORKSHOP.joinTime}). Workshop je interaktivní — zapněte si kameru a připravte si téma, které právě řešíte.
 
 Otázky? ${WORKSHOP.contactEmail}`;
 
-const EVENT_LOCATION = `Online přes Zoom — ${WORKSHOP.zoomUrl}`;
+const EVENT_LOCATION = `Online přes ${WORKSHOP.platform} — ${WORKSHOP.zoomUrl}`;
 
 /**
  * Google Calendar URL — otevře v prohlížeči formulář s pre-fillem.
@@ -24,7 +25,7 @@ export function googleCalendarUrl(): string {
     dates: `${WORKSHOP.dateUTCStart}/${WORKSHOP.dateUTCEnd}`,
     details: EVENT_DESCRIPTION,
     location: EVENT_LOCATION,
-    ctz: "Europe/Prague",
+    ctz: WORKSHOP.timeZone,
   });
   return `https://www.google.com/calendar/render?${params.toString()}`;
 }
@@ -35,15 +36,13 @@ export function googleCalendarUrl(): string {
  */
 export function outlookCalendarUrl(): string {
   // Outlook potřebuje ISO formát bez "Z" suffixu a v lokálním čase
-  const start = "2026-05-22T17:30:00";
-  const end = "2026-05-22T20:00:00";
   const params = new URLSearchParams({
     path: "/calendar/action/compose",
     rru: "addevent",
     subject: EVENT_TITLE,
     body: EVENT_DESCRIPTION,
-    startdt: start,
-    enddt: end,
+    startdt: WORKSHOP.dateOutlookStart,
+    enddt: WORKSHOP.dateOutlookEnd,
     location: EVENT_LOCATION,
   });
   return `https://outlook.live.com/calendar/0/deeplink/compose?${params.toString()}`;
@@ -62,7 +61,7 @@ export function buildIcsFileContent(): string {
     s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
 
   // UID musí být jedinečné — používáme termín + doménu
-  const uid = `workshop-2026-05-22@coachville.eu`;
+  const uid = `workshop-${WORKSHOP.dateISORaw}@coachville.eu`;
   // DTSTAMP = kdy byl event vygenerován (povinné)
   const dtstamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 
@@ -86,7 +85,7 @@ export function buildIcsFileContent(): string {
     "TRANSP:OPAQUE",
     "BEGIN:VALARM",
     "ACTION:DISPLAY",
-    `DESCRIPTION:${escape("Workshop koučování za 1 hodinu — připravte se a otevřete Zoom v 17:25")}`,
+    `DESCRIPTION:${escape(`Workshop koučování za 1 hodinu — připravte se a otevřete Zoom v ${WORKSHOP.joinTime}`)}`,
     "TRIGGER:-PT1H",
     "END:VALARM",
     "END:VEVENT",
@@ -101,7 +100,6 @@ export function buildIcsFileContent(): string {
 export function icsDataUrl(): string {
   const content = buildIcsFileContent();
   // base64 encoded — zachová Unicode (čeština)
-  // V browseru použijeme TextEncoder + btoa pomocí Uint8Array
   if (typeof window !== "undefined") {
     const bytes = new TextEncoder().encode(content);
     const binary = Array.from(bytes, (b) => String.fromCharCode(b)).join("");
