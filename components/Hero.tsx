@@ -4,7 +4,7 @@ import { WORKSHOP, COACH } from "@/lib/config";
 
 const VALUE_ITEMS = [
   {
-    title: "2,5hodinový živý workshop s ICF MCC koučem + Q&A",
+    title: `${WORKSHOP.duration} živý workshop s ICF MCC koučem`,
     sub: "interaktivní praxe v roli kouče i klienta",
   },
   {
@@ -44,7 +44,7 @@ export function Hero() {
           <span className="inline-flex items-center gap-2 rounded-full bg-navy-900/60 backdrop-blur-sm px-4 py-2 border border-white/15">
             <Star className="h-3.5 w-3.5 text-gold-400 fill-gold-400" aria-hidden />
             <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.15em] text-white/90">
-              Zbývá 9 / 16 míst • 2,5 hodiny online • pátek 22. 5.
+              Zbývá {WORKSHOP.spotsLabel} míst • {WORKSHOP.duration} online • {WORKSHOP.dayOfWeek} {WORKSHOP.dateShort}
             </span>
           </span>
         </div>
@@ -58,7 +58,7 @@ export function Hero() {
 
         {/* Subhead */}
         <p className="mt-6 sm:mt-8 text-center text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug max-w-3xl mx-auto font-medium">
-          2,5 hodiny živé praxe v roli kouče i klienta + Q&A — s držitelem nejvyšší ICF certifikace MCC.
+          {WORKSHOP.duration} živé praxe v roli kouče i klienta — s držitelem nejvyšší ICF certifikace MCC.
           Online, malá skupina, bez teorie.
         </p>
 
@@ -68,7 +68,7 @@ export function Hero() {
           že tě naplňuje míň, než tě bere. Nebo chceš porozumět tomu, co dělá z dobrých manažerů a lídrů ty skvělé.
           <br /><br />
           <span className="text-white font-semibold">Pak je tenhle workshop pro tebe.</span> Není to teorie.
-          Není to ochutnávka. Je to 2,5 hodiny, kdy si na vlastní kůži vyzkoušíš, jaké to je koučovat — a být koučován. Plus prostor na tvoje otázky a odpovědi na konci.
+          Není to ochutnávka. Je to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš, jaké to je koučovat — a být koučován.
         </p>
 
         {/* Value stack card */}

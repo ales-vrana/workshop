@@ -9,9 +9,8 @@ export function EventSchema() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Event",
-    name: 'Workshop: "Půjde mi koučování?"',
-    description:
-      "3hodinový online workshop pro lidi, kteří zvažují koučování jako kariéru. Živá praxe v roli kouče i klienta s držitelem nejvyšší ICF certifikace MCC.",
+    name: `Workshop: ${WORKSHOP.name}`,
+    description: `${WORKSHOP.duration} online workshop pro lidi, kteří chtějí koučování zažít v praxi. Živá praxe v roli kouče i klienta s držitelem nejvyšší ICF certifikace MCC.`,
     startDate: WORKSHOP.dateISO,
     endDate: WORKSHOP.dateISOEnd,
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
@@ -19,7 +18,7 @@ export function EventSchema() {
     location: {
       "@type": "VirtualLocation",
       url: WORKSHOP.siteUrl,
-      name: "Zoom",
+      name: WORKSHOP.platform,
     },
     image: [`${WORKSHOP.siteUrl}/og-image.svg`],
     offers: {
@@ -28,7 +27,7 @@ export function EventSchema() {
       price: WORKSHOP.priceNumber,
       priceCurrency: WORKSHOP.currency,
       availability: "https://schema.org/LimitedAvailability",
-      validFrom: "2026-04-01T00:00:00+02:00",
+      validFrom: `${WORKSHOP.dateISORaw.split("-").slice(0, 2).join("-")}-01T00:00:00+02:00`,
     },
     performer: {
       "@type": "Person",

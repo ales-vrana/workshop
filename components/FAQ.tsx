@@ -19,7 +19,7 @@ const QA = [
     a: "Ano. Workshop je interaktivní, koučuješ a jsi koučován/a — to bez kamery nejde. Připojit se můžeš z počítače, tabletu nebo telefonu, workshop probíhá na Zoomu.",
   },
   {
-    q: "Co když nemůžu být celé 2,5 hodiny online?",
+    q: `Co když nemůžu být celé ${WORKSHOP.duration} online?`,
     a: "Doporučuji si čas vyhradit celý. Praxe probíhá ve druhé polovině a kdo odejde dříve, přijde o klíčovou část. Účastníci dostanou záznam, ten však nebude obsahovat praktickou část.",
   },
   {
@@ -35,8 +35,8 @@ const QA = [
     a: "Ne. Princip workshopu je dát ti zážitek, který se sám prodá nebo neprodá. Pokud po workshopu chceš vědět, jak pokračovat dál — řekneme si všechny možnosti. Pokud ne, máš zážitek a 5 nástrojů, které můžeš použít už zítra.",
   },
   {
-    q: "Páteční podvečer 17:30–20:00. Stihnu to po práci?",
-    a: "Pokud máš dojezd domů do 17:15, jsi v pohodě. V průběhu první hodiny je v pořádku si vzít občerstvení, ve druhé hodině budeme praktikovat, takže tam se hodí být plně přítomen/přítomna. Pokud potřebuješ skončit dříve, můžeš se podívat na zbytek workshopu ze záznamu.",
+    q: `Workshop ${WORKSHOP.timeRange}. Stihnu to po práci?`,
+    a: `Pokud se připojíš v ${WORKSHOP.joinTime}, jsi v pohodě. V průběhu první hodiny je v pořádku si vzít občerstvení, ve druhé hodině budeme praktikovat, takže tam se hodí být plně přítomen/přítomna. Pokud potřebuješ skončit dříve, můžeš se podívat na zbytek workshopu ze záznamu.`,
   },
 ];
 

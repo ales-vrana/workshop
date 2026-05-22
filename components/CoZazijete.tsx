@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import { Eye, UserCheck, Heart, Sparkles, Map, Wrench } from "lucide-react";
+import { WORKSHOP } from "@/lib/config";
 
 const KARTY = [
   {
@@ -40,7 +41,7 @@ export function CoZazijete() {
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">Co tě čeká</p>
         <h2 className="h-display text-h2 text-navy-600">
-          Co přesně se za ty 2,5 hodiny stane
+          Co přesně se za ty {WORKSHOP.duration} stane
         </h2>
       </div>
 
