@@ -25,13 +25,13 @@ export const PARAMS = {
   // ━━━ ZÁKLADNÍ PARAMETRY ━━━
 
   /** Datum workshopu — formát YYYY-MM-DD */
-  dateISO: "2026-06-02",
+  dateISO: "2026-06-16",
 
   /** Český název dne v týdnu (malými písmeny) */
   dayOfWeek: "úterý",
 
   /** Čas začátku workshopu — formát HH:MM (24h) */
-  startTime: "17:00",
+  startTime: "18:00",
 
   /** Délka workshopu v minutách */
   durationMinutes: 120,
