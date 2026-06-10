@@ -18,7 +18,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://workshop.coachville
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `Zažij koučování a začni koučovat už teď | Aleš Vrána MCC | ${WORKSHOP.dateShort}`,
+  title: `Za ${WORKSHOP.duration} zjistíš o koučování víc než za roky čtení | Aleš Vrána, MCC`,
   description:
     `${WORKSHOP.duration} online workshop pro lidi, kteří chtějí koučování zažít v praxi. Živá praxe v roli kouče i klienta s držitelem nejvyšší ICF certifikace MCC. ${WORKSHOP.dateFull}, ${WORKSHOP.timeRange}, ${WORKSHOP.price}. Garance vrácení peněz.`,
   keywords: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "cs_CZ",
-    title: `Zažij koučování a začni koučovat už teď | ${WORKSHOP.dateShort}`,
+    title: `Za ${WORKSHOP.duration} zjistíš o koučování víc než za roky čtení | Aleš Vrána, MCC`,
     description:
       `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Bez teorie. Bez závazku. Vyzkoušej si koučovat na vlastní kůži.`,
     siteName: "CoachVille Europe",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Zažij koučování a začni koučovat už teď | ${WORKSHOP.dateShort}`,
+    title: `Za ${WORKSHOP.duration} zjistíš o koučování víc než za roky čtení | Aleš Vrána, MCC`,
     description: `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Cena ${WORKSHOP.price}. Garance vrácení peněz.`,
     images: ["/og-image.jpg"],
   },
