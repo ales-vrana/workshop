@@ -69,7 +69,7 @@ export function Hero() {
           že tě naplňuje míň, než tě bere. Nebo chceš porozumět tomu, co dělá z dobrých manažerů a lídrů ty skvělé.
           <br /><br />
           <span className="text-white font-semibold">Pak je tenhle workshop pro tebe.</span> Není to teorie.
-          Není to ochutnávka. Je to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš, jaké to je koučovat — a být koučován.
+          Není to ochutnávka. Jsou to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš, jaké to je koučovat — a být koučovaný.
         </p>
 
         {/* Value stack card */}
