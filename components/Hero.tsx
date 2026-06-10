@@ -52,14 +52,15 @@ export function Hero() {
         {/* H1 */}
         <h1 className="mt-8 sm:mt-10 text-center max-w-4xl mx-auto">
           <span className="block h-display text-hero text-white">
-            Zažij koučování a začni&nbsp;koučovat už&nbsp;teď
+            ZA {WORKSHOP.duration.toUpperCase()} ZJISTÍŠ O&nbsp;KOUČOVÁNÍ VÍC NEŽ ZA ROKY ČTENÍ
           </span>
         </h1>
 
         {/* Subhead */}
         <p className="mt-6 sm:mt-8 text-center text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug max-w-3xl mx-auto font-medium">
-          {WORKSHOP.duration} živé praxe v roli kouče i klienta — s držitelem nejvyšší ICF certifikace MCC.
-          Online, malá skupina, bez teorie.
+          Živá praxe v roli kouče i klienta s držitelem nejvyšší certifikace ICF MCC.
+          Ať zvažuješ koučování jako novou profesi, nebo jako dovednost pro svou současnou roli —
+          za {WORKSHOP.duration} budeš vědět, na čem jsi.
         </p>
 
         {/* Intro paragraph */}
