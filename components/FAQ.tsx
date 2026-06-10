@@ -7,6 +7,10 @@ import { WORKSHOP } from "@/lib/config";
 
 const QA = [
   {
+    q: "Zvažuji koučování jako budoucí profesi. Je pro mě workshop, nebo mám jít rovnou na konzultaci?",
+    a: "Obojí funguje, liší se to rychlostí. Workshop je nejlevnější a nejrychlejší způsob, jak si profesi otestovat v praxi — za 2 hodiny si koučování zkusíš z obou stran a uvidíš, jak ti sedí. Pokud tě to zajímá, můžeš si rovnou domluvit nezávazný hovor, kde projdeme tvou situaci, čísla a celou cestu k certifikaci. A klidně obojí: přijď na workshop a hovor si domluv po něm. Pokud už jsi hovor měl, workshop je přirozený další krok.",
+  },
+  {
     q: "Nikdy jsem nekoučoval/a. Bude to pro mě?",
     a: "Ano — workshop je primárně pro lidi bez předchozí zkušenosti. Dostaneš jednoduchý rámec a jasné instrukce. Účast na workshopu nevyžaduje předchozí zkušenost s koučováním.",
   },

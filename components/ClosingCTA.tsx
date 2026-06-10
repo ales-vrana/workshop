@@ -51,6 +51,14 @@ export function ClosingCTA() {
           </li>
         </ul>
 
+        {/* Cenová kotva */}
+        <div className="rounded-xl bg-teal-400/10 border border-teal-300/30 px-5 py-4 max-w-2xl mx-auto mb-10">
+          <p className="text-base sm:text-lg text-white/90 leading-relaxed">
+            <strong className="text-teal-300">{WORKSHOP.price} a {WORKSHOP.duration}.</strong>{" "}
+            Nejlevnější způsob, jak otestovat rozhodnutí, které ovlivní dalších 10 let tvé kariéry.
+          </p>
+        </div>
+
         {WORKSHOP.showSpotsScarcity && (
           <div className="rounded-xl bg-gold-500/15 border border-gold-500/30 px-5 py-4 max-w-2xl mx-auto mb-6">
             <p className="text-base sm:text-lg font-semibold text-gold-300">

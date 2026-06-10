@@ -14,7 +14,7 @@ const SITUACE = [
       </>
     ),
     highlight:
-      "Co konkrétně na workshopu: První 20minutová koučovací zkušenost ti řekne víc o tvých přirozených předpokladech, než ti řekne pohovor s kariérním poradcem.",
+      "Co konkrétně na workshopu: Prvních 20 minut v roli kouče ti o téhle profesi řekne víc než rok čtení článků a přemýšlení, jestli do toho jít.",
   },
   {
     num: "2",

@@ -10,8 +10,8 @@ const BADGES = [
   },
   {
     icon: GraduationCap,
-    title: `${COACH.yearsOfPractice} let praxe v profesionálním koučování`,
-    sub: `cca ${COACH.coachingHours} odkoučovaných hodin`,
+    title: `${COACH.yearsOfPractice} let denní praxe v profesionálním koučování`,
+    sub: `cca ${COACH.coachingHours} odkoučovaných hodin · škola CoachVille působí v ČR/SK 15 let, značka CoachVille vznikla v USA v roce 2001`,
   },
   {
     icon: Users,

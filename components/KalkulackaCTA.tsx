@@ -23,9 +23,9 @@ const SAZBY = [
     sub: "certifikovaný ICF kouč",
   },
   {
-    label: "Na úrovni MCC",
+    label: "PCC / Firemní koučování",
     rate: "4–5 000 Kč/hod",
-    sub: "nejvyšší světová certifikace ICF",
+    sub: "pokročilá certifikace, koučování manažerů a firem",
   },
 ];
 
@@ -69,9 +69,9 @@ export function KalkulackaCTA() {
         {/* Body */}
         <div className="max-w-2xl mx-auto space-y-5 text-base sm:text-lg text-white/85 leading-relaxed">
           <p>
-            Profesionální kouč v ČR si účtuje <strong className="text-teal-300">1 000 Kč/hod ve výcviku</strong>,{" "}
+            Profesionální kouč v ČR si účtuje <strong className="text-teal-300">1 000 Kč/hod už ve výcviku</strong>,{" "}
             <strong className="text-teal-300">2–3 000 Kč po certifikaci ICF</strong> a{" "}
-            <strong className="text-teal-300">4–5 000 Kč na nejvyšší úrovni</strong>.
+            <strong className="text-teal-300">4–5 000 Kč na úrovni PCC a ve firemním koučování</strong>.
             Čísla si můžeš spočítat v naší kalkulačce.
           </p>
 
@@ -84,7 +84,10 @@ export function KalkulackaCTA() {
           <p>
             A pokud po něm budeš chtít pokračovat, ukážu ti{" "}
             <strong className="text-white">celou cestu až k mezinárodní certifikaci</strong> —
-            včetně toho, jak ji financovat a kde vzít první klienty.
+            včetně financování od <strong className="text-teal-300">~3 000 Kč měsíčně</strong>,
+            které se dá splácet z prvních koučovacích hodin, a včetně toho, kde vzít první klienty
+            (<strong className="text-teal-300">prvních 30 zájemců dostáváš od školy</strong>).
+            To je mimochodem věta, kterou můžeš ukázat doma, až se budete bavit, jestli do toho jít.
           </p>
         </div>
 
@@ -94,9 +97,15 @@ export function KalkulackaCTA() {
             <span>Zažij to na workshopu — {WORKSHOP.price}</span>
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden />
           </CTAButton>
-          <p className="text-xs sm:text-sm text-white/60 flex items-center gap-2 text-center">
+          <p className="text-xs sm:text-sm text-white/70 flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center">
             <Calculator className="h-4 w-4 text-teal-300 shrink-0" aria-hidden />
-            Cesta od prvního koučovacího rozhovoru po MCC certifikaci se dá rozplánovat na 3–5 let
+            <span>
+              <strong className="text-teal-300">První placení klienti po 2 měsících</strong>
+              <span className="text-white/40 mx-1.5">·</span>
+              <strong className="text-teal-300">Mezinárodní certifikace ICF do 12–15 měsíců</strong>
+              <span className="text-white/40 mx-1.5">·</span>
+              <strong className="text-teal-300">Úroveň PCC do 3 let</strong>
+            </span>
           </p>
         </div>
       </div>

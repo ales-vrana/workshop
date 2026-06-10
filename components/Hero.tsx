@@ -99,8 +99,10 @@ export function Hero() {
           <CTAButton href={WORKSHOP.paymentLink} variant="on-dark" className="w-full sm:w-auto group">
             Zajisti si své místo — {WORKSHOP.price}
           </CTAButton>
-          <p className="text-xs sm:text-sm text-white/70 text-center max-w-md">
-            ✓ Garance: pokud po prvních 60 minutách necítíš přínos, napiš mi a vrátím ti 100 % ceny.
+          <p className="text-xs sm:text-sm text-white/85 text-center max-w-md font-medium">
+            Max {WORKSHOP.capacity} míst <span className="text-white/40 mx-1">·</span> Garance: po 60 minutách vrácení 100 % ceny bez otázek
+          </p>
+          <p className="text-xs text-white/60 text-center max-w-md">
             Bez papírování, bez otázek.
           </p>
         </div>

@@ -1,7 +1,12 @@
 import { Section } from "@/components/ui/Section";
-import { Briefcase, Users, Compass, HeartHandshake, Rocket, Bot } from "lucide-react";
+import { Briefcase, Users, Compass, HeartHandshake, Rocket, Bot, Target } from "lucide-react";
 
 const PROFILY = [
+  {
+    icon: Target,
+    title: "Budoucí profesionální kouč",
+    sub: "Zvažuješ koučování jako svou další kariéru a chceš si to ověřit v praxi, ne v hlavě",
+  },
   {
     icon: Briefcase,
     title: "Manažer, lídr, HR profesionál",
