@@ -25,13 +25,13 @@ export const PARAMS = {
   // ━━━ ZÁKLADNÍ PARAMETRY ━━━
 
   /** Datum workshopu — formát YYYY-MM-DD */
-  dateISO: "2026-06-16",
+  dateISO: "2026-08-19",
 
   /** Český název dne v týdnu (malými písmeny) */
-  dayOfWeek: "úterý",
+  dayOfWeek: "středa",
 
   /** Čas začátku workshopu — formát HH:MM (24h) */
-  startTime: "18:00",
+  startTime: "19:30",
 
   /** Délka workshopu v minutách */
   durationMinutes: 120,
@@ -40,7 +40,7 @@ export const PARAMS = {
   hasQA: false,
 
   /** Cena workshopu v CZK (jen číslo, bez Kč) */
-  priceCZK: 599,
+  priceCZK: 300,
 
   /** Maximální kapacita workshopu */
   capacity: 16,
