@@ -3,64 +3,49 @@ import { Section } from "@/components/ui/Section";
 const SITUACE = [
   {
     num: "1",
-    headline: "Uvažuješ o změně práce nebo podnikání",
+    headline: "Zvažuješ změnu, ale nechceš rozhodovat naslepo",
     body: (
       <>
-        Možná to zvažuješ už dlouho. Práci věnuješ každý rok <strong>2 000 hodin</strong> svého času.
-        Je to pro tebe investice s dobrou emoční i finanční návratností? Nebo ti práce bere víc, než dává?
-        <br /><br />
-        Na tomto workshopu můžeš objevit novou cestu. Nemusíš udělat skok. Můžeš získávat platící
-        klienty i při současné práci. Vybuduješ si tak svůj <strong>Plán B</strong>.
+        Koučování tě přitahuje jako možná nová cesta, ale zatím nevíš, jak se v roli kouče budeš
+        skutečně cítit.
       </>
     ),
     highlight:
-      "Co konkrétně na tomto workshopu: Uděláš si vlastní zkušenost a ověříš si, jestli je koučování směr, kterým chceš jít dál.",
+      "Na workshopu si to ověříš bez velkého rozhodnutí a bez závazku pokračovat.",
   },
   {
     num: "2",
-    headline: "Rád/a lidem nasloucháš",
+    headline: "Rád/a lidem nasloucháš, ale rady často nefungují",
     body: (
       <>
-        Možná jsi v práci nebo v okruhu přátel ten/ta, kdo umí naslouchat. Nemusíš být extrovert,
-        abys byl/a dobrým koučem. <strong>Naslouchání je základem.</strong>
-        <br /><br />
-        V přátelské konverzaci si lidé dávají vzájemně rady. Ty však fungují zřídkakdy. Kouči lidem
-        neradí. Díky koučovacím metodám a dovednostem můžeš své naslouchání rozšířit o účinné
-        postupy, které přinášejí lidem výsledky.
+        Možná za tebou lidé chodí, když něco řeší.
       </>
     ),
     highlight:
-      "Co konkrétně: V druhé hodině si vyzkoušíš koučovat člověka. Použiješ první metodické otázky a poznáš, jak moc se liší koučovací konverzace od přátelské konverzace.",
+      "Na workshopu poznáš rozdíl mezi radou, běžným rozhovorem a koučovací konverzací.",
   },
   {
     num: "3",
-    headline: "Chci pochopit mechaniku získávání klientů",
+    headline: "Vedeš lidi a chceš, aby více přemýšleli sami",
     body: (
       <>
-        Platící klienti jsou základem prosperující praxe. Kouči však nic nevnucují. Mají{" "}
-        <strong>etický způsob, jak budovat vztahy</strong>. Když si s tebou někdo vyzkouší koučovací
-        setkání, může se sám rozhodnout, jestli chce ve spolupráci pokračovat, nebo ne.
+        Chceš klást lepší otázky, rozvíjet samostatnost lidí a nemuset pokaždé přinášet všechna
+        řešení.
       </>
     ),
     highlight:
-      "Co konkrétně: Ukážeme si, jak systém CoachVille pomáhá koučům budovat koučovací praxi. Nejsou to náhody — jsou to postupy, díky kterým i ty můžeš získávat klienty, aniž bys musel/a být obchodníkem nebo se vnucovat.",
+      "Vyzkoušíš si základ rozhovoru, který můžeš použít v práci.",
   },
   {
     num: "4",
-    headline: "Transformace: Konec náročnosti i přetížení",
+    headline: "Koučování tě zajímá, ale nejsi si jistý/á, zda bys to zvládl/a",
     body: (
       <>
-        Koučovací metody a dovednosti nejsou jen pro profesionální kouče. Jsou pro každého, kdo chce
-        lépe rozumět druhým — i sám sobě. Pro každého, kdo se chce rozvíjet.
-        <br /><br />
-        Pokud prožíváš náročné období, období změny nebo vysokého pracovního vytížení — zjistíš, jak
-        ti koučování může pomoct. Představ si, že účastí ve výcviku nebudeš dostávat další domácí
-        úkoly a zvyšovat své přetížení. <strong>Naopak.</strong> V tréninku jsi pravidelně koučovaný
-        a díky tomu se můžeš zaměřit na to, co je pro tebe náročné a obtížné.
+        Nemusíš mít talent ani zkušenosti.
       </>
     ),
     highlight:
-      "Workshop ti dá zkušenost, že učení může být zábavné, interaktivní a současně hluboké.",
+      "Dostaneš jednoduchý postup a zjistíš, jak se učíš přímo v praxi.",
   },
 ];
 
