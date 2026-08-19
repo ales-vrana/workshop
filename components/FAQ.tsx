@@ -36,7 +36,7 @@ const QA = [
   },
   {
     q: "Bude na workshopu nějaký prodejní pitch?",
-    a: "Ne. Princip workshopu je dát ti zážitek, který se sám prodá nebo neprodá. Pokud po workshopu chceš vědět, jak pokračovat dál — řekneme si všechny možnosti. Pokud ne, máš zážitek a 5 nástrojů, které můžeš použít už zítra.",
+    a: "Ne. Princip workshopu je dát ti zážitek, který ti ukáže o koučování více. Na workshopu neprodáváme, nejedná se o obchodní prezentaci, ale o praktickou zkušenost.",
   },
   {
     q: `Workshop ${WORKSHOP.timeRange}. Stihnu to po práci?`,
