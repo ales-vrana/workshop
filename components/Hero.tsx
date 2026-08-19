@@ -52,15 +52,14 @@ export function Hero() {
         {/* H1 */}
         <h1 className="mt-8 sm:mt-10 text-center max-w-4xl mx-auto">
           <span className="block h-display text-hero text-white">
-            ZA {WORKSHOP.duration.toUpperCase()} ZJISTÍŠ O&nbsp;KOUČOVÁNÍ VÍC NEŽ ZA ROKY ČTENÍ
+            Vyzkoušej si koučování z&nbsp;obou stran. Za {WORKSHOP.duration} zjistíš, jestli je to cesta pro&nbsp;tebe.
           </span>
         </h1>
 
         {/* Subhead */}
         <p className="mt-6 sm:mt-8 text-center text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug max-w-3xl mx-auto font-medium">
-          Živá praxe v roli kouče i klienta s držitelem nejvyšší certifikace ICF MCC.
-          Ať zvažuješ koučování jako novou profesi, nebo jako dovednost pro svou současnou roli —
-          za {WORKSHOP.duration} budeš vědět, na čem jsi.
+          Živý online workshop pro lidi, kteří nechtějí vybírat koučování ani koučovací výcvik naslepo.
+          Vyzkoušíš si roli kouče i klienta — bez předchozích zkušeností a bez závazku pokračovat.
         </p>
 
         {/* Intro paragraph */}
@@ -69,7 +68,7 @@ export function Hero() {
           že tě naplňuje míň, než tě bere. Nebo chceš porozumět tomu, co dělá z dobrých manažerů a lídrů ty skvělé.
           <br /><br />
           <span className="text-white font-semibold">Pak je tenhle workshop pro tebe.</span> Není to teorie.
-          Není to ochutnávka. Jsou to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš, jaké to je koučovat — a být koučovaný.
+          Není to ochutnávka. Je to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš, jaké to je koučovat — a být koučován.
         </p>
 
         {/* Value stack card */}
