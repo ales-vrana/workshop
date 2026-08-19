@@ -3,63 +3,64 @@ import { Section } from "@/components/ui/Section";
 const SITUACE = [
   {
     num: "1",
-    headline: "Práce mi dává míň, než mi bere.",
+    headline: "Uvažuješ o změně práce nebo podnikání",
     body: (
       <>
-        Možná ti to v posledních měsících přijde čím dál víc. Ten pocit, že trávíš dny děláním věcí,
-        které ti nedávají smysl. A přemýšlíš — co s tím?
+        Možná to zvažuješ už dlouho. Práci věnuješ každý rok <strong>2 000 hodin</strong> svého času.
+        Je to pro tebe investice s dobrou emoční i finanční návratností? Nebo ti práce bere víc, než dává?
         <br /><br />
-        Koučování je profese postavená na <strong>lidském kontaktu</strong>. Tady AI ani algoritmy
-        nepomůžou. Workshop ti ukáže, jestli je tohle směr, kterým se chceš vydat.
+        Na tomto workshopu můžeš objevit novou cestu. Nemusíš udělat skok. Můžeš získávat platící
+        klienty i při současné práci. Vybuduješ si tak svůj <strong>Plán B</strong>.
       </>
     ),
     highlight:
-      "Co konkrétně na workshopu: Prvních 20 minut v roli kouče ti o téhle profesi řekne víc než rok čtení článků a přemýšlení, jestli do toho jít.",
+      "Co konkrétně na tomto workshopu: Uděláš si vlastní zkušenost a ověříš si, jestli je koučování směr, kterým chceš jít dál.",
   },
   {
     num: "2",
-    headline: "Lidi mi často přijdou pro radu. A baví mě to.",
+    headline: "Rád/a lidem nasloucháš",
     body: (
       <>
-        Možná jsi v práci nebo v okruhu přátel ten/ta, kdo umí naslouchat. Lidi ti přicházejí
-        s problémy, ty jim pomáháš najít řešení. A užíváš si to.
+        Možná jsi v práci nebo v okruhu přátel ten/ta, kdo umí naslouchat. Nemusíš být extrovert,
+        abys byl/a dobrým koučem. <strong>Naslouchání je základem.</strong>
         <br /><br />
-        Tohle není náhoda. Je to dovednost, kterou koučování formálně rozvíjí. Workshop ti ukáže,
-        jaký je rozdíl mezi <em>dáváním rad</em> a <em>koučováním</em> — a co tě baví víc.
+        V přátelské konverzaci si lidé dávají vzájemně rady. Ty však fungují zřídkakdy. Kouči lidem
+        neradí. Díky koučovacím metodám a dovednostem můžeš své naslouchání rozšířit o účinné
+        postupy, které přinášejí lidem výsledky.
       </>
     ),
     highlight:
-      "Co konkrétně: V druhé hodině si vyzkoušíš koučovat reálného člověka. Žádné modelové situace. Reálný rozhovor, reálná zpětná vazba.",
+      "Co konkrétně: V druhé hodině si vyzkoušíš koučovat člověka. Použiješ první metodické otázky a poznáš, jak moc se liší koučovací konverzace od přátelské konverzace.",
   },
   {
     num: "3",
-    headline: "Chci porozumět tomu, jak koučování funguje.",
+    headline: "Chci pochopit mechaniku získávání klientů",
     body: (
       <>
-        Většina lidí má o koučování pouze knihy, podcasty, příběhy z YouTube. To je{" "}
-        <em>přečtené koučování</em>. Není to <em>zažité koučování</em>.
-        <br /><br />
-        Rozdíl je obrovský — jako rozdíl mezi přečtením kuchařky a vlastním vařením. Workshop je
-        tvoje první vlastní příprava jídla.
+        Platící klienti jsou základem prosperující praxe. Kouči však nic nevnucují. Mají{" "}
+        <strong>etický způsob, jak budovat vztahy</strong>. Když si s tebou někdo vyzkouší koučovací
+        setkání, může se sám rozhodnout, jestli chce ve spolupráci pokračovat, nebo ne.
       </>
     ),
     highlight:
-      "Co konkrétně: Uvidíš živou ukázku koučování s držitelem nejvyšší ICF MCC certifikace. Co vidíš v knihách jako ideál, uvidíš v praxi.",
+      "Co konkrétně: Ukážeme si, jak systém CoachVille pomáhá koučům budovat koučovací praxi. Nejsou to náhody — jsou to postupy, díky kterým i ty můžeš získávat klienty, aniž bys musel/a být obchodníkem nebo se vnucovat.",
   },
   {
     num: "4",
-    headline: "Chci se naučit lépe vést tým, partnera, sebe.",
+    headline: "Transformace: Konec náročnosti i přetížení",
     body: (
       <>
-        Koučovací dovednosti nejsou jen pro profesionální kouče. Jsou pro každého, kdo chce lépe
-        rozumět druhým — i sám sobě. Manažeři, rodiče, partneři, učitelé. Tyhle dovednosti změní
-        každý rozhovor, který povedeš.
+        Koučovací metody a dovednosti nejsou jen pro profesionální kouče. Jsou pro každého, kdo chce
+        lépe rozumět druhým — i sám sobě. Pro každého, kdo se chce rozvíjet.
         <br /><br />
-        Workshop ti dá konkrétní nástroje, které <strong>můžeš použít už druhý den</strong> v práci nebo doma.
+        Pokud prožíváš náročné období, období změny nebo vysokého pracovního vytížení — zjistíš, jak
+        ti koučování může pomoct. Představ si, že účastí ve výcviku nebudeš dostávat další domácí
+        úkoly a zvyšovat své přetížení. <strong>Naopak.</strong> V tréninku jsi pravidelně koučovaný
+        a díky tomu se můžeš zaměřit na to, co je pro tebe náročné a obtížné.
       </>
     ),
     highlight:
-      "Co konkrétně: PDF s 5 koučovacími otázkami, které můžeš použít hned zítra, je součástí workshopu. Jednoduché otázky, které vedou hlubší rozhovor.",
+      "Workshop ti dá zkušenost, že učení může být zábavné, interaktivní a současně hluboké.",
   },
 ];
 
