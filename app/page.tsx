@@ -2,8 +2,8 @@ import { Hero } from "@/components/Hero";
 import { CoachQuote } from "@/components/CoachQuote";
 import { Pochybnosti } from "@/components/Pochybnosti";
 import { ProKoho } from "@/components/ProKoho";
-import { KalkulackaCTA } from "@/components/KalkulackaCTA";
 import { CoZazijete } from "@/components/CoZazijete";
+import { NemuzesToPokazit } from "@/components/NemuzesToPokazit";
 import { OLektorovi } from "@/components/OLektorovi";
 import { Zkusenosti } from "@/components/Zkusenosti";
 import { FAQ } from "@/components/FAQ";
@@ -29,10 +29,10 @@ export default function HomePage() {
         <ProKoho />
       </Reveal>
       <Reveal>
-        <KalkulackaCTA />
+        <CoZazijete />
       </Reveal>
       <Reveal>
-        <CoZazijete />
+        <NemuzesToPokazit />
       </Reveal>
       <Reveal>
         <OLektorovi />
