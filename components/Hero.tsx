@@ -16,12 +16,12 @@ const VALUE_ITEMS = [
     sub: "můžeš se vrátit a uvědomit si víc",
   },
   {
-    title: "PDF: 5 koučovacích otázek pro každodenní použití",
-    sub: "konkrétní nástroj, který můžeš použít už zítra v práci nebo doma",
+    title: "4 koučovací otázky pro použití s lidmi ve tvém okolí",
+    sub: "konkrétní nástroj, kterým si můžeš ověřit s lidmi kolem sebe, jak ti role kouče sedí",
   },
   {
-    title: "Přístup do uzavřené Q&A skupiny po workshopu",
-    sub: "týden osobního follow-upu s lektorem i účastníky",
+    title: "Případové studie koučů i klientů",
+    sub: "konkrétní příběhy těch, kteří se stali kouči i klienti",
   },
 ];
 
