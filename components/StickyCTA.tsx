@@ -52,7 +52,7 @@ export function StickyCTA() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-4 py-3 bg-teal-400 hover:bg-teal-500 active:bg-teal-600 text-white font-bold text-sm rounded-lg shadow-soft min-h-[44px] whitespace-nowrap"
           >
-            Zajisti si místo
+            Koupit záznam proběhlého workshopu
           </a>
         </div>
       </div>
