@@ -21,7 +21,7 @@ const VALUE_ITEMS = [
   },
   {
     title: "Případové studie koučů i klientů",
-    sub: "konkrétní příběhy těch, kteří se stali kouči i klienti",
+    sub: "konkrétní příběhy koučů CoachVille a 400+ zkušeností jejich klientů ",
   },
 ];
 
