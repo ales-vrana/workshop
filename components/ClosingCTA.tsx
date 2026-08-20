@@ -93,7 +93,7 @@ export function ClosingCTA() {
 
         <div className="flex flex-col items-center gap-4">
           <CTAButton href={WORKSHOP.paymentLink} variant="on-dark" className="w-full sm:w-auto">
-            Zajisti si své místo — {WORKSHOP.price}
+            Workshop už proběhl, kup si záznam — {WORKSHOP.price}
           </CTAButton>
           <p className="text-xs text-white/60">
             Maximální kapacita {WORKSHOP.capacity} účastníků. Po platbě dostaneš e-mailem Zoom link a krátkou přípravu.
