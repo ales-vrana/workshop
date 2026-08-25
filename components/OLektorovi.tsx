@@ -59,10 +59,7 @@ export function OLektorovi() {
             </div>
           </div>
           <div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-1">{COACH.name}</h3>
-            <p className="text-teal-300 text-base sm:text-lg font-semibold mb-6 tracking-wide">
-              {COACH.titles}
-            </p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6">{COACH.fullName}</h3>
 
             <ul className="space-y-5">
               {BADGES.map((badge, idx) => {
