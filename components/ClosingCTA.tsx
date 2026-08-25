@@ -69,7 +69,7 @@ export function ClosingCTA() {
 
         <div className="rounded-xl bg-white/5 border border-white/15 px-5 py-4 max-w-2xl mx-auto mb-10">
           <p className="text-sm sm:text-base text-white/80">
-            Záznam, PDF s 5 koučovacími otázkami a přístup do Q&amp;A skupiny zůstávají tvoje navždy.
+            Záznam, PDF s 5 koučovacími otázkami a případové studie koučů zůstávají tvoje navždy.
           </p>
         </div>
 

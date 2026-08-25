@@ -20,8 +20,12 @@ const VALUE_ITEMS = [
     sub: "konkrétní nástroj, který můžeš použít už zítra v práci nebo doma",
   },
   {
-    title: "Přístup do uzavřené Q&A skupiny po workshopu",
-    sub: "týden osobního follow-upu s lektorem i účastníky",
+    title: "Možnost zažít si poprvé koučování v obou rolích v bezpečném prostředí",
+    sub: "nikdo tě nehodnotí, praktické rozhovory se nenahrávají",
+  },
+  {
+    title: "Přístup k případovým studiím koučů v různých fázích výcviku",
+    sub: "uvidíš, jak vypadá cesta od prvního rozhovoru po certifikaci",
   },
 ];
 
