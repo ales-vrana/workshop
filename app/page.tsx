@@ -6,6 +6,7 @@ import { CoZazijete } from "@/components/CoZazijete";
 import { NemuzesToPokazit } from "@/components/NemuzesToPokazit";
 import { OLektorovi } from "@/components/OLektorovi";
 import { Zkusenosti } from "@/components/Zkusenosti";
+import { Reference } from "@/components/Reference";
 import { FAQ } from "@/components/FAQ";
 import { ClosingCTA } from "@/components/ClosingCTA";
 import { StickyCTA } from "@/components/StickyCTA";
@@ -39,6 +40,9 @@ export default function HomePage() {
       </Reveal>
       <Reveal>
         <Zkusenosti />
+      </Reveal>
+      <Reveal>
+        <Reference />
       </Reveal>
       <Reveal>
         <FAQ />
