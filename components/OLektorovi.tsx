@@ -6,17 +6,17 @@ const BADGES = [
   {
     icon: Trophy,
     title: "ICF Master Certified Coach",
-    sub: `nejvyšší světová úroveň — v ČR má MCC pouze ${COACH.mccCountInCzechia} koučů (a 4 z nich studovali v CoachVille)`,
+    sub: `nejvyšší úroveň mezinárodní certifikace— v ČR má MCC pouze ${COACH.mccCountInCzechia} koučů (a 4 z nich studovali v CoachVille)`,
   },
   {
     icon: GraduationCap,
     title: `${COACH.yearsOfPractice} let denní praxe v profesionálním koučování`,
-    sub: `cca ${COACH.coachingHours} odkoučovaných hodin · škola CoachVille působí v ČR/SK 15 let, značka CoachVille vznikla v USA v roce 2001`,
+    sub: `cca ${COACH.coachingHours} odkoučovaných hodin · škola CoachVille působí v ČR/SK od roku 2014, značka CoachVille vznikla v USA v roce 2001`,
   },
   {
     icon: Users,
     title: "Největší komunita profesionálních koučů v ČR/SK",
-    sub: "od roku 2014",
+    sub: "od roku 2014 budujeme komunitu koučů, kteří jdou za mistrovstvím v koučování",
   },
   {
     icon: Flag,
