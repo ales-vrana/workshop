@@ -8,7 +8,7 @@ const VALUE_ITEMS = [
     sub: "interaktivní praxe v roli kouče i klienta",
   },
   {
-    title: "Živá ukázka koučování naživo",
+    title: "Živá ukázka koučování",
     sub: "uvidíš, jak vypadá profesionální koučování",
   },
   {
@@ -16,12 +16,12 @@ const VALUE_ITEMS = [
     sub: "můžeš se vrátit a uvědomit si víc",
   },
   {
-    title: "4 koučovací otázky pro použití s lidmi ve tvém okolí",
-    sub: "konkrétní nástroj, kterým si můžeš ověřit s lidmi kolem sebe, jak ti role kouče sedí",
+    title: "PDF: 5 koučovacích otázek pro každodenní použití",
+    sub: "konkrétní nástroj, který můžeš použít už zítra v práci nebo doma",
   },
   {
-    title: "Případové studie koučů i klientů",
-    sub: "konkrétní příběhy koučů CoachVille a 400+ zkušeností jejich klientů ",
+    title: "Přístup do uzavřené Q&A skupiny po workshopu",
+    sub: "týden osobního follow-upu s lektorem i účastníky",
   },
 ];
 

@@ -5,7 +5,7 @@ import { WORKSHOP } from "@/lib/config";
 const KARTY = [
   {
     icon: Eye,
-    headline: "ŽIVÁ UKÁZKA KOUČOVÁNÍ NAŽIVO",
+    headline: "ŽIVÁ UKÁZKA KOUČOVÁNÍ",
     body: "Uvidíš koučování, jak vypadá u držitele nejvyšší ICF certifikace MCC. Můžeš se přihlásit jako klient ukázky a zažít koučování přímo se mnou. Co vidíš v knihách jako ideální, uvidíš v praxi.",
   },
   {
@@ -48,25 +48,16 @@ export function CoZazijete() {
       <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {KARTY.map((karta, idx) => {
           const Icon = karta.icon;
-          const num = String(idx + 1).padStart(2, "0");
           return (
             <article
               key={idx}
               className="card group relative overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 hover:border-teal-400/40"
             >
-              <div
-                aria-hidden
-                className="absolute -top-4 -right-2 text-[7rem] sm:text-[8rem] font-extrabold leading-none text-gold-500/8 select-none pointer-events-none"
-              >
-                {num}
-              </div>
-
               <div className="relative">
                 <div className="flex items-center gap-3 mb-5">
                   <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-teal-400/15 text-teal-500 group-hover:bg-teal-400 group-hover:text-white transition-colors">
                     <Icon className="h-6 w-6" aria-hidden />
                   </div>
-                  <span className="text-sm font-bold text-gold-500 tracking-wider">{num}</span>
                 </div>
                 <h3 className="text-base sm:text-lg font-bold uppercase tracking-wide text-navy-600 mb-3 leading-tight">
                   {karta.headline}

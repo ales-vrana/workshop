@@ -34,11 +34,16 @@ const SITUACE = [
       </>
     ),
     highlight:
-      "Vyzkoušíš si základ rozhovoru, který můžeš použít v práci.",
+      "Vyzkoušíš si základ koučovací konverzace, kterou můžeš okamžitě používat.",
   },
   {
     num: "4",
-    headline: "Koučování tě zajímá, ale nejsi si jistý/á, zda bys to zvládl/a",
+    headline: (
+      <>
+        Koučování tě zajímá, ale nejsi si <span className="whitespace-nowrap">jistý/á</span>,
+        zda bys to <span className="whitespace-nowrap">zvládl/a</span>
+      </>
+    ),
     body: (
       <>
         Nemusíš mít talent ani zkušenosti.
@@ -53,9 +58,8 @@ export function Pochybnosti() {
   return (
     <Section id="situace" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-        <p className="h-label mb-3">Pro koho je to</p>
         <h2 className="h-display text-h2 text-navy-600 mb-4">
-          Možná to znáš
+          Jsi v této situaci?
         </h2>
         <p className="text-base sm:text-lg text-dark/70">
           Tyhle čtyři situace popisují, jak většina lidí přichází ke koučování.
@@ -69,7 +73,9 @@ export function Pochybnosti() {
             <div className="flex items-center gap-4 mb-5">
               <div className="num-badge">#{item.num}</div>
             </div>
-            <h3 className="text-h3 font-bold text-navy-600 mb-4 leading-snug">{item.headline}</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-navy-600 mb-4 leading-snug text-balance">
+              {item.headline}
+            </h3>
             <div className="text-base text-dark/80 leading-relaxed mb-5">{item.body}</div>
             <div className="highlight-box mt-auto">
               <p className="text-dark"><strong>{item.highlight}</strong></p>
