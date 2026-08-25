@@ -66,6 +66,11 @@ export const PARAMS = {
   /** Title v kalendáři (přidáno do Google/Apple/Outlook) */
   calendarEventTitle: "Workshop Zažij koučování v roli kouče i klienta",
 
+  // ━━━ PLATBA (edituj přímo zde — projeví se na všech CTA tlačítkách) ━━━
+
+  /** Stripe Payment Link — cíl všech tlačítek „Zajisti si své místo" */
+  paymentLink: "https://book.stripe.com/9B68wO8ne7uf9yu3NfejK27",
+
   // ━━━ ZOOM (edituj přímo zde, projeví se na webu i v kalendáři) ━━━
 
   /** Odkaz na Zoom místnost */

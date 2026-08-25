@@ -203,9 +203,8 @@ export const WORKSHOP = {
   zoomUrl: PARAMS.zoomUrl,
   zoomId: PARAMS.zoomId,
   zoomPassword: PARAMS.zoomPassword,
-  paymentLink:
-    process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK ||
-    "https://buy.stripe.com/3cI00i1YQ3dZ3a6gA1ejK1J",
+  // Platební odkaz se edituje v lib/workshop-params.ts (ne přes env proměnné)
+  paymentLink: PARAMS.paymentLink,
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "ales@coachville.eu",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://workshop.coachville.eu",
 } as const;
@@ -228,4 +227,4 @@ export const COACH = {
 // Helper exports
 export const isPaymentLinkConfigured =
   !WORKSHOP.paymentLink.includes("REPLACE_ME") &&
-  WORKSHOP.paymentLink.startsWith("https://buy.stripe.com/");
+  /^https:\/\/(buy|book)\.stripe\.com\//.test(WORKSHOP.paymentLink);
