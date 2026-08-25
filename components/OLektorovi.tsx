@@ -40,12 +40,21 @@ export function OLektorovi() {
 
       <div className="max-w-4xl mx-auto">
         <div className="grid sm:grid-cols-[auto,1fr] gap-8 sm:gap-12 items-start">
-          <div className="flex justify-center sm:justify-start">
+          <div className="flex flex-col items-center sm:items-start gap-5">
             <div className="relative w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-2xl overflow-hidden ring-4 ring-white/10 shadow-lifted">
               <img
                 src="/workshop/ales-vrana-portrait.jpg"
                 alt={`Portrét: ${COACH.fullName}`}
                 className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+
+            {/* ICF MCC odznak — stejný rámeček i velikost jako fotka */}
+            <div className="relative w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-2xl overflow-hidden ring-4 ring-white/10 shadow-lifted bg-white">
+              <img
+                src="/workshop/icf-mcc-badge.png"
+                alt="Odznak ICF Master Certified Coach (MCC) — Credentials & Standards"
+                className="absolute inset-0 w-full h-full object-contain p-4"
               />
             </div>
           </div>
