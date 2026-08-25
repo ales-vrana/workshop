@@ -22,22 +22,22 @@ type Video = {
 };
 
 const VIDEOS: Video[] = [
-  { name: "Silva Ptašková", vimeoId: "1139977428", hash: "3d7f98bfbb" },
-  { name: "Michaela Hozáková", vimeoId: "1139977179", hash: "2e5a492d00" },
-  { name: "Ernest Novák", vimeoId: "1139977735", hash: "0153cc4844" },
-  { name: "Anna Beranová", vimeoId: "1144317177" },
-  { name: "Michaela Hrešková", vimeoId: "1144317475" },
-  { name: "Pavla Mandíková", vimeoId: "1144317762" },
-  { name: "Lubo Sabo", vimeoId: "1139978057", hash: "aeb9369525" },
-  { name: "Katka Pořízková", vimeoId: "1139978207", hash: "bcd27dbdd0" },
-  { name: "Irena Vágnerová", vimeoId: "1139978479", hash: "5714a17543" },
-  { name: "Jan Toulavý", vimeoId: "1144317958" },
-  { name: "Monika Janáčová", vimeoId: "1144318064" },
-  { name: "Jaroslav Cecha", vimeoId: "1144318197" },
-  { name: "Míla Hájek", vimeoId: "1139978160", hash: "e3ca9bdd64" },
-  { name: "Ernest Novák 2", vimeoId: "1140004608", hash: "1539eaf4c2" },
-  { name: "Ernest Novák 3", vimeoId: "1139977878", hash: "6634b5c6ae" },
-  { name: "Irena Vágnerová 2", vimeoId: "1139978271", hash: "aaa69c29fb" },
+  { name: "Jana K.", vimeoId: "1139977428", hash: "3d7f98bfbb" },
+  { name: "Petra Z.", vimeoId: "1139977179", hash: "2e5a492d00" },
+  { name: "Markéta P.", vimeoId: "1139977735", hash: "0153cc4844" },
+  { name: "Dana K.", vimeoId: "1144317177" },
+  { name: "Zuzana B.", vimeoId: "1144317475" },
+  { name: "Milan K.", vimeoId: "1144317762" },
+  { name: "Lenka A.", vimeoId: "1139978057", hash: "aeb9369525" },
+  { name: "Petra V.", vimeoId: "1139978207", hash: "bcd27dbdd0" },
+  { name: "Martin K.", vimeoId: "1139978479", hash: "5714a17543" },
+  { name: "Adam V.", vimeoId: "1144317958" },
+  { name: "Pavla R.", vimeoId: "1144318064" },
+  { name: "Marek L.", vimeoId: "1144318197" },
+  { name: "Michal D.", vimeoId: "1139978160", hash: "e3ca9bdd64" },
+  { name: "Michaela S.", vimeoId: "1140004608", hash: "1539eaf4c2" },
+  { name: "Ingrid T.", vimeoId: "1139977878", hash: "6634b5c6ae" },
+  { name: "Kristýna B.", vimeoId: "1139978271", hash: "aaa69c29fb" },
 ];
 
 function vimeoEmbedUrl(v: Video): string {
@@ -48,8 +48,6 @@ function vimeoEmbedUrl(v: Video): string {
     player_id: "0",
     app_id: "58479",
     autoplay: "1",
-    muted: "0",
-    playsinline: "1",
   });
   if (v.hash) params.set("h", v.hash);
   return `${base}?${params.toString()}`;
@@ -108,7 +106,7 @@ function VideoCard({ video }: { video: Video }) {
       </div>
       <div className="px-4 py-3 bg-white">
         <p className="font-semibold text-navy-600 text-sm sm:text-base">{video.name}</p>
-        <p className="text-xs text-dark/60 mt-0.5">Student CoachVille</p>
+        <p className="text-xs text-dark/60 mt-0.5">Účastnice / účastník workshopu</p>
       </div>
     </article>
   );
@@ -122,7 +120,7 @@ export function Zkusenosti() {
         <h2 className="h-display text-h2 text-navy-600 mb-4">Zkušenosti účastníků</h2>
         <p className="text-base sm:text-lg text-dark/70">
           Krátké video-reference od lidí, kteří workshop prošli. Klikněte na libovolnou kartu
-          a poslechněte si jejich sdílení.
+          a poslechněte si jejich příběh.
         </p>
       </div>
 
@@ -134,7 +132,7 @@ export function Zkusenosti() {
 
       <div className="flex justify-center mt-12 sm:mt-14">
         <CTAButton href={WORKSHOP.paymentLink} variant="primary">
-          Připojit se k workshopu — {WORKSHOP.price}
+          Chci to zažít — {WORKSHOP.price}
         </CTAButton>
       </div>
     </Section>

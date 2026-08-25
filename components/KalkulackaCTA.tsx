@@ -94,7 +94,7 @@ export function KalkulackaCTA() {
         {/* CTA */}
         <div className="mt-10 sm:mt-12 flex flex-col items-center gap-4">
           <CTAButton href="#koupit" variant="on-dark" className="w-full sm:w-auto group">
-            <span>Zažij to na workshopu — {WORKSHOP.price}</span>
+            <span>Chci to zažít — {WORKSHOP.price}</span>
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden />
           </CTAButton>
           <p className="text-xs sm:text-sm text-white/70 flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center">

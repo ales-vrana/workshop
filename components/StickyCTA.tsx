@@ -52,7 +52,7 @@ export function StickyCTA() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-4 py-3 bg-teal-400 hover:bg-teal-500 active:bg-teal-600 text-white font-bold text-sm rounded-lg shadow-soft min-h-[44px] whitespace-nowrap"
           >
-            Koupit záznam proběhlého workshopu
+            Chci to zažít
           </a>
         </div>
       </div>
@@ -90,7 +90,7 @@ export function StickyCTA() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-5 lg:px-6 py-3 lg:py-3.5 bg-teal-400 hover:bg-teal-500 active:bg-teal-600 text-white font-bold text-sm lg:text-base rounded-lg shadow-soft hover:shadow-lifted hover:-translate-y-0.5 transition-all min-h-[48px] whitespace-nowrap focus-visible:ring-4 focus-visible:ring-teal-400/40"
             >
-              Zajisti si místo →
+              Chci to zažít →
             </a>
           </div>
         </div>

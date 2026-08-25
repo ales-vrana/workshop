@@ -1,11 +1,17 @@
 "use client";
 
 import Script from "next/script";
+import { WORKSHOP } from "@/lib/config";
 
+/**
+ * Meta (Facebook) Pixel.
+ * ID se edituje v lib/workshop-params.ts → metaPixelId.
+ * Prázdné ID = pixel se nevloží.
+ */
 export function MetaPixel() {
-  const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+  const pixelId = WORKSHOP.metaPixelId;
 
-  if (!pixelId || process.env.NODE_ENV !== "production") return null;
+  if (!pixelId) return null;
 
   return (
     <>

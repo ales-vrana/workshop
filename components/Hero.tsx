@@ -96,7 +96,7 @@ export function Hero() {
         {/* CTA */}
         <div className="mt-8 sm:mt-10 flex flex-col items-center gap-4">
           <CTAButton href={WORKSHOP.paymentLink} variant="on-dark" className="w-full sm:w-auto group">
-            Zajisti si své místo — {WORKSHOP.price}
+            Chci to zažít — {WORKSHOP.price}
           </CTAButton>
           <p className="text-xs sm:text-sm text-white/85 text-center max-w-md font-medium">
             Max {WORKSHOP.capacity} míst <span className="text-white/40 mx-1">·</span> Garance: po 60 minutách vrácení 100 % ceny bez otázek
