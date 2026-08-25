@@ -74,10 +74,10 @@ export const PARAMS = {
   // ━━━ ZOOM (edituj přímo zde, projeví se na webu i v kalendáři) ━━━
 
   /** Odkaz na Zoom místnost */
-  zoomUrl: "https://us02web.zoom.us/j/89790199665",
+  zoomUrl: "https://us02web.zoom.us/j/2316373579",
 
   /** Meeting ID (pro zobrazení na stránce Děkujeme) */
-  zoomId: "897 9019 9665",
+  zoomId: "2316373579",
 
   /** Heslo do meetingu — nech prázdné (""), pokud meeting heslo nemá */
   zoomPassword: "",
