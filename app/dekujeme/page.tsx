@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Check, Calendar, Video, Sparkles, Mail, ExternalLink, ArrowLeft } from "lucide-react";
 import { CalendarButtons } from "@/components/CalendarButtons";
 import { CopyButton } from "@/components/CopyButton";
+import { MetaPixelPurchase } from "@/components/MetaPixelPurchase";
 import { WORKSHOP, COACH } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -37,6 +38,9 @@ export default function ThankYouPage() {
 
   return (
     <main className="min-h-screen bg-cream">
+      {/* Konverze pro Meta Pixel — odešle Purchase */}
+      <MetaPixelPurchase />
+
       {/* HERO se success indikátorem */}
       <section className="relative overflow-hidden bg-gradient-to-b from-navy-900 to-navy-600 text-white">
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
