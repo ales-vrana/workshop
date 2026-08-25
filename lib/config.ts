@@ -199,6 +199,9 @@ export const WORKSHOP = {
   timeZone: PARAMS.timeZone,                                      // "Europe/Prague"
 
   // ─── Externí URL (z .env) ───
+  /** Meta (Facebook) Pixel ID — edituje se v lib/workshop-params.ts */
+  metaPixelId: PARAMS.metaPixelId,
+
   // Zoom se edituje v lib/workshop-params.ts (ne přes env proměnné)
   zoomUrl: PARAMS.zoomUrl,
   zoomId: PARAMS.zoomId,

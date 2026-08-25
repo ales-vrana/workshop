@@ -71,13 +71,18 @@ export const PARAMS = {
   /** Stripe Payment Link — cíl všech tlačítek „Zajisti si své místo" */
   paymentLink: "https://book.stripe.com/9B68wO8ne7uf9yu3NfejK27",
 
+  // ━━━ MĚŘICÍ KÓDY ━━━
+
+  /** Meta (Facebook) Pixel ID — prázdný řetězec = pixel se nevloží */
+  metaPixelId: "884397061610419",
+
   // ━━━ ZOOM (edituj přímo zde, projeví se na webu i v kalendáři) ━━━
 
   /** Odkaz na Zoom místnost */
-  zoomUrl: "https://us02web.zoom.us/j/2316373579",
+  zoomUrl: "https://us02web.zoom.us/j/89790199665",
 
   /** Meeting ID (pro zobrazení na stránce Děkujeme) */
-  zoomId: "2316373579",
+  zoomId: "897 9019 9665",
 
   /** Heslo do meetingu — nech prázdné (""), pokud meeting heslo nemá */
   zoomPassword: "",
