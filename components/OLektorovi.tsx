@@ -16,7 +16,7 @@ const BADGES = [
   {
     icon: Users,
     title: "Největší komunita profesionálních koučů v ČR/SK",
-    sub: "od roku 2014 budujeme komunitu koučů, kteří jdou za mistrovstvím v koučování",
+    sub: "od roku 2014 buduji komunitu koučů, kteří jdou za mistrovstvím v koučování",
   },
   {
     icon: Flag,
