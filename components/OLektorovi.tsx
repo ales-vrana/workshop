@@ -6,17 +6,17 @@ const BADGES = [
   {
     icon: Trophy,
     title: "ICF Master Certified Coach",
-    sub: `nejvyšší úroveň mezinárodní certifikace— v ČR má MCC pouze ${COACH.mccCountInCzechia} koučů (a 4 z nich studovali v CoachVille)`,
+    sub: `nejvyšší světová úroveň — v ČR má MCC pouze ${COACH.mccCountInCzechia} koučů (a 4 z nich studovali v CoachVille)`,
   },
   {
     icon: GraduationCap,
     title: `${COACH.yearsOfPractice} let denní praxe v profesionálním koučování`,
-    sub: `cca ${COACH.coachingHours} odkoučovaných hodin · škola CoachVille působí v ČR/SK od roku 2014, značka CoachVille vznikla v USA v roce 2001`,
+    sub: `cca ${COACH.coachingHours} odkoučovaných hodin · škola CoachVille působí v ČR/SK 15 let, značka CoachVille vznikla v USA v roce 2001`,
   },
   {
     icon: Users,
     title: "Největší komunita profesionálních koučů v ČR/SK",
-    sub: "od roku 2014 buduji komunitu koučů, kteří jdou za mistrovstvím v koučování",
+    sub: "od roku 2014",
   },
   {
     icon: Flag,
@@ -73,7 +73,7 @@ export function OLektorovi() {
                       <p className="font-semibold text-white text-base sm:text-lg leading-tight">
                         {badge.title}
                       </p>
-                      <p className="text-sm text-white/65 mt-1 leading-relaxed">{badge.sub}</p>
+                      <p className="text-base text-white/70 mt-1 leading-relaxed">{badge.sub}</p>
                     </div>
                   </li>
                 );
