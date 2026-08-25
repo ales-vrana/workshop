@@ -199,9 +199,10 @@ export const WORKSHOP = {
   timeZone: PARAMS.timeZone,                                      // "Europe/Prague"
 
   // ─── Externí URL (z .env) ───
-  zoomUrl: process.env.NEXT_PUBLIC_ZOOM_URL || "https://us02web.zoom.us/j/89790199665",
-  zoomId: process.env.NEXT_PUBLIC_ZOOM_ID || "897 9019 9665",
-  zoomPassword: process.env.NEXT_PUBLIC_ZOOM_PASSWORD || "",
+  // Zoom se edituje v lib/workshop-params.ts (ne přes env proměnné)
+  zoomUrl: PARAMS.zoomUrl,
+  zoomId: PARAMS.zoomId,
+  zoomPassword: PARAMS.zoomPassword,
   paymentLink:
     process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK ||
     "https://buy.stripe.com/3cI00i1YQ3dZ3a6gA1ejK1J",

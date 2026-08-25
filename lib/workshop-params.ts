@@ -25,10 +25,10 @@ export const PARAMS = {
   // ━━━ ZÁKLADNÍ PARAMETRY ━━━
 
   /** Datum workshopu — formát YYYY-MM-DD */
-  dateISO: "2026-08-19",
+  dateISO: "2026-09-01",
 
   /** Český název dne v týdnu (malými písmeny) */
-  dayOfWeek: "středa",
+  dayOfWeek: "úterý",
 
   /** Čas začátku workshopu — formát HH:MM (24h) */
   startTime: "19:30",
@@ -65,6 +65,17 @@ export const PARAMS = {
 
   /** Title v kalendáři (přidáno do Google/Apple/Outlook) */
   calendarEventTitle: "Workshop Zažij koučování v roli kouče i klienta",
+
+  // ━━━ ZOOM (edituj přímo zde, projeví se na webu i v kalendáři) ━━━
+
+  /** Odkaz na Zoom místnost */
+  zoomUrl: "https://us02web.zoom.us/j/89790199665",
+
+  /** Meeting ID (pro zobrazení na stránce Děkujeme) */
+  zoomId: "897 9019 9665",
+
+  /** Heslo do meetingu — nech prázdné (""), pokud meeting heslo nemá */
+  zoomPassword: "",
 
   // ━━━ TECHNICKÉ KONSTANTY (obvykle neměnit) ━━━
 
