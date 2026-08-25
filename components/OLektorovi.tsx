@@ -31,11 +31,10 @@ export function OLektorovi() {
       <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
         <p className="h-label text-gold-400 mb-3">Lektor</p>
         <h2 className="h-display text-h2 text-white mb-4">
-          O lektorovi — možná mě už znáš
+          Hlavní trenér CoachVille
         </h2>
         <p className="text-base sm:text-lg text-white/70">
-          Pokud čteš moje emaily nebo jsi mě potkal/a na FB, většinu pravděpodobně víš.
-          Pro úplnost a pro ty, kdo se připojí poprvé:
+          S kým tento workshop zažiješ:
         </p>
       </div>
 
