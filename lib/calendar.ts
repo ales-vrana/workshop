@@ -8,14 +8,14 @@ Zoom odkaz: ${WORKSHOP.zoomUrl}
 Meeting ID: ${WORKSHOP.zoomId}
 Heslo: ${WORKSHOP.zoomPassword}
 
-Připojte se 5 minut před začátkem (${WORKSHOP.joinTime}). Workshop je interaktivní — zapněte si kameru a připravte si téma, které právě řešíte.
+Připojte se 5 minut před začátkem (${WORKSHOP.joinTime}). Workshop je interaktivní - zapněte si kameru a připravte si téma, které právě řešíte.
 
 Otázky? ${WORKSHOP.contactEmail}`;
 
-const EVENT_LOCATION = `Online přes ${WORKSHOP.platform} — ${WORKSHOP.zoomUrl}`;
+const EVENT_LOCATION = `Online přes ${WORKSHOP.platform} - ${WORKSHOP.zoomUrl}`;
 
 /**
- * Google Calendar URL — otevře v prohlížeči formulář s pre-fillem.
+ * Google Calendar URL - otevře v prohlížeči formulář s pre-fillem.
  * Dokumentace: https://github.com/InteractionDesignFoundation/add-event-to-calendar-docs/blob/main/services/google.md
  */
 export function googleCalendarUrl(): string {
@@ -31,7 +31,7 @@ export function googleCalendarUrl(): string {
 }
 
 /**
- * Outlook Web (Office 365) deeplink — otevře v prohlížeči.
+ * Outlook Web (Office 365) deeplink - otevře v prohlížeči.
  * Funguje pro outlook.live.com i outlook.office.com.
  */
 export function outlookCalendarUrl(): string {
@@ -56,11 +56,11 @@ export function outlookCalendarUrl(): string {
  * https://datatracker.ietf.org/doc/html/rfc5545
  */
 export function buildIcsFileContent(): string {
-  // Escape pro iCal — speciální znaky musí být escapovány
+  // Escape pro iCal - speciální znaky musí být escapovány
   const escape = (s: string) =>
     s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
 
-  // UID musí být jedinečné — používáme termín + doménu
+  // UID musí být jedinečné - používáme termín + doménu
   const uid = `workshop-${WORKSHOP.dateISORaw}@coachville.eu`;
   // DTSTAMP = kdy byl event vygenerován (povinné)
   const dtstamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
@@ -85,7 +85,7 @@ export function buildIcsFileContent(): string {
     "TRANSP:OPAQUE",
     "BEGIN:VALARM",
     "ACTION:DISPLAY",
-    `DESCRIPTION:${escape(`Workshop koučování za 1 hodinu — připravte se a otevřete Zoom v ${WORKSHOP.joinTime}`)}`,
+    `DESCRIPTION:${escape(`Workshop koučování za 1 hodinu - připravte se a otevřete Zoom v ${WORKSHOP.joinTime}`)}`,
     "TRIGGER:-PT1H",
     "END:VALARM",
     "END:VEVENT",
@@ -94,12 +94,12 @@ export function buildIcsFileContent(): string {
 }
 
 /**
- * Data URL pro stažení .ics souboru — funguje na všech zařízeních
+ * Data URL pro stažení .ics souboru - funguje na všech zařízeních
  * bez potřeby server endpointu.
  */
 export function icsDataUrl(): string {
   const content = buildIcsFileContent();
-  // base64 encoded — zachová Unicode (čeština)
+  // base64 encoded - zachová Unicode (čeština)
   if (typeof window !== "undefined") {
     const bytes = new TextEncoder().encode(content);
     const binary = Array.from(bytes, (b) => String.fromCharCode(b)).join("");

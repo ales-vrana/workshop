@@ -1,5 +1,5 @@
 /**
- * Centrální config — odvozuje formátované hodnoty z lib/workshop-params.ts.
+ * Centrální config - odvozuje formátované hodnoty z lib/workshop-params.ts.
  *
  * ⚠️ NEMĚNIT TENTO SOUBOR pro běžné změny parametrů workshopu.
  *    Edituj pouze lib/workshop-params.ts.
@@ -9,11 +9,11 @@
 
 import { PARAMS } from "./workshop-params";
 
-// NBSP (non-breaking space) — zabraňuje rozdělení např. "1 000 Kč" na konci řádku
+// NBSP (non-breaking space) - zabraňuje rozdělení např. "1 000 Kč" na konci řádku
 const NBSP = " ";
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// Pomocné funkce — výpočty času, formátování
+// Pomocné funkce - výpočty času, formátování
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 function parseTime(t: string): { h: number; m: number } {
@@ -54,7 +54,7 @@ function toLocalISO(dateISO: string, time: string): string {
   // Pro jednoduchost u většiny workshopů (jaro–podzim) používáme +02:00.
   const date = new Date(`${dateISO}T${time}:00`);
   const month = parseInt(dateISO.split("-")[1], 10);
-  const isDST = month >= 4 && month <= 9; // hrubý odhad — workshopy obvykle v sezóně
+  const isDST = month >= 4 && month <= 9; // hrubý odhad - workshopy obvykle v sezóně
   const offset = isDST ? "+02:00" : "+01:00";
   return `${dateISO}T${time}:00${offset}`;
 }
@@ -79,14 +79,14 @@ function formatDuration(minutes: number, hasQA: boolean): string {
     else if (hours >= 2 && hours <= 4) text = `${hours} hodiny`;
     else text = `${hours} hodin`;
   } else {
-    // Desetinná čísla — používáme "X,Y hodiny"
+    // Desetinná čísla - používáme "X,Y hodiny"
     const formatted = hours.toString().replace(".", ",");
     text = `${formatted} hodiny`;
   }
   return hasQA ? `${text} + Q&A` : text;
 }
 
-/** "120" minut -> "2h" / "150" min -> "2,5h" — kompaktní zápis */
+/** "120" minut -> "2h" / "150" min -> "2,5h" - kompaktní zápis */
 function formatDurationShort(minutes: number): string {
   const hours = minutes / 60;
   if (Number.isInteger(hours)) return `${hours}h`;
@@ -131,7 +131,7 @@ const endTime = addMinutes(startTime, PARAMS.durationMinutes);
 const joinTime = addMinutes(startTime, -5); // 5 min před začátkem
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// Exportovaný WORKSHOP objekt — používaj ho ve všech komponentech
+// Exportovaný WORKSHOP objekt - používaj ho ve všech komponentech
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 export const WORKSHOP = {
@@ -147,22 +147,22 @@ export const WORKSHOP = {
   dayOfWeek: PARAMS.dayOfWeek,                                    // "úterý"
   dateFilename: formatDateForFilename(PARAMS.dateISO),            // "2-6-2026"
 
-  /** ISO datum bez času — "2026-06-02" */
+  /** ISO datum bez času - "2026-06-02" */
   dateISORaw: PARAMS.dateISO,
 
-  /** ISO start lokální — "2026-06-02T17:00:00+02:00" — pro schema.org */
+  /** ISO start lokální - "2026-06-02T17:00:00+02:00" - pro schema.org */
   dateISO: toLocalISO(PARAMS.dateISO, startTime),
 
-  /** ISO konec lokální — "2026-06-02T19:00:00+02:00" — pro schema.org */
+  /** ISO konec lokální - "2026-06-02T19:00:00+02:00" - pro schema.org */
   dateISOEnd: toLocalISO(PARAMS.dateISO, endTime),
 
-  /** UTC start — "20260602T150000Z" — pro Google Calendar URL */
+  /** UTC start - "20260602T150000Z" - pro Google Calendar URL */
   dateUTCStart: toUTCStamp(PARAMS.dateISO, startTime),
 
-  /** UTC konec — "20260602T170000Z" — pro Google Calendar URL */
+  /** UTC konec - "20260602T170000Z" - pro Google Calendar URL */
   dateUTCEnd: toUTCStamp(PARAMS.dateISO, endTime),
 
-  /** Outlook lokální start — "2026-06-02T17:00:00" — bez TZ suffixu */
+  /** Outlook lokální start - "2026-06-02T17:00:00" - bez TZ suffixu */
   dateOutlookStart: `${PARAMS.dateISO}T${startTime}:00`,
   dateOutlookEnd: `${PARAMS.dateISO}T${endTime}:00`,
 
@@ -199,7 +199,7 @@ export const WORKSHOP = {
   timeZone: PARAMS.timeZone,                                      // "Europe/Prague"
 
   // ─── Externí URL (z .env) ───
-  /** Meta (Facebook) Pixel ID — edituje se v lib/workshop-params.ts */
+  /** Meta (Facebook) Pixel ID - edituje se v lib/workshop-params.ts */
   metaPixelId: PARAMS.metaPixelId,
 
   // Zoom se edituje v lib/workshop-params.ts (ne přes env proměnné)
@@ -213,7 +213,7 @@ export const WORKSHOP = {
 } as const;
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// COACH info — statické, neměnit pro běžné případy
+// COACH info - statické, neměnit pro běžné případy
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 export const COACH = {

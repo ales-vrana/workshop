@@ -11,7 +11,7 @@
  *   - dateISO:        "YYYY-MM-DD" (např. "2026-06-02")
  *   - startTime:      "HH:MM" 24h formát (např. "17:00")
  *   - durationMinutes: celé minuty (např. 120 pro 2 hodiny)
- *   - hasQA:          true/false — pokud true, k délce se přidá "+ Q&A"
+ *   - hasQA:          true/false - pokud true, k délce se přidá "+ Q&A"
  *   - priceCZK:       číslo bez Kč (např. 599)
  *   - capacity:       max počet účastníků (např. 16)
  *   - spotsLeft:      momentální volná místa (manuální, např. 16)
@@ -24,13 +24,13 @@
 export const PARAMS = {
   // ━━━ ZÁKLADNÍ PARAMETRY ━━━
 
-  /** Datum workshopu — formát YYYY-MM-DD */
+  /** Datum workshopu - formát YYYY-MM-DD */
   dateISO: "2026-09-01",
 
   /** Český název dne v týdnu (malými písmeny) */
   dayOfWeek: "úterý",
 
-  /** Čas začátku workshopu — formát HH:MM (24h) */
+  /** Čas začátku workshopu - formát HH:MM (24h) */
   startTime: "19:30",
 
   /** Délka workshopu v minutách */
@@ -45,7 +45,7 @@ export const PARAMS = {
   /** Maximální kapacita workshopu */
   capacity: 16,
 
-  /** Momentální volná místa — manuálně upravuj */
+  /** Momentální volná místa - manuálně upravuj */
   spotsLeft: 16,
 
   /**
@@ -66,14 +66,14 @@ export const PARAMS = {
   /** Title v kalendáři (přidáno do Google/Apple/Outlook) */
   calendarEventTitle: "Workshop Zažij koučování v roli kouče i klienta",
 
-  // ━━━ PLATBA (edituj přímo zde — projeví se na všech CTA tlačítkách) ━━━
+  // ━━━ PLATBA (edituj přímo zde - projeví se na všech CTA tlačítkách) ━━━
 
-  /** Stripe Payment Link — cíl všech tlačítek „Zajisti si své místo" */
+  /** Stripe Payment Link - cíl všech tlačítek „Zajisti si své místo" */
   paymentLink: "https://book.stripe.com/9B68wO8ne7uf9yu3NfejK27",
 
   // ━━━ MĚŘICÍ KÓDY ━━━
 
-  /** Meta (Facebook) Pixel ID — prázdný řetězec = pixel se nevloží */
+  /** Meta (Facebook) Pixel ID - prázdný řetězec = pixel se nevloží */
   metaPixelId: "884397061610419",
 
   // ━━━ ZOOM (edituj přímo zde, projeví se na webu i v kalendáři) ━━━
@@ -84,7 +84,7 @@ export const PARAMS = {
   /** Meeting ID (pro zobrazení na stránce Děkujeme) */
   zoomId: "897 9019 9665",
 
-  /** Heslo do meetingu — nech prázdné (""), pokud meeting heslo nemá */
+  /** Heslo do meetingu - nech prázdné (""), pokud meeting heslo nemá */
   zoomPassword: "",
 
   // ━━━ TECHNICKÉ KONSTANTY (obvykle neměnit) ━━━
