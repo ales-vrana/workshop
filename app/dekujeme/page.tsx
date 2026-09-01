@@ -7,7 +7,7 @@ import { MetaPixelPurchase } from "@/components/MetaPixelPurchase";
 import { WORKSHOP, COACH } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "Děkujeme — vaše místo na workshop je rezervováno | CoachVille",
+  title: "Děkujeme - vaše místo na workshop je rezervováno | CoachVille",
   description:
     `Platba potvrzena. Vidíme se ${WORKSHOP.dateFull} na workshopu „${WORKSHOP.name}". Uložte si termín do kalendáře a najdete tu i Zoom odkaz.`,
   robots: { index: false, follow: false }, // Thank-you page se neindexuje
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
 const PREP_STEPS = [
   {
     title: "Tichý prostor + zapnutá kamera",
-    body: "Workshop je interaktivní — budete koučovat i být koučováni. Bez kamery a klidného prostředí nepůjde se plně účastnit.",
+    body: "Workshop je interaktivní - budete koučovat i být koučováni. Bez kamery a klidného prostředí nepůjde se plně účastnit.",
   },
   {
     title: "Téma, které právě řešíte",
-    body: "Připravte si jednu konkrétní situaci ze života — kariéra, vztahy, rozhodnutí. S ní budete pracovat ve dvojici.",
+    body: "Připravte si jednu konkrétní situaci ze života - kariéra, vztahy, rozhodnutí. S ní budete pracovat ve dvojici.",
   },
   {
     title: "Papír a tužka (volitelné)",
@@ -38,7 +38,7 @@ export default function ThankYouPage() {
 
   return (
     <main className="min-h-screen bg-cream">
-      {/* Konverze pro Meta Pixel — odešle Purchase */}
+      {/* Konverze pro Meta Pixel - odešle Purchase */}
       <MetaPixelPurchase />
 
       {/* HERO se success indikátorem */}
@@ -72,13 +72,13 @@ export default function ThankYouPage() {
         </div>
       </section>
 
-      {/* OBSAH — 3 karty */}
+      {/* OBSAH - 3 karty */}
       <section className="container-x py-12 sm:py-14 max-w-2xl mx-auto space-y-5 sm:space-y-6">
 
-        {/* Karta 1 — Kalendář */}
+        {/* Karta 1 - Kalendář */}
         <article className="bg-white rounded-2xl shadow-soft p-6 sm:p-8 border-t-4 border-gold-500">
           <div className="flex items-center gap-2 mb-2">
-            <span className="h-label text-gold-500">Krok 1 — uložte si termín</span>
+            <span className="h-label text-gold-500">Krok 1 - uložte si termín</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-navy-600 mb-3 leading-tight">
             <Calendar className="inline h-6 w-6 mr-2 align-text-bottom" aria-hidden />
@@ -97,10 +97,10 @@ export default function ThankYouPage() {
           </p>
         </article>
 
-        {/* Karta 2 — Zoom */}
+        {/* Karta 2 - Zoom */}
         <article className="bg-white rounded-2xl shadow-soft p-6 sm:p-8 border-t-4 border-teal-400">
           <div className="flex items-center gap-2 mb-2">
-            <span className="h-label text-gold-500">Krok 2 — odkaz na workshop</span>
+            <span className="h-label text-gold-500">Krok 2 - odkaz na workshop</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-navy-600 mb-3 leading-tight">
             <Video className="inline h-6 w-6 mr-2 align-text-bottom" aria-hidden />
@@ -145,10 +145,10 @@ export default function ThankYouPage() {
           </div>
         </article>
 
-        {/* Karta 3 — Příprava */}
+        {/* Karta 3 - Příprava */}
         <article className="bg-white rounded-2xl shadow-soft p-6 sm:p-8 border-t-4 border-navy-600">
           <div className="flex items-center gap-2 mb-2">
-            <span className="h-label text-gold-500">Krok 3 — krátká příprava</span>
+            <span className="h-label text-gold-500">Krok 3 - krátká příprava</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-navy-600 mb-2 leading-tight">
             <Sparkles className="inline h-6 w-6 mr-2 align-text-bottom" aria-hidden />
@@ -173,7 +173,7 @@ export default function ThankYouPage() {
           </ol>
         </article>
 
-        {/* Karta 4 — Pomoc */}
+        {/* Karta 4 - Pomoc */}
         <article className="bg-navy-50 rounded-2xl p-6 sm:p-8 border border-navy-100">
           <div className="flex items-center gap-2 mb-2">
             <span className="h-label text-gold-500">Cokoliv řešíte</span>
@@ -190,10 +190,10 @@ export default function ThankYouPage() {
             >
               {WORKSHOP.contactEmail}
             </a>
-            {" "}— najdeme řešení. Přesun na další termín, vrácení peněz nebo cokoliv jiného. Bez papírování, bez stresu.
+            {" "}- najdeme řešení. Přesun na další termín, vrácení peněz nebo cokoliv jiného. Bez papírování, bez stresu.
           </p>
           <p className="text-sm text-dark/60 mt-3">
-            — {COACH.fullName}
+            - {COACH.fullName}
           </p>
         </article>
 
@@ -206,7 +206,7 @@ export default function ThankYouPage() {
             </p>
           </div>
           <p className="mt-3 text-xs sm:text-sm text-dark/55 italic">
-            5 minut před začátkem — start workshopu v {WORKSHOP.timeStart}
+            5 minut před začátkem - start workshopu v {WORKSHOP.timeStart}
           </p>
         </div>
 
