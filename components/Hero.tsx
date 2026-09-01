@@ -63,18 +63,18 @@ export function Hero() {
         {/* Subhead */}
         <p className="mt-6 sm:mt-8 text-center text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug max-w-3xl mx-auto font-medium">
           Za {WORKSHOP.duration} si vyzkoušíš koučování v roli kouče i klienta a budeš vědět, jestli je to
-          cesta pro tebe. Workshop pro lidi z korporátu, manažery, HR, učitele a obchodníky, kteří zvažují
+          cesta pro tebe. Workshop pro lidi z korporátu, manažery, HR, učitele, podnikatele, obchodníky, kteří zvažují
           další kariérní krok.
         </p>
 
         {/* Intro paragraph */}
         <p className="mt-5 text-center text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto">
           Koučování můžeš začít dělat při současné práci. Postupně si budovat svůj{" "}
-          <span className="text-white font-semibold">Plán B</span> - a když přijdou první platící klienti,
+          <span className="text-white font-semibold">Plán B</span> - a až přijdou první platící klienti,
           máš víc možností, jak se rozhodnout.
           <br /><br />
-          Není to teorie. Není to ochutnávka. Je to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš,
-          jaké to je koučovat - a být koučován.
+          Není to teorie. Je to interaktivní online workshop, kdy si na vlastní kůži vyzkoušíš,
+          jaké to je koučovat - a být koučován. Zážitkem si zjistíš, jaký přínos má koučování pro tebe.
         </p>
 
         {/* Value stack card */}
