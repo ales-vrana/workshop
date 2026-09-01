@@ -56,7 +56,7 @@ export function Hero() {
         {/* H1 */}
         <h1 className="mt-8 sm:mt-10 text-center max-w-4xl mx-auto">
           <span className="block h-display text-hero text-white">
-            Práce je v&nbsp;pohodě.   Ale takhle to až do&nbsp;důchodu dělat nechceš.
+            Práce je v&nbsp;pohodě.&nbsp;Ale takhle to až do&nbsp;důchodu dělat nechceš?
           </span>
         </h1>
 
