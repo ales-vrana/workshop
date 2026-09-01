@@ -16,7 +16,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export default function HomePage() {
   return (
     <main>
-      {/* Hero — bez Reveal, je nad foldem */}
+      {/* Hero - bez Reveal, je nad foldem */}
       <Hero />
 
       {/* Ostatní sekce dostávají scroll-triggered fade-in */}

@@ -5,7 +5,7 @@ export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
 /**
- * Brand favicon — CoachVille "V" v navy se zlatou hvězdou.
+ * Brand favicon - CoachVille "V" v navy se zlatou hvězdou.
  * Next.js automaticky vygeneruje favicon při buildu.
  */
 export default function Icon() {

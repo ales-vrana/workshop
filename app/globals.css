@@ -38,7 +38,7 @@
 }
 
 @layer components {
-  /* Brand utility: uppercase headline (Gotham/Montserrat) — žádné negativní tracking */
+  /* Brand utility: uppercase headline (Gotham/Montserrat) - žádné negativní tracking */
   .h-display {
     @apply font-display font-extrabold uppercase tracking-normal;
   }
@@ -48,7 +48,7 @@
     @apply text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-gold-500;
   }
 
-  /* Primární CTA tlačítko — teal */
+  /* Primární CTA tlačítko - teal */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-4 sm:px-8 sm:py-5
            bg-teal-400 text-white font-bold uppercase tracking-wider text-sm sm:text-base
@@ -59,7 +59,7 @@
            min-h-[56px] touch-manipulation;
   }
 
-  /* Sekundární CTA — outline na navy */
+  /* Sekundární CTA - outline na navy */
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3
            bg-transparent text-navy-600 border-2 border-navy-600 font-semibold
