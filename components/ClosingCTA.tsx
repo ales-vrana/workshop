@@ -9,7 +9,7 @@ export function ClosingCTA() {
       <div className="max-w-3xl mx-auto text-center">
         <p className="h-label text-gold-400 mb-3">Závěrečné CTA</p>
         <h2 className="h-display text-h2 text-white mb-6">
-          {WORKSHOP.duration}, které se nedají získat z knih
+          Za {WORKSHOP.duration} budeš vědět, jestli je koučování tvoje cesta
         </h2>
         <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-6 max-w-2xl mx-auto">
           Koučování je dovednost, kterou si nelze přečíst. Stejně jako nelze přečíst plavání.

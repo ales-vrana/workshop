@@ -3,14 +3,14 @@ import { Briefcase, Users, Compass, HeartHandshake, Rocket, Bot, Target } from "
 
 const PROFILY = [
   {
-    icon: Target,
-    title: "Budoucí profesionální kouč",
-    sub: "Zvažuješ koučování jako svou další kariéru a chceš si to ověřit v praxi, ne v hlavě",
-  },
-  {
     icon: Briefcase,
     title: "Manažer, lídr, HR profesionál",
-    sub: "Chceš lépe vést tým a rozvíjet talenty",
+    sub: "Pracuješ s lidmi a chceš k tomu profesionální nástroje",
+  },
+  {
+    icon: Target,
+    title: "Člověk z korporátu, který zvažuje další krok",
+    sub: "Chceš si postavit Plán B dřív, než ho budeš potřebovat",
   },
   {
     icon: Users,
@@ -19,8 +19,8 @@ const PROFILY = [
   },
   {
     icon: Compass,
-    title: "Na kariérní křižovatce",
-    sub: "Hledáš směr s lidským kontaktem",
+    title: "Učitel nebo obchodník",
+    sub: "Rozhovor je tvůj hlavní nástroj a chceš, aby fungoval líp",
   },
   {
     icon: HeartHandshake,
@@ -45,7 +45,7 @@ export function ProKoho() {
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <p className="h-label mb-3">Pro koho je workshop</p>
         <h2 className="h-display text-h2 text-navy-600">
-          Workshop je pro tebe, pokud jsi
+          Dělám ho pro lidi, kteří pracují s lidmi
         </h2>
       </div>
 

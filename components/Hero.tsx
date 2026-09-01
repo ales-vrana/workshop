@@ -25,7 +25,7 @@ const VALUE_ITEMS = [
   },
   {
     title: "Přístup k případovým studiím koučů v různých fázích výcviku",
-    sub: "uvidíš, jak vypadá cesta od prvního rozhovoru po certifikaci",
+    sub: "uvidíš, jak vypadá cesta od prvního rozhovoru po první platící klienty",
   },
 ];
 
@@ -56,23 +56,25 @@ export function Hero() {
         {/* H1 */}
         <h1 className="mt-8 sm:mt-10 text-center max-w-4xl mx-auto">
           <span className="block h-display text-hero text-white">
-            Vyzkoušej si koučování z&nbsp;obou stran. Za {WORKSHOP.duration} zjistíš, jestli je to cesta pro&nbsp;tebe.
+            Práce je v&nbsp;pohodě. Ale takhle to až do&nbsp;důchodu dělat nechceš.
           </span>
         </h1>
 
         {/* Subhead */}
         <p className="mt-6 sm:mt-8 text-center text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug max-w-3xl mx-auto font-medium">
-          Živý online workshop pro lidi, kteří nechtějí vybírat koučování ani koučovací výcvik naslepo.
-          Vyzkoušíš si roli kouče i klienta — bez předchozích zkušeností a bez závazku pokračovat.
+          Za {WORKSHOP.duration} si vyzkoušíš koučování v roli kouče i klienta a budeš vědět, jestli je to
+          cesta pro tebe. Workshop pro lidi z korporátu, manažery, HR, učitele a obchodníky, kteří zvažují
+          další kariérní krok.
         </p>
 
         {/* Intro paragraph */}
         <p className="mt-5 text-center text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto">
-          Možná o koučování čteš, posloucháš podcasty, sleduješ obor zpovzdálí. Možná v práci cítíš,
-          že tě naplňuje míň, než tě bere. Nebo chceš porozumět tomu, co dělá z dobrých manažerů a lídrů ty skvělé.
+          Koučování můžeš začít dělat při současné práci. Postupně si budovat svůj{" "}
+          <span className="text-white font-semibold">Plán B</span> — a když přijdou první platící klienti,
+          máš víc možností, jak se rozhodnout.
           <br /><br />
-          <span className="text-white font-semibold">Pak je tenhle workshop pro tebe.</span> Není to teorie.
-          Není to ochutnávka. Je to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš, jaké to je koučovat — a být koučován.
+          Není to teorie. Není to ochutnávka. Je to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš,
+          jaké to je koučovat — a být koučován.
         </p>
 
         {/* Value stack card */}
