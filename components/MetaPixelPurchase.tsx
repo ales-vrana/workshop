@@ -7,7 +7,7 @@ import { WORKSHOP } from "@/lib/config";
  * Odešle do Meta Pixelu událost Purchase.
  * Používá se POUZE na stránce /dekujeme, kam Stripe přesměruje po zaplacení.
  *
- * PageView řeší komponenta MetaPixel v layoutu — tahle přidává jen konverzi.
+ * PageView řeší komponenta MetaPixel v layoutu - tahle přidává jen konverzi.
  */
 export function MetaPixelPurchase() {
   const sent = useRef(false);
@@ -16,7 +16,7 @@ export function MetaPixelPurchase() {
     if (!WORKSHOP.metaPixelId) return;
     if (sent.current) return;
 
-    // fbq se načítá asynchronně — počkáme, až bude k dispozici (max 10 s)
+    // fbq se načítá asynchronně - počkáme, až bude k dispozici (max 10 s)
     let attempts = 0;
     const timer = setInterval(() => {
       const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;

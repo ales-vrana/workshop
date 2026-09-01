@@ -11,7 +11,7 @@ const KARTY = [
   {
     icon: UserCheck,
     headline: "VYZKOUŠÍŠ SI ROLI KOUČE",
-    body: "Pravděpodobně poprvé v životě budeš sedět naproti člověku, kterého máš koučovat. Cítíš mírné napětí. Pak položíš první otázku. A další. Postupně přestaneš přemýšlet, jestli to děláš správně — začneš poslouchat. Zjistíš, jak ti tato role sedí — fyzicky, emočně, mentálně.",
+    body: "Pravděpodobně poprvé v životě budeš sedět naproti člověku, kterého máš koučovat. Cítíš mírné napětí. Pak položíš první otázku. A další. Postupně přestaneš přemýšlet, jestli to děláš správně - začneš poslouchat. Zjistíš, jak ti tato role sedí - fyzicky, emočně, mentálně.",
   },
   {
     icon: Heart,
@@ -21,12 +21,12 @@ const KARTY = [
   {
     icon: Sparkles,
     headline: "PRACUJEŠ NA SVÉM SKUTEČNÉM TÉMATU",
-    body: "Žádné modelové situace. Pracuješ s reálným tématem, které je důležité právě teď ve tvém životě nebo práci. Možná odejdeš s posunem, který jsi nečekal/a — workshop je živá praxe, ne simulace.",
+    body: "Žádné modelové situace. Pracuješ s reálným tématem, které je důležité právě teď ve tvém životě nebo práci. Možná odejdeš s posunem, který jsi nečekal/a - workshop je živá praxe, ne simulace.",
   },
   {
     icon: Map,
     headline: "JAK KOUČOVÁNÍ POUŽÍVAT V PRÁCI I DOMA",
-    body: "Mnoho lidí chce koučovací dovednosti používat ve své současné práci — v rozhovorech s kolegy, ve vedení týmu, s partnerem, s dětmi. Někoho zaujme natolik, že chce postupně koučovat profesionálně. Ukážu ti obě cesty — ať si vybereš, která dává smysl pro tvůj život.",
+    body: "Mnoho lidí chce koučovací dovednosti používat ve své současné práci - v rozhovorech s kolegy, ve vedení týmu, s partnerem, s dětmi. Někoho zaujme natolik, že chce postupně koučovat profesionálně. Ukážu ti obě cesty - ať si vybereš, která dává smysl pro tvůj život.",
   },
   {
     icon: Wrench,

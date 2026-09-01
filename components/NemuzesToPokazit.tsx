@@ -2,14 +2,14 @@ import { Section } from "@/components/ui/Section";
 import { ShieldCheck } from "lucide-react";
 
 /**
- * Odstranění sociálního rizika — nejčastější tichá námitka před workshopem
+ * Odstranění sociálního rizika - nejčastější tichá námitka před workshopem
  * ("co když se ztrapním, co když to udělám špatně").
  */
 
 const JISTOTY = [
   "Dostaneš jednoduchý postup a konkrétní otázky.",
   "Nikdo tě nebude známkovat ani hodnotit.",
-  "Nemusíš otevírat citlivé osobní téma — můžeš pracovat s běžnou pracovní situací.",
+  "Nemusíš otevírat citlivé osobní téma - můžeš pracovat s běžnou pracovní situací.",
   "Praktické rozhovory ve dvojicích se nenahrávají.",
   "Úkolem není „koučovat správně“, ale zjistit, jak se v této roli cítíš.",
 ];

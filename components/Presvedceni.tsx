@@ -8,7 +8,7 @@ const PRESVEDCENI = [
         <p className="mb-3">
           <strong>V realitě:</strong> 6 z 10 nejúspěšnějších českých koučů, které znám, by
           se popsali jako introverti. Koučování není show nebo výkon. Není to motivační
-          proslov. Je to schopnost zůstat s druhým člověkem v jeho tématu — a ta nezáleží na
+          proslov. Je to schopnost zůstat s druhým člověkem v jeho tématu - a ta nezáleží na
           charismatu, ale na pozornosti a otázkách.
         </p>
         <p>
@@ -34,11 +34,11 @@ const PRESVEDCENI = [
     ),
   },
   {
-    headline: '„Akreditovaný výcvik je drahý risk — co když mi to nepůjde?"',
+    headline: '„Akreditovaný výcvik je drahý risk - co když mi to nepůjde?"',
     body: (
       <>
         <p className="mb-3">
-          <strong>V realitě:</strong> Riziko není ve výcviku samotném — riziko je v tom,
+          <strong>V realitě:</strong> Riziko není ve výcviku samotném - riziko je v tom,
           vstoupit do výcviku <em>bez praktické zkušenosti</em>. To je důvod, proč CoachVille
           doporučuje právě tento workshop jako vstupní bránu.
         </p>
@@ -52,8 +52,8 @@ const PRESVEDCENI = [
         </p>
         <p>
           Workshop funguje jako rozcestí. Buďto zjistíte, že to <strong>JE</strong> pro Vás,
-          a nebo <strong>NENÍ</strong>. Pokud je to pro Vás, cenu workshopu Vám započteme
-          jako slevu z první platby výcviku.
+          a nebo <strong>NENÍ</strong>. Pokud je to pro Vás, cena workshopu je slevou na vstup
+          do výcviku.
         </p>
       </>
     ),
@@ -66,7 +66,7 @@ export function Presvedceni() {
       <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">Tři mýty</p>
         <h2 className="h-display text-h2 text-navy-600">
-          Tři přesvědčení, která zastavují většinu — a proč nejsou pravdivá
+          Tři přesvědčení, která zastavují většinu - a proč nejsou pravdivá
         </h2>
       </div>
 

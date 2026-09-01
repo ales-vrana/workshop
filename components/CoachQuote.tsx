@@ -23,12 +23,12 @@ export function CoachQuote() {
                 <span className="font-semibold">Workshop nezjistí, jestli jsi už hotový kouč.</span>{" "}
                 Zjistíš prakticky, jestli s tebou koučování rezonuje, jak se cítíš v roli
                 kouče i v roli koučovaného. Odejdeš s vlastní zkušeností a jasným závěrem:{" "}
-                <span className="font-semibold">je to moje cesta, nebo není.</span> Obojí je vítězství —
+                <span className="font-semibold">je to moje cesta, nebo není.</span> Obojí je vítězství -
                 přestaneš přemýšlet a budeš vědět. Zbytek se dá vytrénovat.
               </p>
             </blockquote>
             <footer className="mt-4 text-sm sm:text-base text-navy-700 font-semibold">
-              — {COACH.fullName}
+              - {COACH.fullName}
             </footer>
           </div>
         </div>

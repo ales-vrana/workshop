@@ -35,7 +35,7 @@ const PROFILY = [
   {
     icon: Bot,
     title: "Profesionál v oboru, který proměňuje AI",
-    sub: "Chceš budovat na tom, co AI nenahradí — hluboké lidské porozumění",
+    sub: "Chceš budovat na tom, co AI nenahradí - hluboké lidské porozumění",
   },
 ];
 
@@ -76,7 +76,7 @@ export function ProKoho() {
         <span className="text-teal-500 font-bold">600+ lidí</span>, kteří touto cestou prošli.
       </p>
       <p className="text-center text-sm text-dark/55 mt-4 italic max-w-xl mx-auto">
-        Pokud nic z toho nesedí — workshop pravděpodobně není pro tebe. To je v pořádku.
+        Pokud nic z toho nesedí - workshop pravděpodobně není pro tebe. To je v pořádku.
       </p>
     </Section>
   );

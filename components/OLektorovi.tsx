@@ -6,7 +6,7 @@ const BADGES = [
   {
     icon: Trophy,
     title: "ICF Master Certified Coach",
-    sub: `nejvyšší světová úroveň — v ČR má MCC pouze ${COACH.mccCountInCzechia} koučů (a 4 z nich studovali v CoachVille)`,
+    sub: `nejvyšší světová úroveň - v ČR má MCC pouze ${COACH.mccCountInCzechia} koučů (a 4 z nich studovali v CoachVille)`,
   },
   {
     icon: GraduationCap,
@@ -49,11 +49,11 @@ export function OLektorovi() {
               />
             </div>
 
-            {/* ICF MCC odznak — stejný rámeček i velikost jako fotka */}
+            {/* ICF MCC odznak - stejný rámeček i velikost jako fotka */}
             <div className="relative w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-2xl overflow-hidden ring-4 ring-white/10 shadow-lifted bg-white">
               <img
                 src="/workshop/icf-mcc-badge.png"
-                alt="Odznak ICF Master Certified Coach (MCC) — Credentials & Standards"
+                alt="Odznak ICF Master Certified Coach (MCC) - Credentials & Standards"
                 className="absolute inset-0 w-full h-full object-contain p-4"
               />
             </div>

@@ -34,7 +34,7 @@ export function CopyButton({
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       } catch {
-        // Skutečně nepodporováno — nic neděláme
+        // Skutečně nepodporováno - nic neděláme
       }
       document.body.removeChild(textarea);
     }

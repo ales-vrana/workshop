@@ -8,11 +8,11 @@ import { WORKSHOP } from "@/lib/config";
 const QA = [
   {
     q: "Zvažuji koučování jako budoucí profesi. Je pro mě workshop, nebo mám jít rovnou na konzultaci?",
-    a: "Obojí funguje, liší se to rychlostí. Workshop je nejlevnější a nejrychlejší způsob, jak si profesi otestovat v praxi — za 2 hodiny si koučování zkusíš z obou stran a uvidíš, jak ti sedí. Pokud tě to zajímá, můžeš si rovnou domluvit nezávazný hovor, kde projdeme tvou situaci, čísla a celou cestu k certifikaci. A klidně obojí: přijď na workshop a hovor si domluv po něm. Pokud už jsi hovor měl, workshop je přirozený další krok.",
+    a: "Obojí funguje, liší se to rychlostí. Workshop je nejlevnější a nejrychlejší způsob, jak si profesi otestovat v praxi - za 2 hodiny si koučování zkusíš z obou stran a uvidíš, jak ti sedí. Pokud tě to zajímá, můžeš si rovnou domluvit nezávazný hovor, kde projdeme tvou situaci, čísla a celou cestu k certifikaci. A klidně obojí: přijď na workshop a hovor si domluv po něm. Pokud už jsi hovor měl, workshop je přirozený další krok.",
   },
   {
     q: "Nikdy jsem nekoučoval/a. Bude to pro mě?",
-    a: "Ano — workshop je primárně pro lidi bez předchozí zkušenosti. Dostaneš jednoduchý rámec a jasné instrukce. Účast na workshopu nevyžaduje předchozí zkušenost s koučováním.",
+    a: "Ano - workshop je primárně pro lidi bez předchozí zkušenosti. Dostaneš jednoduchý rámec a jasné instrukce. Účast na workshopu nevyžaduje předchozí zkušenost s koučováním.",
   },
   {
     q: "Co když mi to nebude sedět?",
@@ -20,7 +20,7 @@ const QA = [
   },
   {
     q: "Musím mít zapnutou kameru?",
-    a: "Ano. Workshop je interaktivní, koučuješ a jsi koučován/a — to bez kamery nejde. Připojit se můžeš z počítače, tabletu nebo telefonu, workshop probíhá na Zoomu.",
+    a: "Ano. Workshop je interaktivní, koučuješ a jsi koučován/a - to bez kamery nejde. Připojit se můžeš z počítače, tabletu nebo telefonu, workshop probíhá na Zoomu.",
   },
   {
     q: `Co když nemůžu být celé ${WORKSHOP.duration} online?`,
@@ -32,11 +32,11 @@ const QA = [
   },
   {
     q: "Můžu workshop dát někomu jako dárek?",
-    a: `Ano, napiš mi e-mail na ${WORKSHOP.contactEmail} — připravím dárkový voucher na jeho jméno.`,
+    a: `Ano, napiš mi e-mail na ${WORKSHOP.contactEmail} - připravím dárkový voucher na jeho jméno.`,
   },
   {
     q: "Bude na workshopu nějaký prodejní pitch?",
-    a: "Ne. Princip workshopu je dát ti zážitek, který ti ukáže o koučování více. Na workshopu neprodáváme, nejedná se o obchodní prezentaci, ale o praktickou zkušenost.",
+    a: "Ne. Princip workshopu je dát ti zážitek, který se sám prodá nebo neprodá. Pokud po workshopu chceš vědět, jak pokračovat dál - řekneme si všechny možnosti. Pokud ne, máš zážitek a 5 nástrojů, které můžeš použít už zítra.",
   },
   {
     q: `Workshop ${WORKSHOP.timeRange}. Stihnu to po práci?`,

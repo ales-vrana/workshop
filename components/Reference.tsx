@@ -2,7 +2,7 @@ import { Section } from "@/components/ui/Section";
 import { Quote } from "lucide-react";
 
 /**
- * Textové reference účastníků — jeden sloupec, optimalizováno pro čtení
+ * Textové reference účastníků - jeden sloupec, optimalizováno pro čtení
  * na mobilu i na desktopu.
  *
  * Chceš citaci ubrat nebo přidat? Edituj pole REFERENCE níže.
@@ -34,7 +34,7 @@ const REFERENCE = [
     author: "Vít Kučera",
   },
   {
-    text: "Nejvíce mě bavilo praktické cvičení — ať ukázka koučování, nebo když jsme si sami zkoušeli roli kouče. Workshop mi potvrdil, že role kouče není tak jednoduchá, jak si někdo může myslet.",
+    text: "Nejvíce mě bavilo praktické cvičení - ať ukázka koučování, nebo když jsme si sami zkoušeli roli kouče. Workshop mi potvrdil, že role kouče není tak jednoduchá, jak si někdo může myslet.",
     author: "Hana Masaříková",
   },
   {
@@ -66,7 +66,7 @@ export function Reference() {
               „{r.text}“
             </blockquote>
             <figcaption className="mt-4 text-sm sm:text-base font-semibold text-navy-600">
-              — {r.author}
+              - {r.author}
             </figcaption>
           </figure>
         ))}

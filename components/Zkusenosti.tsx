@@ -7,9 +7,9 @@ import { CTAButton } from "@/components/ui/CTAButton";
 import { WORKSHOP } from "@/lib/config";
 
 /**
- * Zkušenosti účastníků — sekce s Vimeo video referencemi.
+ * Zkušenosti účastníků - sekce s Vimeo video referencemi.
  *
- * PERFORMANCE: používáme "facade pattern" — místo načítání 16+ Vimeo
+ * PERFORMANCE: používáme "facade pattern" - místo načítání 16+ Vimeo
  * iframů hned (= mnoho MB JS) zobrazujeme placeholder s play tlačítkem.
  * Iframe se vloží až po kliknutí. Lighthouse +30 bodů na mobile.
  *
@@ -77,7 +77,7 @@ function VideoCard({ video }: { video: Video }) {
           <button
             type="button"
             onClick={() => setPlaying(true)}
-            aria-label={`Přehrát video — reference ${video.name}`}
+            aria-label={`Přehrát video - reference ${video.name}`}
             className="absolute inset-0 w-full h-full flex items-center justify-center cursor-pointer focus-visible:ring-4 focus-visible:ring-teal-400/40 transition-transform"
           >
             {/* Thumbnail */}
@@ -132,7 +132,7 @@ export function Zkusenosti() {
 
       <div className="flex justify-center mt-12 sm:mt-14">
         <CTAButton href={WORKSHOP.paymentLink} variant="primary">
-          Chci to zažít — {WORKSHOP.price}
+          Chci to zažít - {WORKSHOP.price}
         </CTAButton>
       </div>
     </Section>

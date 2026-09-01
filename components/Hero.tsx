@@ -36,7 +36,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-navy-900" aria-hidden />
         <img
           src="/workshop/hero.jpg"
-          alt="Východ slunce nad horami — silueta postavy na vrcholu s rozpaženýma rukama"
+          alt="Východ slunce nad horami - silueta postavy na vrcholu s rozpaženýma rukama"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 hero-overlay" aria-hidden />
@@ -56,7 +56,7 @@ export function Hero() {
         {/* H1 */}
         <h1 className="mt-8 sm:mt-10 text-center max-w-4xl mx-auto">
           <span className="block h-display text-hero text-white">
-            Práce je v&nbsp;pohodě.&nbsp;Ale takhle to až do&nbsp;důchodu dělat nechceš?
+            Plán B, který můžeš dělat při&nbsp;práci. Zažij koučování v&nbsp;roli kouče i&nbsp;klienta.
           </span>
         </h1>
 
@@ -70,11 +70,11 @@ export function Hero() {
         {/* Intro paragraph */}
         <p className="mt-5 text-center text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto">
           Koučování můžeš začít dělat při současné práci. Postupně si budovat svůj{" "}
-          <span className="text-white font-semibold">Plán B</span> - a až přijdou první platící klienti,
+          <span className="text-white font-semibold">Plán B</span> - a když přijdou první platící klienti,
           máš víc možností, jak se rozhodnout.
           <br /><br />
-          Není to teorie. Je to interaktivní workshop, kde si na vlastní kůži vyzkoušíš,
-          jaké to je být v roli kouče i roli klienta.
+          Není to teorie. Není to ochutnávka. Je to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš,
+          jaké to je koučovat - a být koučován.
         </p>
 
         {/* Value stack card */}
@@ -102,7 +102,7 @@ export function Hero() {
         {/* CTA */}
         <div className="mt-8 sm:mt-10 flex flex-col items-center gap-4">
           <CTAButton href={WORKSHOP.paymentLink} variant="on-dark" className="w-full sm:w-auto group">
-            Chci to zažít — {WORKSHOP.price}
+            Chci to zažít - {WORKSHOP.price}
           </CTAButton>
           <p className="text-xs sm:text-sm text-white/85 text-center max-w-md font-medium">
             Max {WORKSHOP.capacity} míst <span className="text-white/40 mx-1">·</span> Garance: po 60 minutách vrácení 100 % ceny bez otázek

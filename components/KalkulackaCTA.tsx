@@ -4,10 +4,10 @@ import { TrendingUp, Calculator, ArrowRight } from "lucide-react";
 import { WORKSHOP } from "@/lib/config";
 
 /**
- * "Dveře A" — pro lidi zvažující koučování JAKO PROFESI.
+ * "Dveře A" - pro lidi zvažující koučování JAKO PROFESI.
  * Sazby kouče v ČR + emotional hook + CTA na workshop.
  *
- * Tarify (1 000 / 2-3 000 / 4-5 000 Kč) jsou tržní data ČR, ne workshop parametry —
+ * Tarify (1 000 / 2-3 000 / 4-5 000 Kč) jsou tržní data ČR, ne workshop parametry -
  * pokud se trh změní, edituj zde přímo v tomto souboru.
  */
 
@@ -35,7 +35,7 @@ export function KalkulackaCTA() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
-          <p className="h-label text-gold-400 mb-3">Dveře A — Koučování jako profese</p>
+          <p className="h-label text-gold-400 mb-3">Dveře A - Koučování jako profese</p>
           <h2 className="h-display text-h2 text-white mb-5">
             Zvažuješ koučování jako profesi?
             <br />
@@ -83,7 +83,7 @@ export function KalkulackaCTA() {
 
           <p>
             A pokud po něm budeš chtít pokračovat, ukážu ti{" "}
-            <strong className="text-white">celou cestu až k mezinárodní certifikaci</strong> —
+            <strong className="text-white">celou cestu až k mezinárodní certifikaci</strong> -
             včetně financování od <strong className="text-teal-300">~3 000 Kč měsíčně</strong>,
             které se dá splácet z prvních koučovacích hodin, a včetně toho, kde vzít první klienty
             (<strong className="text-teal-300">prvních 30 zájemců dostáváš od školy</strong>).
@@ -94,7 +94,7 @@ export function KalkulackaCTA() {
         {/* CTA */}
         <div className="mt-10 sm:mt-12 flex flex-col items-center gap-4">
           <CTAButton href="#koupit" variant="on-dark" className="w-full sm:w-auto group">
-            <span>Chci to zažít — {WORKSHOP.price}</span>
+            <span>Chci to zažít - {WORKSHOP.price}</span>
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden />
           </CTAButton>
           <p className="text-xs sm:text-sm text-white/70 flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center">

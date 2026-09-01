@@ -21,26 +21,26 @@ export function ClosingCTA() {
           Patříš mezi lidi, kteří se rozhodují <strong className="text-teal-300">v praxi, ne v hlavě</strong>.
           To je vzácnost. Workshop ti dá důkaz.
           <br /><br />
-          Staneš se <strong className="text-gold-300">hráčem koučování</strong> — ne pozorovatelem.
+          Staneš se <strong className="text-gold-300">hráčem koučování</strong> - ne pozorovatelem.
         </p>
 
         <ul className="text-left space-y-4 max-w-2xl mx-auto mb-10">
           <li className="flex items-start gap-3">
             <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
             <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-teal-300">{WORKSHOP.duration} živé praxe</strong> — v roli kouče i klienta
+              <strong className="text-teal-300">{WORKSHOP.duration} živé praxe</strong> - v roli kouče i klienta
             </span>
           </li>
           <li className="flex items-start gap-3">
             <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
             <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-teal-300">S ICF MCC koučem</strong> — držitelem nejvyšší světové certifikace
+              <strong className="text-teal-300">S ICF MCC koučem</strong> - držitelem nejvyšší světové certifikace
             </span>
           </li>
           <li className="flex items-start gap-3">
             <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
             <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-teal-300">Max {WORKSHOP.capacity} lidí</strong> — malá skupina, osobní pozornost
+              <strong className="text-teal-300">Max {WORKSHOP.capacity} lidí</strong> - malá skupina, osobní pozornost
             </span>
           </li>
           <li className="flex items-start gap-3">
@@ -62,7 +62,7 @@ export function ClosingCTA() {
         {WORKSHOP.showSpotsScarcity && (
           <div className="rounded-xl bg-gold-500/15 border border-gold-500/30 px-5 py-4 max-w-2xl mx-auto mb-6">
             <p className="text-base sm:text-lg font-semibold text-gold-300">
-              ⏳ Zbývá {WORKSHOP.spotsLabel} míst — workshop má omezenou kapacitu
+              ⏳ Zbývá {WORKSHOP.spotsLabel} míst - workshop má omezenou kapacitu
             </p>
           </div>
         )}
@@ -93,7 +93,7 @@ export function ClosingCTA() {
 
         <div className="flex flex-col items-center gap-4">
           <CTAButton href={WORKSHOP.paymentLink} variant="on-dark" className="w-full sm:w-auto">
-            Chci to zažít — {WORKSHOP.price}
+            Chci to zažít - {WORKSHOP.price}
           </CTAButton>
           <p className="text-xs text-white/60">
             Maximální kapacita {WORKSHOP.capacity} účastníků. Po platbě dostaneš e-mailem Zoom link a krátkou přípravu.
