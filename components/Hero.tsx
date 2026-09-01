@@ -56,7 +56,7 @@ export function Hero() {
         {/* H1 */}
         <h1 className="mt-8 sm:mt-10 text-center max-w-4xl mx-auto">
           <span className="block h-display text-hero text-white">
-            Práce je v&nbsp;pohodě. Ale takhle to až do&nbsp;důchodu dělat nechceš.
+            Práce je v&nbsp;pohodě.   Ale takhle to až do&nbsp;důchodu dělat nechceš.
           </span>
         </h1>
 
@@ -70,11 +70,11 @@ export function Hero() {
         {/* Intro paragraph */}
         <p className="mt-5 text-center text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto">
           Koučování můžeš začít dělat při současné práci. Postupně si budovat svůj{" "}
-          <span className="text-white font-semibold">Plán B</span> — a když přijdou první platící klienti,
+          <span className="text-white font-semibold">Plán B</span> - a až přijdou první platící klienti,
           máš víc možností, jak se rozhodnout.
           <br /><br />
-          Není to teorie. Není to ochutnávka. Je to {WORKSHOP.duration}, kdy si na vlastní kůži vyzkoušíš,
-          jaké to je koučovat — a být koučován.
+          Není to teorie. Je to interaktivní workshop, kde si na vlastní kůži vyzkoušíš,
+          jaké to je být v roli kouče i roli klienta.
         </p>
 
         {/* Value stack card */}
