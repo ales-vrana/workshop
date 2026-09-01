@@ -81,7 +81,7 @@ export function StickyCTA() {
                 </span>
               </div>
               <p className="text-base lg:text-lg font-bold text-navy-700 truncate">
-                Online Workshop — {WORKSHOP.price} • {WORKSHOP.duration}
+                Dnes 19:30 — {WORKSHOP.price} • {WORKSHOP.duration}
               </p>
             </div>
             <a
