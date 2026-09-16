@@ -14,6 +14,18 @@ export function Footer() {
             <p className="text-white/60 text-xs mt-2 leading-relaxed">
               CoachVille - koučovací výcvik. Učíme se praxí.
             </p>
+            <p className="text-white/45 text-xs mt-3 leading-relaxed">
+              Web provozuje CoachVille LLC,{" "}
+              <a
+                href="https://www.coachville.eu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-teal-400 transition-colors underline-offset-4 hover:underline"
+              >
+                www.coachville.eu
+              </a>
+              . Všechna práva vyhrazena.
+            </p>
           </div>
           <div>
             <p className="font-semibold text-white mb-2">Ukázková lekce</p>
