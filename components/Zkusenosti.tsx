@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-import { Play } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { WORKSHOP } from "@/lib/config";
@@ -9,132 +5,71 @@ import { WORKSHOP } from "@/lib/config";
 /**
  * Zkušenosti účastníků - sekce s Vimeo video referencemi.
  *
- * PERFORMANCE: používáme "facade pattern" - místo načítání 16+ Vimeo
- * iframů hned (= mnoho MB JS) zobrazujeme placeholder s play tlačítkem.
- * Iframe se vloží až po kliknutí. Lighthouse +30 bodů na mobile.
+ * ZVUK (iOS): jediný spolehlivý způsob, jak na iPhonu spustit video se
+ * zvukem, je klepnutí přímo na tlačítko Play UVNITŘ přehrávače Vimeo.
+ * Jakékoliv programové spuštění (autoplay, postMessage „play") iOS ztlumí.
+ * Proto tu není vlastní náhled s tlačítkem - přehrávač je rovnou v kartě,
+ * uživatel klepne jednou na jeho Play a video hraje nahlas. Přehrávače se
+ * načítají líně (loading="lazy"), takže se stahují jen ty, které jsou
+ * blízko obrazu.
  *
- * Video IDs extrahovány z původní stránky pomahejlidemrust.cz/icwg4wuu2o6
+ * Jména účastníků se záměrně nezobrazují (zatím nejsou ověřená).
  */
 type Video = {
-  name: string;
   vimeoId: string;
   hash?: string; // privátní Vimeo hash, pokud má
 };
 
 const VIDEOS: Video[] = [
-  { name: "Jana K.", vimeoId: "1139977428", hash: "3d7f98bfbb" },
-  { name: "Petra Z.", vimeoId: "1139977179", hash: "2e5a492d00" },
-  { name: "Markéta P.", vimeoId: "1139977735", hash: "0153cc4844" },
-  { name: "Dana K.", vimeoId: "1144317177" },
-  { name: "Zuzana B.", vimeoId: "1144317475" },
-  { name: "Milan K.", vimeoId: "1144317762" },
-  { name: "Lenka A.", vimeoId: "1139978057", hash: "aeb9369525" },
-  { name: "Petra V.", vimeoId: "1139978207", hash: "bcd27dbdd0" },
-  { name: "Martin K.", vimeoId: "1139978479", hash: "5714a17543" },
-  { name: "Adam V.", vimeoId: "1144317958" },
-  { name: "Pavla R.", vimeoId: "1144318064" },
-  { name: "Marek L.", vimeoId: "1144318197" },
-  { name: "Michal D.", vimeoId: "1139978160", hash: "e3ca9bdd64" },
-  { name: "Michaela S.", vimeoId: "1140004608", hash: "1539eaf4c2" },
-  { name: "Ingrid T.", vimeoId: "1139977878", hash: "6634b5c6ae" },
-  { name: "Kristýna B.", vimeoId: "1139978271", hash: "aaa69c29fb" },
+  { vimeoId: "1139977428", hash: "3d7f98bfbb" },
+  { vimeoId: "1139977179", hash: "2e5a492d00" },
+  { vimeoId: "1139977735", hash: "0153cc4844" },
+  { vimeoId: "1144317177" },
+  { vimeoId: "1144317475" },
+  { vimeoId: "1144317762" },
+  { vimeoId: "1139978057", hash: "aeb9369525" },
+  { vimeoId: "1139978207", hash: "bcd27dbdd0" },
+  { vimeoId: "1139978479", hash: "5714a17543" },
+  { vimeoId: "1144317958" },
+  { vimeoId: "1144318064" },
+  { vimeoId: "1144318197" },
+  { vimeoId: "1139978160", hash: "e3ca9bdd64" },
+  { vimeoId: "1140004608", hash: "1539eaf4c2" },
+  { vimeoId: "1139977878", hash: "6634b5c6ae" },
+  { vimeoId: "1139978271", hash: "aaa69c29fb" },
 ];
 
-/**
- * Zvuk: Vimeo při `autoplay=1` video sám ztlumí (politika prohlížečů).
- * Proto se přehrávač načte BEZ autoplay a s `muted=0`, a hned po načtení
- * mu pošleme přes Player API příkaz „nahlas + přehrát". Kliknutí na
- * náhled je uživatelské gesto, takže prohlížeč zvuk povolí. Kdyby ho
- * některý prohlížeč přesto zablokoval, zůstane viditelné velké tlačítko
- * Play uvnitř přehrávače a video se po něm spustí se zvukem.
- */
 function vimeoEmbedUrl(v: Video): string {
   const base = `https://player.vimeo.com/video/${v.vimeoId}`;
   const params = new URLSearchParams({
     badge: "0",
-    autopause: "0",
+    autopause: "1", // při spuštění dalšího videa se předchozí zastaví
     player_id: "0",
     app_id: "58479",
     autoplay: "0",
     muted: "0",
+    playsinline: "1", // iPhone: přehrát v kartě, ne přes celou obrazovku
     dnt: "1",
+    title: "0",
+    byline: "0",
+    portrait: "0",
   });
   if (v.hash) params.set("h", v.hash);
   return `${base}?${params.toString()}`;
 }
 
-/** Pošle přehrávači Vimeo příkazy přes postMessage (Player API bez SDK) */
-function vimeoCommand(iframe: HTMLIFrameElement, method: string, value?: unknown) {
-  const msg = value === undefined ? { method } : { method, value };
-  iframe.contentWindow?.postMessage(JSON.stringify(msg), "https://player.vimeo.com");
-}
-
-function playUnmuted(iframe: HTMLIFrameElement) {
-  vimeoCommand(iframe, "setMuted", false);
-  vimeoCommand(iframe, "setVolume", 1);
-  vimeoCommand(iframe, "play");
-}
-
-function vimeoThumbnailUrl(v: Video): string {
-  // Vimeo má veřejné thumbnail API přes vumbnail.com (bez registrace)
-  return `https://vumbnail.com/${v.vimeoId}.jpg`;
-}
-
-function VideoCard({ video }: { video: Video }) {
-  const [playing, setPlaying] = useState(false);
-
+function VideoCard({ video, index }: { video: Video; index: number }) {
   return (
-    <article className="group rounded-2xl overflow-hidden bg-navy-900 shadow-soft border border-navy-100/40 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1">
+    <article className="rounded-2xl overflow-hidden bg-navy-900 shadow-soft border border-navy-100/40">
       <div className="relative aspect-video bg-navy-900">
-        {playing ? (
-          <iframe
-            src={vimeoEmbedUrl(video)}
-            title={`Reference: ${video.name}`}
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            onLoad={(e) => {
-              const el = e.currentTarget;
-              // Přehrávač po načtení ještě chvíli inicializuje - pošleme
-              // příkaz hned a pro jistotu ještě jednou o chvíli později.
-              playUnmuted(el);
-              window.setTimeout(() => playUnmuted(el), 600);
-            }}
-            className="absolute inset-0 w-full h-full"
-          />
-        ) : (
-          <button
-            type="button"
-            onClick={() => setPlaying(true)}
-            aria-label={`Přehrát video - reference ${video.name}`}
-            className="absolute inset-0 w-full h-full flex items-center justify-center cursor-pointer focus-visible:ring-4 focus-visible:ring-teal-400/40 transition-transform"
-          >
-            {/* Thumbnail */}
-            <img
-              src={vimeoThumbnailUrl(video)}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-              onError={(e) => {
-                // Pokud vumbnail nezareaguje, schováme img a necháme navy pozadí
-                (e.currentTarget as HTMLImageElement).style.display = "none";
-              }}
-            />
-            {/* Overlay gradient pro lepší kontrast play tlačítka */}
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-navy-900/40"
-            />
-            {/* Play button */}
-            <div className="relative z-10 flex items-center justify-center h-16 w-16 sm:h-18 sm:w-18 rounded-full bg-teal-400 text-navy-900 shadow-lifted group-hover:bg-teal-300 group-hover:scale-110 transition-all duration-300">
-              <Play className="h-7 w-7 sm:h-8 sm:w-8 ml-1 fill-current" aria-hidden />
-            </div>
-          </button>
-        )}
-      </div>
-      <div className="px-4 py-3 bg-white">
-        <p className="font-semibold text-navy-600 text-sm sm:text-base">{video.name}</p>
-        <p className="text-xs text-dark/60 mt-0.5">Účastnice / účastník workshopu</p>
+        <iframe
+          src={vimeoEmbedUrl(video)}
+          title={`Videoreference účastníka workshopu ${index + 1}`}
+          allow="fullscreen; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+          className="absolute inset-0 w-full h-full"
+        />
       </div>
     </article>
   );
@@ -153,8 +88,8 @@ export function Zkusenosti() {
       </div>
 
       <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {VIDEOS.map((v) => (
-          <VideoCard key={v.vimeoId} video={v} />
+        {VIDEOS.map((v, i) => (
+          <VideoCard key={v.vimeoId} video={v} index={i} />
         ))}
       </div>
 
