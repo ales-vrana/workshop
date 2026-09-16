@@ -40,6 +40,14 @@ const VIDEOS: Video[] = [
   { name: "Kristýna B.", vimeoId: "1139978271", hash: "aaa69c29fb" },
 ];
 
+/**
+ * Zvuk: Vimeo při `autoplay=1` video sám ztlumí (politika prohlížečů).
+ * Proto se přehrávač načte BEZ autoplay a s `muted=0`, a hned po načtení
+ * mu pošleme přes Player API příkaz „nahlas + přehrát". Kliknutí na
+ * náhled je uživatelské gesto, takže prohlížeč zvuk povolí. Kdyby ho
+ * některý prohlížeč přesto zablokoval, zůstane viditelné velké tlačítko
+ * Play uvnitř přehrávače a video se po něm spustí se zvukem.
+ */
 function vimeoEmbedUrl(v: Video): string {
   const base = `https://player.vimeo.com/video/${v.vimeoId}`;
   const params = new URLSearchParams({
@@ -47,10 +55,24 @@ function vimeoEmbedUrl(v: Video): string {
     autopause: "0",
     player_id: "0",
     app_id: "58479",
-    autoplay: "1",
+    autoplay: "0",
+    muted: "0",
+    dnt: "1",
   });
   if (v.hash) params.set("h", v.hash);
   return `${base}?${params.toString()}`;
+}
+
+/** Pošle přehrávači Vimeo příkazy přes postMessage (Player API bez SDK) */
+function vimeoCommand(iframe: HTMLIFrameElement, method: string, value?: unknown) {
+  const msg = value === undefined ? { method } : { method, value };
+  iframe.contentWindow?.postMessage(JSON.stringify(msg), "https://player.vimeo.com");
+}
+
+function playUnmuted(iframe: HTMLIFrameElement) {
+  vimeoCommand(iframe, "setMuted", false);
+  vimeoCommand(iframe, "setVolume", 1);
+  vimeoCommand(iframe, "play");
 }
 
 function vimeoThumbnailUrl(v: Video): string {
@@ -70,7 +92,13 @@ function VideoCard({ video }: { video: Video }) {
             title={`Reference: ${video.name}`}
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
-            loading="lazy"
+            onLoad={(e) => {
+              const el = e.currentTarget;
+              // Přehrávač po načtení ještě chvíli inicializuje - pošleme
+              // příkaz hned a pro jistotu ještě jednou o chvíli později.
+              playUnmuted(el);
+              window.setTimeout(() => playUnmuted(el), 600);
+            }}
             className="absolute inset-0 w-full h-full"
           />
         ) : (

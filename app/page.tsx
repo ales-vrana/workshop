@@ -35,6 +35,12 @@ export default function HomePage() {
       <Reveal>
         <CoachQuote />
       </Reveal>
+
+      {/* Textové reference hned po úvodu - sociální důkaz před argumentací */}
+      <Reveal>
+        <Reference />
+      </Reveal>
+
       <Reveal>
         <Pochybnosti />
       </Reveal>
@@ -52,9 +58,6 @@ export default function HomePage() {
       </Reveal>
       <Reveal>
         <Zkusenosti />
-      </Reveal>
-      <Reveal>
-        <Reference />
       </Reveal>
       <Reveal>
         <FAQ />

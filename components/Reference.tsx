@@ -25,7 +25,7 @@ const REFERENCE = [
 
 export function Reference() {
   return (
-    <Section id="reference" tone="cream">
+    <Section id="citace" tone="cream">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <h2 className="h-display text-h2 text-navy-600">
           Co si lidé odnesli z předchozích workshopů
