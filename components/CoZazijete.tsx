@@ -1,5 +1,7 @@
 import { Section } from "@/components/ui/Section";
 import { Eye, UserCheck, Heart, Sparkles, Map, Wrench } from "lucide-react";
+import { CTAButton } from "@/components/ui/CTAButton";
+import { WORKSHOP } from "@/lib/config";
 
 const KARTY = [
   {
@@ -66,6 +68,12 @@ export function CoZazijete() {
             </article>
           );
         })}
+      </div>
+
+      <div className="flex justify-center mt-12 sm:mt-14">
+        <CTAButton href="#terminy" variant="primary">
+          Chci to zažít - {WORKSHOP.price}
+        </CTAButton>
       </div>
     </Section>
   );
