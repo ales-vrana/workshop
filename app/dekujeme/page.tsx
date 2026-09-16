@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const termin = nejblizsiTermin();
   return {
     title: "Děkujeme - vaše místo na workshop je rezervováno | CoachVille",
-    description: `Platba potvrzena. Vidíme se ${termin.dateFull} na workshopu „${WORKSHOP.name}". Uložte si termín do kalendáře a najdete tu i Zoom odkaz.`,
+    description: `Platba potvrzena. Vidíme se ${termin.dateFullLocative} na workshopu „${WORKSHOP.name}". Uložte si termín do kalendáře a najdete tu i Zoom odkaz.`,
     robots: { index: false, follow: false },
   };
 }

@@ -40,8 +40,11 @@ export const PARAMS = {
   /** Marketingový název workshopu (na webu, v e-mailech, v pixelu) */
   workshopName: "Zažij koučování v roli kouče i klienta",
 
-  /** Title kalendářové události (Google / Apple / Outlook) */
-  calendarEventTitle: "Workshop Zažij koučování v roli kouče i klienta",
+  /**
+   * Název události - na děkovací stránce (Krok 1) i v kalendáři
+   * (Google / Apple / Outlook). Je to to, co člověk uvidí ve svém kalendáři.
+   */
+  calendarEventTitle: "Ukázková lekce koučovacího výcviku CoachVille",
 
   // ━━━ ZOOM (jedna společná místnost pro všechny termíny) ━━━
 

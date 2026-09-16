@@ -31,7 +31,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
 
   return {
     title: `Děkujeme - místo na ${termin.dateShort} je rezervováno | CoachVille`,
-    description: `Platba potvrzena. Vidíme se ${termin.dateFull} v ${termin.timeStart} na workshopu „${WORKSHOP.name}". Uvnitř najdete Zoom odkaz i přidání do kalendáře.`,
+    description: `Platba potvrzena. Vidíme se ${termin.dateFullLocative} v ${termin.timeStart} na workshopu „${WORKSHOP.name}". Uvnitř najdete Zoom odkaz i přidání do kalendáře.`,
     robots: { index: false, follow: false },
   };
 }

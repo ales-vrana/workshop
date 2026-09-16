@@ -138,6 +138,35 @@ function formatDateFull(dateISO: string, dayOfWeek: string): string {
   return `${dayOfWeek} ${day}.${NBSP}${month}.${NBSP}${year}`;
 }
 
+/**
+ * Den v týdnu ve správném tvaru pro věty typu „Vidíme se ___".
+ * Předložka je součástí textu, protože středa a čtvrtek mají „ve".
+ *
+ * Den se počítá z datumu, ne z ručně zapsaného `dayOfWeek` -
+ * takže i kdyby v souboru termínů byl den napsaný špatně, věta bude správná.
+ */
+const DNY_S_PREDLOZKOU = [
+  "v neděli", // 0
+  "v pondělí",
+  "v úterý",
+  "ve středu",
+  "ve čtvrtek",
+  "v pátek",
+  "v sobotu",
+] as const;
+
+function dayWithPreposition(dateISO: string): string {
+  const { day, month, year } = parseISODate(dateISO);
+  const weekday = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day))).getUTCDay();
+  return DNY_S_PREDLOZKOU[weekday];
+}
+
+/** „v neděli 20. 9. 2026" / „ve středu 23. 9. 2026" */
+function formatDateFullLocative(dateISO: string): string {
+  const { day, month, year } = parseISODate(dateISO);
+  return `${dayWithPreposition(dateISO)} ${day}.${NBSP}${month}.${NBSP}${year}`;
+}
+
 function formatDateShort(dateISO: string): string {
   const { day, month, year } = parseISODate(dateISO);
   return `${day}.${NBSP}${month}.${NBSP}${year}`;
@@ -169,6 +198,10 @@ export interface TerminView {
 
   dateISORaw: string;
   dateFull: string;
+  /** „v neděli 20. 9. 2026" - do vět „Vidíme se ___", předložka je uvnitř */
+  dateFullLocative: string;
+  /** „v neděli" / „ve středu" - samotný den s předložkou */
+  dayLocative: string;
   dateShort: string;
   dateDayMonth: string;
   dateFilename: string;
@@ -225,6 +258,8 @@ export function buildTermin(t: Termin): TerminView {
 
     dateISORaw: t.dateISO,
     dateFull: formatDateFull(t.dateISO, t.dayOfWeek),
+    dateFullLocative: formatDateFullLocative(t.dateISO),
+    dayLocative: dayWithPreposition(t.dateISO),
     dateShort: formatDateShort(t.dateISO),
     dateDayMonth: formatDateDayMonth(t.dateISO),
     dateFilename: formatDateForFilename(t.dateISO),

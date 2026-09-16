@@ -54,7 +54,7 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-white/85 font-medium">
-            Vidíme se v {termin.dateFull} v {termin.timeStart}.
+            Vidíme se {termin.dateFullLocative} v {termin.timeStart}.
           </p>
 
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal-400/15 border border-teal-300/30 px-4 py-2">
@@ -77,7 +77,7 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
             Přidat workshop do kalendáře
           </h2>
           <p className="text-sm sm:text-base text-dark/70 mb-5 leading-relaxed">
-            <strong className="text-navy-700">{WORKSHOP.title}</strong>
+            <strong className="text-navy-700">{WORKSHOP.calendarEventTitle}</strong>
             <br />
             {termin.dateFull} • {termin.timeRange} • online přes {WORKSHOP.platform}
           </p>
@@ -101,7 +101,7 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
           <p className="text-sm sm:text-base text-dark/70 mb-5 leading-relaxed">
             Otevřete tento odkaz{" "}
             <strong className="text-navy-700">
-              v {termin.dateFull} v {termin.joinTime}
+              {termin.dateFullLocative} v {termin.joinTime}
             </strong>{" "}
             (5 minut před začátkem). Tentýž odkaz jsme vám poslali i e-mailem pro jistotu.
           </p>
@@ -199,7 +199,7 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
           <div className="inline-flex items-center gap-3 rounded-2xl bg-navy-600 px-6 py-4 shadow-lifted">
             <Calendar className="h-5 w-5 text-gold-400" aria-hidden />
             <p className="text-base sm:text-lg font-semibold text-white">
-              Vidíme se v {termin.dateFull} v {termin.joinTime}
+              Vidíme se {termin.dateFullLocative} v {termin.joinTime}
             </p>
           </div>
           <p className="mt-3 text-xs sm:text-sm text-dark/55 italic">
