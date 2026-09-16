@@ -1,71 +1,70 @@
-import { WORKSHOP } from "@/lib/config";
-
-const EVENT_TITLE = WORKSHOP.calendarEventTitle;
-
-const EVENT_DESCRIPTION = `${WORKSHOP.duration} online workshop s Alešem Vránou (ICF MCC).
-
-Zoom odkaz: ${WORKSHOP.zoomUrl}
-Meeting ID: ${WORKSHOP.zoomId}
-Heslo: ${WORKSHOP.zoomPassword}
-
-Připojte se 5 minut před začátkem (${WORKSHOP.joinTime}). Workshop je interaktivní - zapněte si kameru a připravte si téma, které právě řešíte.
-
-Otázky? ${WORKSHOP.contactEmail}`;
-
-const EVENT_LOCATION = `Online přes ${WORKSHOP.platform} - ${WORKSHOP.zoomUrl}`;
+import { WORKSHOP, type TerminView } from "@/lib/config";
 
 /**
- * Google Calendar URL - otevře v prohlížeči formulář s pre-fillem.
- * Dokumentace: https://github.com/InteractionDesignFoundation/add-event-to-calendar-docs/blob/main/services/google.md
+ * Generátory kalendářových odkazů pro KONKRÉTNÍ termín.
+ * Termín se předává jako parametr, protože každá thank-you stránka
+ * patří jinému datu.
  */
-export function googleCalendarUrl(): string {
+
+function eventTitle(): string {
+  return WORKSHOP.calendarEventTitle;
+}
+
+function eventDescription(t: TerminView): string {
+  const heslo = t.zoomPassword ? `\nHeslo: ${t.zoomPassword}` : "";
+  return `${t.duration} online workshop s Alešem Vránou (ICF MCC).
+
+Zoom odkaz: ${t.zoomUrl}
+Meeting ID: ${t.zoomId}${heslo}
+
+Připojte se 5 minut před začátkem (${t.joinTime}). Workshop je interaktivní - zapněte si kameru a připravte si téma, které právě řešíte.
+
+Otázky? ${WORKSHOP.contactEmail}`;
+}
+
+function eventLocation(t: TerminView): string {
+  return `Online přes ${WORKSHOP.platform} - ${t.zoomUrl}`;
+}
+
+/** Google Calendar - otevře v prohlížeči formulář s předplněnou událostí */
+export function googleCalendarUrl(t: TerminView): string {
   const params = new URLSearchParams({
     action: "TEMPLATE",
-    text: EVENT_TITLE,
-    dates: `${WORKSHOP.dateUTCStart}/${WORKSHOP.dateUTCEnd}`,
-    details: EVENT_DESCRIPTION,
-    location: EVENT_LOCATION,
+    text: eventTitle(),
+    dates: `${t.dateUTCStart}/${t.dateUTCEnd}`,
+    details: eventDescription(t),
+    location: eventLocation(t),
     ctz: WORKSHOP.timeZone,
   });
   return `https://www.google.com/calendar/render?${params.toString()}`;
 }
 
-/**
- * Outlook Web (Office 365) deeplink - otevře v prohlížeči.
- * Funguje pro outlook.live.com i outlook.office.com.
- */
-export function outlookCalendarUrl(): string {
-  // Outlook potřebuje ISO formát bez "Z" suffixu a v lokálním čase
+/** Outlook Web deeplink */
+export function outlookCalendarUrl(t: TerminView): string {
   const params = new URLSearchParams({
     path: "/calendar/action/compose",
     rru: "addevent",
-    subject: EVENT_TITLE,
-    body: EVENT_DESCRIPTION,
-    startdt: WORKSHOP.dateOutlookStart,
-    enddt: WORKSHOP.dateOutlookEnd,
-    location: EVENT_LOCATION,
+    subject: eventTitle(),
+    body: eventDescription(t),
+    startdt: t.dateOutlookStart,
+    enddt: t.dateOutlookEnd,
+    location: eventLocation(t),
   });
   return `https://outlook.live.com/calendar/0/deeplink/compose?${params.toString()}`;
 }
 
 /**
- * Generuje obsah .ics souboru pro Apple Calendar, Outlook Desktop,
- * Thunderbird a další iCalendar-kompatibilní aplikace.
- *
- * RFC 5545 standard.
+ * Obsah .ics souboru (RFC 5545) pro Apple Calendar, Outlook Desktop a další.
  * https://datatracker.ietf.org/doc/html/rfc5545
  */
-export function buildIcsFileContent(): string {
-  // Escape pro iCal - speciální znaky musí být escapovány
+export function buildIcsFileContent(t: TerminView): string {
   const escape = (s: string) =>
     s.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
 
-  // UID musí být jedinečné - používáme termín + doménu
-  const uid = `workshop-${WORKSHOP.dateISORaw}@coachville.eu`;
-  // DTSTAMP = kdy byl event vygenerován (povinné)
+  // UID je jedinečné na termín - kalendáře tak nepřepíšou jinou událost
+  const uid = `workshop-${t.id}-${t.dateISORaw}@coachville.eu`;
   const dtstamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 
-  // Reminder 1 hodina před začátkem
   return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -75,17 +74,17 @@ export function buildIcsFileContent(): string {
     "BEGIN:VEVENT",
     `UID:${uid}`,
     `DTSTAMP:${dtstamp}`,
-    `DTSTART:${WORKSHOP.dateUTCStart}`,
-    `DTEND:${WORKSHOP.dateUTCEnd}`,
-    `SUMMARY:${escape(EVENT_TITLE)}`,
-    `DESCRIPTION:${escape(EVENT_DESCRIPTION)}`,
-    `LOCATION:${escape(EVENT_LOCATION)}`,
-    `URL:${WORKSHOP.zoomUrl}`,
+    `DTSTART:${t.dateUTCStart}`,
+    `DTEND:${t.dateUTCEnd}`,
+    `SUMMARY:${escape(eventTitle())}`,
+    `DESCRIPTION:${escape(eventDescription(t))}`,
+    `LOCATION:${escape(eventLocation(t))}`,
+    `URL:${t.zoomUrl}`,
     "STATUS:CONFIRMED",
     "TRANSP:OPAQUE",
     "BEGIN:VALARM",
     "ACTION:DISPLAY",
-    `DESCRIPTION:${escape(`Workshop koučování za 1 hodinu - připravte se a otevřete Zoom v ${WORKSHOP.joinTime}`)}`,
+    `DESCRIPTION:${escape(`Workshop koučování za 1 hodinu - připravte se a otevřete Zoom v ${t.joinTime}`)}`,
     "TRIGGER:-PT1H",
     "END:VALARM",
     "END:VEVENT",
@@ -93,20 +92,14 @@ export function buildIcsFileContent(): string {
   ].join("\r\n");
 }
 
-/**
- * Data URL pro stažení .ics souboru - funguje na všech zařízeních
- * bez potřeby server endpointu.
- */
-export function icsDataUrl(): string {
-  const content = buildIcsFileContent();
-  // base64 encoded - zachová Unicode (čeština)
+/** Data URL pro stažení .ics - funguje bez server endpointu */
+export function icsDataUrl(t: TerminView): string {
+  const content = buildIcsFileContent(t);
   if (typeof window !== "undefined") {
     const bytes = new TextEncoder().encode(content);
     const binary = Array.from(bytes, (b) => String.fromCharCode(b)).join("");
-    const base64 = btoa(binary);
-    return `data:text/calendar;charset=utf-8;base64,${base64}`;
+    return `data:text/calendar;charset=utf-8;base64,${btoa(binary)}`;
   }
-  // Server-side fallback (Node.js)
   const base64 = Buffer.from(content, "utf-8").toString("base64");
   return `data:text/calendar;charset=utf-8;base64,${base64}`;
 }

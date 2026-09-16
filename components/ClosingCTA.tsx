@@ -92,7 +92,7 @@ export function ClosingCTA() {
         </div>
 
         <div className="flex flex-col items-center gap-4">
-          <CTAButton href={WORKSHOP.paymentLink} variant="on-dark" className="w-full sm:w-auto">
+          <CTAButton href="#terminy" variant="on-dark" className="w-full sm:w-auto">
             Chci to zažít - {WORKSHOP.price}
           </CTAButton>
           <p className="text-xs text-white/60">

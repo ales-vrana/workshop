@@ -1,82 +1,49 @@
 /**
  * ╔══════════════════════════════════════════════════════════════════╗
- * ║   JEDINÝ SOUBOR PRO ZMĚNU PARAMETRŮ WORKSHOPU                    ║
+ * ║   SPOLEČNÉ PARAMETRY WORKSHOPU                                   ║
  * ║                                                                  ║
- * ║   ⚡ Pokud chceš změnit datum / čas / délku / cenu workshopu,     ║
- * ║      uprav jen hodnoty v tomto souboru.                          ║
- * ║      Všechny ostatní soubory si je vezmou automaticky.           ║
+ * ║   Termíny (datum, čas, Stripe odkaz) se NEEDITUJÍ zde,           ║
+ * ║   ale v souboru lib/workshop-terminy.ts                          ║
+ * ║                                                                  ║
+ * ║   Zde nastavujete věci, které platí pro všechny termíny:         ║
+ * ║   cenu, kapacitu, Zoom, názvy, pixel a kontaktní e-mail.         ║
  * ╚══════════════════════════════════════════════════════════════════╝
- *
- * Formáty:
- *   - dateISO:        "YYYY-MM-DD" (např. "2026-06-02")
- *   - startTime:      "HH:MM" 24h formát (např. "17:00")
- *   - durationMinutes: celé minuty (např. 120 pro 2 hodiny)
- *   - hasQA:          true/false - pokud true, k délce se přidá "+ Q&A"
- *   - priceCZK:       číslo bez Kč (např. 599)
- *   - capacity:       max počet účastníků (např. 16)
- *   - spotsLeft:      momentální volná místa (manuální, např. 16)
- *   - dayOfWeek:      český název dne (např. "úterý", "pátek")
- *
- * Vše ostatní (formátování, výpočty časů konce, NBSP v ceně, atd.)
- * je odvozené automaticky v lib/config.ts.
  */
 
 export const PARAMS = {
-  // ━━━ ZÁKLADNÍ PARAMETRY ━━━
+  // ━━━ CENA A KAPACITA (platí pro všechny termíny) ━━━
 
-  /** Datum workshopu - formát YYYY-MM-DD */
-  dateISO: "2026-09-01",
+  /** Výchozí cena workshopu v Kč. U konkrétního termínu se dá přebít polem priceCZK. */
+  priceCZK: 199,
 
-  /** Český název dne v týdnu (malými písmeny) */
-  dayOfWeek: "úterý",
-
-  /** Čas začátku workshopu - formát HH:MM (24h) */
-  startTime: "19:30",
-
-  /** Délka workshopu v minutách */
-  durationMinutes: 120,
-
-  /** Pokud true, k délce se přidá "+ Q&A" v zobrazovaných textech */
-  hasQA: false,
-
-  /** Cena workshopu v CZK (jen číslo, bez Kč) */
-  priceCZK: 300,
-
-  /** Maximální kapacita workshopu */
+  /** Maximální kapacita jednoho termínu */
   capacity: 16,
 
-  /** Momentální volná místa - manuálně upravuj */
-  spotsLeft: 16,
-
   /**
-   * Práh pro zobrazování scarcity hlášky „Zbývá X / Y míst".
-   * Hláška se zobrazí POUZE pokud `spotsLeft <= scarcityThreshold`.
-   * Default 9 = "zbývá 9 a méně" je real scarcity, vše vyšší je marketingový bullshit.
-   *
-   * Když je workshop plný 16/16 nebo 14/16, raději nic neukazujeme než
-   * vzbuzovat dojem, že nikdo o workshop nestojí.
+   * Práh pro zobrazování hlášky „Zbývá X / Y míst".
+   * Zobrazí se jen u termínu, kde spotsLeft <= scarcityThreshold.
+   * Vyšší počty nezobrazujeme - prázdný workshop nemá čím přesvědčovat.
    */
   scarcityThreshold: 9,
 
+  /**
+   * Kolik hodin po skončení workshopu má termín zmizet ze stránky.
+   * 3 = termín je vidět ještě tři hodiny po konci, pak se sám skryje.
+   */
+  hideTerminHoursAfterEnd: 3,
+
+  /** Pokud true, k délce se přidá „+ Q&A" v zobrazovaných textech */
+  hasQA: false,
+
   // ━━━ NÁZVY ━━━
 
-  /** Marketingový název workshopu (na webu, emailech) */
-  workshopName: "Zažij koučování a začni koučovat už teď",
+  /** Marketingový název workshopu (na webu, v e-mailech, v pixelu) */
+  workshopName: "Zažij koučování v roli kouče i klienta",
 
-  /** Title v kalendáři (přidáno do Google/Apple/Outlook) */
+  /** Title kalendářové události (Google / Apple / Outlook) */
   calendarEventTitle: "Workshop Zažij koučování v roli kouče i klienta",
 
-  // ━━━ PLATBA (edituj přímo zde - projeví se na všech CTA tlačítkách) ━━━
-
-  /** Stripe Payment Link - cíl všech tlačítek „Zajisti si své místo" */
-  paymentLink: "https://book.stripe.com/9B68wO8ne7uf9yu3NfejK27",
-
-  // ━━━ MĚŘICÍ KÓDY ━━━
-
-  /** Meta (Facebook) Pixel ID - prázdný řetězec = pixel se nevloží */
-  metaPixelId: "884397061610419",
-
-  // ━━━ ZOOM (edituj přímo zde, projeví se na webu i v kalendáři) ━━━
+  // ━━━ ZOOM (jedna společná místnost pro všechny termíny) ━━━
 
   /** Odkaz na Zoom místnost */
   zoomUrl: "https://us02web.zoom.us/j/2316373579",
@@ -84,8 +51,22 @@ export const PARAMS = {
   /** Meeting ID (pro zobrazení na stránce Děkujeme) */
   zoomId: "231 637 3579",
 
-  /** Heslo do meetingu - nech prázdné (""), pokud meeting heslo nemá */
+  /** Heslo do meetingu - nechte prázdné (""), pokud meeting heslo nemá */
   zoomPassword: "",
+
+  // ━━━ SBĚR KONTAKTŮ (formulář „Nevyhovuje mi žádný termín") ━━━
+
+  /**
+   * Zapier webhook (Webhooks by Zapier → Catch Hook).
+   * Sem se pošle jméno, e-mail a telefon zájemce.
+   * Prázdný řetězec = formulář se přepne na odeslání e-mailem.
+   */
+  leadWebhookUrl: "",
+
+  // ━━━ MĚŘICÍ KÓDY ━━━
+
+  /** Meta (Facebook) Pixel ID - prázdný řetězec = pixel se nevloží */
+  metaPixelId: "884397061610419",
 
   // ━━━ TECHNICKÉ KONSTANTY (obvykle neměnit) ━━━
 

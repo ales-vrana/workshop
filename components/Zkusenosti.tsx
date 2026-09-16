@@ -131,7 +131,7 @@ export function Zkusenosti() {
       </div>
 
       <div className="flex justify-center mt-12 sm:mt-14">
-        <CTAButton href={WORKSHOP.paymentLink} variant="primary">
+        <CTAButton href="#terminy" variant="primary">
           Chci to zažít - {WORKSHOP.price}
         </CTAButton>
       </div>

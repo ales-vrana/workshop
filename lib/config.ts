@@ -1,19 +1,21 @@
 /**
- * Centrální config - odvozuje formátované hodnoty z lib/workshop-params.ts.
+ * Centrální config.
  *
- * ⚠️ NEMĚNIT TENTO SOUBOR pro běžné změny parametrů workshopu.
- *    Edituj pouze lib/workshop-params.ts.
+ * ⚠️ NEEDITOVAT pro běžné změny.
+ *    Termíny  → lib/workshop-terminy.ts
+ *    Ostatní  → lib/workshop-params.ts
  *
- * Tento soubor jen *odvozuje* formátované varianty pro UI, kalendáře, schema.org atd.
+ * Tento soubor jen odvozuje formátované hodnoty pro UI, kalendáře a schema.org.
  */
 
 import { PARAMS } from "./workshop-params";
+import { TERMINY, type Termin } from "./workshop-terminy";
 
-// NBSP (non-breaking space) - zabraňuje rozdělení např. "1 000 Kč" na konci řádku
-const NBSP = " ";
+// NBSP - zabraňuje rozdělení „199 Kč" nebo „6. 10. 2026" na konci řádku
+const NBSP = " ";
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// Pomocné funkce - výpočty času, formátování
+// Pomocné funkce
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 function parseTime(t: string): { h: number; m: number } {
@@ -28,49 +30,87 @@ function pad2(n: number): string {
 function addMinutes(time: string, minutes: number): string {
   const { h, m } = parseTime(time);
   const total = h * 60 + m + minutes;
-  const newH = Math.floor(total / 60) % 24;
-  const newM = total % 60;
+  const newH = ((Math.floor(total / 60) % 24) + 24) % 24;
+  const newM = ((total % 60) + 60) % 60;
   return `${pad2(newH)}:${pad2(newM)}`;
 }
 
-/** "2026-06-02" -> "02" / "6" / "2026" */
-function parseISODate(dateISO: string): { day: string; month: string; year: string; dayNum: number; monthNum: number; yearNum: number } {
+function parseISODate(dateISO: string) {
   const [year, month, day] = dateISO.split("-");
-  return {
-    day: String(parseInt(day, 10)),
-    month: String(parseInt(month, 10)),
-    year,
-    dayNum: parseInt(day, 10),
-    monthNum: parseInt(month, 10),
-    yearNum: parseInt(year, 10),
-  };
+  return { day: String(parseInt(day, 10)), month: String(parseInt(month, 10)), year };
 }
 
-/** "2026-06-02" + "17:00" -> "2026-06-02T17:00:00+02:00" (Europe/Prague, DST aware via offset) */
-function toLocalISO(dateISO: string, time: string): string {
-  // Prague je UTC+1 (zimní čas) nebo UTC+2 (letní čas).
-  // Pro datumy v období od poslední neděle v březnu do poslední neděle v října = UTC+2.
-  // Pro 2.6.2026 = letní čas = UTC+2.
-  // Pro jednoduchost u většiny workshopů (jaro–podzim) používáme +02:00.
-  const date = new Date(`${dateISO}T${time}:00`);
-  const month = parseInt(dateISO.split("-")[1], 10);
-  const isDST = month >= 4 && month <= 9; // hrubý odhad - workshopy obvykle v sezóně
-  const offset = isDST ? "+02:00" : "+01:00";
-  return `${dateISO}T${time}:00${offset}`;
+/**
+ * Posun časové zóny v daném okamžiku, v milisekundách.
+ *
+ * Nepoužíváme pravidlo „duben až září = letní čas". Přechod na zimní čas
+ * je poslední říjnovou nedělí, takže workshop 20. 10. ještě běží v letním
+ * čase a 3. 11. už v zimním. Ručně napsané pravidlo by posunulo
+ * kalendářovou událost o hodinu. Intl zná skutečná pravidla.
+ */
+function tzOffsetMs(date: Date, timeZone: string): number {
+  const dtf = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    hour12: false,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+
+  const parts: Record<string, number> = {};
+  for (const p of dtf.formatToParts(date)) {
+    if (p.type !== "literal") parts[p.type] = parseInt(p.value, 10);
+  }
+
+  const asUTC = Date.UTC(
+    parts.year,
+    parts.month - 1,
+    parts.day,
+    parts.hour === 24 ? 0 : parts.hour,
+    parts.minute,
+    parts.second,
+  );
+
+  return asUTC - date.getTime();
 }
 
-/** "2026-06-02" + "17:00" -> "20260602T150000Z" (UTC, DST aware) */
-function toUTCStamp(dateISO: string, time: string): string {
-  const month = parseInt(dateISO.split("-")[1], 10);
-  const isDST = month >= 4 && month <= 9;
-  const offsetHours = isDST ? 2 : 1;
+/** Místní čas v Praze → skutečný okamžik (timestamp v ms) */
+function toTimestamp(dateISO: string, time: string): number {
+  const [y, mo, d] = dateISO.split("-").map(Number);
   const { h, m } = parseTime(time);
-  const utcH = (h - offsetHours + 24) % 24;
-  const datePart = dateISO.replace(/-/g, "");
-  return `${datePart}T${pad2(utcH)}${pad2(m)}00Z`;
+  const naive = Date.UTC(y, mo - 1, d, h, m, 0);
+
+  // Dvě iterace stačí i pro hodiny těsně u přechodu času
+  let offset = tzOffsetMs(new Date(naive), PARAMS.timeZone);
+  let ts = naive - offset;
+  offset = tzOffsetMs(new Date(ts), PARAMS.timeZone);
+  return naive - offset;
 }
 
-/** "120" minut -> "2 hodiny" / "150" min -> "2,5 hodiny" / "60" min -> "1 hodina" */
+/** „+02:00" nebo „+01:00" podle skutečného posunu v ten den */
+function offsetString(dateISO: string, time: string): string {
+  const ts = toTimestamp(dateISO, time);
+  const offsetMinutes = tzOffsetMs(new Date(ts), PARAMS.timeZone) / 60000;
+  const sign = offsetMinutes >= 0 ? "+" : "-";
+  const abs = Math.abs(offsetMinutes);
+  return `${sign}${pad2(Math.floor(abs / 60))}:${pad2(abs % 60)}`;
+}
+
+function toLocalISO(dateISO: string, time: string): string {
+  return `${dateISO}T${time}:00${offsetString(dateISO, time)}`;
+}
+
+function toUTCStamp(dateISO: string, time: string): string {
+  const d = new Date(toTimestamp(dateISO, time));
+  return (
+    `${d.getUTCFullYear()}${pad2(d.getUTCMonth() + 1)}${pad2(d.getUTCDate())}` +
+    `T${pad2(d.getUTCHours())}${pad2(d.getUTCMinutes())}00Z`
+  );
+}
+
 function formatDuration(minutes: number, hasQA: boolean): string {
   const hours = minutes / 60;
   let text: string;
@@ -79,60 +119,183 @@ function formatDuration(minutes: number, hasQA: boolean): string {
     else if (hours >= 2 && hours <= 4) text = `${hours} hodiny`;
     else text = `${hours} hodin`;
   } else {
-    // Desetinná čísla - používáme "X,Y hodiny"
-    const formatted = hours.toString().replace(".", ",");
-    text = `${formatted} hodiny`;
+    text = `${hours.toString().replace(".", ",")} hodiny`;
   }
   return hasQA ? `${text} + Q&A` : text;
 }
 
-/** "120" minut -> "2h" / "150" min -> "2,5h" - kompaktní zápis */
 function formatDurationShort(minutes: number): string {
   const hours = minutes / 60;
-  if (Number.isInteger(hours)) return `${hours}h`;
-  return `${hours.toString().replace(".", ",")}h`;
+  return Number.isInteger(hours) ? `${hours}h` : `${hours.toString().replace(".", ",")}h`;
 }
 
-/** 599 -> "599 Kč" / 1000 -> "1 000 Kč" (NBSP) */
 function formatPrice(amount: number): string {
-  const formatted = amount.toLocaleString("cs-CZ").replace(/\s/g, NBSP);
-  return `${formatted}${NBSP}Kč`;
+  return `${amount.toLocaleString("cs-CZ").replace(/\s/g, NBSP)}${NBSP}Kč`;
 }
 
-/** "2026-06-02" -> "úterý 2. 6. 2026" (s NBSP) */
 function formatDateFull(dateISO: string, dayOfWeek: string): string {
   const { day, month, year } = parseISODate(dateISO);
   return `${dayOfWeek} ${day}.${NBSP}${month}.${NBSP}${year}`;
 }
 
-/** "2026-06-02" -> "2. 6. 2026" (bez dne, s NBSP) */
 function formatDateShort(dateISO: string): string {
   const { day, month, year } = parseISODate(dateISO);
   return `${day}.${NBSP}${month}.${NBSP}${year}`;
 }
 
-/** "2026-06-02" -> "2-6-2026" (pro filename .ics) */
+/** „6. 10." - krátký tvar pro badge a sticky lištu */
+function formatDateDayMonth(dateISO: string): string {
+  const { day, month } = parseISODate(dateISO);
+  return `${day}.${NBSP}${month}.`;
+}
+
 function formatDateForFilename(dateISO: string): string {
   const { day, month, year } = parseISODate(dateISO);
   return `${day}-${month}-${year}`;
 }
 
-/** "17:00" + "19:00" -> "17:00 – 19:00" (s en-dash a NBSP) */
 function formatTimeRange(start: string, end: string): string {
-  return `${start}${NBSP}–${NBSP}${end}`;
+  return `${start}${NBSP}-${NBSP}${end}`;
 }
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// Výpočet odvozených hodnot
+// Odvozený termín - vše, co UI potřebuje o jednom termínu
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-const startTime = PARAMS.startTime;
-const endTime = addMinutes(startTime, PARAMS.durationMinutes);
-const joinTime = addMinutes(startTime, -5); // 5 min před začátkem
+export interface TerminView {
+  id: string;
+  /** Adresa thank-you stránky, např. „/dekujeme/termin-1" */
+  thankYouPath: string;
+
+  dateISORaw: string;
+  dateFull: string;
+  dateShort: string;
+  dateDayMonth: string;
+  dateFilename: string;
+  dayOfWeek: string;
+
+  /** ISO s časovou zónou - pro schema.org */
+  dateISO: string;
+  dateISOEnd: string;
+  /** UTC stamp pro Google Calendar */
+  dateUTCStart: string;
+  dateUTCEnd: string;
+  /** Lokální ISO bez zóny - pro Outlook deeplink */
+  dateOutlookStart: string;
+  dateOutlookEnd: string;
+
+  timeStart: string;
+  timeEnd: string;
+  timeRange: string;
+  /** Čas připojení, 5 minut před začátkem */
+  joinTime: string;
+
+  duration: string;
+  durationShort: string;
+  durationMinutes: number;
+
+  price: string;
+  priceNumber: number;
+
+  capacity: number;
+  spotsLeft: number;
+  spotsLabel: string;
+  showSpotsScarcity: boolean;
+
+  paymentLink: string;
+  zoomUrl: string;
+  zoomId: string;
+  zoomPassword: string;
+
+  /** Okamžik, kdy se termín přestane zobrazovat (konec + hideTerminHoursAfterEnd) */
+  hideAfterMs: number;
+}
+
+export function buildTermin(t: Termin): TerminView {
+  const endTime = addMinutes(t.startTime, t.durationMinutes);
+  const priceNumber = t.priceCZK ?? PARAMS.priceCZK;
+  const spotsLeft = t.spotsLeft ?? PARAMS.capacity;
+
+  const hideAfterMs =
+    toTimestamp(t.dateISO, endTime) + PARAMS.hideTerminHoursAfterEnd * 60 * 60 * 1000;
+
+  return {
+    id: t.id,
+    thankYouPath: `/dekujeme/${t.id}`,
+
+    dateISORaw: t.dateISO,
+    dateFull: formatDateFull(t.dateISO, t.dayOfWeek),
+    dateShort: formatDateShort(t.dateISO),
+    dateDayMonth: formatDateDayMonth(t.dateISO),
+    dateFilename: formatDateForFilename(t.dateISO),
+    dayOfWeek: t.dayOfWeek,
+
+    dateISO: toLocalISO(t.dateISO, t.startTime),
+    dateISOEnd: toLocalISO(t.dateISO, endTime),
+    dateUTCStart: toUTCStamp(t.dateISO, t.startTime),
+    dateUTCEnd: toUTCStamp(t.dateISO, endTime),
+    dateOutlookStart: `${t.dateISO}T${t.startTime}:00`,
+    dateOutlookEnd: `${t.dateISO}T${endTime}:00`,
+
+    timeStart: t.startTime,
+    timeEnd: endTime,
+    timeRange: formatTimeRange(t.startTime, endTime),
+    joinTime: addMinutes(t.startTime, -5),
+
+    duration: formatDuration(t.durationMinutes, PARAMS.hasQA),
+    durationShort: formatDurationShort(t.durationMinutes),
+    durationMinutes: t.durationMinutes,
+
+    price: formatPrice(priceNumber),
+    priceNumber,
+
+    capacity: PARAMS.capacity,
+    spotsLeft,
+    spotsLabel: `${spotsLeft} / ${PARAMS.capacity}`,
+    showSpotsScarcity: spotsLeft <= PARAMS.scarcityThreshold,
+
+    paymentLink: t.paymentLink,
+    zoomUrl: t.zoomUrl ?? PARAMS.zoomUrl,
+    zoomId: t.zoomId ?? PARAMS.zoomId,
+    zoomPassword: t.zoomPassword ?? PARAMS.zoomPassword,
+
+    hideAfterMs,
+  };
+}
+
+/** Všechny termíny ze souboru, seřazené od nejbližšího data */
+export const VSECHNY_TERMINY: TerminView[] = TERMINY
+  .map(buildTermin)
+  .sort((a, b) => a.hideAfterMs - b.hideAfterMs);
+
+/**
+ * Termíny, které se mají zobrazit v daném okamžiku.
+ *
+ * Volá se jak na serveru (při buildu / revalidaci), tak v prohlížeči.
+ * V prohlížeči je výsledek vždy aktuální, i kdyby HTML v cache bylo starší.
+ */
+export function getViditelneTerminy(nowMs: number = Date.now()): TerminView[] {
+  return VSECHNY_TERMINY.filter((t) => t.hideAfterMs > nowMs);
+}
+
+/** Najde termín podle id - pro thank-you stránku */
+export function najdiTermin(id: string): TerminView | undefined {
+  return VSECHNY_TERMINY.find((t) => t.id === id);
+}
+
+/** Nejbližší viditelný termín. Když žádný není, vrátí poslední známý (kvůli metadatům). */
+export function nejblizsiTermin(nowMs: number = Date.now()): TerminView {
+  return getViditelneTerminy(nowMs)[0] ?? VSECHNY_TERMINY[VSECHNY_TERMINY.length - 1];
+}
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// Exportovaný WORKSHOP objekt - používaj ho ve všech komponentech
+// WORKSHOP - společné údaje + nejbližší termín
+//
+// Existující komponenty používají WORKSHOP.dateFull, .price, .timeRange atd.
+// Aby fungovaly dál, ukazuje WORKSHOP na NEJBLIŽŠÍ termín.
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const nejblizsi = nejblizsiTermin();
 
 export const WORKSHOP = {
   // ─── Názvy ───
@@ -140,80 +303,25 @@ export const WORKSHOP = {
   name: PARAMS.workshopName,
   calendarEventTitle: PARAMS.calendarEventTitle,
 
-  // ─── Datum a čas ───
-  dateFull: formatDateFull(PARAMS.dateISO, PARAMS.dayOfWeek),     // "úterý 2. 6. 2026"
-  dateShort: formatDateShort(PARAMS.dateISO),                     // "2. 6. 2026"
-  dateWithoutDay: formatDateShort(PARAMS.dateISO),                // alias
-  dayOfWeek: PARAMS.dayOfWeek,                                    // "úterý"
-  dateFilename: formatDateForFilename(PARAMS.dateISO),            // "2-6-2026"
+  // ─── Nejbližší termín (zpětná kompatibilita komponent) ───
+  ...nejblizsi,
 
-  /** ISO datum bez času - "2026-06-02" */
-  dateISORaw: PARAMS.dateISO,
-
-  /** ISO start lokální - "2026-06-02T17:00:00+02:00" - pro schema.org */
-  dateISO: toLocalISO(PARAMS.dateISO, startTime),
-
-  /** ISO konec lokální - "2026-06-02T19:00:00+02:00" - pro schema.org */
-  dateISOEnd: toLocalISO(PARAMS.dateISO, endTime),
-
-  /** UTC start - "20260602T150000Z" - pro Google Calendar URL */
-  dateUTCStart: toUTCStamp(PARAMS.dateISO, startTime),
-
-  /** UTC konec - "20260602T170000Z" - pro Google Calendar URL */
-  dateUTCEnd: toUTCStamp(PARAMS.dateISO, endTime),
-
-  /** Outlook lokální start - "2026-06-02T17:00:00" - bez TZ suffixu */
-  dateOutlookStart: `${PARAMS.dateISO}T${startTime}:00`,
-  dateOutlookEnd: `${PARAMS.dateISO}T${endTime}:00`,
-
-  // ─── Časy ───
-  timeStart: startTime,                                           // "17:00"
-  timeEnd: endTime,                                               // "19:00"
-  timeRange: formatTimeRange(startTime, endTime),                 // "17:00 – 19:00"
-  joinTime,                                                       // "16:55"
-
-  // ─── Délka ───
-  duration: formatDuration(PARAMS.durationMinutes, PARAMS.hasQA), // "2 hodiny"
-  durationShort: formatDurationShort(PARAMS.durationMinutes),     // "2h"
-  durationMinutes: PARAMS.durationMinutes,                        // 120
+  // ─── Společné ───
+  platform: PARAMS.platform,
+  timeZone: PARAMS.timeZone,
+  currency: PARAMS.currency,
+  metaPixelId: PARAMS.metaPixelId,
+  leadWebhookUrl: PARAMS.leadWebhookUrl,
+  scarcityThreshold: PARAMS.scarcityThreshold,
   hasQA: PARAMS.hasQA,
 
-  // ─── Cena ───
-  price: formatPrice(PARAMS.priceCZK),                            // "599 Kč"
-  priceNumber: PARAMS.priceCZK,                                   // 599
-  currency: PARAMS.currency,                                      // "CZK"
-
-  // ─── Kapacita ───
-  capacity: PARAMS.capacity,                                      // 16
-  spotsLeft: PARAMS.spotsLeft,                                    // 16
-  spotsLabel: `${PARAMS.spotsLeft} / ${PARAMS.capacity}`,         // "16 / 16"
-
-  /**
-   * True jen pokud `spotsLeft <= scarcityThreshold` (default ≤ 9).
-   * Použij v komponentech: `{WORKSHOP.showSpotsScarcity && <div>Zbývá X míst</div>}`
-   */
-  showSpotsScarcity: PARAMS.spotsLeft <= PARAMS.scarcityThreshold,
-
-  // ─── Platforma ───
-  platform: PARAMS.platform,                                      // "Zoom"
-  timeZone: PARAMS.timeZone,                                      // "Europe/Prague"
-
-  // ─── Externí URL (z .env) ───
-  /** Meta (Facebook) Pixel ID - edituje se v lib/workshop-params.ts */
-  metaPixelId: PARAMS.metaPixelId,
-
-  // Zoom se edituje v lib/workshop-params.ts (ne přes env proměnné)
-  zoomUrl: PARAMS.zoomUrl,
-  zoomId: PARAMS.zoomId,
-  zoomPassword: PARAMS.zoomPassword,
-  // Platební odkaz se edituje v lib/workshop-params.ts (ne přes env proměnné)
-  paymentLink: PARAMS.paymentLink,
+  // ─── Kontakty a URL z .env ───
   contactEmail: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "ales@coachville.eu",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://workshop.coachville.eu",
 } as const;
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// COACH info - statické, neměnit pro běžné případy
+// COACH
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 export const COACH = {
@@ -227,7 +335,9 @@ export const COACH = {
   mccCountInCzechia: 6,
 } as const;
 
-// Helper exports
-export const isPaymentLinkConfigured =
-  !WORKSHOP.paymentLink.includes("REPLACE_ME") &&
-  /^https:\/\/(buy|book)\.stripe\.com\//.test(WORKSHOP.paymentLink);
+/** Upozornění v dev režimu, když některý termín nemá vyplněný Stripe odkaz */
+export const terminyBezPlatby = VSECHNY_TERMINY.filter(
+  (t) => !/^https:\/\/(buy|book)\.stripe\.com\//.test(t.paymentLink),
+);
+
+export const isPaymentLinkConfigured = terminyBezPlatby.length === 0;
