@@ -6,7 +6,7 @@ const BADGES = [
   {
     icon: Trophy,
     title: "ICF Master Certified Coach",
-    sub: "Držitel koučovací certifikace ICF MCC.",
+    sub: "Držitel nejvyšší mezinárodní certifikace, 14 let praxe v oboru",
   },
   {
     icon: GraduationCap,

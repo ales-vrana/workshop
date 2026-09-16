@@ -38,7 +38,7 @@ export function Terminy() {
         </h2>
         {!prazdno && (
           <p className="mt-4 text-base sm:text-lg text-dark/70">
-            Všechny termíny jsou stejné - {WORKSHOP.duration} online, max {WORKSHOP.capacity} lidí,{" "}
+            Všechny termíny {WORKSHOP.duration} online, max {WORKSHOP.capacity} lidí,{" "}
             {WORKSHOP.price}. Vyber si podle svého kalendáře.
           </p>
         )}

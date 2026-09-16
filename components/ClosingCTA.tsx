@@ -12,16 +12,20 @@ export function ClosingCTA() {
           Za {WORKSHOP.duration} budeš vědět, jestli je koučování tvoje cesta
         </h2>
         <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-6 max-w-2xl mx-auto">
-          Koučování je dovednost, kterou si nelze přečíst. Stejně jako nelze přečíst plavání.
-          Můžeš se o něm dozvědět hodně. Ale dokud se nevykoupeš, nevíš, jak ti to půjde.
+          Koučování je dovednost, kterou se nenaučíš z knihy. Stejně jako se z knihy nenaučíš
+          plavat nebo lyžovat. Dokud to nezažiješ, je to jen teorie. Vlastní zážitek je nová
+          objevná zkušenost.
           <br /><br />
-          <strong className="text-white">Tenhle workshop je tvoje první ponoření.</strong>
+          <strong className="text-white">
+            Tento workshop je první krok, první plavecké tempo, první menší sjezdovka.
+          </strong>
         </p>
         <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-10 max-w-2xl mx-auto">
-          Patříš mezi lidi, kteří se rozhodují <strong className="text-teal-300">v praxi, ne v hlavě</strong>.
+          Patříš mezi lidi, kteří se rozhodují <strong className="text-teal-300">v praxi, ne v hlavě</strong>?
           To je vzácnost. Workshop ti dá důkaz.
           <br /><br />
-          Staneš se <strong className="text-gold-300">hráčem koučování</strong> - ne pozorovatelem.
+          Staneš se <strong className="text-gold-300">koučem i hráčem</strong> - ne jen pozorovatelem.
+          Koučování už nebude teorie, ale praktická zkušenost.
         </p>
 
         <ul className="text-left space-y-4 max-w-2xl mx-auto mb-10">
@@ -55,7 +59,7 @@ export function ClosingCTA() {
         <div className="rounded-xl bg-teal-400/10 border border-teal-300/30 px-5 py-4 max-w-2xl mx-auto mb-10">
           <p className="text-base sm:text-lg text-white/90 leading-relaxed">
             <strong className="text-teal-300">{WORKSHOP.price} a {WORKSHOP.duration}.</strong>{" "}
-            Nejlevnější způsob, jak otestovat rozhodnutí, které ovlivní dalších 10 let tvé kariéry.
+            Nejlevnější způsob, jak otestovat rozhodnutí, které ovlivní další roky.
           </p>
         </div>
 
@@ -69,7 +73,7 @@ export function ClosingCTA() {
 
         <div className="rounded-xl bg-white/5 border border-white/15 px-5 py-4 max-w-2xl mx-auto mb-10">
           <p className="text-sm sm:text-base text-white/80">
-            Záznam, PDF s 5 koučovacími otázkami a případové studie koučů zůstávají tvoje navždy.
+            Zkušenost je více než teorie. Vyber si svůj termín a rezervuj své místo.
           </p>
         </div>
 

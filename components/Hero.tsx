@@ -4,7 +4,7 @@ import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
 
 const VALUE_ITEMS = [
   {
-    title: "Živá ukázková lekce s Alešem Vránou",
+    title: "Živá ukázková lekce s Alešem Vránou, MCC",
     sub: "Dvě hodiny vedené praxe na Zoomu",
   },
   {
@@ -16,8 +16,8 @@ const VALUE_ITEMS = [
     sub: "Praktické rozhovory ve dvojicích se nenahrávají",
   },
   {
-    title: "PDF s pěti koučovacími otázkami",
-    sub: "Otázky pro další procvičování rozhovorů",
+    title: "Koučovací rozhovor pro další praktikování",
+    sub: "Otázky pro další procvičování rozhovorů v období po lekci, získáš více zkušeností",
   },
   {
     title: "Praxe v roli kouče i klienta",
