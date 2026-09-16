@@ -3,54 +3,50 @@ import { Section } from "@/components/ui/Section";
 const SITUACE = [
   {
     num: "1",
-    headline: "Zvažuješ změnu, ale nechceš rozhodovat naslepo",
+    headline: "Vedeš tým a nechceš mít všechna řešení",
     body: (
       <>
-        Koučování tě přitahuje jako možná nová cesta, ale zatím nevíš, jak se v roli kouče budeš
-        skutečně cítit.
+        Lidé za tebou přicházejí s problémy. Chceš podpořit jejich samostatnost a cítit se jistěji
+        při vedení rozhovorů.
       </>
     ),
     highlight:
-      "Na workshopu si to ověříš bez velkého rozhodnutí a bez závazku pokračovat.",
+      "Vyzkoušíš si otázky, které druhému dávají prostor promyslet vlastní řešení.",
   },
   {
     num: "2",
-    headline: "Rád/a lidem nasloucháš, ale rady často nefungují",
+    headline: "Chceš naslouchat a lépe rozumět druhým",
     body: (
       <>
-        Možná za tebou lidé chodí, když něco řeší.
+        Napadne tě řešení a nabídneš radu. Někdy ale chceš nejprve lépe porozumět tomu, co druhý
+        člověk potřebuje.
       </>
     ),
     highlight:
-      "Na workshopu poznáš rozdíl mezi radou, běžným rozhovorem a koučovací konverzací.",
+      "Zažiješ rozdíl mezi poskytováním rad a koučovacím rozhovorem.",
   },
   {
     num: "3",
-    headline: "Vedeš lidi a chceš, aby více přemýšleli sami",
+    headline: "Zvažuješ vlastní koučovací praxi",
     body: (
       <>
-        Chceš klást lepší otázky, rozvíjet samostatnost lidí a nemuset pokaždé přinášet všechna
-        řešení.
+        Koučování tě láká jako budoucí profese nebo plán B. Chceš poznat roli kouče před
+        rozhodnutím o výcviku.
       </>
     ),
     highlight:
-      "Vyzkoušíš si základ koučovací konverzace, kterou můžeš okamžitě používat.",
+      "Poznáš koučování z obou stran a uděláš si konkrétnější představu o výuce v CoachVille.",
   },
   {
     num: "4",
-    headline: (
-      <>
-        Koučování tě zajímá, ale nejsi si <span className="whitespace-nowrap">jistý/á</span>,
-        zda bys to <span className="whitespace-nowrap">zvládl/a</span>
-      </>
-    ),
+    headline: "Koučování tě zajímá, ale zatím si nevěříš",
     body: (
       <>
-        Nemusíš mít talent ani zkušenosti.
+        Nemusíš předem vědět, jak vést koučovací rozhovor. Přicházíš se učit, ne předvést výkon.
       </>
     ),
     highlight:
-      "Dostaneš jednoduchý postup a zjistíš, jak se učíš přímo v praxi.",
+      "Dostaneš jednoduchý postup a otázky, o které se můžeš opřít.",
   },
 ];
 
@@ -59,11 +55,11 @@ export function Pochybnosti() {
     <Section id="situace" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <h2 className="h-display text-h2 text-navy-600 mb-4">
-          Jsi v této situaci?
+          Chceš s lidmi lépe mluvit a lépe jim rozumět?
         </h2>
         <p className="text-base sm:text-lg text-dark/70">
-          Tyhle čtyři situace popisují, jak většina lidí přichází ke koučování.
-          Pokud aspoň v jedné poznáváš sebe, workshop je pro tebe.
+          Možná chceš lépe vést tým, jistěji zvládat pracovní rozhovory nebo poznat koučování jako
+          budoucí profesi. Na lekci můžeš začít vlastní zkušeností.
         </p>
       </div>
 

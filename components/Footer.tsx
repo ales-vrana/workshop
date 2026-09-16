@@ -12,11 +12,11 @@ export function Footer() {
               <span className="text-gold-500 text-xs tracking-[0.3em] align-middle">EUROPE ★</span>
             </div>
             <p className="text-white/60 text-xs mt-2 leading-relaxed">
-              Jediná škola v ČR/SK s nejvyšší ICF akreditací Level 3. Tradice od roku 2001.
+              CoachVille - koučovací výcvik. Učíme se praxí.
             </p>
           </div>
           <div>
-            <p className="font-semibold text-white mb-2">Workshop</p>
+            <p className="font-semibold text-white mb-2">Ukázková lekce</p>
             <p className="text-white/60">{WORKSHOP.dateFull}</p>
             <p className="text-white/60">{WORKSHOP.timeRange} • {WORKSHOP.platform}</p>
             <p className="text-white/60">{WORKSHOP.price}</p>

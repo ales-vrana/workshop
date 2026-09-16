@@ -4,28 +4,28 @@ import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
 
 const VALUE_ITEMS = [
   {
-    title: `${WORKSHOP.duration} živý workshop s ICF MCC koučem`,
-    sub: "interaktivní praxe v roli kouče i klienta",
+    title: "Živá ukázková lekce s Alešem Vránou",
+    sub: "Dvě hodiny vedené praxe na Zoomu",
   },
   {
     title: "Živá ukázka koučování",
-    sub: "uvidíš, jak vypadá profesionální koučování",
+    sub: "Uvidíš práci s otázkami a nasloucháním",
   },
   {
-    title: "Záznam workshopu k pozdějšímu studiu",
-    sub: "můžeš se vrátit a uvědomit si víc",
+    title: "Záznam lekce k pozdějšímu studiu",
+    sub: "Praktické rozhovory ve dvojicích se nenahrávají",
   },
   {
-    title: "PDF: 5 koučovacích otázek pro každodenní použití",
-    sub: "konkrétní nástroj, který můžeš použít už zítra v práci nebo doma",
+    title: "PDF s pěti koučovacími otázkami",
+    sub: "Otázky pro další procvičování rozhovorů",
   },
   {
-    title: "Možnost zažít si poprvé koučování v obou rolích v bezpečném prostředí",
-    sub: "nikdo tě nehodnotí, praktické rozhovory se nenahrávají",
+    title: "Praxe v roli kouče i klienta",
+    sub: "S jednoduchým postupem a vlastním tématem",
   },
   {
-    title: "Přístup k případovým studiím koučů v různých fázích výcviku",
-    sub: "uvidíš, jak vypadá cesta od prvního rozhovoru po první platící klienty",
+    title: "Případové studie koučů ve výcviku",
+    sub: "Poznáš zkušenosti z různých fází výcviku",
   },
 ];
 
@@ -66,25 +66,22 @@ export function Hero() {
         {/* H1 */}
         <h1 className="mt-8 sm:mt-10 text-center max-w-4xl mx-auto">
           <span className="block h-display text-hero text-white">
-            Plán B, který můžeš dělat při&nbsp;práci. Zažij koučování v&nbsp;roli kouče i&nbsp;klienta.
+            Vedeš lidi. Nemusíš mít odpověď na&nbsp;všechno.
           </span>
         </h1>
 
-        {/* Subhead */}
+        {/* Subhead - název akce */}
         <p className="mt-6 sm:mt-8 text-center text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug max-w-3xl mx-auto font-medium">
-          Za {WORKSHOP.duration} si vyzkoušíš koučování v roli kouče i klienta a budeš vědět, jestli je to
-          cesta pro tebe. Workshop pro lidi z korporátu, manažery, HR, učitele, podnikatele, obchodníky,
-          kteří zvažují další kariérní krok.
+          Ukázková lekce koučovacího výcviku CoachVille
         </p>
 
         {/* Intro paragraph */}
         <p className="mt-5 text-center text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto">
-          Koučování můžeš začít dělat při současné práci. Postupně si budovat svůj{" "}
-          <span className="text-white font-semibold">Plán B</span> - a až přijdou první platící klienti,
-          máš víc možností, jak se rozhodnout.
+          Vyzkoušej si, jak vést rozhovor, ve kterém druhému pomáháš najít vlastní řešení. Za dvě
+          hodiny uvidíš živé koučování, vyzkoušíš si roli kouče i klienta a poznáš, jak se
+          v CoachVille učíme praxí.
           <br /><br />
-          Není to teorie. Je to interaktivní online workshop, kdy si na vlastní kůži vyzkoušíš,
-          jaké to je koučovat - a být koučován. Zážitkem si zjistíš, jaký přínos má koučování pro tebe.
+          Lekcí tě provede Aleš Vrána, MCC, MBA, hlavní trenér CoachVille.
         </p>
 
         {/* Value stack card */}

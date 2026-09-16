@@ -1,41 +1,26 @@
 import { Section } from "@/components/ui/Section";
-import { Briefcase, Users, Compass, HeartHandshake, Rocket, Bot, Target } from "lucide-react";
+import { Briefcase, Users, Compass, Target } from "lucide-react";
 
 const PROFILY = [
   {
     icon: Briefcase,
-    title: "Manažer, lídr, HR profesionál",
-    sub: "Pracuješ s lidmi a chceš k tomu profesionální nástroje",
+    title: "Manažeři, lídři a lidé z HR",
+    sub: "Chceš lépe vést rozhovory a rozvíjet samostatnost lidí.",
   },
   {
     icon: Target,
-    title: "Člověk z korporátu, který zvažuje další krok",
-    sub: "Chceš si postavit Plán B dřív, než ho budeš potřebovat",
+    title: "Zájemci o profesi kouče",
+    sub: "Zvažuješ koučovací praxi nebo profesní plán B.",
   },
   {
     icon: Users,
-    title: "Zájemce o koučování",
-    sub: "Slyšel/a jsi o něm, ale nikdy jsi ho neviděl/a v praxi zblízka",
+    title: "Živnostníci a další profesionálové",
+    sub: "Pracuješ s lidmi a chceš rozšířit svůj způsob vedení rozhovorů.",
   },
   {
     icon: Compass,
-    title: "Učitel nebo obchodník",
-    sub: "Rozhovor je tvůj hlavní nástroj a chceš, aby fungoval líp",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Terapeut, lektor, mentor",
-    sub: "Chceš rozšířit svoje nástroje o koučování",
-  },
-  {
-    icon: Rocket,
-    title: "Podnikatel hledající druhý směr",
-    sub: "Chceš budovat příjem ze smysluplné práce",
-  },
-  {
-    icon: Bot,
-    title: "Profesionál v oboru, který proměňuje AI",
-    sub: "Chceš budovat na tom, co AI nenahradí - hluboké lidské porozumění",
+    title: "Absolventi koučovacího výcviku",
+    sub: "Chceš poznat přístup CoachVille pro své další vzdělávání.",
   },
 ];
 
@@ -43,9 +28,9 @@ export function ProKoho() {
   return (
     <Section id="pro-koho" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-        <p className="h-label mb-3">Pro koho je workshop</p>
+        <p className="h-label mb-3">Pro koho je ukázková lekce</p>
         <h2 className="h-display text-h2 text-navy-600">
-          Dělám ho pro lidi, kteří pracují s lidmi
+          Koučování můžeš využít různými směry
         </h2>
       </div>
 
@@ -72,11 +57,7 @@ export function ProKoho() {
       </div>
 
       <p className="text-center text-base sm:text-lg text-navy-700 mt-10 max-w-2xl mx-auto font-medium">
-        Pokud aspoň jeden z nich je tvůj, staneš se součástí komunity{" "}
-        <span className="text-teal-500 font-bold">600+ lidí</span>, kteří touto cestou prošli.
-      </p>
-      <p className="text-center text-sm text-dark/55 mt-4 italic max-w-xl mx-auto">
-        Pokud nic z toho nesedí - workshop pravděpodobně není pro tebe. To je v pořádku.
+        Nemusíš mít rozhodnuto, kterým směrem půjdeš.
       </p>
     </Section>
   );

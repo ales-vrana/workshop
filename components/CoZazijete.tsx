@@ -1,37 +1,36 @@
 import { Section } from "@/components/ui/Section";
 import { Eye, UserCheck, Heart, Sparkles, Map, Wrench } from "lucide-react";
-import { WORKSHOP } from "@/lib/config";
 
 const KARTY = [
   {
     icon: Eye,
-    headline: "ŽIVÁ UKÁZKA KOUČOVÁNÍ",
-    body: "Uvidíš koučování, jak vypadá u držitele nejvyšší ICF certifikace MCC. Můžeš se přihlásit jako klient ukázky a zažít koučování přímo se mnou. Co vidíš v knihách jako ideální, uvidíš v praxi.",
+    headline: "Uvidíš koučování v praxi",
+    body: "Aleš předvede živý koučovací rozhovor. Budeš sledovat práci s otázkami a nasloucháním i rozdíl mezi koučováním a poskytováním rad.",
   },
   {
     icon: UserCheck,
-    headline: "VYZKOUŠÍŠ SI ROLI KOUČE",
-    body: "Pravděpodobně poprvé v životě budeš sedět naproti člověku, kterého máš koučovat. Cítíš mírné napětí. Pak položíš první otázku. A další. Postupně přestaneš přemýšlet, jestli to děláš správně - začneš poslouchat. Zjistíš, jak ti tato role sedí - fyzicky, emočně, mentálně.",
+    headline: "Vyzkoušíš si roli kouče",
+    body: "Dostaneš jednoduchý postup a konkrétní otázky. Ve dvojici s dalším účastníkem si vyzkoušíš, jak podpořit člověka v hledání vlastního řešení.",
   },
   {
     icon: Heart,
-    headline: "ZAŽIJEŠ KOUČOVÁNÍ JAKO KLIENT",
-    body: "Druhá strana zkušenosti. Někdo tě bude koučovat na téma, které si sám vybereš. Možná na téma, které sis nikdy nahlas neřekl/a. Pět minut do rozhovoru zjistíš, že tě někdo skutečně poslouchá. Pak přijde otázka, na kterou jsi sám/sama nepřišel/a. A pochopíš, proč si stále více lidí najímá svého kouče.",
+    headline: "Zažiješ rozhovor jako klient",
+    body: "Další účastník tě bude koučovat na téma, které si vybereš. Poznáš, jak na tebe působí otázky a prostor pro přemýšlení z druhé strany rozhovoru.",
   },
   {
     icon: Sparkles,
-    headline: "PRACUJEŠ NA SVÉM SKUTEČNÉM TÉMATU",
-    body: "Žádné modelové situace. Pracuješ s reálným tématem, které je důležité právě teď ve tvém životě nebo práci. Možná odejdeš s posunem, který jsi nečekal/a - workshop je živá praxe, ne simulace.",
+    headline: "Přineseš si vlastní téma",
+    body: "Můžeš pracovat s běžnou situací z práce nebo života. Téma si volíš ty a nemusíš otevírat nic citlivého ani osobního.",
   },
   {
     icon: Map,
-    headline: "JAK KOUČOVÁNÍ POUŽÍVAT V PRÁCI I DOMA",
-    body: "Mnoho lidí chce koučovací dovednosti používat ve své současné práci - v rozhovorech s kolegy, ve vedení týmu, s partnerem, s dětmi. Někoho zaujme natolik, že chce postupně koučovat profesionálně. Ukážu ti obě cesty - ať si vybereš, která dává smysl pro tvůj život.",
+    headline: "Poznáš způsob učení v CoachVille",
+    body: "Zažiješ vedenou praxi. Získáš konkrétnější představu, zda ti náš způsob výuky sedí a co se chceš dál učit.",
   },
   {
     icon: Wrench,
-    headline: "5 KOUČOVACÍCH KONVERZACÍ PO WORKSHOPU",
-    body: "Bez studených kontaktů. Bez prodejních triků. Konkrétní postup, jak můžeš už druhý den s někým dalším udělat první koučovací konverzaci. Otázky, které můžeš položit, a jak získat užitečnou zpětnou vazbu.",
+    headline: "Odneseš si otázky pro další praxi",
+    body: "Dostaneš PDF s pěti koučovacími otázkami. Můžeš se k nim vracet a dál procvičovat způsob vedení rozhovoru, který si na lekci vyzkoušíš.",
   },
 ];
 
@@ -41,7 +40,7 @@ export function CoZazijete() {
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">Co tě čeká</p>
         <h2 className="h-display text-h2 text-navy-600">
-          Co přesně se za ty {WORKSHOP.duration} stane
+          Co během lekce zažiješ
         </h2>
       </div>
 

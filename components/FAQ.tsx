@@ -7,12 +7,12 @@ import { WORKSHOP } from "@/lib/config";
 
 const QA = [
   {
-    q: "Zvažuji koučování jako budoucí profesi. Je pro mě workshop, nebo mám jít rovnou na konzultaci?",
-    a: "Obojí funguje, liší se to rychlostí. Workshop je nejlevnější a nejrychlejší způsob, jak si profesi otestovat v praxi - za 2 hodiny si koučování zkusíš z obou stran a uvidíš, jak ti sedí. Pokud tě to zajímá, můžeš si rovnou domluvit nezávazný hovor, kde projdeme tvou situaci, čísla a celou cestu k certifikaci. A klidně obojí: přijď na workshop a hovor si domluv po něm. Pokud už jsi hovor měl, workshop je přirozený další krok.",
+    q: "Je to pro mě, i když se nechci stát profesionálním koučem?",
+    a: "Ano. Přijít můžeš kvůli vedení lidí, práci v HR nebo dalším rozhovorům ve své současné profesi. Na lekci si vyzkoušíš koučovací přístup a zvážíš, zda ho chceš dál rozvíjet.",
   },
   {
-    q: "Nikdy jsem nekoučoval/a. Bude to pro mě?",
-    a: "Ano - workshop je primárně pro lidi bez předchozí zkušenosti. Dostaneš jednoduchý rámec a jasné instrukce. Účast na workshopu nevyžaduje předchozí zkušenost s koučováním.",
+    q: "Potřebuji předchozí zkušenosti?",
+    a: "Ne. Praktickou částí tě provedeme a dostaneš jednoduchý postup pro první rozhovor.",
   },
   {
     q: "Co když mi to nebude sedět?",
@@ -23,16 +23,16 @@ const QA = [
     a: "Ano. Workshop je interaktivní, koučuješ a jsi koučován/a - to bez kamery nejde. Připojit se můžeš z počítače, tabletu nebo telefonu, workshop probíhá na Zoomu.",
   },
   {
-    q: `Co když nemůžu být celé ${WORKSHOP.duration} online?`,
-    a: "Doporučuji si čas vyhradit celý. Praxe probíhá ve druhé polovině a kdo odejde dříve, přijde o klíčovou část. Účastníci dostanou záznam, ten však nebude obsahovat praktickou část.",
+    q: "Mohu přijít jen na část?",
+    a: "Pro zkušenost v obou rolích si vyhraď celé dvě hodiny. Záznam ti umožní vrátit se k nahrané části lekce, ale nenahradí vlastní praxi ve dvojici.",
   },
   {
-    q: "Je workshop vhodný pro pokročilé kouče?",
-    a: "Tento konkrétní formát je orientován na začátečníky a zájemce o koučování. Pokud už koučuješ, jsi ve výcviku, nebo jsi profesionálním koučem, tento workshop není pro tebe.",
+    q: "Mám už koučovací výcvik za sebou. Má smysl přijít?",
+    a: "Ano, pokud chceš osobně poznat přístup CoachVille. Počítej s úvodní lekcí přístupnou i začátečníkům. Pokud hledáš návaznost na ICF certifikaci nebo rozvoj vlastní praxe, napiš Alešovi na ales@coachville.eu se svou situací.",
   },
   {
-    q: "Můžu workshop dát někomu jako dárek?",
-    a: `Ano, napiš mi e-mail na ${WORKSHOP.contactEmail} - připravím dárkový voucher na jeho jméno.`,
+    q: "Je to běžná lekce probíhajícího výcviku?",
+    a: "Je to samostatná praktická ukázková lekce připravená pro zájemce. Umožní ti poznat náš způsob práce, aniž by ses nejprve přihlašoval/a do výcviku.",
   },
   {
     q: "Bude na workshopu nějaký prodejní pitch?",
@@ -51,7 +51,7 @@ export function FAQ() {
     <Section id="faq" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">FAQ</p>
-        <h2 className="h-display text-h2 text-navy-600">Časté otázky</h2>
+        <h2 className="h-display text-h2 text-navy-600">Otázky před přihlášením</h2>
       </div>
 
       <div className="max-w-3xl mx-auto">

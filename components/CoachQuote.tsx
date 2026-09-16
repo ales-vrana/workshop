@@ -20,11 +20,12 @@ export function CoachQuote() {
             <Quote className="h-8 w-8 text-teal-400 mb-3" aria-hidden />
             <blockquote className="text-lg sm:text-xl text-dark leading-relaxed">
               <p>
-                <span className="font-semibold">Workshop nezjistí, jestli jsi už hotový kouč.</span>{" "}
-                Zjistíš prakticky, jestli s tebou koučování rezonuje, jak se cítíš v roli
-                kouče i v roli koučovaného. Odejdeš s vlastní zkušeností a jasným závěrem:{" "}
-                <span className="font-semibold">je to moje cesta, nebo není.</span> Obojí je vítězství -
-                přestaneš přemýšlet a budeš vědět. Zbytek se dá vytrénovat.
+                <span className="font-semibold">
+                  Na samostatné ukázkové lekci ti ukážu, jak se v CoachVille učíme praxí.
+                </span>{" "}
+                Nepotřebuješ předchozí zkušenosti a účast tě nezavazuje k přihlášení do výcviku.
+                Získáš vlastní zkušenost, která ti pomůže posoudit, co ti koučovací přístup může
+                přinést.
               </p>
             </blockquote>
             <footer className="mt-4 text-sm sm:text-base text-navy-700 font-semibold">

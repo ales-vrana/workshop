@@ -1,27 +1,17 @@
 import { Section } from "@/components/ui/Section";
-import { Trophy, GraduationCap, Users, Flag } from "lucide-react";
+import { Trophy, GraduationCap } from "lucide-react";
 import { COACH } from "@/lib/config";
 
 const BADGES = [
   {
     icon: Trophy,
     title: "ICF Master Certified Coach",
-    sub: `nejvyšší světová úroveň - v ČR má MCC pouze ${COACH.mccCountInCzechia} koučů (a 4 z nich studovali v CoachVille)`,
+    sub: "Držitel koučovací certifikace ICF MCC.",
   },
   {
     icon: GraduationCap,
-    title: `${COACH.yearsOfPractice} let denní praxe v profesionálním koučování`,
-    sub: `cca ${COACH.coachingHours} odkoučovaných hodin · škola CoachVille působí v ČR/SK 15 let, značka CoachVille vznikla v USA v roce 2001`,
-  },
-  {
-    icon: Users,
-    title: "Největší komunita profesionálních koučů v ČR/SK",
-    sub: "od roku 2014",
-  },
-  {
-    icon: Flag,
-    title: "Ambasador CoachVille pro ČR/SK",
-    sub: "Koučovací výcvik akreditovaný ICF na úrovni Level 3. Jediná škola v ČR/SK s přípravou pro všechny úrovně ICF certifikace: ACC, PCC, MCC.",
+    title: "Hlavní trenér CoachVille",
+    sub: "Provede tě živou ukázkou i praktickým cvičením, abys poznal/a koučování na vlastní zkušenosti.",
   },
 ];
 
@@ -31,10 +21,10 @@ export function OLektorovi() {
       <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
         <p className="h-label text-gold-400 mb-3">Lektor</p>
         <h2 className="h-display text-h2 text-white mb-4">
-          Hlavní trenér CoachVille
+          S kým lekci zažiješ
         </h2>
         <p className="text-base sm:text-lg text-white/70">
-          S kým tento workshop zažiješ:
+          Praktickou ukázkovou lekcí tě provede:
         </p>
       </div>
 
@@ -80,19 +70,6 @@ export function OLektorovi() {
               })}
             </ul>
           </div>
-        </div>
-
-        {/* Osobní citát */}
-        <div className="mt-12 sm:mt-14 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-6 sm:p-8">
-          <p className="h-label text-gold-400 mb-3">Něco, co o mně asi nevíš</p>
-          <p className="text-base sm:text-lg text-white/90 leading-relaxed">
-            Nejsem coach, který „změnil svůj život koučováním ze dne na den". Tahle profese
-            mě baví, protože mě každý klient přinutí přemýšlet. Žiju koučováním 14 let každý
-            den, a kdybych měl rozhodnutí udělat znovu, udělal bych ho dřív.{" "}
-            <strong className="text-white">
-              Stát se koučem bylo nejlepší rozhodnutí mého dospělého života.
-            </strong>
-          </p>
         </div>
       </div>
     </Section>
