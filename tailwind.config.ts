@@ -50,6 +50,14 @@ const config: Config = {
           900: "#5a3e21",
         },
         cream: "#FAF9F5",
+        // Barva CTA tlačítek (zvoleno 17. 9. 2026): zelená #34A853
+        cta: {
+          DEFAULT: "#34A853",
+          400: "#4CB865", // světlejší (hover na tmavém pozadí)
+          500: "#34A853", // základ
+          600: "#2C9147", // hover
+          700: "#25803D", // active
+        },
         dark: "#30302E",
       },
       fontFamily: {
