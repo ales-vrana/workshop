@@ -26,8 +26,8 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
       body: "Spousta účastníků si během workshopu zapisuje postřehy a otázky, které je napadnou. Užitečné pro zpětnou reflexi.",
     },
     {
-      title: "Den před: vypněte notifikace",
-      body: `Workshop staví na hluboké pozornosti. ${termin.duration} offline od Slacku a e-mailu udělají obrovský rozdíl ve výsledku.`,
+      title: "Vypněte email a notifikace",
+      body: "Workshop staví na hluboké pozornosti. Nenechat se rušit po dobu workshopu udělá velký rozdíl ve výsledku.",
     },
   ];
 
