@@ -33,7 +33,7 @@ export function Terminy() {
     <Section id="terminy" tone="white" className="!pb-28 sm:!pb-32">
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <p className="h-label mb-3">Termíny</p>
-        <h2 className="h-display text-h2 text-navy-600">
+        <h2 className="h-section text-h2 text-navy-600">
           {prazdno ? "Nové termíny právě připravuji" : "Vyber si termín, který ti sedí"}
         </h2>
         {!prazdno && (
@@ -62,11 +62,11 @@ export function Terminy() {
               <article
                 key={t.id}
                 className={`flex flex-col bg-white rounded-2xl p-6 sm:p-7 shadow-soft transition-all hover:shadow-card-hover hover:-translate-y-1 ${
-                  idx === 0 ? "border-2 border-teal-400" : "border border-navy-100/60"
+                  idx === 0 ? "border-2 border-navy-600" : "border border-navy-100/60"
                 }`}
               >
                 {idx === 0 && (
-                  <p className="inline-flex self-start items-center rounded-full bg-teal-400/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-teal-600 mb-4">
+                  <p className="inline-flex self-start items-center rounded-full bg-gold-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold-700 mb-4">
                     Nejbližší termín
                   </p>
                 )}
@@ -77,15 +77,15 @@ export function Terminy() {
 
                 <div className="mt-3 space-y-2 text-sm sm:text-base text-dark/70">
                   <p className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-teal-500 shrink-0" aria-hidden />
+                    <Clock className="h-4 w-4 text-navy-400 shrink-0" aria-hidden />
                     {t.timeRange}
                   </p>
                   <p className="flex items-center gap-2">
-                    <Monitor className="h-4 w-4 text-teal-500 shrink-0" aria-hidden />
+                    <Monitor className="h-4 w-4 text-navy-400 shrink-0" aria-hidden />
                     online přes {WORKSHOP.platform}
                   </p>
                   <p className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-teal-500 shrink-0" aria-hidden />
+                    <Calendar className="h-4 w-4 text-navy-400 shrink-0" aria-hidden />
                     {t.duration}
                   </p>
                 </div>

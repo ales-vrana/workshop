@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { WORKSHOP } from "@/lib/config";
@@ -7,11 +11,11 @@ import { WORKSHOP } from "@/lib/config";
  *
  * ZVUK (iOS): jediný spolehlivý způsob, jak na iPhonu spustit video se
  * zvukem, je klepnutí přímo na tlačítko Play UVNITŘ přehrávače Vimeo.
- * Jakékoliv programové spuštění (autoplay, postMessage „play") iOS ztlumí.
- * Proto tu není vlastní náhled s tlačítkem - přehrávač je rovnou v kartě,
- * uživatel klepne jednou na jeho Play a video hraje nahlas. Přehrávače se
- * načítají líně (loading="lazy"), takže se stahují jen ty, které jsou
- * blízko obrazu.
+ * Proto je přehrávač rovnou v kartě a načítá se líně.
+ *
+ * DÉLKA STRÁNKY (UX vlna 2): při načtení je vidět prvních VIDITELNYCH_VIDEI,
+ * zbytek se objeví po kliknutí na „Načíst další reference". Skrytá videa
+ * nejsou v DOM vůbec, takže se nic nestahuje.
  *
  * Jména účastníků se záměrně nezobrazují (zatím nejsou ověřená).
  */
@@ -39,16 +43,19 @@ const VIDEOS: Video[] = [
   { vimeoId: "1139978271", hash: "aaa69c29fb" },
 ];
 
+/** Kolik videí je vidět při načtení stránky */
+const VIDITELNYCH_VIDEI = 6;
+
 function vimeoEmbedUrl(v: Video): string {
   const base = `https://player.vimeo.com/video/${v.vimeoId}`;
   const params = new URLSearchParams({
     badge: "0",
-    autopause: "1", // při spuštění dalšího videa se předchozí zastaví
+    autopause: "1",
     player_id: "0",
     app_id: "58479",
     autoplay: "0",
     muted: "0",
-    playsinline: "1", // iPhone: přehrát v kartě, ne přes celou obrazovku
+    playsinline: "1",
     dnt: "1",
     title: "0",
     byline: "0",
@@ -76,11 +83,16 @@ function VideoCard({ video, index }: { video: Video; index: number }) {
 }
 
 export function Zkusenosti() {
+  const [rozbaleno, setRozbaleno] = useState(false);
+
+  const zobrazena = rozbaleno ? VIDEOS : VIDEOS.slice(0, VIDITELNYCH_VIDEI);
+  const zbyva = VIDEOS.length - VIDITELNYCH_VIDEI;
+
   return (
     <Section id="reference" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">Reference</p>
-        <h2 className="h-display text-h2 text-navy-600 mb-4">Zkušenosti účastníků</h2>
+        <h2 className="h-section text-h2 text-navy-600 mb-4">Zkušenosti účastníků</h2>
         <p className="text-base sm:text-lg text-dark/70">
           Krátké video-reference od lidí, kteří workshop prošli. Klikněte na libovolnou kartu
           a poslechněte si jejich příběh.
@@ -88,12 +100,25 @@ export function Zkusenosti() {
       </div>
 
       <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {VIDEOS.map((v, i) => (
+        {zobrazena.map((v, i) => (
           <VideoCard key={v.vimeoId} video={v} index={i} />
         ))}
       </div>
 
-      <div className="flex justify-center mt-12 sm:mt-14">
+      {!rozbaleno && zbyva > 0 && (
+        <div className="flex justify-center mt-8 sm:mt-10">
+          <button
+            type="button"
+            onClick={() => setRozbaleno(true)}
+            className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-lg border-2 border-navy-600 text-navy-600 font-bold text-sm sm:text-base hover:bg-navy-600 hover:text-white transition-colors focus-visible:ring-4 focus-visible:ring-navy-600/30"
+          >
+            Načíst další reference ({zbyva})
+            <ChevronDown className="h-5 w-5" aria-hidden />
+          </button>
+        </div>
+      )}
+
+      <div className="flex justify-center mt-10 sm:mt-12">
         <CTAButton href="#terminy" variant="primary">
           Chci to zažít - {WORKSHOP.price}
         </CTAButton>

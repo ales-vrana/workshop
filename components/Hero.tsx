@@ -93,24 +93,26 @@ export function Hero() {
               Ukázková lekce koučovacího výcviku CoachVille
             </p>
 
-            {/* Řádek s cenou a formátem */}
+            {/* Řádek s formátem */}
             <p className="mt-4 text-base text-white/90 font-medium">
-              {WORKSHOP.price} · {WORKSHOP.duration} · online přes {WORKSHOP.platform}
+              {WORKSHOP.duration} · online přes {WORKSHOP.platform}
             </p>
 
-            {/* TLAČÍTKO */}
+            {/* TLAČÍTKO - říká, co se stane (výběr termínu), ne cenu */}
             <div className="mt-5 sm:mt-6 flex flex-col items-center lg:items-start gap-3">
               <CTAButton
                 id="hero-cta"
                 href="#terminy"
                 variant="on-dark"
                 className="w-full sm:w-auto group"
-                ariaLabel={`Chci to zažít - ${WORKSHOP.price}, vybrat termín`}
+                ariaLabel="Vybrat termín - zobrazit termíny ukázkové lekce"
               >
-                Chci to zažít - {WORKSHOP.price}
+                Vybrat termín
               </CTAButton>
               <p className="text-[13px] text-white/70 text-center lg:text-left">
-                Garance vrácení peněz · max {WORKSHOP.capacity} míst
+                {WORKSHOP.price}
+                {terminy.length > 0 && <> · {pocetTerminu(terminy.length)}</>}
+                {" "}· garance vrácení peněz
               </p>
             </div>
 
@@ -187,8 +189,8 @@ export function Hero() {
               {VALUE_ITEMS.map((item) => (
                 <li key={item.title} className="flex items-start gap-3">
                   <div className="shrink-0 mt-1">
-                    <div className="flex items-center justify-center h-6 w-6 rounded-full bg-teal-400/25 ring-1 ring-teal-300/40">
-                      <Check className="h-3.5 w-3.5 text-teal-200" aria-hidden />
+                    <div className="flex items-center justify-center h-6 w-6 rounded-full bg-gold-500/25 ring-1 ring-gold-400/40">
+                      <Check className="h-3.5 w-3.5 text-gold-300" aria-hidden />
                     </div>
                   </div>
                   <div>
@@ -214,19 +216,19 @@ export function Hero() {
         {/* Info row */}
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-x-6 sm:gap-y-3 text-sm sm:text-base text-white/85">
           <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-teal-300 shrink-0" aria-hidden />
+            <Calendar className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
             <span className="font-medium">
               {nejblizsi ? <>Nejbližší: {nejblizsi.dateFull}</> : <>Nové termíny připravuji</>}
             </span>
           </div>
           <div className="hidden sm:block h-4 w-px bg-white/20" aria-hidden />
           <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-teal-300 shrink-0" aria-hidden />
+            <Clock className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
             <span className="font-medium">{nejblizsi ? nejblizsi.timeRange : WORKSHOP.timeRange}</span>
           </div>
           <div className="hidden sm:block h-4 w-px bg-white/20" aria-hidden />
           <div className="flex items-center gap-2">
-            <Monitor className="h-4 w-4 text-teal-300 shrink-0" aria-hidden />
+            <Monitor className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
             <span className="font-medium">{WORKSHOP.platform}</span>
           </div>
         </div>

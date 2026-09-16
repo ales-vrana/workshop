@@ -45,9 +45,14 @@
     @apply font-display font-extrabold uppercase tracking-normal;
   }
 
+  /* Nadpisy sekcí (H2): stejný font a váha, ale sentence case - rychlejší čtení */
+  .h-section {
+    @apply font-display font-extrabold tracking-normal;
+  }
+
   /* Label (gold uppercase malé) */
   .h-label {
-    @apply text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-gold-500;
+    @apply text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-gold-700; /* 6,6:1 na bílé; na tmavém pozadí přepsat text-gold-400 */
   }
 
   /* Primární CTA tlačítko - teal */
@@ -105,13 +110,13 @@
 
   /* Highlight box */
   .highlight-box {
-    @apply bg-cream border-l-4 border-teal-400 px-5 py-4 rounded-r-lg text-sm sm:text-base;
+    @apply bg-cream border-l-4 border-gold-500 px-5 py-4 rounded-r-lg text-sm sm:text-base;
   }
 
   /* Number badge */
   .num-badge {
     @apply inline-flex items-center justify-center w-12 h-12 rounded-full
-           bg-teal-50 text-teal-500 font-bold text-lg ring-2 ring-teal-400/20;
+           bg-navy-100/40 text-navy-600 font-bold text-lg ring-2 ring-navy-600/15;
   }
 }
 

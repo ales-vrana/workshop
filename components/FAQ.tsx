@@ -51,7 +51,7 @@ export function FAQ() {
     <Section id="faq" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">FAQ</p>
-        <h2 className="h-display text-h2 text-navy-600">Otázky před přihlášením</h2>
+        <h2 className="h-section text-h2 text-navy-600">Otázky před přihlášením</h2>
       </div>
 
       <div className="max-w-3xl mx-auto">
@@ -69,7 +69,7 @@ export function FAQ() {
                 >
                   <span className="font-semibold text-base sm:text-lg text-navy-700">{item.q}</span>
                   <ChevronDown
-                    className={`h-5 w-5 shrink-0 text-teal-500 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    className={`h-5 w-5 shrink-0 text-navy-600 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                     aria-hidden
                   />
                 </button>

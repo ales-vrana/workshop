@@ -20,10 +20,10 @@ export function NemuzesToPokazit() {
       <div className="max-w-3xl mx-auto">
         <div className="rounded-2xl bg-white border border-navy-100/60 shadow-soft p-6 sm:p-10">
           <div className="flex items-center gap-4 mb-6">
-            <div className="flex items-center justify-center h-12 w-12 sm:h-14 sm:w-14 rounded-xl bg-teal-400/15 text-teal-500 shrink-0">
+            <div className="flex items-center justify-center h-12 w-12 sm:h-14 sm:w-14 rounded-xl bg-navy-100/40 text-navy-600 shrink-0">
               <ShieldCheck className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden />
             </div>
-            <h2 className="h-display text-h2 text-navy-600 leading-tight">
+            <h2 className="h-section text-h2 text-navy-600 leading-tight">
               Můžeš přijít i s nejistotou
             </h2>
           </div>
@@ -32,7 +32,7 @@ export function NemuzesToPokazit() {
             {JISTOTY.map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span
-                  className="mt-2 h-2 w-2 rounded-full bg-teal-400 shrink-0"
+                  className="mt-2 h-2 w-2 rounded-full bg-gold-500 shrink-0"
                   aria-hidden
                 />
                 <p className="text-base sm:text-lg text-dark/80 leading-relaxed">{item}</p>

@@ -29,7 +29,7 @@ export function ProKoho() {
     <Section id="pro-koho" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <p className="h-label mb-3">Pro koho je ukázková lekce</p>
-        <h2 className="h-display text-h2 text-navy-600">
+        <h2 className="h-section text-h2 text-navy-600">
           Koučování můžeš využít různými směry
         </h2>
       </div>
@@ -40,9 +40,9 @@ export function ProKoho() {
           return (
             <article
               key={idx}
-              className="flex items-start gap-4 p-5 sm:p-6 bg-cream rounded-2xl border border-navy-100/40 transition-all hover:bg-white hover:shadow-soft hover:border-teal-400/30"
+              className="flex items-start gap-4 p-5 sm:p-6 bg-cream rounded-2xl border border-navy-100/40 transition-all hover:bg-white hover:shadow-soft hover:border-navy-600/30"
             >
-              <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-teal-400/15 text-teal-500">
+              <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-navy-100/40 text-navy-600">
                 <Icon className="h-5 w-5" aria-hidden />
               </div>
               <div>

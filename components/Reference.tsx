@@ -27,7 +27,7 @@ export function Reference() {
   return (
     <Section id="citace" tone="cream">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-        <h2 className="h-display text-h2 text-navy-600">
+        <h2 className="h-section text-h2 text-navy-600">
           Co si lidé odnesli z předchozích workshopů
         </h2>
       </div>
@@ -39,7 +39,7 @@ export function Reference() {
             className="relative bg-white rounded-2xl border border-navy-100/50 shadow-soft p-6 sm:p-8"
           >
             <Quote
-              className="absolute top-5 right-5 h-8 w-8 sm:h-10 sm:w-10 text-teal-400/15"
+              className="absolute top-5 right-5 h-8 w-8 sm:h-10 sm:w-10 text-navy-600/10"
               aria-hidden
             />
             <blockquote className="relative text-base sm:text-lg text-dark/85 leading-relaxed">

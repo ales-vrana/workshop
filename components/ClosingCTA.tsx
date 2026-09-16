@@ -8,7 +8,7 @@ export function ClosingCTA() {
     <Section id="koupit" tone="navy">
       <div className="max-w-3xl mx-auto text-center">
         <p className="h-label text-gold-400 mb-3">Závěrečné CTA</p>
-        <h2 className="h-display text-h2 text-white mb-6">
+        <h2 className="h-section text-h2 text-white mb-6">
           Za {WORKSHOP.duration} budeš vědět, jestli je koučování tvoje cesta
         </h2>
         <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-6 max-w-2xl mx-auto">
@@ -21,7 +21,7 @@ export function ClosingCTA() {
           </strong>
         </p>
         <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-10 max-w-2xl mx-auto">
-          Patříš mezi lidi, kteří se rozhodují <strong className="text-teal-300">v praxi, ne v hlavě</strong>?
+          Patříš mezi lidi, kteří se rozhodují <strong className="text-white">v praxi, ne v hlavě</strong>?
           To je vzácnost. Workshop ti dá důkaz.
           <br /><br />
           Staneš se <strong className="text-gold-300">koučem i hráčem</strong> - ne jen pozorovatelem.
@@ -30,35 +30,35 @@ export function ClosingCTA() {
 
         <ul className="text-left space-y-4 max-w-2xl mx-auto mb-10">
           <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
+            <Check className="h-6 w-6 shrink-0 text-gold-400 mt-0.5" aria-hidden />
             <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-teal-300">{WORKSHOP.duration} živé praxe</strong> - v roli kouče i klienta
+              <strong className="text-white">{WORKSHOP.duration} živé praxe</strong> - v roli kouče i klienta
             </span>
           </li>
           <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
+            <Check className="h-6 w-6 shrink-0 text-gold-400 mt-0.5" aria-hidden />
             <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-teal-300">S ICF MCC koučem</strong> - držitelem nejvyšší světové certifikace
+              <strong className="text-white">S ICF MCC koučem</strong> - držitelem nejvyšší světové certifikace
             </span>
           </li>
           <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
+            <Check className="h-6 w-6 shrink-0 text-gold-400 mt-0.5" aria-hidden />
             <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-teal-300">Max {WORKSHOP.capacity} lidí</strong> - malá skupina, osobní pozornost
+              <strong className="text-white">Max {WORKSHOP.capacity} lidí</strong> - malá skupina, osobní pozornost
             </span>
           </li>
           <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-teal-300 mt-0.5" aria-hidden />
+            <Check className="h-6 w-6 shrink-0 text-gold-400 mt-0.5" aria-hidden />
             <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-teal-300">Garance:</strong> pokud po 60 minutách necítíš přínos, vrátím ti 100 % ceny
+              <strong className="text-white">Garance:</strong> pokud po 60 minutách necítíš přínos, vrátím ti 100 % ceny
             </span>
           </li>
         </ul>
 
         {/* Cenová kotva */}
-        <div className="rounded-xl bg-teal-400/10 border border-teal-300/30 px-5 py-4 max-w-2xl mx-auto mb-10">
+        <div className="rounded-xl bg-white/5 border border-white/15 px-5 py-4 max-w-2xl mx-auto mb-10">
           <p className="text-base sm:text-lg text-white/90 leading-relaxed">
-            <strong className="text-teal-300">{WORKSHOP.price} a {WORKSHOP.duration}.</strong>{" "}
+            <strong className="text-white">{WORKSHOP.price} a {WORKSHOP.duration}.</strong>{" "}
             Nejlevnější způsob, jak otestovat rozhodnutí, které ovlivní další roky.
           </p>
         </div>
@@ -80,17 +80,17 @@ export function ClosingCTA() {
         {/* Info row */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white/85 mb-8 text-sm sm:text-base font-medium">
           <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-teal-300" aria-hidden />
+            <Calendar className="h-4 w-4 text-white/70" aria-hidden />
             {WORKSHOP.dateFull}
           </div>
           <div className="hidden sm:block h-4 w-px bg-white/25" aria-hidden />
           <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-teal-300" aria-hidden />
+            <Clock className="h-4 w-4 text-white/70" aria-hidden />
             {WORKSHOP.timeRange}
           </div>
           <div className="hidden sm:block h-4 w-px bg-white/25" aria-hidden />
           <div className="flex items-center gap-2">
-            <Monitor className="h-4 w-4 text-teal-300" aria-hidden />
+            <Monitor className="h-4 w-4 text-white/70" aria-hidden />
             {WORKSHOP.platform}
           </div>
         </div>

@@ -41,7 +41,7 @@ export function CoZazijete() {
     <Section id="co-zazijete" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">Co tě čeká</p>
-        <h2 className="h-display text-h2 text-navy-600">
+        <h2 className="h-section text-h2 text-navy-600">
           Co během lekce zažiješ
         </h2>
       </div>
@@ -52,11 +52,11 @@ export function CoZazijete() {
           return (
             <article
               key={idx}
-              className="card group relative overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 hover:border-teal-400/40"
+              className="card group relative overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 hover:border-navy-600/30"
             >
               <div className="relative">
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-teal-400/15 text-teal-500 group-hover:bg-teal-400 group-hover:text-white transition-colors">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-navy-100/40 text-navy-600 group-hover:bg-navy-600 group-hover:text-white transition-colors">
                     <Icon className="h-6 w-6" aria-hidden />
                   </div>
                 </div>

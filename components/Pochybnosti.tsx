@@ -54,7 +54,7 @@ export function Pochybnosti() {
   return (
     <Section id="situace" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-        <h2 className="h-display text-h2 text-navy-600 mb-4">
+        <h2 className="h-section text-h2 text-navy-600 mb-4">
           Chceš s lidmi lépe mluvit a lépe jim rozumět?
         </h2>
         <p className="text-base sm:text-lg text-dark/70">

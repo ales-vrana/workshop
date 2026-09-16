@@ -17,7 +17,7 @@ export function CoachQuote() {
             </div>
           </div>
           <div>
-            <Quote className="h-8 w-8 text-teal-400 mb-3" aria-hidden />
+            <Quote className="h-8 w-8 text-gold-500 mb-3" aria-hidden />
             <blockquote className="text-lg sm:text-xl text-dark leading-relaxed">
               <p>
                 <span className="font-semibold">
