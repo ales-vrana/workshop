@@ -30,7 +30,7 @@ export function Terminy() {
   const prazdno = terminy.length === 0;
 
   return (
-    <Section id="terminy" tone="white">
+    <Section id="terminy" tone="white" className="!pb-28 sm:!pb-32">
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <p className="h-label mb-3">Termíny</p>
         <h2 className="h-display text-h2 text-navy-600">

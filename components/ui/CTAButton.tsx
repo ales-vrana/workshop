@@ -6,8 +6,18 @@ interface CTAButtonProps {
   variant?: "primary" | "secondary" | "on-dark";
   className?: string;
   children: React.ReactNode;
+  /**
+   * Otevřít v novém okně. Výchozí: automaticky podle odkazu -
+   * kotvy (#terminy) a interní cesty (/dekujeme) se otevírají ve stejném
+   * okně, externí adresy (https://…) v novém.
+   */
   external?: boolean;
   ariaLabel?: string;
+  id?: string;
+}
+
+function isInternalHref(href: string): boolean {
+  return href.startsWith("#") || href.startsWith("/");
 }
 
 export function CTAButton({
@@ -15,23 +25,30 @@ export function CTAButton({
   variant = "primary",
   className,
   children,
-  external = true,
+  external,
   ariaLabel,
+  id,
 }: CTAButtonProps) {
+  const opensNewWindow = external ?? !isInternalHref(href);
+
   const classes = {
     primary: "btn-primary group",
     secondary: "btn-secondary group",
     "on-dark": "btn-on-dark group",
   }[variant];
 
-  const labelSuffix = external ? " (otevře se v novém okně)" : "";
+  const label =
+    ariaLabel ?? (typeof children === "string" ? children : undefined);
+  const labelWithSuffix =
+    label && opensNewWindow ? `${label} (otevře se v novém okně)` : label;
 
   return (
     <a
+      id={id}
       href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      aria-label={(ariaLabel ?? (typeof children === "string" ? children : "")) + labelSuffix}
+      target={opensNewWindow ? "_blank" : undefined}
+      rel={opensNewWindow ? "noopener noreferrer" : undefined}
+      aria-label={labelWithSuffix}
       className={cn(classes, className)}
     >
       <span>{children}</span>

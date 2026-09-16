@@ -27,10 +27,9 @@ export default function HomePage() {
       {/* Hero - bez Reveal, je nad foldem */}
       <Hero />
 
-      {/* Termíny hned za heroem - kdo je rozhodnutý, nemusí scrollovat */}
-      <Reveal>
-        <Terminy />
-      </Reveal>
+      {/* Termíny hned za heroem - kdo je rozhodnutý, nemusí scrollovat.
+          Bez Reveal: sem vedou všechna tlačítka, musí být vidět okamžitě. */}
+      <Terminy />
 
       {/* Ostatní sekce dostávají scroll-triggered fade-in */}
       <Reveal>
