@@ -21,11 +21,10 @@ export function CoachQuote() {
             <blockquote className="text-lg sm:text-xl text-dark leading-relaxed">
               <p>
                 <span className="font-semibold">
-                  Na samostatné ukázkové lekci ti ukážu, jak se v CoachVille učíme praxí.
+                  Toto setkání je určeno pro tebe, pokud tě zajímá koučování.
                 </span>{" "}
-                Nepotřebuješ předchozí zkušenosti a účast tě nezavazuje k přihlášení do výcviku.
-                Získáš vlastní zkušenost, která ti pomůže posoudit, co ti koučovací přístup může
-                přinést.
+                Nemusíš mít předchozí zkušenost. Odneseš si zkušenost, která ti otevře nové
+                obzory. Pokud se rád učíš, posouváš a vzděláváš, je to přesně pro tebe.
               </p>
             </blockquote>
             <footer className="mt-4 text-sm sm:text-base text-navy-700 font-semibold">
