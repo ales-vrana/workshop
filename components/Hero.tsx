@@ -90,7 +90,7 @@ export function Hero() {
 
             {/* Podtitulek */}
             <p className="mt-4 sm:mt-6 text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
-              Vedeš lidi. Nemusíš mít odpověď na&nbsp;všechno.
+              Pro všechny, které zajímá koučování, osobní a&nbsp;profesní rozvoj.
             </p>
 
             {/* Řádek s formátem */}
@@ -184,7 +184,7 @@ export function Hero() {
         {/* ── Rámeček „Co konkrétně dostaneš" - pod tlačítkem, na desktopu 2 sloupce ── */}
         <div className="mt-10 lg:mt-8 max-w-2xl lg:max-w-4xl mx-auto">
           <div className="rounded-2xl bg-navy-900/55 backdrop-blur-md border border-white/15 p-6 sm:p-8 shadow-lifted">
-            <p className="h-label text-gold-400 mb-5">Na této lekci:</p>
+            <p className="h-label text-gold-400 mb-5">Program:</p>
             <ul className="grid gap-4 lg:grid-cols-2 lg:gap-x-8">
               {VALUE_ITEMS.map((item) => (
                 <li key={item.title} className="flex items-start gap-3">
