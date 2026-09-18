@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { MetaPixel } from "@/components/MetaPixel";
+import { Clarity } from "@/components/Clarity";
 import { EventSchema } from "@/components/EventSchema";
 import { DevWarning } from "@/components/ui/DevWarning";
 import { WORKSHOP } from "@/lib/config";
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="cs" className={montserrat.variable}>
       <head>
         <EventSchema />
+        <Clarity />
       </head>
       <body className="bg-white text-dark antialiased">
         <MetaPixel />
