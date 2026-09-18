@@ -4,6 +4,7 @@ import { CoachQuote } from "@/components/CoachQuote";
 import { Pochybnosti } from "@/components/Pochybnosti";
 import { ProKoho } from "@/components/ProKoho";
 import { CoZazijete } from "@/components/CoZazijete";
+import { Program } from "@/components/Program";
 import { NemuzesToPokazit } from "@/components/NemuzesToPokazit";
 import { OLektorovi } from "@/components/OLektorovi";
 import { Zkusenosti } from "@/components/Zkusenosti";
@@ -27,7 +28,10 @@ export default function HomePage() {
       {/* Hero - bez Reveal, je nad foldem */}
       <Hero />
 
-      {/* Termíny hned za heroem - kdo je rozhodnutý, nemusí scrollovat.
+      {/* „Co tě čeká" hned pod hero (dřív tu byl rámeček Program) - bez Reveal, je blízko foldu */}
+      <CoZazijete />
+
+      {/* Termíny - kdo je rozhodnutý, nemusí scrollovat dál.
           Bez Reveal: sem vedou všechna tlačítka, musí být vidět okamžitě. */}
       <Terminy />
 
@@ -51,7 +55,7 @@ export default function HomePage() {
         <ProKoho />
       </Reveal>
       <Reveal>
-        <CoZazijete />
+        <Program />
       </Reveal>
       <Reveal>
         <NemuzesToPokazit />
