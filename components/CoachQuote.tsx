@@ -21,10 +21,11 @@ export function CoachQuote() {
             <blockquote className="text-lg sm:text-xl text-dark leading-relaxed">
               <p>
                 <span className="font-semibold">
-                  Toto setkání je určeno pro tebe, pokud tě zajímá koučování.
+                  Toto setkání je pro tebe, pokud tě zajímá rozvoj a chceš se rozvíjet.
                 </span>{" "}
-                Nemusíš mít předchozí zkušenost. Odneseš si zkušenost, která ti otevře nové
-                obzory. Pokud se rád učíš, posouváš a vzděláváš, je to přesně pro tebe.
+                Odneseš si uvědomění o sobě, která ti otevře nové obzory. Pokud tě někdy zajímalo,
+                jak vypadá koučování v praxi, zvažuješ další kariérní krok, nebo jsi v roli
+                manažera a chceš posun - jsi tu správně, rezervuj si svůj termín.
               </p>
             </blockquote>
             <footer className="mt-4 text-sm sm:text-base text-navy-700 font-semibold">
