@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { MetaPixel } from "@/components/MetaPixel";
-import { Clarity } from "@/components/Clarity";
 import { EventSchema } from "@/components/EventSchema";
 import { DevWarning } from "@/components/ui/DevWarning";
 import { WORKSHOP } from "@/lib/config";
@@ -72,7 +71,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="cs" className={montserrat.variable}>
       <head>
         <EventSchema />
-        <Clarity />
+        {/* Microsoft Clarity - vloženo přímo do <head>, projekt ykej9fbehc */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `(function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ykej9fbehc");`,
+          }}
+        />
       </head>
       <body className="bg-white text-dark antialiased">
         <MetaPixel />
