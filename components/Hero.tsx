@@ -84,13 +84,13 @@ export function Hero() {
             {/* H1 - na mobilu 30 px (max 3 řádky), od sm nahoru brand velikost */}
             <h1 className="mt-6 sm:mt-8">
               <span className="block h-display text-[30px] leading-[1.1] sm:text-hero text-white">
-                Vedeš lidi. Nemusíš mít odpověď na&nbsp;všechno.
+                Ukázková lekce koučovacího výcviku CoachVille
               </span>
             </h1>
 
-            {/* Podtitulek - název akce */}
+            {/* Podtitulek */}
             <p className="mt-4 sm:mt-6 text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
-              Ukázková lekce koučovacího výcviku CoachVille
+              Vedeš lidi. Nemusíš mít odpověď na&nbsp;všechno.
             </p>
 
             {/* Řádek s formátem */}
