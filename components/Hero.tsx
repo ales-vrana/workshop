@@ -40,7 +40,8 @@ export function Hero() {
 
       <div className="container-x relative pt-12 pb-12 sm:pt-16 sm:pb-14 lg:pt-20 lg:pb-16">
         {/* ── Dva sloupce: text | portrét ── */}
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-center">
+        {/* items-start: H1 začíná ve stejné výšce jako horní hrana fotky */}
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start">
           {/* Levý sloupec */}
           <div className="lg:col-span-7 text-center lg:text-left">
             {/* H1 - na mobilu 30 px (max 3 řádky), od sm nahoru brand velikost */}
@@ -72,22 +73,27 @@ export function Hero() {
               </span>
             </a>
 
-            {/* TLAČÍTKO - vede na výběr termínu a nákup */}
-            <div className="mt-4 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
-              <CTAButton
-                id="hero-cta"
-                href="#terminy"
-                variant="on-dark"
-                className="w-full sm:w-auto group"
-                ariaLabel="Koupit vstupenku - zobrazit termíny ukázkové lekce"
-              >
-                Koupit vstupenku
-              </CTAButton>
-              <p className="text-[13px] text-white/70 text-center lg:text-left">
-                {WORKSHOP.price}
-                {terminy.length > 0 && <> · {pocetTerminu(terminy.length)}</>}
-                {" "}· garance vrácení peněz
-              </p>
+            {/* TLAČÍTKO + vpravo od něj nejbližší termín (na desktopu vedle sebe) */}
+            <div className="mt-4 sm:mt-5 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+              <div className="flex flex-col items-center lg:items-start gap-3">
+                <CTAButton
+                  id="hero-cta"
+                  href="#terminy"
+                  variant="on-dark"
+                  className="w-full sm:w-auto group"
+                  ariaLabel="Koupit vstupenku - zobrazit termíny ukázkové lekce"
+                >
+                  Koupit vstupenku
+                </CTAButton>
+                <p className="text-[13px] text-white/70 text-center lg:text-left">
+                  {WORKSHOP.price}
+                  {terminy.length > 0 && <> · {pocetTerminu(terminy.length)}</>}
+                  {" "}· garance vrácení peněz
+                </p>
+              </div>
+              <div className="flex justify-center lg:justify-start">
+                <TerminInfo nejblizsi={nejblizsi} align="left" />
+              </div>
             </div>
 
             {/* Řádek důvěry s lektorem - jen mobil/tablet, na desktopu je portrét vpravo */}
@@ -124,9 +130,9 @@ export function Hero() {
               v CoachVille učíme praxí.
             </p>
 
-            {/* Garance + termín - jen mobil/tablet (na desktopu pod fotkou vpravo) */}
+            {/* Garance - jen mobil/tablet (na desktopu pod fotkou vpravo) */}
             <div className="mt-8 lg:hidden">
-              <InfoBlok nejblizsi={nejblizsi} />
+              <Garance />
             </div>
           </div>
 
@@ -158,9 +164,9 @@ export function Hero() {
               hlavní trenér CoachVille · {COACH.certification}
             </p>
 
-            {/* Garance + nejbližší termín pod fotkou */}
+            {/* Garance pod fotkou */}
             <div className="mt-6 w-full max-w-[380px] rounded-2xl bg-navy-900/55 backdrop-blur-md border border-white/15 px-5 py-4">
-              <InfoBlok nejblizsi={nejblizsi} />
+              <Garance />
             </div>
           </div>
         </div>
@@ -170,16 +176,26 @@ export function Hero() {
   );
 }
 
-/** Garance + nejbližší termín: na desktopu pod fotkou lektora, na mobilu na konci textu */
-function InfoBlok({ nejblizsi }: { nejblizsi: TerminView | undefined }) {
+/** Garance: na desktopu pod fotkou lektora, na mobilu na konci textu */
+function Garance() {
   return (
     <div className="flex flex-col items-center gap-2 text-center">
       <p className="text-xs sm:text-sm text-white/85 max-w-md font-medium">
         Max {WORKSHOP.capacity} míst <span className="text-white/40 mx-1">·</span> Garance: po 60 minutách vrácení 100 % ceny bez otázek
       </p>
       <p className="text-xs text-white/60 max-w-md">Bez papírování, bez otázek.</p>
+    </div>
+  );
+}
 
-      <div className="mt-3 flex flex-col items-center gap-2 text-sm sm:text-base text-white/85">
+/** Nejbližší termín + čas + platforma: vedle tlačítka (desktop), pod ním (mobil) */
+function TerminInfo({ nejblizsi, align }: { nejblizsi: TerminView | undefined; align: "left" | "center" }) {
+  return (
+    <div
+      className={`flex flex-col gap-2 text-sm sm:text-base text-white/85 ${
+        align === "left" ? "items-center lg:items-start" : "items-center"
+      }`}
+    >
         <div className="flex items-center gap-2">
           <Calendar className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
           <span className="font-medium">
@@ -194,7 +210,6 @@ function InfoBlok({ nejblizsi }: { nejblizsi: TerminView | undefined }) {
           <Monitor className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
           <span className="font-medium">{WORKSHOP.platform}</span>
         </div>
-      </div>
     </div>
   );
 }
