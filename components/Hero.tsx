@@ -1,4 +1,4 @@
-import { Calendar, Clock, Monitor, Star } from "lucide-react";
+import { Calendar, Clock, Monitor, ArrowDown } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { WORKSHOP, COACH, getViditelneTerminy, type TerminView } from "@/lib/config";
 
@@ -43,19 +43,8 @@ export function Hero() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-center">
           {/* Levý sloupec */}
           <div className="lg:col-span-7 text-center lg:text-left">
-            {/* Štítek - jeden řádek i na mobilu */}
-            <div className="flex justify-center lg:justify-start">
-              <span className="inline-flex items-center gap-2 rounded-full bg-navy-900/60 backdrop-blur-sm px-4 py-2 border border-white/15 whitespace-nowrap">
-                <Star className="h-3.5 w-3.5 text-gold-400 fill-gold-400 shrink-0" aria-hidden />
-                <span className="text-[11px] sm:text-sm font-bold uppercase tracking-[0.12em] sm:tracking-[0.15em] text-white/90">
-                  {WORKSHOP.duration} online
-                  {terminy.length > 0 && <> · {pocetTerminu(terminy.length)}</>}
-                </span>
-              </span>
-            </div>
-
             {/* H1 - na mobilu 30 px (max 3 řádky), od sm nahoru brand velikost */}
-            <h1 className="mt-6 sm:mt-8">
+            <h1>
               <span className="block h-display text-[30px] leading-[1.1] sm:text-hero text-white">
                 Co se stane, když místo rady položíš otázku?
               </span>
@@ -72,16 +61,27 @@ export function Hero() {
               {WORKSHOP.duration} · online přes {WORKSHOP.platform}
             </p>
 
-            {/* TLAČÍTKO - říká, co se stane (výběr termínu), ne cenu */}
-            <div className="mt-5 sm:mt-6 flex flex-col items-center lg:items-start gap-3">
+            {/* Odkaz na podrobnosti níže na stránce */}
+            <a
+              href="#co-zazijete"
+              className="mt-5 sm:mt-6 inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors group/more"
+            >
+              <ArrowDown className="h-4 w-4 shrink-0 transition-transform group-hover/more:translate-y-0.5" aria-hidden />
+              <span className="underline underline-offset-4 decoration-white/30 group-hover/more:decoration-white/70">
+                více informací o lekci - níže na stránce
+              </span>
+            </a>
+
+            {/* TLAČÍTKO - vede na výběr termínu a nákup */}
+            <div className="mt-4 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
               <CTAButton
                 id="hero-cta"
                 href="#terminy"
                 variant="on-dark"
                 className="w-full sm:w-auto group"
-                ariaLabel="Vybrat termín - zobrazit termíny ukázkové lekce"
+                ariaLabel="Koupit vstupenku - zobrazit termíny ukázkové lekce"
               >
-                Vybrat termín
+                Koupit vstupenku
               </CTAButton>
               <p className="text-[13px] text-white/70 text-center lg:text-left">
                 {WORKSHOP.price}
