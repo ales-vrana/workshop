@@ -74,9 +74,9 @@ export const TERMINY: Termin[] = [
   },
   {
     id: "termin-2",
-    dateISO: "2026-09-22",
+    dateISO: "2026-10-01",
     dayOfWeek: "čtvrtek",
-    startTime: "19:30",
+    startTime: "18:30",
     durationMinutes: 120,
     paymentLink: "https://buy.stripe.com/dRm8wOcDuaGr9yu4RjejK2v",
   },
