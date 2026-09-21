@@ -1,4 +1,3 @@
-import { ArrowDown } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { HeroReference } from "@/components/HeroReference";
 import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
@@ -68,17 +67,6 @@ export function Hero() {
 
             {/* Zbylý volný prostor: odtlačí blok s CTA ke spodní hraně hero */}
             <div className="hidden lg:block flex-1" aria-hidden />
-
-            {/* Odkaz na podrobnosti níže na stránce */}
-            <a
-              href="#co-zazijete"
-              className="mt-3 sm:mt-6 inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors group/more"
-            >
-              <ArrowDown className="h-4 w-4 shrink-0 transition-transform group-hover/more:translate-y-0.5" aria-hidden />
-              <span className="underline underline-offset-4 decoration-white/30 group-hover/more:decoration-white/70">
-                více informací o lekci - níže na stránce
-              </span>
-            </a>
 
             {/* TLAČÍTKO: scroll k termínům. Měří se jako hero_show_dates. */}
             <div className="mt-3 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
