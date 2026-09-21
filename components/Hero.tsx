@@ -1,5 +1,6 @@
 import { Calendar, Clock, Monitor, ArrowDown } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
+import { HeroReference } from "@/components/HeroReference";
 import { WORKSHOP, COACH, getViditelneTerminy, type TerminView } from "@/lib/config";
 
 /**
@@ -38,29 +39,35 @@ export function Hero() {
         <div className="absolute inset-0 hero-overlay" aria-hidden />
       </div>
 
-      <div className="container-x relative pt-12 pb-12 sm:pt-16 sm:pb-14 lg:pt-20 lg:pb-16">
+      <div className="container-x relative pt-12 pb-12 sm:pt-16 sm:pb-14 lg:pt-12 lg:pb-16">
         {/* ── Dva sloupce: text | portrét ── */}
-        {/* items-start: H1 začíná ve stejné výšce jako horní hrana fotky */}
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start">
+        {/* items-stretch: levý sloupec je stejně vysoký jako pravý, takže blok s CTA
+            jde přitlačit ke spodní hraně a nad ním vznikne místo pro karusel */}
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-stretch">
           {/* Levý sloupec */}
-          <div className="lg:col-span-7 text-center lg:text-left">
-            {/* H1 - na mobilu 30 px (max 3 řádky), od sm nahoru brand velikost */}
-            <h1>
-              <span className="block h-display text-[30px] leading-[1.1] sm:text-hero text-white">
-                Z korporátu k práci, která dává smysl.
+          <div className="lg:col-span-7 text-center lg:text-left flex flex-col">
+            {/* H1 - pevné zalomení na tři řádky */}
+            <h1 className="lg:-mt-2">
+              <span className="block h-display text-[28px] leading-[1.1] sm:text-[clamp(2.125rem,6.6vw,3.875rem)] text-white">
+                <span className="block">Z korporátu</span>
+                <span className="block">k práci, která</span>
+                <span className="block">dává smysl.</span>
               </span>
             </h1>
 
-            {/* Podtitulek */}
-            <p className="mt-4 sm:mt-6 text-lg sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
+            {/* Podtitulek - na mobilu menší, aby se CTA vešlo nad ohyb */}
+            <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
               Ukázková lekce ICF akreditovaného výcviku CoachVille pro všechny, které zajímá
               koučování, leadership, osobní a&nbsp;profesní rozvoj.
             </p>
 
-            {/* Řádek s formátem */}
-            <p className="mt-4 text-base text-white/90 font-medium">
-              {WORKSHOP.duration} · online přes {WORKSHOP.platform}
-            </p>
+            {/* Karusel s referencemi */}
+            <div className="mt-6 lg:mt-8">
+              <HeroReference />
+            </div>
+
+            {/* Zbylý volný prostor: odtlačí blok s CTA ke spodní hraně hero */}
+            <div className="hidden lg:block flex-1" aria-hidden />
 
             {/* Odkaz na podrobnosti níže na stránce */}
             <a
@@ -80,7 +87,7 @@ export function Hero() {
                   id="hero-cta"
                   href="#terminy"
                   variant="on-dark"
-                  className="w-full sm:w-auto group"
+                  className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base"
                   ariaLabel="Koupit vstupenku - zobrazit termíny ukázkové lekce"
                 >
                   Koupit vstupenku
@@ -192,7 +199,7 @@ function Garance() {
 function TerminInfo({ nejblizsi, align }: { nejblizsi: TerminView | undefined; align: "left" | "center" }) {
   return (
     <div
-      className={`flex flex-col gap-2 text-sm sm:text-base text-white/85 ${
+      className={`flex flex-col gap-2 text-[17px] sm:text-base text-white/85 ${
         align === "left" ? "items-center lg:items-start" : "items-center"
       }`}
     >
