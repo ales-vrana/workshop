@@ -1,6 +1,6 @@
 import { CTAButton } from "@/components/ui/CTAButton";
 import { HeroReference } from "@/components/HeroReference";
-import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
+import { WORKSHOP, COACH } from "@/lib/config";
 
 /**
  * Hero sekce.
@@ -14,16 +14,7 @@ import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
  * Seznam „Program" je v samostatné sekci components/Program.tsx.
  */
 
-/** 1 termín / 2-4 termíny / 5+ termínů (krátký tvar pro štítek) */
-function pocetTerminu(n: number): string {
-  if (n === 1) return "1 termín";
-  if (n >= 2 && n <= 4) return `${n} termíny`;
-  return `${n} termínů`;
-}
-
 export function Hero() {
-  const terminy = getViditelneTerminy();
-
   return (
     <header className="relative isolate overflow-hidden text-white">
       <div className="absolute inset-0 -z-10">
@@ -60,7 +51,7 @@ export function Hero() {
               koučování, leadership, osobní a&nbsp;profesní rozvoj.
             </p>
 
-            {/* Karusel s referencemi */}
+            {/* Citace studentů */}
             <div className="mt-4 lg:mt-8">
               <HeroReference />
             </div>
@@ -75,15 +66,13 @@ export function Hero() {
                 href="#terminy"
                 variant="on-dark"
                 arrow="down"
-                className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base"
-                ariaLabel="Zobrazit termíny ukázkové lekce"
+                className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base whitespace-nowrap !tracking-wide sm:!tracking-wider"
+                ariaLabel="Vybrat termín · 199 Kč"
               >
-                Zobrazit termíny
+                Vybrat termín · 199 Kč
               </CTAButton>
               <p className="text-[13px] text-white/70 text-center lg:text-left">
-                {WORKSHOP.price}
-                {terminy.length > 0 && <> · {pocetTerminu(terminy.length)}</>}
-                {" "}· garance vrácení peněz
+                2 hodiny živě na Zoomu · max 16 míst · garance vrácení peněz
               </p>
             </div>
 
