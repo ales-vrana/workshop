@@ -7,6 +7,7 @@ import {
   persistMode,
 } from "@/lib/db";
 import { fetchFacebookAdInsights, facebookConfigured } from "@/lib/facebook";
+import { fetchClarityLiveInsights, clarityConfigured, pickTrafficSummary } from "@/lib/clarity";
 import { buildRecommendations } from "@/lib/recommendations";
 import { apiUrl, BASE_PATH, CLARITY_URL } from "@/lib/paths";
 import { HypothesesForm, HypothesisStatus } from "./HypothesesForm";
@@ -36,12 +37,15 @@ const NAV = [
 
 export default async function EnginePage() {
   const mode = persistMode();
-  const [funnel, creatives, waitlist, hypotheses, fb] = await Promise.all([
+  const [funnel, creatives, waitlist, hypotheses, fb, clarity] = await Promise.all([
     getFunnel(),
     getCreatives(),
     getWaitlist(),
     getHypotheses(),
     fetchFacebookAdInsights(),
+    clarityConfigured()
+      ? fetchClarityLiveInsights()
+      : Promise.resolve({ metrics: [], error: "missing_config" as string | null }),
   ]);
 
   const recs = buildRecommendations(funnel, creatives, {
@@ -253,11 +257,55 @@ export default async function EnginePage() {
 
         <section id="clarity" className="scroll-mt-6 rounded-2xl border border-navy-100/70 bg-white p-6 shadow-soft">
           <h2 className="text-lg font-extrabold text-navy-700">Microsoft Clarity</h2>
-          <p className="text-sm text-dark/70 mt-2 leading-relaxed">
-            Nahrávky už běží (projekt <code>ykej9fbehc</code>). Engine do nich posílá custom tagy{" "}
-            <code>utm_content</code>, <code>utm_campaign</code> a <code>visitor_id</code>. Data Export API napojíme, až
-            bude token — teď stačí koukat ručně.
-          </p>
+          {!clarityConfigured() ? (
+            <>
+              <p className="text-sm text-dark/70 mt-2 leading-relaxed">
+                Nahrávky na landing už běží (projekt <code>ykej9fbehc</code>). Engine z nich umí stáhnout souhrn, až
+                vložíš token. Druhý projekt v Clarity nezakládej.
+              </p>
+              <ol className="mt-4 text-sm text-dark/80 list-decimal pl-5 space-y-2">
+                <li>
+                  Otevři projekt → <strong>Settings → Data Export → Generate new API token</strong> (musíš být admin).
+                  Název např. <code>workshop-engine</code>, bez mezer.
+                </li>
+                <li>
+                  Ve Vercelu přidej <code>CLARITY_API_TOKEN</code> (Preview i Production). Token sem do chatu nedávej.
+                </li>
+                <li>Redeploy preview. Tady se objeví čísla za poslední 1–3 dny (API má max 10 volání denně).</li>
+              </ol>
+              <p className="text-xs text-dark/50 mt-3">Podrobný checklist: docs/CLARITY-API-SETUP.md</p>
+            </>
+          ) : clarity.error && clarity.error !== "missing_config" ? (
+            <p className="text-sm text-red-600 mt-2">Clarity API: {clarity.error}</p>
+          ) : (
+            <>
+              {(() => {
+                const sum = pickTrafficSummary(clarity.metrics);
+                if (!sum) {
+                  return (
+                    <p className="text-sm text-dark/60 mt-2">Token je nastavený, API zatím nevrátilo Traffic metriku.</p>
+                  );
+                }
+                return (
+                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="rounded-xl border border-navy-100 bg-cream/50 p-4">
+                      <p className="text-[11px] uppercase tracking-wider font-bold text-navy-500">Sessions (3 dny)</p>
+                      <p className="mt-1 text-2xl font-extrabold text-navy-800">{sum.sessions}</p>
+                    </div>
+                    <div className="rounded-xl border border-navy-100 bg-cream/50 p-4">
+                      <p className="text-[11px] uppercase tracking-wider font-bold text-navy-500">Uživatelé</p>
+                      <p className="mt-1 text-2xl font-extrabold text-navy-800">{sum.users}</p>
+                    </div>
+                    <div className="rounded-xl border border-navy-100 bg-cream/50 p-4">
+                      <p className="text-[11px] uppercase tracking-wider font-bold text-navy-500">Stránek / session</p>
+                      <p className="mt-1 text-2xl font-extrabold text-navy-800">{sum.pagesPerSession}</p>
+                    </div>
+                  </div>
+                );
+              })()}
+              <p className="text-xs text-dark/50 mt-3">Souhrn z Data Export API, UTC. Nahrávky pořád v Clarity.</p>
+            </>
+          )}
           <ul className="mt-4 text-sm text-dark/80 list-disc pl-5 space-y-1">
             <li>Prvních 10 sekund: čtou H1, nebo hned bounce?</li>
             <li>Rage click u ceny / tlačítka Koupit</li>
@@ -276,6 +324,10 @@ export default async function EnginePage() {
 
         <section id="facebook" className="scroll-mt-6 rounded-2xl border border-navy-100/70 bg-white p-6 shadow-soft">
           <h2 className="text-lg font-extrabold text-navy-700">Facebook Ads</h2>
+          <p className="text-sm text-dark/60 mt-1">
+            Jen kampaně, sady a kreativy, které mají v názvu <strong>workshop</strong>. Ostatní (webináře, V1–V5, …) se
+            nezobrazují a nepočítají.
+          </p>
           {!facebookConfigured() ? (
             <>
               <p className="text-sm text-dark/70 mt-2 leading-relaxed">
@@ -290,13 +342,20 @@ export default async function EnginePage() {
           ) : fb.error ? (
             <p className="text-sm text-red-600 mt-2">Facebook API: {fb.error}</p>
           ) : fb.ads.length === 0 ? (
-            <p className="text-sm text-dark/60 mt-2">API je napojené, za posledních 30 dní nejsou insights.</p>
+            <p className="text-sm text-dark/70 mt-3 leading-relaxed">
+              API žije, ale za 30 dní není žádná kampaň/kreativa se slovem „workshop“ v názvu
+              {fb.hiddenCount ? ` (skryto ${fb.hiddenCount} ostatních reklam)` : ""}. Přejmenuj workshopovou kampaň
+              nebo ad set tak, aby název obsahoval <code>workshop</code> — jinak je Engine záměrně ignoruje.
+            </p>
           ) : (
             <div className="mt-4 overflow-x-auto">
+              {fb.hiddenCount > 0 && (
+                <p className="text-xs text-dark/50 mb-2">Skryto {fb.hiddenCount} reklam mimo workshop.</p>
+              )}
               <table className="min-w-full text-sm">
                 <thead className="bg-cream text-left text-[11px] uppercase tracking-wider text-navy-600">
                   <tr>
-                    {["Ad", "Spend", "Impr.", "Clicks", "CTR", "CPC", "Freq", "LPV"].map((h) => (
+                    {["Kampaň", "Ad", "Spend", "Impr.", "Clicks", "CTR", "CPC", "Freq", "LPV"].map((h) => (
                       <th key={h} className="px-3 py-2 font-bold">
                         {h}
                       </th>
@@ -306,6 +365,7 @@ export default async function EnginePage() {
                 <tbody>
                   {fb.ads.map((a) => (
                     <tr key={a.ad_id} className="border-t border-navy-50">
+                      <td className="px-3 py-2 text-dark/70">{a.campaign_name || "—"}</td>
                       <td className="px-3 py-2">
                         <div className="font-semibold">{a.ad_name}</div>
                         <div className="text-xs text-dark/50">{a.ad_id}</div>

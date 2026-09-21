@@ -230,6 +230,7 @@ Interní cockpit (`/engine`) měří UTM, waitlist, Stripe nákupy a navrhuje da
 
 - Návod k použití: [`docs/WORKSHOP-ENGINE.md`](docs/WORKSHOP-ENGINE.md)
 - Napojení Facebook API: [`docs/FACEBOOK-API-SETUP.md`](docs/FACEBOOK-API-SETUP.md)
+- Napojení Clarity API: [`docs/CLARITY-API-SETUP.md`](docs/CLARITY-API-SETUP.md)
 - Env šablona: [`.env.example`](.env.example)
 
 ---

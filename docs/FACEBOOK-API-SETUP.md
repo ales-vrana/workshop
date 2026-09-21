@@ -45,6 +45,8 @@ FB_AD_ACCOUNT_ID=act_123456789
 
 Redeploy. V `/workshop/engine` sekce Facebook buď vypíše tabulku, nebo chybovou hlášku z Graph API (chybějící role, vypršelý token, app v development mode).
 
+**Filtr:** Engine bere jen kampaně / ad sety / reklamy, které mají v názvu slovo `workshop` (bez ohledu na velikost písmen). Webináře a ostatní účty se neschovávají omylem — jsou schované záměrně.
+
 ## 5. Development mode vs Live
 
 Nová appka je v režimu Development: token vidí jen data adminů appky.  

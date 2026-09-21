@@ -32,7 +32,7 @@ A/B headlineů je fáze 2. LTV studentů z výcviku je ještě později.
 | `STRIPE_WEBHOOK_SECRET` | před ostrými nákupy | `checkout.session.completed` |
 | `FB_ACCESS_TOKEN` | až bude appka | spend / CTR / frequency |
 | `FB_AD_ACCOUNT_ID` | s tokenem | `act_…` |
-| `CLARITY_API_TOKEN` | později | teď stačí nahrávky v Clarity |
+| `CLARITY_API_TOKEN` | teď, až chceš čísla v Engine | Clarity Settings → Data Export |
 
 Šablona: `.env.example`.
 
@@ -88,7 +88,7 @@ Meta dostane event **Lead**.
 
 **Doporučení** — pravidla (LPV vs InitiateCheckout, scroll, drop v Stripe, chybějící UTM). Nejsou to automatické úpravy webu.
 
-**Clarity** — nahrávky. Filtr custom tag `utm_content`.
+**Clarity** — nahrávky. Filtr custom tag `utm_content`. Čísla v Engine po `CLARITY_API_TOKEN` (viz [CLARITY-API-SETUP.md](CLARITY-API-SETUP.md)).
 
 **Facebook** — prázdné, dokud není token. Pak spend a frequency, ať jedna kreativa nejede do únavy.
 
