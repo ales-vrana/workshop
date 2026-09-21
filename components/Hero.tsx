@@ -76,44 +76,12 @@ export function Hero() {
               </p>
             </div>
 
-            {/* Řádek důvěry s lektorem - jen mobil/tablet, na desktopu je portrét vpravo */}
-            <div className="mt-4 flex justify-center lg:hidden">
-              <div className="inline-flex items-center gap-3 max-w-[320px] text-left">
-                <div className="relative shrink-0">
-                  <img
-                    src="/workshop/ales-vrana-portrait.jpg"
-                    alt={`Portrét: ${COACH.fullName}`}
-                    width={56}
-                    height={56}
-                    fetchPriority="high"
-                    className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-white/20"
-                  />
-                  <img
-                    src="/workshop/icf-mcc-badge.webp"
-                    alt="ICF MCC"
-                    width={24}
-                    height={24}
-                    className="absolute -bottom-0.5 -right-0.5 h-6 w-6 rounded-full bg-white ring-2 ring-navy-900 object-contain p-px"
-                  />
-                </div>
-                <div>
-                  <p className="text-[15px] font-bold text-white leading-tight">{COACH.fullName}</p>
-                  <p className="text-[13px] text-white/70 leading-tight mt-0.5">hlavní trenér CoachVille</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Úvodní odstavec */}
-            <p className="mt-4 text-base sm:mt-6 sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            {/* Úvodní odstavec jen na desktopu — na mobilu by zvedl hero přes ohyb. */}
+            <p className="mt-6 hidden lg:block text-lg text-white/75 leading-relaxed max-w-2xl">
               Vyzkoušej si, jak vést rozhovor, ve kterém druhému pomáháš najít vlastní řešení. Za dvě
               hodiny uvidíš živé koučování, vyzkoušíš si roli kouče i klienta a poznáš, jak se
               v CoachVille učíme praxí.
             </p>
-
-            {/* Garance - jen mobil/tablet (na desktopu pod fotkou vpravo) */}
-            <div className="mt-4 lg:hidden">
-              <Garance />
-            </div>
           </div>
 
           {/* Pravý sloupec - portrét (jen desktop) */}

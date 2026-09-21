@@ -22,8 +22,8 @@ export function StickyCTA() {
     let obs: IntersectionObserver | null = null;
     if (terminy) {
       obs = new IntersectionObserver(
-        ([entry]) => setTerminyInView(entry.isIntersecting),
-        { threshold: 0.1 },
+        ([entry]) => setTerminyInView(entry.isIntersecting && entry.intersectionRatio >= 0.1),
+        { threshold: [0, 0.1, 0.25], rootMargin: "0px 0px -55% 0px" },
       );
       obs.observe(terminy);
     }
