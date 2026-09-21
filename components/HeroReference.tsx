@@ -1,11 +1,19 @@
+"use client";
+
+import { useCallback, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 /**
- * Jedna statická citace v hero. Další citace z pole jsou v #citace.
- * První položka je výchozí; jinou citaci lze podat propem `quote`.
+ * Ruční karusel referencí v hero sekci.
+ *
+ * Všech 25 citací zůstává tady — uživatel listuje šipkami nebo prstem.
+ * Automatické přepínání je vypnuté (nesoutěží o pozornost s CTA).
+ * Zobrazuje se jen aktuální citace, aby karta nenafoukla hero přes ohyb.
  */
 
-export type HeroQuote = { quote: string; name: string };
+type Reference = { quote: string; name: string };
 
-export const HERO_QUOTES: HeroQuote[] = [
+const REFERENCE: Reference[] = [
   { quote: "Trénink doporučuji. Je vymyšlen seriózně, má dobrý systém, který přináší výsledky.", name: "Zora Cejnková" },
   { quote: "Cítila jsem bezpečí zeptat se na cokoli, na co jsem narazila.", name: "Mona Martinů" },
   { quote: "Je skvělé, že od prvního momentu jsme vrženi do praxe.", name: "Zuzana Bergerová" },
@@ -33,18 +41,83 @@ export const HERO_QUOTES: HeroQuote[] = [
   { quote: "Je to velmi profesionálně vedené, podporující prostředí, parta úžasných lidí. Je to prostě zdravě návykové.", name: "Zuzana Malá" },
 ];
 
-export function HeroReference({ quote = HERO_QUOTES[0] }: { quote?: HeroQuote }) {
+const SWIPE_MIN_PX = 45;
+
+export function HeroReference() {
+  const [index, setIndex] = useState(0);
+  const touch = useRef<{ x: number; y: number; t: number } | null>(null);
+
+  const posun = useCallback((krok: number) => {
+    setIndex((i) => (i + krok + REFERENCE.length) % REFERENCE.length);
+  }, []);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length !== 1) return void (touch.current = null);
+    const t = e.changedTouches[0];
+    touch.current = { x: t.clientX, y: t.clientY, t: Date.now() };
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touch.current;
+    touch.current = null;
+    if (!start) return;
+    const dx = e.changedTouches[0].clientX - start.x;
+    const dy = e.changedTouches[0].clientY - start.y;
+    // Poměr os: svislé rolování stránky nesmí přepínat reference
+    if (Math.abs(dx) > SWIPE_MIN_PX && Math.abs(dx) > Math.abs(dy) * 1.5 && Date.now() - start.t < 600) {
+      posun(dx < 0 ? 1 : -1);
+    }
+  };
+
+  const aktualni = REFERENCE[index];
+
   return (
     <div className="w-full max-w-xl mx-auto lg:mx-0">
-      <p className="h-label text-gold-400 !text-[11px] sm:!text-xs mb-2.5">Co říkají studenti</p>
-      <figure className="rounded-2xl bg-navy-900/55 backdrop-blur-md border border-white/15 shadow-lifted px-4 py-4 sm:px-6 sm:py-5 text-left">
-        <blockquote className="text-[15px] sm:text-base lg:text-[17px] leading-[1.55] text-white/90">
-          „{quote.quote}&#8220;
-        </blockquote>
-        <figcaption className="mt-2.5 text-[13px] sm:text-sm font-bold text-gold-300">
-          {quote.name}
-        </figcaption>
-      </figure>
+      {/* Štítek a ovládání na jednom řádku - šetří na mobilu celý řádek */}
+      <div className="flex items-center justify-between gap-3 mb-2.5">
+        <p className="h-label text-gold-400 !text-[11px] sm:!text-xs">Co říkají studenti</p>
+
+        <div className="flex items-center gap-0.5 shrink-0">
+          <button
+            type="button"
+            onClick={() => posun(-1)}
+            aria-label="Předchozí reference"
+            className="flex items-center justify-center h-11 w-11 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
+          >
+            <ChevronLeft className="h-5 w-5" aria-hidden />
+          </button>
+          <span className="text-[11px] tabular-nums text-white/50 min-w-[2.75rem] text-center select-none" aria-hidden>
+            {index + 1}/{REFERENCE.length}
+          </span>
+          <button
+            type="button"
+            onClick={() => posun(1)}
+            aria-label="Další reference"
+            className="flex items-center justify-center h-11 w-11 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
+          >
+            <ChevronRight className="h-5 w-5" aria-hidden />
+          </button>
+        </div>
+      </div>
+
+      <div
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+        className="rounded-2xl bg-navy-900/55 backdrop-blur-md border border-white/15 shadow-lifted px-4 py-4 sm:px-6 sm:py-5"
+      >
+        <figure className="text-left">
+          <blockquote className="text-[15px] sm:text-base lg:text-[17px] leading-[1.55] text-white/90">
+            „{aktualni.quote}&#8220;
+          </blockquote>
+          <figcaption className="mt-2.5 text-[13px] sm:text-sm font-bold text-gold-300">
+            {aktualni.name}
+          </figcaption>
+        </figure>
+      </div>
+
+      <p className="sr-only" role="status" aria-live="polite">
+        Reference {index + 1} z {REFERENCE.length}: {aktualni.quote} {aktualni.name}
+      </p>
     </div>
   );
 }
