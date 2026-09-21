@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import { Quote } from "lucide-react";
+import { HERO_QUOTES } from "@/components/HeroReference";
 
 /**
  * Textové reference účastníků - jeden sloupec, optimalizováno pro čtení
@@ -21,6 +22,7 @@ const REFERENCE = [
     text: "Nejvíc se mi líbily praktické ukázky, kdy jsme si mohli koučování vyzkoušet ve dvojicích. Líbilo se mi, že Aleš si na nic nehraje, je uvolněný a věrohodný.",
     author: "Petra Věchtová",
   },
+  ...HERO_QUOTES.slice(1).map((r) => ({ text: r.quote, author: r.name })),
 ];
 
 export function Reference() {

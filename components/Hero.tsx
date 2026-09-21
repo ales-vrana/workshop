@@ -1,7 +1,6 @@
-import { ArrowDown } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { HeroReference } from "@/components/HeroReference";
-import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
+import { WORKSHOP, COACH } from "@/lib/config";
 
 /**
  * Hero sekce.
@@ -15,16 +14,7 @@ import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
  * Seznam „Program" je v samostatné sekci components/Program.tsx.
  */
 
-/** 1 termín / 2-4 termíny / 5+ termínů (krátký tvar pro štítek) */
-function pocetTerminu(n: number): string {
-  if (n === 1) return "1 termín";
-  if (n >= 2 && n <= 4) return `${n} termíny`;
-  return `${n} termínů`;
-}
-
 export function Hero() {
-  const terminy = getViditelneTerminy();
-
   return (
     <header className="relative isolate overflow-hidden text-white">
       <div className="absolute inset-0 -z-10">
@@ -39,7 +29,7 @@ export function Hero() {
         <div className="absolute inset-0 hero-overlay" aria-hidden />
       </div>
 
-      <div className="container-x relative pt-12 pb-12 sm:pt-16 sm:pb-14 lg:pt-12 lg:pb-16">
+      <div className="container-x relative pt-8 pb-3 sm:pt-16 sm:pb-14 lg:pt-12 lg:pb-16">
         {/* ── Dva sloupce: text | portrét ── */}
         {/* items-stretch: levý sloupec je stejně vysoký jako pravý, takže blok s CTA
             jde přitlačit ke spodní hraně a nad ním vznikne místo pro karusel */}
@@ -61,82 +51,37 @@ export function Hero() {
               koučování, leadership, osobní a&nbsp;profesní rozvoj.
             </p>
 
-            {/* Karusel s referencemi */}
-            <div className="mt-6 lg:mt-8">
+            {/* Citace studentů */}
+            <div className="mt-4 lg:mt-8">
               <HeroReference />
             </div>
 
             {/* Zbylý volný prostor: odtlačí blok s CTA ke spodní hraně hero */}
             <div className="hidden lg:block flex-1" aria-hidden />
 
-            {/* Odkaz na podrobnosti níže na stránce */}
-            <a
-              href="#co-zazijete"
-              className="mt-5 sm:mt-6 inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors group/more"
-            >
-              <ArrowDown className="h-4 w-4 shrink-0 transition-transform group-hover/more:translate-y-0.5" aria-hidden />
-              <span className="underline underline-offset-4 decoration-white/30 group-hover/more:decoration-white/70">
-                více informací o lekci - níže na stránce
-              </span>
-            </a>
-
             {/* TLAČÍTKO: scroll k termínům. Měří se jako hero_show_dates. */}
-            <div className="mt-4 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
+            <div className="mt-3 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
               <CTAButton
                 id="hero-cta"
                 href="#terminy"
                 variant="on-dark"
                 arrow="down"
-                className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base"
-                ariaLabel="Zobrazit termíny ukázkové lekce"
+                className="w-full sm:w-auto group !text-[17px] sm:!text-base whitespace-nowrap !tracking-wide sm:!tracking-wider"
+                ariaLabel="Vybrat termín · 199 Kč"
               >
-                Zobrazit termíny
+                Vybrat termín · 199 Kč
               </CTAButton>
               <p className="text-[13px] text-white/70 text-center lg:text-left">
-                {WORKSHOP.price}
-                {terminy.length > 0 && <> · {pocetTerminu(terminy.length)}</>}
-                {" "}· garance vrácení peněz
+                2 hodiny živě na Zoomu · max 16 míst · garance vrácení peněz
               </p>
             </div>
 
-            {/* Řádek důvěry s lektorem - jen mobil/tablet, na desktopu je portrét vpravo */}
-            <div className="mt-6 flex justify-center lg:hidden">
-              <div className="inline-flex items-center gap-3 max-w-[320px] text-left">
-                <div className="relative shrink-0">
-                  <img
-                    src="/workshop/ales-vrana-portrait.jpg"
-                    alt={`Portrét: ${COACH.fullName}`}
-                    width={56}
-                    height={56}
-                    fetchPriority="high"
-                    className="h-14 w-14 rounded-full object-cover object-top ring-2 ring-white/20"
-                  />
-                  <img
-                    src="/workshop/icf-mcc-badge.webp"
-                    alt="ICF MCC"
-                    width={24}
-                    height={24}
-                    className="absolute -bottom-0.5 -right-0.5 h-6 w-6 rounded-full bg-white ring-2 ring-navy-900 object-contain p-px"
-                  />
-                </div>
-                <div>
-                  <p className="text-[15px] font-bold text-white leading-tight">{COACH.fullName}</p>
-                  <p className="text-[13px] text-white/70 leading-tight mt-0.5">hlavní trenér CoachVille</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Úvodní odstavec */}
-            <p className="mt-6 text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            {/* Úvodní odstavec jen na desktopu — na mobilu by zvedl hero přes ohyb. */}
+            <p className="mt-6 hidden lg:block text-lg text-white/75 leading-relaxed max-w-2xl">
               Vyzkoušej si, jak vést rozhovor, ve kterém druhému pomáháš najít vlastní řešení. Za dvě
               hodiny uvidíš živé koučování, vyzkoušíš si roli kouče i klienta a poznáš, jak se
               v CoachVille učíme praxí.
             </p>
-
-            {/* Garance - jen mobil/tablet (na desktopu pod fotkou vpravo) */}
-            <div className="mt-8 lg:hidden">
-              <Garance />
-            </div>
           </div>
 
           {/* Pravý sloupec - portrét (jen desktop) */}

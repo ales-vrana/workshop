@@ -1,0 +1,171 @@
+{
+  "url": "http://127.0.0.1:3100/workshop",
+  "ctaContrastWhiteOn1E7E34": 5.14,
+  "results": {
+    "iphone14": {
+      "innerHeight": 844,
+      "scrollHeight": 21036,
+      "heroHeight": 511.390625,
+      "heroVhRatio": 0.6059130627962085,
+      "nextTop": 511.390625,
+      "nextId": "terminy",
+      "nextPeeksPx": 332.609375,
+      "ctaTop": 392.390625,
+      "ctaBottom": 448.390625,
+      "ctaFullyVisible": true,
+      "ctaText": "Vybrat termín · 199 Kč",
+      "ctaColor": "rgb(255, 255, 255)",
+      "ctaBg": "rgb(30, 126, 52)",
+      "ctaTracking": "0.425px",
+      "ctaWhiteSpace": "nowrap",
+      "ctaWidth": 350,
+      "terminyTop": 511.390625,
+      "terminyScreen": 0.6059130627962085,
+      "screens": 24.924170616113745,
+      "secondaryLink": false,
+      "upwardAnchors": 0,
+      "heroIntervals": {
+        "carouselButtons": false,
+        "quoteCount": 1
+      },
+      "stickyAt150": {
+        "scrollY": 150,
+        "visibleCount": 1,
+        "ariaHidden": "false"
+      },
+      "stickyAtTerminy": {
+        "visibleCount": 0,
+        "terminyTop": -335.609375,
+        "terminyVisible": true
+      },
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "iphoneSE": {
+      "innerHeight": 667,
+      "scrollHeight": 21282,
+      "heroHeight": 534.640625,
+      "heroVhRatio": 0.8015601574212894,
+      "nextTop": 534.640625,
+      "nextId": "terminy",
+      "nextPeeksPx": 132.359375,
+      "ctaTop": 415.640625,
+      "ctaBottom": 471.640625,
+      "ctaFullyVisible": true,
+      "ctaText": "Vybrat termín · 199 Kč",
+      "ctaColor": "rgb(255, 255, 255)",
+      "ctaBg": "rgb(30, 126, 52)",
+      "ctaTracking": "0.425px",
+      "ctaWhiteSpace": "nowrap",
+      "ctaWidth": 335,
+      "terminyTop": 534.640625,
+      "terminyScreen": 0.8015601574212894,
+      "screens": 31.907046476761618,
+      "secondaryLink": false,
+      "upwardAnchors": 0,
+      "heroIntervals": {
+        "carouselButtons": false,
+        "quoteCount": 1
+      },
+      "stickyAt150": {
+        "scrollY": 150,
+        "visibleCount": 1,
+        "ariaHidden": "false"
+      },
+      "stickyAtTerminy": {
+        "visibleCount": 0,
+        "terminyTop": -436.359375,
+        "terminyVisible": true
+      },
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "android": {
+      "innerHeight": 800,
+      "scrollHeight": 21773,
+      "heroHeight": 534.640625,
+      "heroVhRatio": 0.66830078125,
+      "nextTop": 534.640625,
+      "nextId": "terminy",
+      "nextPeeksPx": 265.359375,
+      "ctaTop": 415.640625,
+      "ctaBottom": 471.640625,
+      "ctaFullyVisible": true,
+      "ctaText": "Vybrat termín · 199 Kč",
+      "ctaColor": "rgb(255, 255, 255)",
+      "ctaBg": "rgb(30, 126, 52)",
+      "ctaTracking": "0.425px",
+      "ctaWhiteSpace": "nowrap",
+      "ctaWidth": 320,
+      "terminyTop": 534.640625,
+      "terminyScreen": 0.66830078125,
+      "screens": 27.21625,
+      "secondaryLink": false,
+      "upwardAnchors": 0,
+      "heroIntervals": {
+        "carouselButtons": false,
+        "quoteCount": 1
+      },
+      "stickyAt150": {
+        "scrollY": 150,
+        "visibleCount": 1,
+        "ariaHidden": "false"
+      },
+      "stickyAtTerminy": {
+        "visibleCount": 0,
+        "terminyTop": -370.359375,
+        "terminyVisible": true
+      },
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "desktop": {
+      "innerHeight": 900,
+      "scrollHeight": 17092,
+      "heroHeight": 833.8125,
+      "heroVhRatio": 0.9264583333333334,
+      "nextTop": 833.8125,
+      "nextId": "terminy",
+      "nextPeeksPx": 66.1875,
+      "ctaTop": 562.5625,
+      "ctaBottom": 626.5625,
+      "ctaFullyVisible": true,
+      "ctaText": "Vybrat termín · 199 Kč",
+      "ctaColor": "rgb(255, 255, 255)",
+      "ctaBg": "rgb(30, 126, 52)",
+      "ctaTracking": "0.8px",
+      "ctaWhiteSpace": "nowrap",
+      "ctaWidth": 316.421875,
+      "terminyTop": 833.8125,
+      "terminyScreen": 0.9264583333333334,
+      "screens": 18.99111111111111,
+      "secondaryLink": false,
+      "upwardAnchors": 0,
+      "heroIntervals": {
+        "carouselButtons": false,
+        "quoteCount": 1
+      },
+      "stickyAt150": {
+        "scrollY": 150,
+        "visibleCount": 1,
+        "ariaHidden": "false"
+      },
+      "stickyAtTerminy": {
+        "visibleCount": 0,
+        "terminyTop": -45.1875,
+        "terminyVisible": true
+      },
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "noJs": {
+      "tag": "A",
+      "href": "#terminy",
+      "text": "Vybrat termín · 199 Kč"
+    }
+  }
+}
