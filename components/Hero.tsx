@@ -1,15 +1,16 @@
-import { Calendar, Clock, Monitor, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { HeroReference } from "@/components/HeroReference";
-import { WORKSHOP, COACH, getViditelneTerminy, type TerminView } from "@/lib/config";
+import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
 
 /**
  * Hero sekce.
  *
  * Pořadí na mobilu: štítek → H1 → podtitulek → formát → TLAČÍTKO → cena
- * → řádek s lektorem → úvodní odstavec → garance + nejbližší termín.
+ * → řádek s lektorem → úvodní odstavec → garance.
  * Na desktopu dva sloupce 7:5, vpravo portrét lektora s MCC odznakem
- * a pod ním garance + nejbližší termín.
+ * a pod ním garance. Nejbližší termín v hero schováváme — hypotéza, že
+ * konkrétní datum lidi odrazuje dřív, než si vyberou z nabídky.
  *
  * Seznam „Program" je v samostatné sekci components/Program.tsx.
  */
@@ -23,7 +24,6 @@ function pocetTerminu(n: number): string {
 
 export function Hero() {
   const terminy = getViditelneTerminy();
-  const nejblizsi = terminy[0];
 
   return (
     <header className="relative isolate overflow-hidden text-white">
@@ -80,27 +80,23 @@ export function Hero() {
               </span>
             </a>
 
-            {/* TLAČÍTKO + vpravo od něj nejbližší termín (na desktopu vedle sebe) */}
-            <div className="mt-4 sm:mt-5 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
-              <div className="flex flex-col items-center lg:items-start gap-3">
-                <CTAButton
-                  id="hero-cta"
-                  href="#terminy"
-                  variant="on-dark"
-                  className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base"
-                  ariaLabel="Koupit vstupenku - zobrazit termíny ukázkové lekce"
-                >
-                  Koupit vstupenku
-                </CTAButton>
-                <p className="text-[13px] text-white/70 text-center lg:text-left">
-                  {WORKSHOP.price}
-                  {terminy.length > 0 && <> · {pocetTerminu(terminy.length)}</>}
-                  {" "}· garance vrácení peněz
-                </p>
-              </div>
-              <div className="flex justify-center lg:justify-start">
-                <TerminInfo nejblizsi={nejblizsi} align="left" />
-              </div>
+            {/* TLAČÍTKO: scroll k termínům. Měří se jako hero_show_dates. */}
+            <div className="mt-4 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
+              <CTAButton
+                id="hero-cta"
+                href="#terminy"
+                variant="on-dark"
+                arrow="down"
+                className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base"
+                ariaLabel="Zobrazit termíny ukázkové lekce"
+              >
+                Zobrazit termíny
+              </CTAButton>
+              <p className="text-[13px] text-white/70 text-center lg:text-left">
+                {WORKSHOP.price}
+                {terminy.length > 0 && <> · {pocetTerminu(terminy.length)}</>}
+                {" "}· garance vrácení peněz
+              </p>
             </div>
 
             {/* Řádek důvěry s lektorem - jen mobil/tablet, na desktopu je portrét vpravo */}
@@ -191,32 +187,6 @@ function Garance() {
         Max {WORKSHOP.capacity} míst <span className="text-white/40 mx-1">·</span> Garance: po 60 minutách vrácení 100 % ceny bez otázek
       </p>
       <p className="text-xs text-white/60 max-w-md">Bez papírování, bez otázek.</p>
-    </div>
-  );
-}
-
-/** Nejbližší termín + čas + platforma: vedle tlačítka (desktop), pod ním (mobil) */
-function TerminInfo({ nejblizsi, align }: { nejblizsi: TerminView | undefined; align: "left" | "center" }) {
-  return (
-    <div
-      className={`flex flex-col gap-2 text-[17px] sm:text-base text-white/85 ${
-        align === "left" ? "items-center lg:items-start" : "items-center"
-      }`}
-    >
-        <div className="flex items-center gap-2">
-          <Calendar className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
-          <span className="font-medium">
-            {nejblizsi ? <>Nejbližší: {nejblizsi.dateFull}</> : <>Nové termíny připravuji</>}
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Clock className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
-          <span className="font-medium">{nejblizsi ? nejblizsi.timeRange : WORKSHOP.timeRange}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Monitor className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
-          <span className="font-medium">{WORKSHOP.platform}</span>
-        </div>
     </div>
   );
 }

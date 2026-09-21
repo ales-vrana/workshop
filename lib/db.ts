@@ -7,6 +7,7 @@ import { emptyUtm } from "./attribution";
 export type EventType =
   | "page_view"
   | "cta_click"
+  | "hero_show_dates"
   | "initiate_checkout"
   | "scroll_50"
   | "scroll_terminy"
@@ -73,6 +74,7 @@ export type FunnelCounts = {
   viewContent: number;
   scroll50: number;
   scrollTerminy: number;
+  heroShowDates: number;
   ctaClick: number;
   initiateCheckout: number;
   waitlist: number;
@@ -552,6 +554,7 @@ export async function getFunnel(): Promise<FunnelCounts> {
       viewContent: 0,
       scroll50: 0,
       scrollTerminy: 0,
+      heroShowDates: 0,
       ctaClick: 0,
       initiateCheckout: 0,
       waitlist: 0,
@@ -568,6 +571,7 @@ export async function getFunnel(): Promise<FunnelCounts> {
          COUNT(*) FILTER (WHERE event_type = 'view_content')::int AS view_content,
          COUNT(DISTINCT visitor_id) FILTER (WHERE event_type = 'scroll_50')::int AS scroll_50,
          COUNT(DISTINCT visitor_id) FILTER (WHERE event_type = 'scroll_terminy')::int AS scroll_terminy,
+         COUNT(DISTINCT visitor_id) FILTER (WHERE event_type = 'hero_show_dates')::int AS hero_show_dates,
          COUNT(DISTINCT visitor_id) FILTER (WHERE event_type = 'cta_click')::int AS cta_click,
          COUNT(DISTINCT visitor_id) FILTER (WHERE event_type = 'initiate_checkout')::int AS initiate_checkout
        FROM events`,
@@ -582,6 +586,7 @@ export async function getFunnel(): Promise<FunnelCounts> {
       viewContent: r.view_content || 0,
       scroll50: r.scroll_50 || 0,
       scrollTerminy: r.scroll_terminy || 0,
+      heroShowDates: r.hero_show_dates || 0,
       ctaClick: r.cta_click || 0,
       initiateCheckout: r.initiate_checkout || 0,
       waitlist: wait[0]?.n || 0,
@@ -601,6 +606,10 @@ export async function getFunnel(): Promise<FunnelCounts> {
     ),
     scrollTerminy: uniqueCount(
       store.events.filter((e) => e.event_type === "scroll_terminy"),
+      "visitor_id",
+    ),
+    heroShowDates: uniqueCount(
+      store.events.filter((e) => e.event_type === "hero_show_dates"),
       "visitor_id",
     ),
     ctaClick: uniqueCount(
@@ -678,10 +687,10 @@ export async function getCreatives(): Promise<CreativeRow[]> {
     if (row) row.uniqueVisitors = set.size;
   }
 
-  const countUnique = (type: string, field: "cta" | "checkout") => {
+  const countUnique = (types: string[], field: "cta" | "checkout") => {
     const seen = new Map<string, Set<string>>();
     for (const e of events) {
-      if (e.event_type !== type) continue;
+      if (!types.includes(String(e.event_type))) continue;
       const k = creativeKey(e);
       ensure(e);
       if (!seen.has(k)) seen.set(k, new Set());
@@ -692,8 +701,8 @@ export async function getCreatives(): Promise<CreativeRow[]> {
       if (row) row[field] = set.size;
     }
   };
-  countUnique("cta_click", "cta");
-  countUnique("initiate_checkout", "checkout");
+  countUnique(["hero_show_dates", "cta_click"], "cta");
+  countUnique(["initiate_checkout"], "checkout");
 
   for (const w of waitlist) ensure(w).waitlist += 1;
   for (const p of purchases) ensure(p).purchases += 1;
@@ -736,9 +745,44 @@ export async function getWaitlist(): Promise<WaitlistRow[]> {
     }));
 }
 
+const HERO_DATES_HYPOTHESIS_METRIC = "hero_show_dates";
+const HERO_DATES_HYPOTHESIS_TEXT =
+  "V hero je Zobrazit termíny místo Koupit a bez nejbližšího data. Lidem se zobrazený termín nehodil, tak odcházeli; teď si termín vyberou sami. Když tlačítko nemačkají, problém je textace hero, ne nabídka termínů.";
+
+async function ensureHeroDatesHypothesis(): Promise<void> {
+  const mode = persistMode();
+  if (mode === "none") return;
+  if (mode === "neon") {
+    await ensureNeonSchema();
+    await neonQuery(
+      `INSERT INTO hypotheses (text, metric, status)
+       SELECT $1, $2, 'running'
+       WHERE NOT EXISTS (SELECT 1 FROM hypotheses WHERE metric = $2)`,
+      [HERO_DATES_HYPOTHESIS_TEXT, HERO_DATES_HYPOTHESIS_METRIC],
+    );
+    return;
+  }
+  await withFileLock(async () => {
+    const store = await readStore();
+    const exists = store.hypotheses.some((h) => h.metric === HERO_DATES_HYPOTHESIS_METRIC);
+    if (!exists) {
+      store.seq.hypotheses += 1;
+      store.hypotheses.push({
+        id: store.seq.hypotheses,
+        text: HERO_DATES_HYPOTHESIS_TEXT,
+        metric: HERO_DATES_HYPOTHESIS_METRIC,
+        status: "running",
+        created_at: new Date().toISOString(),
+      });
+      await writeStore(store);
+    }
+  });
+}
+
 export async function getHypotheses(): Promise<HypothesisRow[]> {
   const mode = persistMode();
   if (mode === "none") return [];
+  await ensureHeroDatesHypothesis();
   if (mode === "neon") {
     await ensureNeonSchema();
     return neonQuery(

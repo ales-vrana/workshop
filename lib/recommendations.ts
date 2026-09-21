@@ -37,17 +37,27 @@ export function buildRecommendations(
     action: "Ads Manager → kampaň workshopu → Conversion → InitiateCheckout. Postup v docs/FACEBOOK-API-SETUP.md.",
   });
 
+  if (visitors >= 30 && pct(funnel.heroShowDates) < 12) {
+    recs.push({
+      id: "hero-copy",
+      severity: "critical",
+      title: "Hero tlačítko skoro nikdo nemačká — problém je textace nad foldem",
+      body: `Jen ${pct(funnel.heroShowDates)} % návštěvníků kliklo na „Zobrazit termíny“ (${funnel.heroShowDates} z ${visitors}). Termíny teď v hero nejsou, takže odchod není kvůli konkrétnímu datu. Úzké hrdlo je H1 / podtitulek / slib reklamy.`,
+      action: "Srovnej text 2–3 nejtočenějších reklam s H1 „Z korporátu k práci, která dává smysl.“ Neměň seznam termínů, dokud hero klik neporoste.",
+    });
+  }
+
   if (visitors >= 30 && pct(funnel.scrollTerminy) < 35) {
     recs.push({
       id: "scroll-terminy",
       severity: "high",
       title: "Lidi nedorolují k termínům",
       body: `Jen ${pct(funnel.scrollTerminy)} % návštěvníků vidělo sekci termínů (${funnel.scrollTerminy} z ${visitors}). U cold traffic z Facebooku to skoro vždycky znamená mismatch slibu v reklamě a headline na stránce, nebo CTA příliš nízko. Neřeš zatím, která kreativa vyhrává.`,
-      action: "Srovnej text reklamy s H1 „Z korporátu k práci, která dává smysl.“ Dej termín, cenu 199 Kč a Koupit výš.",
+      action: "Srovnej text reklamy s H1 „Z korporátu k práci, která dává smysl.“ CTA v hero je Zobrazit termíny — když ho nemačkají, je to copy, ne datum.",
     });
   }
 
-  if (visitors >= 30 && pct(funnel.ctaClick) < 8 && pct(funnel.scrollTerminy) >= 35) {
+  if (visitors >= 30 && pct(funnel.ctaClick) < 8 && pct(funnel.scrollTerminy) >= 35 && pct(funnel.heroShowDates) >= 12) {
     recs.push({
       id: "cta-weak",
       severity: "high",

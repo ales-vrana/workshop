@@ -210,6 +210,11 @@ export function AttributionTracker() {
       const href = a.getAttribute("href") || "";
       const current = currentAttr();
 
+      if (a.id === "hero-cta") {
+        sendTrack(current, "hero_show_dates", { meta: { href, source: "hero" } });
+        return;
+      }
+
       if (href.startsWith("#terminy") || href.endsWith("#terminy") || href.startsWith("#koupit")) {
         sendTrack(current, "cta_click", { meta: { href } });
         return;

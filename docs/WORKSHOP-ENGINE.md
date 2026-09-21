@@ -82,7 +82,7 @@ Meta dostane event **Lead**.
 
 ## Jak číst karty
 
-**Funnel** — unique visitors na kroku. Když je hodně návštěv a málo „Viděli termíny“, problém je nad foldem / mismatch reklamy, ne výběr kreativy.
+**Funnel** — unique visitors na kroku. **Zobrazit termíny** = klik na hero CTA (bez konkrétního data). Když je nízko, problém je textace hero, ne nabídka termínů.
 
 **Kreativy** — dokud purchases = 0, řadí se podle checkoutu a waitlistu. Řádek `(bez UTM)` = organika, přímá, nebo reklama bez parametrů.
 

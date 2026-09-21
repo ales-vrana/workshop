@@ -13,6 +13,7 @@ export const dynamic = "force-dynamic";
 const ALLOWED: Set<string> = new Set([
   "page_view",
   "cta_click",
+  "hero_show_dates",
   "initiate_checkout",
   "scroll_50",
   "scroll_terminy",

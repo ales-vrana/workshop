@@ -77,6 +77,7 @@ function signal(kind: Parameters<typeof sampleClarityMetrics>[0], label: string)
       viewContent: 8,
       scroll50: 4,
       scrollTerminy: 3,
+      heroShowDates: 2,
       ctaClick: 1,
       initiateCheckout: 0,
       waitlist: 0,

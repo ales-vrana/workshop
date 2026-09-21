@@ -64,7 +64,11 @@ export default async function EnginePage() {
 
   const steps = [
     { label: "Návštěvy", value: funnel.visits, hint: `${funnel.uniqueVisitors} unikátních` },
-    { label: "Scroll 50 %", value: funnel.scroll50, hint: pct(funnel.scroll50, visitors) },
+    {
+      label: "Zobrazit termíny",
+      value: funnel.heroShowDates,
+      hint: `${pct(funnel.heroShowDates, visitors)} · hero CTA`,
+    },
     { label: "Viděli termíny", value: funnel.scrollTerminy, hint: pct(funnel.scrollTerminy, visitors) },
     { label: "Klik CTA", value: funnel.ctaClick, hint: pct(funnel.ctaClick, visitors) },
     { label: "Checkout", value: funnel.initiateCheckout, hint: pct(funnel.initiateCheckout, visitors) },
@@ -102,7 +106,8 @@ export default async function EnginePage() {
         <section id="funnel" className="scroll-mt-6">
           <h2 className="text-lg font-extrabold text-navy-700">Funnel</h2>
           <p className="text-sm text-dark/60 mt-1 mb-4">
-            Unikátní návštěvníci na kroku, kromě surových page_view. Waitlist je zvlášť — není nákup, ale proxy zájem.
+            Unikátní návštěvníci na kroku. <strong>Zobrazit termíny</strong> = klik na hero tlačítko.
+            Když je nízko, problém je textace hero, ne seznam termínů.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {steps.map((s) => (
@@ -341,7 +346,8 @@ export default async function EnginePage() {
         <section id="hypotezy" className="scroll-mt-6 rounded-2xl border border-navy-100/70 bg-white p-6 shadow-soft">
           <h2 className="text-lg font-extrabold text-navy-700">Hypotézy</h2>
           <p className="text-sm text-dark/60 mt-1">
-            Zapisuj, co testuješ. A/B runner headlineů přijde až ve fázi 2 — nejdřív potřebujeme checkout.
+            Právě běží: hero CTA „Zobrazit termíny“ bez konkrétního data. Metr{" "}
+            <code>hero_show_dates</code>. Když ho lidé nemačkají, je to copy nad foldem.
           </p>
           <HypothesesForm />
           <ul className="mt-6 space-y-3">

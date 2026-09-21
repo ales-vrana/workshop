@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CTAButtonProps {
@@ -14,6 +14,8 @@ interface CTAButtonProps {
   external?: boolean;
   ariaLabel?: string;
   id?: string;
+  /** Šipka vpravo (výchozí) nebo dolů (scroll k sekci). */
+  arrow?: "right" | "down";
 }
 
 function isInternalHref(href: string): boolean {
@@ -28,6 +30,7 @@ export function CTAButton({
   external,
   ariaLabel,
   id,
+  arrow = "right",
 }: CTAButtonProps) {
   const opensNewWindow = external ?? !isInternalHref(href);
 
@@ -52,10 +55,17 @@ export function CTAButton({
       className={cn(classes, className)}
     >
       <span>{children}</span>
-      <ArrowRight
-        className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-200 group-hover:translate-x-1"
-        aria-hidden
-      />
+      {arrow === "down" ? (
+        <ArrowDown
+          className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-200 group-hover:translate-y-0.5"
+          aria-hidden
+        />
+      ) : (
+        <ArrowRight
+          className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-200 group-hover:translate-x-1"
+          aria-hidden
+        />
+      )}
     </a>
   );
 }
