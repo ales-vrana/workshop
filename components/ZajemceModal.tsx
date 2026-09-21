@@ -3,23 +3,23 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Check, Loader2 } from "lucide-react";
 import { WORKSHOP } from "@/lib/config";
+import { getClientAttribution } from "@/lib/attribution";
+import { apiUrl } from "@/lib/paths";
 
 /**
  * Modal pro zájemce, kterému nevyhovuje žádný vypsaný termín.
- *
- * Sbírá jméno, e-mail a telefon a posílá je na Zapier webhook
- * (PARAMS.leadWebhookUrl). Pokud webhook není nastavený, přepne se
- * na odeslání přes e-mailového klienta, aby se kontakt neztratil.
- *
- * Data se posílají jako application/x-www-form-urlencoded - Zapier je
- * rozparsuje do polí a prohlížeč neposílá preflight dotaz (žádné CORS potíže).
+ * Ukládá kontakt do Workshop Engine (/api/waitlist) a posílá Meta Lead.
  */
 
 interface Props {
-  /** Text tlačítka, kterým se modal otevírá */
   triggerLabel?: string;
-  /** Vzhled tlačítka: na světlém nebo tmavém pozadí */
   variant?: "light" | "dark";
+}
+
+function fbqLead(eventId: string) {
+  const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
+  if (!fbq) return;
+  fbq("track", "Lead", { content_name: "waitlist-termin" }, { eventID: eventId });
 }
 
 export function ZajemceModal({
@@ -59,31 +59,29 @@ export function ZajemceModal({
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim()))
       return setError("Zkontroluj prosím e-mail.");
 
-    const webhook = WORKSHOP.leadWebhookUrl;
-
-    // Bez webhooku otevřeme e-mailového klienta - kontakt se neztratí
-    if (!webhook) {
-      const telo = `Jméno: ${jmeno}\nE-mail: ${email}\nTelefon: ${telefon || "-"}\n\nNevyhovuje mi žádný vypsaný termín, dejte mi prosím vědět o dalším.`;
-      window.location.href = `mailto:${WORKSHOP.contactEmail}?subject=${encodeURIComponent(
-        "Zájem o workshop - jiný termín",
-      )}&body=${encodeURIComponent(telo)}`;
-      setDone(true);
-      return;
-    }
-
+    const attribution = getClientAttribution();
+    const eventId = crypto.randomUUID();
     setSending(true);
     try {
-      await fetch(webhook, {
+      const res = await fetch(apiUrl("/api/waitlist"), {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           jmeno: jmeno.trim(),
           email: email.trim(),
           telefon: telefon.trim(),
-          zdroj: "workshop - nevyhovuje termin",
-          stranka: typeof window !== "undefined" ? window.location.href : "",
-        }).toString(),
+          visitorId: attribution?.visitorId,
+          attribution,
+          eventId,
+          stranka: window.location.href,
+        }),
       });
+      const json = (await res.json().catch(() => ({}))) as { message?: string; ok?: boolean };
+      if (!res.ok) {
+        setError(json.message || "Odeslání se nepovedlo. Napiš mi prosím na " + WORKSHOP.contactEmail);
+        return;
+      }
+      fbqLead(eventId);
       setDone(true);
     } catch {
       setError("Odeslání se nepovedlo. Napiš mi prosím na " + WORKSHOP.contactEmail);
@@ -150,7 +148,7 @@ export function ZajemceModal({
                   Nevyhovuje ti žádný termín?
                 </h2>
                 <p className="text-sm sm:text-base text-dark/70 leading-relaxed mb-6">
-                  Nech mi kontakt a jakmile vypíšu nový, ozvu se ti dřív, než ho dám na web.
+                  Nech mi jméno a e-mail. Jakmile vypíšu nový termín, ozvu se ti dřív, než ho dám na web.
                 </p>
 
                 <form onSubmit={submit} className="space-y-4">

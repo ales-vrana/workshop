@@ -224,5 +224,15 @@ workshop-koucovani/
 
 ---
 
+## Workshop Engine
+
+Interní cockpit (`/engine`) měří UTM, waitlist, Stripe nákupy a navrhuje další krok k první konverzi.
+
+- Návod k použití: [`docs/WORKSHOP-ENGINE.md`](docs/WORKSHOP-ENGINE.md)
+- Napojení Facebook API: [`docs/FACEBOOK-API-SETUP.md`](docs/FACEBOOK-API-SETUP.md)
+- Env šablona: [`.env.example`](.env.example)
+
+---
+
 **Autor:** Aleš Vrána (CoachVille Europe), build asistoval Claude.
 **Licence:** All rights reserved.

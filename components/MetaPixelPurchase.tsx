@@ -32,13 +32,18 @@ export function MetaPixelPurchase({
       if (fbq) {
         clearInterval(timer);
         sent.current = true;
-        fbq("track", "Purchase", {
-          value,
-          currency: WORKSHOP.currency,
-          content_name: WORKSHOP.name,
-          content_type: "product",
-          ...(terminId ? { content_ids: [terminId] } : {}),
-        });
+        fbq(
+          "track",
+          "Purchase",
+          {
+            value,
+            currency: WORKSHOP.currency,
+            content_name: WORKSHOP.name,
+            content_type: "product",
+            ...(terminId ? { content_ids: [terminId] } : {}),
+          },
+          { eventID: crypto.randomUUID() },
+        );
       } else if (++attempts > 50) {
         clearInterval(timer);
       }
