@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { MetaPixel } from "@/components/MetaPixel";
 import { EventSchema } from "@/components/EventSchema";
 import { DevWarning } from "@/components/ui/DevWarning";
+import { AttributionTracker } from "@/components/Attribution";
 import { WORKSHOP } from "@/lib/config";
 import "./globals.css";
 
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-white text-dark antialiased">
         <MetaPixel />
+        <AttributionTracker />
         {children}
         <DevWarning />
         <Analytics />
