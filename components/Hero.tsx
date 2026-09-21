@@ -36,19 +36,21 @@ export function Hero() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-stretch">
           {/* Levý sloupec */}
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col">
-            {/* H1 - pevné zalomení na tři řádky */}
+            {/* H1: delší věta než dřív, proto 4 krátké řádky a menší strop
+                velikosti — při původním clamp(3.875rem) se první řádek lámal. */}
             <h1 className="lg:-mt-2">
-              <span className="block h-display text-[28px] leading-[1.1] sm:text-[clamp(2.125rem,6.6vw,3.875rem)] text-white">
-                <span className="block">Z korporátu</span>
-                <span className="block">k práci, která</span>
-                <span className="block">dává smysl.</span>
+              <span className="block h-display text-[28px] leading-[1.1] sm:text-[clamp(2rem,4.6vw,2.75rem)] text-white">
+                <span className="block">Za 2 hodiny</span>
+                <span className="block">budeš vědět,</span>
+                <span className="block">jestli je koučování</span>
+                <span className="block">tvoje cesta.</span>
               </span>
             </h1>
 
             {/* Podtitulek - na mobilu menší, aby se CTA vešlo nad ohyb */}
             <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
-              Ukázková lekce ICF akreditovaného výcviku CoachVille pro všechny, které zajímá
-              koučování, leadership, osobní a&nbsp;profesní rozvoj.
+              Uvidíš živé koučování, vyzkoušíš si roli kouče i&nbsp;klienta a&nbsp;poznáš, jestli
+              ti sedí, jak učíme. Nemusíš mít předchozí zkušenosti, přijít můžeš i&nbsp;s&nbsp;nejistotou.
             </p>
 
             {/* Citace studentů */}
