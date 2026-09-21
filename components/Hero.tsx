@@ -47,7 +47,7 @@ export function Hero() {
             {/* H1 - na mobilu 30 px (max 3 řádky), od sm nahoru brand velikost */}
             <h1>
               <span className="block h-display text-[30px] leading-[1.1] sm:text-hero text-white">
-                Co se stane, když místo rady položíš otázku?
+                Z korporátu k práci, která dává smysl.
               </span>
             </h1>
 
