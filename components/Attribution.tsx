@@ -30,11 +30,18 @@ function setClarityTags(attr: Attribution) {
   const clarity = (window as unknown as { clarity?: (...args: unknown[]) => void }).clarity;
   if (!clarity) return;
   clarity("set", "visitor_id", attr.visitorId);
+  clarity("set", "lp_version", "v1-fold");
   const u = attr.last.utm_content || attr.first.utm_content ? attr.last : attr.first;
   if (u.utm_content) clarity("set", "utm_content", u.utm_content);
   if (u.utm_campaign) clarity("set", "utm_campaign", u.utm_campaign);
   if (u.utm_source) clarity("set", "utm_source", u.utm_source);
   if (u.utm_term) clarity("set", "utm_term", u.utm_term);
+}
+
+function clarityEvent(name: string) {
+  const clarity = (window as unknown as { clarity?: (...args: unknown[]) => void }).clarity;
+  if (!clarity) return;
+  clarity("event", name);
 }
 
 function sendTrack(
@@ -167,10 +174,11 @@ export function AttributionTracker() {
         ([entry]) => {
           if (entry.isIntersecting) {
             sendTrack(currentAttr(), "scroll_terminy");
+            clarityEvent("scroll_terminy");
             terminyObs?.disconnect();
           }
         },
-        { threshold: 0.2 },
+        { threshold: 0.25 },
       );
       terminyObs.observe(terminy);
     }
@@ -196,6 +204,7 @@ export function AttributionTracker() {
         eventId,
         meta: { terminId, href: attributed },
       });
+      clarityEvent("initiate_checkout");
     };
 
     const onPointerDown = (event: PointerEvent) => {
@@ -212,6 +221,7 @@ export function AttributionTracker() {
 
       if (a.id === "hero-cta") {
         sendTrack(current, "hero_show_dates", { meta: { href, source: "hero" } });
+        clarityEvent("hero_show_dates");
         return;
       }
 
