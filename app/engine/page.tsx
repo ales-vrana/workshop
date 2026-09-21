@@ -7,9 +7,10 @@ import {
   persistMode,
 } from "@/lib/db";
 import { fetchFacebookAdInsights, facebookConfigured } from "@/lib/facebook";
-import { fetchClarityLiveInsights, clarityConfigured, pickTrafficSummary } from "@/lib/clarity";
+import { fetchClarityLiveInsights, clarityConfigured, analyzeClarity } from "@/lib/clarity";
 import { buildRecommendations } from "@/lib/recommendations";
-import { apiUrl, BASE_PATH, CLARITY_URL } from "@/lib/paths";
+import { apiUrl, BASE_PATH } from "@/lib/paths";
+import { ClarityInsights } from "@/components/ClarityInsights";
 import { HypothesesForm, HypothesisStatus } from "./HypothesesForm";
 
 export const dynamic = "force-dynamic";
@@ -48,10 +49,14 @@ export default async function EnginePage() {
       : Promise.resolve({ metrics: [], error: "missing_config" as string | null }),
   ]);
 
+  const clarityAnalysis =
+    clarityConfigured() && !clarity.error ? analyzeClarity(clarity.metrics) : null;
+
   const recs = buildRecommendations(funnel, creatives, {
     hasFbToken: facebookConfigured(),
     hasStripeWebhook: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
     persistMode: mode,
+    clarity: clarityAnalysis,
   });
 
   const emails = waitlist.map((w) => w.email).join("\n");
@@ -232,7 +237,8 @@ export default async function EnginePage() {
         <section id="doporuceni" className="scroll-mt-6">
           <h2 className="text-lg font-extrabold text-navy-700">Doporučení</h2>
           <p className="text-sm text-dark/60 mt-1 mb-4">
-            Pravidla, ne magie. Cíl MVP: najít cestu k první konverzi, ne vybrat vítěznou reklamu.
+            Pravidla z funnelu, UTM a z chování v Clarity (rage click, scroll, rychlý odchod). Cíl: první
+            konverze, ne vítězná reklama.
           </p>
           <div className="grid gap-4">
             {recs.map((r) => (
@@ -246,7 +252,15 @@ export default async function EnginePage() {
                       : "border-navy-100/70"
                 }`}
               >
-                <p className="text-[11px] uppercase tracking-wider font-bold text-navy-500">{r.severity}</p>
+                <p className="text-[11px] uppercase tracking-wider font-bold text-navy-500">
+                  {r.severity === "critical"
+                    ? "kritické"
+                    : r.severity === "high"
+                      ? "vysoké"
+                      : r.severity === "medium"
+                        ? "střední"
+                        : "nízké"}
+                </p>
                 <h3 className="mt-1 font-extrabold text-navy-800">{r.title}</h3>
                 <p className="mt-2 text-sm text-dark/70 leading-relaxed">{r.body}</p>
                 <p className="mt-3 text-sm font-semibold text-navy-700">Další krok: {r.action}</p>
@@ -255,72 +269,11 @@ export default async function EnginePage() {
           </div>
         </section>
 
-        <section id="clarity" className="scroll-mt-6 rounded-2xl border border-navy-100/70 bg-white p-6 shadow-soft">
-          <h2 className="text-lg font-extrabold text-navy-700">Microsoft Clarity</h2>
-          {!clarityConfigured() ? (
-            <>
-              <p className="text-sm text-dark/70 mt-2 leading-relaxed">
-                Nahrávky na landing už běží (projekt <code>ykej9fbehc</code>). Engine z nich umí stáhnout souhrn, až
-                vložíš token. Druhý projekt v Clarity nezakládej.
-              </p>
-              <ol className="mt-4 text-sm text-dark/80 list-decimal pl-5 space-y-2">
-                <li>
-                  Otevři projekt → <strong>Settings → Data Export → Generate new API token</strong> (musíš být admin).
-                  Název např. <code>workshop-engine</code>, bez mezer.
-                </li>
-                <li>
-                  Ve Vercelu přidej <code>CLARITY_API_TOKEN</code> (Preview i Production). Token sem do chatu nedávej.
-                </li>
-                <li>Redeploy preview. Tady se objeví čísla za poslední 1–3 dny (API má max 10 volání denně).</li>
-              </ol>
-              <p className="text-xs text-dark/50 mt-3">Podrobný checklist: docs/CLARITY-API-SETUP.md</p>
-            </>
-          ) : clarity.error && clarity.error !== "missing_config" ? (
-            <p className="text-sm text-red-600 mt-2">Clarity API: {clarity.error}</p>
-          ) : (
-            <>
-              {(() => {
-                const sum = pickTrafficSummary(clarity.metrics);
-                if (!sum) {
-                  return (
-                    <p className="text-sm text-dark/60 mt-2">Token je nastavený, API zatím nevrátilo Traffic metriku.</p>
-                  );
-                }
-                return (
-                  <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div className="rounded-xl border border-navy-100 bg-cream/50 p-4">
-                      <p className="text-[11px] uppercase tracking-wider font-bold text-navy-500">Sessions (3 dny)</p>
-                      <p className="mt-1 text-2xl font-extrabold text-navy-800">{sum.sessions}</p>
-                    </div>
-                    <div className="rounded-xl border border-navy-100 bg-cream/50 p-4">
-                      <p className="text-[11px] uppercase tracking-wider font-bold text-navy-500">Uživatelé</p>
-                      <p className="mt-1 text-2xl font-extrabold text-navy-800">{sum.users}</p>
-                    </div>
-                    <div className="rounded-xl border border-navy-100 bg-cream/50 p-4">
-                      <p className="text-[11px] uppercase tracking-wider font-bold text-navy-500">Stránek / session</p>
-                      <p className="mt-1 text-2xl font-extrabold text-navy-800">{sum.pagesPerSession}</p>
-                    </div>
-                  </div>
-                );
-              })()}
-              <p className="text-xs text-dark/50 mt-3">Souhrn z Data Export API, UTC. Nahrávky pořád v Clarity.</p>
-            </>
-          )}
-          <ul className="mt-4 text-sm text-dark/80 list-disc pl-5 space-y-1">
-            <li>Prvních 10 sekund: čtou H1, nebo hned bounce?</li>
-            <li>Rage click u ceny / tlačítka Koupit</li>
-            <li>Odchod před sekcí Termíny</li>
-            <li>Filtr nahrávek podle custom tagu utm_content = id reklamy</li>
-          </ul>
-          <a
-            href={CLARITY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary mt-5 inline-flex"
-          >
-            Otevřít Clarity
-          </a>
-        </section>
+        <ClarityInsights
+          configured={clarityConfigured()}
+          error={clarity.error}
+          analysis={clarityAnalysis}
+        />
 
         <section id="facebook" className="scroll-mt-6 rounded-2xl border border-navy-100/70 bg-white p-6 shadow-soft">
           <h2 className="text-lg font-extrabold text-navy-700">Facebook Ads</h2>

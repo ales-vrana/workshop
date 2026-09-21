@@ -2,7 +2,7 @@
 
 Nahrávky na landing page **už běží** (projekt `ykej9fbehc`). Engine je jen čte. Druhý projekt v Clarity nezakládej.
 
-Data Export API má **max 10 požadavků denně** na projekt. Engine si výsledek cachuje na 6 hodin.
+Data Export API má **max 10 požadavků denně** na projekt. Engine si výsledek cachuje na 3 hodiny.
 
 ---
 
@@ -23,27 +23,25 @@ Settings → Environment Variables:
 CLARITY_API_TOKEN=...tvůj token...
 ```
 
-Zaškrtni **Preview** i **Production** (stejně jako u `ENGINE_PASSWORD`).  
+Zaškrtni **Preview** i **Production**.  
 Žádné `NEXT_PUBLIC_…` — token musí zůstat na serveru.
 
-**Redeploy** preview větve `cursor/workshop-engine-mvp-b15d`.
+**Redeploy** Production (`main`).
 
 ## 3. Co uvidíš v Engine
 
-Sekce Clarity ukáže souhrn za poslední 1–3 dny (sessions, bounce signály podle toho, co API vrátí) + pořád tlačítko do nahrávek.
+Ne počet nahrávek. Engine z Data Export API spočítá signály (scroll, čas, rage/dead click, quickback, boti) a z nich složí **zjištění + další krok** v sekci Clarity i v Doporučeních.
 
-Když token chybí, zůstane návod a tlačítko **Otevřít Clarity**.
+Příklady:
 
-## 4. Co v nahrávkách sledovat ručně
+- rychlý odchod → nesedí slib reklamy s H1
+- mělký scroll → termíny a 199 Kč musí jít výš
+- rage click → rozbité / falešné tlačítko Koupit
 
-Filtr custom tagů, které Engine posílá z landingu:
+Nahrávky v Clarity zůstávají jako záloha. Ručně je procházet nemusíš.
 
-- `utm_content` = id Facebook reklamy
-- `utm_campaign`
-- `visitor_id`
+Když token chybí, zůstane návod a tlačítko **Otevřít nahrávky v Clarity**.
 
-Sleduj: prvních 10 s, rage click u ceny, odchod před sekcí Termíny.
-
-## 5. Limit
+## 4. Limit
 
 Při chybě 429 Engine napíše, že je vyčerpaný denní limit. Stačí počkat; nahrávky v Clarity dál fungují.

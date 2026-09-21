@@ -1,4 +1,5 @@
 import type { CreativeRow, FunnelCounts } from "./db";
+import type { ClarityAnalysis } from "./clarity-analyze";
 
 export type Recommendation = {
   id: string;
@@ -11,7 +12,12 @@ export type Recommendation = {
 export function buildRecommendations(
   funnel: FunnelCounts,
   creatives: CreativeRow[],
-  opts: { hasFbToken: boolean; hasStripeWebhook: boolean; persistMode: string },
+  opts: {
+    hasFbToken: boolean;
+    hasStripeWebhook: boolean;
+    persistMode: string;
+    clarity?: ClarityAnalysis | null;
+  },
 ): Recommendation[] {
   const recs: Recommendation[] = [];
   const visitors = funnel.uniqueVisitors || funnel.visits;
@@ -37,7 +43,7 @@ export function buildRecommendations(
       severity: "high",
       title: "Lidi nedorolují k termínům",
       body: `Jen ${pct(funnel.scrollTerminy)} % návštěvníků vidělo sekci termínů (${funnel.scrollTerminy} z ${visitors}). U cold traffic z Facebooku to skoro vždycky znamená mismatch slibu v reklamě a headline na stránce, nebo CTA příliš nízko. Neřeš zatím, která kreativa vyhrává.`,
-      action: "V Clarity otevři nahrávky prvních 10 s. Srovnej text reklamy s H1 „Z korporátu k práci, která dává smysl.“",
+      action: "Srovnej text reklamy s H1 „Z korporátu k práci, která dává smysl.“ Dej termín, cenu 199 Kč a Koupit výš.",
     });
   }
 
@@ -47,7 +53,7 @@ export function buildRecommendations(
       severity: "high",
       title: "Termíny vidí, ale nekličkají na koupi",
       body: `Scroll k termínům je ${pct(funnel.scrollTerminy)} %, CTA klik jen ${pct(funnel.ctaClick)} %. Úzké hrdlo je nabídka (cena, termín, důvěra), ne první dojem z reklamy.`,
-      action: "Zkontroluj Clarity rage clicky u ceny a tlačítka Koupit. Zvaž výraznější termín / garanci u CTA.",
+      action: "Zvětši tlačítko Koupit, sjednoť cenu s CTA, přidej termín a garanci přímo u tlačítka.",
     });
   }
 
@@ -58,7 +64,7 @@ export function buildRecommendations(
       title: "Stripe se otevírá, webhook nevidí platbu",
       body: `${funnel.initiateCheckout} lidí kliklo na platbu a 0 nákupů v Engine. Buď opravdu nedokončí checkout, nebo webhook ještě není zapnutý.`,
       action: opts.hasStripeWebhook
-        ? "V Clarity / Stripe Dashboardu ověř nedokončené session. Zjednoduš Stripe stránku (jen karta, předvyplněný e-mail)."
+        ? "Ve Stripe Dashboardu ověř nedokončené session. Zjednoduš Stripe stránku (jen karta, předvyplněný e-mail)."
         : "Doplň STRIPE_WEBHOOK_SECRET a endpoint /workshop/api/stripe/webhook — bez něj Engine nákup neuvidí.",
     });
   }
@@ -97,7 +103,20 @@ export function buildRecommendations(
         severity: "high",
         title: `Kreativa ${worst.utm_content} nese návštěvy bez záměru`,
         body: `${worst.uniqueVisitors} návštěv z utm_content=${worst.utm_content}, nula checkoutu i waitlistu. Typický message mismatch: reklama slibuje něco jiného než landing.`,
-        action: "V Clarity filtruj custom tag utm_content. Srovnej copy reklamy s H1. Tuto kreativu pauzni, dokud nesedí slib.",
+        action: "Srovnej copy této reklamy s H1. Tuto kreativu pauzni, dokud nesedí slib.",
+      });
+    }
+  }
+
+  if (opts.clarity?.findings.length) {
+    for (const f of opts.clarity.findings) {
+      if (f.severity === "ok" || f.severity === "low") continue;
+      recs.push({
+        id: f.id,
+        severity: f.severity,
+        title: f.title,
+        body: f.body,
+        action: f.action,
       });
     }
   }

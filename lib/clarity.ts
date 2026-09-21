@@ -1,18 +1,60 @@
 import { unstable_cache } from "next/cache";
+import { analyzeClarity, sampleClarityMetrics, type ClarityMetric } from "./clarity-analyze";
 
-export type ClarityMetric = {
-  name: string;
-  rows: Array<Record<string, string | number>>;
-};
+export type {
+  ClarityMetric,
+  ClarityFinding,
+  ClaritySignal,
+  ClarityAnalysis,
+} from "./clarity-analyze";
+export { analyzeClarity, sampleClarityMetrics };
 
 export function clarityConfigured(): boolean {
   return Boolean(process.env.CLARITY_API_TOKEN);
+}
+
+export function parseClarityApiJson(json: unknown): ClarityMetric[] {
+  const list = Array.isArray(json)
+    ? json
+    : json && typeof json === "object"
+      ? ([
+          "value",
+          "data",
+          "metrics",
+          "result",
+        ]
+          .map((k) => (json as Record<string, unknown>)[k])
+          .find((v) => Array.isArray(v)) as unknown[] | undefined) ?? []
+      : [];
+
+  return list.map((raw) => {
+    const m = (raw ?? {}) as { metricName?: string; name?: string; information?: unknown; rows?: unknown };
+    const info = m.information ?? m.rows;
+    const rowsIn = Array.isArray(info) ? info : info && typeof info === "object" ? [info] : [];
+    return {
+      name: String(m.metricName || m.name || "metric"),
+      rows: rowsIn.map((row) => {
+        const out: Record<string, string | number> = {};
+        if (row && typeof row === "object") {
+          for (const [k, v] of Object.entries(row as Record<string, unknown>)) {
+            if (typeof v === "number") out[k] = v;
+            else out[k] = String(v ?? "");
+          }
+        }
+        return out;
+      }),
+    };
+  });
 }
 
 async function fetchClarityLiveInsightsUncached(): Promise<{
   metrics: ClarityMetric[];
   error: string | null;
 }> {
+  if (process.env.NODE_ENV !== "production" && process.env.CLARITY_DEBUG_FIXTURE === "1") {
+    return { metrics: sampleClarityMetrics("friction"), error: null };
+  }
+
   const token = process.env.CLARITY_API_TOKEN;
   if (!token) {
     return { metrics: [], error: "missing_config" };
@@ -37,42 +79,16 @@ async function fetchClarityLiveInsightsUncached(): Promise<{
       const text = await res.text();
       return { metrics: [], error: `Clarity API ${res.status}: ${text.slice(0, 180)}` };
     }
-    const json = (await res.json()) as Array<{ metricName?: string; information?: Array<Record<string, unknown>> }>;
-    const metrics: ClarityMetric[] = (Array.isArray(json) ? json : []).map((m) => ({
-      name: String(m.metricName || "metric"),
-      rows: (m.information || []).map((row) => {
-        const out: Record<string, string | number> = {};
-        for (const [k, v] of Object.entries(row)) {
-          if (typeof v === "number") out[k] = v;
-          else out[k] = String(v ?? "");
-        }
-        return out;
-      }),
-    }));
-    return { metrics, error: null };
+    const json: unknown = await res.json();
+    return { metrics: parseClarityApiJson(json), error: null };
   } catch (err) {
     return { metrics: [], error: err instanceof Error ? err.message : "Clarity API selhalo" };
   }
 }
 
-/** Max 10 volání denně — cache na 6 hodin. */
+/** Max 10 volání denně — cache na 3 hodiny (víc metrik, stejný jeden request). */
 export const fetchClarityLiveInsights = unstable_cache(
   fetchClarityLiveInsightsUncached,
-  ["clarity-live-insights-v1"],
-  { revalidate: 6 * 60 * 60 },
+  ["clarity-live-insights-v3"],
+  { revalidate: 3 * 60 * 60 },
 );
-
-export function pickTrafficSummary(metrics: ClarityMetric[]): {
-  sessions: string;
-  users: string;
-  pagesPerSession: string;
-} | null {
-  const traffic = metrics.find((m) => m.name.toLowerCase() === "traffic");
-  const row = traffic?.rows[0];
-  if (!row) return null;
-  return {
-    sessions: String(row.totalSessionCount ?? "—"),
-    users: String(row.distantUserCount ?? "—"),
-    pagesPerSession: row.PagesPerSessionPercentage != null ? String(row.PagesPerSessionPercentage) : "—",
-  };
-}
