@@ -39,7 +39,7 @@ export function Hero() {
         <div className="absolute inset-0 hero-overlay" aria-hidden />
       </div>
 
-      <div className="container-x relative pt-12 pb-12 sm:pt-16 sm:pb-14 lg:pt-12 lg:pb-16">
+      <div className="container-x relative pt-8 pb-3 sm:pt-16 sm:pb-14 lg:pt-12 lg:pb-16">
         {/* ── Dva sloupce: text | portrét ── */}
         {/* items-stretch: levý sloupec je stejně vysoký jako pravý, takže blok s CTA
             jde přitlačit ke spodní hraně a nad ním vznikne místo pro karusel */}
@@ -62,7 +62,7 @@ export function Hero() {
             </p>
 
             {/* Karusel s referencemi */}
-            <div className="mt-6 lg:mt-8">
+            <div className="mt-4 lg:mt-8">
               <HeroReference />
             </div>
 
@@ -72,7 +72,7 @@ export function Hero() {
             {/* Odkaz na podrobnosti níže na stránce */}
             <a
               href="#co-zazijete"
-              className="mt-5 sm:mt-6 inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors group/more"
+              className="mt-3 sm:mt-6 inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors group/more"
             >
               <ArrowDown className="h-4 w-4 shrink-0 transition-transform group-hover/more:translate-y-0.5" aria-hidden />
               <span className="underline underline-offset-4 decoration-white/30 group-hover/more:decoration-white/70">
@@ -81,7 +81,7 @@ export function Hero() {
             </a>
 
             {/* TLAČÍTKO: scroll k termínům. Měří se jako hero_show_dates. */}
-            <div className="mt-4 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
+            <div className="mt-3 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
               <CTAButton
                 id="hero-cta"
                 href="#terminy"
@@ -100,7 +100,7 @@ export function Hero() {
             </div>
 
             {/* Řádek důvěry s lektorem - jen mobil/tablet, na desktopu je portrét vpravo */}
-            <div className="mt-6 flex justify-center lg:hidden">
+            <div className="mt-4 flex justify-center lg:hidden">
               <div className="inline-flex items-center gap-3 max-w-[320px] text-left">
                 <div className="relative shrink-0">
                   <img
@@ -127,14 +127,14 @@ export function Hero() {
             </div>
 
             {/* Úvodní odstavec */}
-            <p className="mt-6 text-base sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="mt-4 text-base sm:mt-6 sm:text-lg text-white/75 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Vyzkoušej si, jak vést rozhovor, ve kterém druhému pomáháš najít vlastní řešení. Za dvě
               hodiny uvidíš živé koučování, vyzkoušíš si roli kouče i klienta a poznáš, jak se
               v CoachVille učíme praxí.
             </p>
 
             {/* Garance - jen mobil/tablet (na desktopu pod fotkou vpravo) */}
-            <div className="mt-8 lg:hidden">
+            <div className="mt-4 lg:hidden">
               <Garance />
             </div>
           </div>
