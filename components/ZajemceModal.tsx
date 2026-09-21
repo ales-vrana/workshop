@@ -194,7 +194,6 @@ export function ZajemceModal({
                       onChange={(e) => setTelefon(e.target.value)}
                       autoComplete="tel"
                       className="w-full px-4 py-3 rounded-lg border border-navy-100 bg-cream text-dark focus-visible:border-teal-400 min-h-[48px]"
-                      placeholder="+420 777 123 456"
                     />
                   </div>
 
