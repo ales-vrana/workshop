@@ -1,5 +1,6 @@
 import { Section } from "@/components/ui/Section";
 import { CTAButton } from "@/components/ui/CTAButton";
+import { TerminyCards } from "@/components/TerminyCards";
 import { Calendar, Clock, Monitor, Check } from "lucide-react";
 import { WORKSHOP } from "@/lib/config";
 
@@ -96,12 +97,16 @@ export function ClosingCTA() {
         </div>
 
         <div className="flex flex-col items-center gap-4">
-          <CTAButton href="#terminy" variant="on-dark" className="w-full sm:w-auto">
+          <CTAButton href="#koupit" variant="on-dark" className="w-full sm:w-auto">
             Chci to zažít - {WORKSHOP.price}
           </CTAButton>
           <p className="text-xs text-white/60">
             Maximální kapacita {WORKSHOP.capacity} účastníků. Po platbě dostaneš e-mailem Zoom link a krátkou přípravu.
           </p>
+        </div>
+
+        <div className="mt-10 text-left">
+          <TerminyCards />
         </div>
       </div>
     </Section>

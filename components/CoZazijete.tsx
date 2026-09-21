@@ -71,7 +71,7 @@ export function CoZazijete() {
       </div>
 
       <div className="flex justify-center mt-12 sm:mt-14">
-        <CTAButton href="#terminy" variant="primary">
+        <CTAButton href="#koupit" variant="primary">
           Chci to zažít - {WORKSHOP.price}
         </CTAButton>
       </div>
