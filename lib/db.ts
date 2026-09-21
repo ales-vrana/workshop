@@ -179,8 +179,19 @@ const SCHEMA_STATEMENTS = [
   )`,
 ];
 
+function getDatabaseUrl(): string | undefined {
+  return (
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_URL ||
+    process.env.POSTGRES_PRISMA_URL ||
+    process.env.DATABASE_URL_UNPOOLED ||
+    process.env.POSTGRES_URL_NON_POOLING ||
+    undefined
+  );
+}
+
 export function hasDatabaseUrl(): boolean {
-  return Boolean(process.env.DATABASE_URL);
+  return Boolean(getDatabaseUrl());
 }
 
 export function isVercel(): boolean {
@@ -199,7 +210,7 @@ export function persistMode(): "neon" | "file" | "none" {
 }
 
 function sqlClient() {
-  const url = process.env.DATABASE_URL;
+  const url = getDatabaseUrl();
   if (!url) return null;
   return neon(url);
 }
