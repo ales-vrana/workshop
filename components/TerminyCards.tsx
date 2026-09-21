@@ -71,7 +71,7 @@ export function TerminyCards({ terminy: incoming }: { terminy?: TerminView[] } =
               data-engine-checkout="1"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex w-full items-center justify-center gap-2 px-5 py-4 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-navy-950 font-bold uppercase tracking-wider text-sm rounded-lg shadow-soft transition-all min-h-[52px] touch-manipulation focus-visible:ring-4 focus-visible:ring-cta-500/40"
+              className="group inline-flex w-full items-center justify-center gap-2 px-5 py-4 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-bold uppercase tracking-wider text-sm rounded-lg shadow-soft transition-all min-h-[52px] touch-manipulation focus-visible:ring-4 focus-visible:ring-cta-500/40"
             >
               Koupit vstupenku
               <ArrowRight

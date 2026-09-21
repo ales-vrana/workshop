@@ -50,13 +50,13 @@ const config: Config = {
           900: "#5a3e21",
         },
         cream: "#FAF9F5",
-        // Barva CTA tlačítek (zvoleno 17. 9. 2026): zelená #34A853
+        // Barva CTA tlačítek: tmavší zelená kvůli kontrastu bílého textu (WCAG AA ≥ 4,5:1)
         cta: {
-          DEFAULT: "#34A853",
-          400: "#4CB865", // světlejší (hover na tmavém pozadí)
-          500: "#34A853", // základ
-          600: "#2C9147", // hover
-          700: "#25803D", // active
+          DEFAULT: "#1E7E34",
+          400: "#239A44",
+          500: "#1E7E34", // základ, bílá na #1E7E34 = 5,14:1
+          600: "#19692B", // hover
+          700: "#145624", // active
         },
         dark: "#30302E",
       },

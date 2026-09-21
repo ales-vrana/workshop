@@ -55,10 +55,10 @@
     @apply text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-gold-700; /* 6,6:1 na bílé; na tmavém pozadí přepsat text-gold-400 */
   }
 
-  /* Primární CTA tlačítko - zelená #34A853, tmavý text (kontrast 5,2:1) */
+  /* Primární CTA tlačítko - zelená #1E7E34, bílý text (kontrast 5,14:1) */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-4 sm:px-8 sm:py-5
-           bg-cta-500 text-navy-950 font-bold uppercase tracking-wider text-sm sm:text-base
+           bg-cta-500 text-white font-bold uppercase tracking-wider text-sm sm:text-base
            rounded-lg shadow-soft transition-all duration-200
            hover:bg-cta-600 hover:shadow-lifted hover:-translate-y-0.5
            active:translate-y-0 active:bg-cta-700
@@ -79,9 +79,9 @@
   /* CTA na tmavém pozadí */
   .btn-on-dark {
     @apply inline-flex items-center justify-center gap-2 px-6 py-4 sm:px-8 sm:py-5
-           bg-cta-500 text-navy-950 font-bold uppercase tracking-wider text-sm sm:text-base
+           bg-cta-500 text-white font-bold uppercase tracking-wider text-sm sm:text-base
            rounded-lg shadow-lifted transition-all duration-200
-           hover:bg-cta-400 hover:-translate-y-0.5
+           hover:bg-cta-600 hover:-translate-y-0.5
            focus-visible:ring-4 focus-visible:ring-cta-500/60
            min-h-[56px] touch-manipulation;
   }

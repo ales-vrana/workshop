@@ -66,7 +66,7 @@ export function Hero() {
                 href="#terminy"
                 variant="on-dark"
                 arrow="down"
-                className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base whitespace-nowrap !tracking-wide sm:!tracking-wider"
+                className="w-full sm:w-auto group !text-[17px] sm:!text-base whitespace-nowrap !tracking-wide sm:!tracking-wider"
                 ariaLabel="Vybrat termín · 199 Kč"
               >
                 Vybrat termín · 199 Kč
