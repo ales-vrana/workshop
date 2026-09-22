@@ -81,6 +81,19 @@ export type FunnelCounts = {
   purchases: number;
 };
 
+export type FunnelRange = {
+  from?: Date;
+  to?: Date;
+};
+
+export type LaunchWaveRow = {
+  id: number;
+  name: string;
+  started_at: string;
+  notes: string | null;
+  created_at: string;
+};
+
 export type CreativeRow = {
   key: string;
   utm_campaign: string;
@@ -99,7 +112,8 @@ type FileStore = {
   waitlist: Array<Record<string, unknown>>;
   purchases: Array<Record<string, unknown>>;
   hypotheses: Array<Record<string, unknown>>;
-  seq: { events: number; waitlist: number; purchases: number; hypotheses: number };
+  launch_waves: Array<Record<string, unknown>>;
+  seq: { events: number; waitlist: number; purchases: number; hypotheses: number; launch_waves: number };
 };
 
 const SCHEMA_STATEMENTS = [
@@ -179,6 +193,14 @@ const SCHEMA_STATEMENTS = [
     status TEXT NOT NULL DEFAULT 'open',
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
   )`,
+  `CREATE TABLE IF NOT EXISTS launch_waves (
+    id BIGSERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    started_at TIMESTAMPTZ NOT NULL,
+    notes TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  )`,
+  `CREATE INDEX IF NOT EXISTS launch_waves_started_idx ON launch_waves (started_at DESC)`,
 ];
 
 function getDatabaseUrl(): string | undefined {
@@ -254,7 +276,8 @@ function emptyStore(): FileStore {
     waitlist: [],
     purchases: [],
     hypotheses: [],
-    seq: { events: 0, waitlist: 0, purchases: 0, hypotheses: 0 },
+    launch_waves: [],
+    seq: { events: 0, waitlist: 0, purchases: 0, hypotheses: 0, launch_waves: 0 },
   };
 }
 
@@ -272,7 +295,14 @@ function withFileLock<T>(fn: () => Promise<T>): Promise<T> {
 async function readStore(): Promise<FileStore> {
   try {
     const raw = await fs.readFile(filePath(), "utf8");
-    return { ...emptyStore(), ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw) as Partial<FileStore>;
+    const base = emptyStore();
+    return {
+      ...base,
+      ...parsed,
+      launch_waves: parsed.launch_waves || [],
+      seq: { ...base.seq, ...(parsed.seq || {}) },
+    };
   } catch {
     return emptyStore();
   }
@@ -545,25 +575,52 @@ function uniqueCount(rows: Array<Record<string, unknown>>, key: string): number 
   return new Set(rows.map((r) => String(r[key] || ""))).size;
 }
 
-export async function getFunnel(): Promise<FunnelCounts> {
-  const mode = persistMode();
-  if (mode === "none") {
-    return {
-      visits: 0,
-      uniqueVisitors: 0,
-      viewContent: 0,
-      scroll50: 0,
-      scrollTerminy: 0,
-      heroShowDates: 0,
-      ctaClick: 0,
-      initiateCheckout: 0,
-      waitlist: 0,
-      purchases: 0,
-    };
+function emptyFunnel(): FunnelCounts {
+  return {
+    visits: 0,
+    uniqueVisitors: 0,
+    viewContent: 0,
+    scroll50: 0,
+    scrollTerminy: 0,
+    heroShowDates: 0,
+    ctaClick: 0,
+    initiateCheckout: 0,
+    waitlist: 0,
+    purchases: 0,
+  };
+}
+
+function inTimeRange(iso: unknown, range?: FunnelRange): boolean {
+  if (!range?.from && !range?.to) return true;
+  const t = new Date(String(iso)).getTime();
+  if (Number.isNaN(t)) return false;
+  if (range.from && t < range.from.getTime()) return false;
+  if (range.to && t >= range.to.getTime()) return false;
+  return true;
+}
+
+function sqlTimeWhere(alias: string, range?: FunnelRange): { sql: string; params: unknown[] } {
+  if (!range?.from && !range?.to) return { sql: "", params: [] };
+  const parts: string[] = [];
+  const params: unknown[] = [];
+  if (range.from) {
+    params.push(range.from.toISOString());
+    parts.push(`${alias} >= $${params.length}::timestamptz`);
   }
+  if (range.to) {
+    params.push(range.to.toISOString());
+    parts.push(`${alias} < $${params.length}::timestamptz`);
+  }
+  return { sql: ` WHERE ${parts.join(" AND ")}`, params };
+}
+
+export async function getFunnel(range?: FunnelRange): Promise<FunnelCounts> {
+  const mode = persistMode();
+  if (mode === "none") return emptyFunnel();
 
   if (mode === "neon") {
     await ensureNeonSchema();
+    const ev = sqlTimeWhere("created_at", range);
     const rows = (await neonQuery(
       `SELECT
          COUNT(*) FILTER (WHERE event_type = 'page_view')::int AS visits,
@@ -574,11 +631,18 @@ export async function getFunnel(): Promise<FunnelCounts> {
          COUNT(DISTINCT visitor_id) FILTER (WHERE event_type = 'hero_show_dates')::int AS hero_show_dates,
          COUNT(DISTINCT visitor_id) FILTER (WHERE event_type = 'cta_click')::int AS cta_click,
          COUNT(DISTINCT visitor_id) FILTER (WHERE event_type = 'initiate_checkout')::int AS initiate_checkout
-       FROM events`,
-      [],
+       FROM events${ev.sql}`,
+      ev.params,
     )) as Array<Record<string, number>>;
-    const wait = (await neonQuery(`SELECT COUNT(*)::int AS n FROM waitlist`, [])) as Array<{ n: number }>;
-    const purch = (await neonQuery(`SELECT COUNT(*)::int AS n FROM purchases`, [])) as Array<{ n: number }>;
+    const waitW = sqlTimeWhere("created_at", range);
+    const purchW = sqlTimeWhere("created_at", range);
+    const wait = (await neonQuery(`SELECT COUNT(*)::int AS n FROM waitlist${waitW.sql}`, waitW.params)) as Array<{
+      n: number;
+    }>;
+    const purch = (await neonQuery(
+      `SELECT COUNT(*)::int AS n FROM purchases${purchW.sql}`,
+      purchW.params,
+    )) as Array<{ n: number }>;
     const r = rows[0] || {};
     return {
       visits: r.visits || 0,
@@ -595,33 +659,34 @@ export async function getFunnel(): Promise<FunnelCounts> {
   }
 
   const store = await readStore();
-  const pageViews = store.events.filter((e) => e.event_type === "page_view");
+  const events = store.events.filter((e) => inTimeRange(e.created_at, range));
+  const pageViews = events.filter((e) => e.event_type === "page_view");
   return {
     visits: pageViews.length,
     uniqueVisitors: uniqueCount(pageViews, "visitor_id"),
-    viewContent: store.events.filter((e) => e.event_type === "view_content").length,
+    viewContent: events.filter((e) => e.event_type === "view_content").length,
     scroll50: uniqueCount(
-      store.events.filter((e) => e.event_type === "scroll_50"),
+      events.filter((e) => e.event_type === "scroll_50"),
       "visitor_id",
     ),
     scrollTerminy: uniqueCount(
-      store.events.filter((e) => e.event_type === "scroll_terminy"),
+      events.filter((e) => e.event_type === "scroll_terminy"),
       "visitor_id",
     ),
     heroShowDates: uniqueCount(
-      store.events.filter((e) => e.event_type === "hero_show_dates"),
+      events.filter((e) => e.event_type === "hero_show_dates"),
       "visitor_id",
     ),
     ctaClick: uniqueCount(
-      store.events.filter((e) => e.event_type === "cta_click"),
+      events.filter((e) => e.event_type === "cta_click"),
       "visitor_id",
     ),
     initiateCheckout: uniqueCount(
-      store.events.filter((e) => e.event_type === "initiate_checkout"),
+      events.filter((e) => e.event_type === "initiate_checkout"),
       "visitor_id",
     ),
-    waitlist: store.waitlist.length,
-    purchases: store.purchases.length,
+    waitlist: store.waitlist.filter((w) => inTimeRange(w.created_at, range)).length,
+    purchases: store.purchases.filter((p) => inTimeRange(p.created_at, range)).length,
   };
 }
 
@@ -841,6 +906,129 @@ export async function updateHypothesisStatus(id: number, status: string): Promis
     const store = await readStore();
     const row = store.hypotheses.find((h) => Number(h.id) === id);
     if (row) row.status = status;
+    await writeStore(store);
+  });
+}
+
+const DEFAULT_WAVES: Array<{ name: string; started_at: string; notes: string }> = [
+  {
+    name: "Původní landing",
+    started_at: "2020-01-01T00:00:00.000Z",
+    notes: "Vše před měřenými vlnami.",
+  },
+  {
+    name: "Vlna 1 — fold a CTA",
+    started_at: "2026-09-21T19:54:38.000Z",
+    notes: "Termíny pod foldem, sticky CTA, hero Vybrat termín.",
+  },
+  {
+    name: "Headline — 2 hodiny / cesta",
+    started_at: "2026-09-21T20:48:40.000Z",
+    notes: "H1 Za 2 hodiny budeš vědět… + nový podtitulek.",
+  },
+];
+
+function mapWaveRow(row: Record<string, unknown>): LaunchWaveRow {
+  return {
+    id: Number(row.id),
+    name: String(row.name),
+    started_at: String(row.started_at),
+    notes: (row.notes as string) || null,
+    created_at: String(row.created_at),
+  };
+}
+
+async function ensureDefaultWaves(): Promise<void> {
+  const mode = persistMode();
+  if (mode === "none") return;
+  if (mode === "neon") {
+    await ensureNeonSchema();
+    const existing = (await neonQuery(`SELECT COUNT(*)::int AS n FROM launch_waves`, [])) as Array<{ n: number }>;
+    if ((existing[0]?.n || 0) > 0) return;
+    for (const w of DEFAULT_WAVES) {
+      await neonQuery(`INSERT INTO launch_waves (name, started_at, notes) VALUES ($1, $2, $3)`, [
+        w.name,
+        w.started_at,
+        w.notes,
+      ]);
+    }
+    return;
+  }
+  await withFileLock(async () => {
+    const store = await readStore();
+    if ((store.launch_waves || []).length > 0) return;
+    for (const w of DEFAULT_WAVES) {
+      store.seq.launch_waves += 1;
+      store.launch_waves.push({
+        id: store.seq.launch_waves,
+        name: w.name,
+        started_at: w.started_at,
+        notes: w.notes,
+        created_at: new Date().toISOString(),
+      });
+    }
+    await writeStore(store);
+  });
+}
+
+export async function getLaunchWaves(): Promise<LaunchWaveRow[]> {
+  const mode = persistMode();
+  if (mode === "none") return [];
+  await ensureDefaultWaves();
+  if (mode === "neon") {
+    await ensureNeonSchema();
+    const rows = await neonQuery(
+      `SELECT id, name, started_at::text, notes, created_at::text
+       FROM launch_waves ORDER BY started_at ASC`,
+      [],
+    );
+    return rows.map(mapWaveRow);
+  }
+  const store = await readStore();
+  return [...(store.launch_waves || [])]
+    .sort((a, b) => String(a.started_at).localeCompare(String(b.started_at)))
+    .map(mapWaveRow);
+}
+
+export async function addLaunchWave(name: string, startedAt: Date, notes?: string): Promise<void> {
+  const mode = persistMode();
+  if (mode === "none") throw new Error("DATABASE_URL is not set");
+  const started = startedAt.toISOString();
+  const note = notes?.trim() || null;
+  if (mode === "neon") {
+    await ensureNeonSchema();
+    await neonQuery(`INSERT INTO launch_waves (name, started_at, notes) VALUES ($1, $2, $3)`, [
+      name,
+      started,
+      note,
+    ]);
+    return;
+  }
+  await withFileLock(async () => {
+    const store = await readStore();
+    store.seq.launch_waves += 1;
+    store.launch_waves.push({
+      id: store.seq.launch_waves,
+      name,
+      started_at: started,
+      notes: note,
+      created_at: new Date().toISOString(),
+    });
+    await writeStore(store);
+  });
+}
+
+export async function deleteLaunchWave(id: number): Promise<void> {
+  const mode = persistMode();
+  if (mode === "none") throw new Error("DATABASE_URL is not set");
+  if (mode === "neon") {
+    await ensureNeonSchema();
+    await neonQuery(`DELETE FROM launch_waves WHERE id = $1`, [id]);
+    return;
+  }
+  await withFileLock(async () => {
+    const store = await readStore();
+    store.launch_waves = (store.launch_waves || []).filter((w) => Number(w.id) !== id);
     await writeStore(store);
   });
 }
