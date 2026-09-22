@@ -23,6 +23,12 @@ function cell(rate: number | null, abs: number, kind: "count" | "rate") {
   );
 }
 
+function toneClass(tone: "up" | "down" | "flat") {
+  if (tone === "up") return "text-cta font-bold";
+  if (tone === "down") return "text-red-700 font-bold";
+  return "text-dark/70";
+}
+
 export function WaveCompare({
   waves,
   pair,
