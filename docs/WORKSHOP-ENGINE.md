@@ -18,7 +18,7 @@ Reklamy teď umí přivést klik, ne nákup. Bez nákupů nemá smysl vybírat �
 4. zapsat skutečnou platbu ze Stripe,
 5. navrhnout **jeden další krok** k první konverzi.
 
-A/B headlineů je fáze 2. LTV studentů z výcviku je ještě později.
+A/B headlineů je fáze 2. LTV studentů z výcviku je ještě později. Změny landing page měř přes **vlny** (sekvenční srovnání nové vs předchozí), ne mícháním celého funnelu.
 
 ---
 
@@ -93,6 +93,8 @@ Meta dostane event **Lead**.
 **Facebook** — prázdné, dokud není token. Pak spend a frequency, ať jedna kreativa nejede do únavy.
 
 **Hypotézy** — seznam, co testuješ. Žádný automatický A/B.
+
+**Vlny** — po každé změně landing page zadáš název + datum a čas startu. Engine od té chvíle měří novou variantu zvlášť a srovná ji s předchozí ve **stejné délce od startu** (kusy i %). Není to souběžný A/B split. Funnel níže zůstává smíchaný za celé období.
 
 ---
 

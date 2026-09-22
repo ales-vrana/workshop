@@ -83,3 +83,13 @@ CREATE TABLE IF NOT EXISTS hypotheses (
   status TEXT NOT NULL DEFAULT 'open',
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+CREATE TABLE IF NOT EXISTS launch_waves (
+  id BIGSERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  started_at TIMESTAMPTZ NOT NULL,
+  notes TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS launch_waves_started_idx ON launch_waves (started_at DESC);

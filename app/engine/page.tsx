@@ -3,9 +3,13 @@ import {
   getCreatives,
   getFunnel,
   getHypotheses,
+  getLaunchWaves,
   getWaitlist,
   persistMode,
 } from "@/lib/db";
+import { equalExposurePair, windowsForWaves } from "@/lib/waves";
+import { WaveCompare } from "./WaveCompare";
+import { WavesForm } from "./WavesForm";
 import { fetchFacebookAdInsights, facebookConfigured } from "@/lib/facebook";
 import { fetchClarityLiveInsights, clarityConfigured, analyzeClarity } from "@/lib/clarity";
 import { buildRecommendations } from "@/lib/recommendations";
@@ -27,6 +31,7 @@ function formatWhen(iso: string): string {
 }
 
 const NAV = [
+  { href: "#vlny", label: "Vlny" },
   { href: "#funnel", label: "Funnel" },
   { href: "#kreativy", label: "Kreativy" },
   { href: "#waitlist", label: "Waitlist" },
@@ -38,21 +43,32 @@ const NAV = [
 
 export default async function EnginePage() {
   const mode = persistMode();
-  const [funnel, creatives, waitlist, hypotheses, fb, clarity] = await Promise.all([
+  const [funnel, creatives, waitlist, hypotheses, waves, fb, clarity] = await Promise.all([
     getFunnel(),
     getCreatives(),
     getWaitlist(),
     getHypotheses(),
+    getLaunchWaves(),
     fetchFacebookAdInsights(),
     clarityConfigured()
       ? fetchClarityLiveInsights()
       : Promise.resolve({ metrics: [], error: "missing_config" as string | null }),
   ]);
 
+  const waveWindows = windowsForWaves(waves);
+  const pair = equalExposurePair(waveWindows);
+  const [currentWaveFunnel, previousWaveFunnel, liveWaveFunnel] = await Promise.all([
+    pair ? getFunnel({ from: pair.current.from, to: pair.current.to }) : Promise.resolve(null),
+    pair ? getFunnel({ from: pair.previous.from, to: pair.previous.to }) : Promise.resolve(null),
+    waveWindows.length
+      ? getFunnel({ from: waveWindows[waveWindows.length - 1].from, to: waveWindows[waveWindows.length - 1].to })
+      : Promise.resolve(funnel),
+  ]);
+
   const clarityAnalysis =
     clarityConfigured() && !clarity.error ? analyzeClarity(clarity.metrics) : null;
 
-  const recs = buildRecommendations(funnel, creatives, {
+  const recs = buildRecommendations(liveWaveFunnel || funnel, creatives, {
     hasFbToken: facebookConfigured(),
     hasStripeWebhook: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
     persistMode: mode,
@@ -103,11 +119,29 @@ export default async function EnginePage() {
       </header>
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+        <section id="vlny" className="scroll-mt-6">
+          <h2 className="text-lg font-extrabold text-navy-700">Vlny — nová vs předchozí</h2>
+          <p className="text-sm text-dark/60 mt-1 max-w-3xl">
+            Není to souběžný A/B (návštěvníci se nedělí). Po nasazení zadáš datum a čas startu. Engine pak
+            měří novou variantu samostatně a srovná ji s předchozí ve <strong>stejné délce od startu</strong>
+            — kusy i procenta. Jinak by se 2 dny nové copy míchaly s týdny staré.
+          </p>
+          <WavesForm />
+          <div className="mt-5">
+            <WaveCompare
+              waves={waves}
+              pair={pair}
+              current={currentWaveFunnel}
+              previous={previousWaveFunnel}
+            />
+          </div>
+        </section>
+
         <section id="funnel" className="scroll-mt-6">
-          <h2 className="text-lg font-extrabold text-navy-700">Funnel</h2>
+          <h2 className="text-lg font-extrabold text-navy-700">Funnel (celé období)</h2>
           <p className="text-sm text-dark/60 mt-1 mb-4">
+            Smíchaná data od začátku měření. Pro rozhodnutí po změně koukni nahoru na <a href="#vlny" className="underline">vlny</a>.
             Unikátní návštěvníci na kroku. <strong>Zobrazit termíny</strong> = klik na hero tlačítko.
-            Když je nízko, problém je textace hero, ne seznam termínů.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {steps.map((s) => (
