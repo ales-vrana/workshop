@@ -12,10 +12,15 @@ import {
 } from "@/lib/waves";
 import { DeleteWaveButton } from "./WavesForm";
 
-function toneClass(tone: "up" | "down" | "flat") {
-  if (tone === "up") return "text-cta font-bold";
-  if (tone === "down") return "text-red-700 font-bold";
-  return "text-dark/70";
+function cell(rate: number | null, abs: number, kind: "count" | "rate") {
+  if (kind === "count") return abs;
+  if (rate == null) return abs;
+  return (
+    <>
+      {formatRate(rate)}
+      <span className="text-dark/40"> · {abs}</span>
+    </>
+  );
 }
 
 export function WaveCompare({
@@ -70,26 +75,8 @@ export function WaveCompare({
                   return (
                     <tr key={row.id} className="border-t border-navy-50">
                       <td className="px-4 py-3 font-semibold text-navy-800">{row.label}</td>
-                      <td className="px-4 py-3">
-                        {row.kind === "rate" ? (
-                          <>
-                            {formatRate(row.currentRate)}
-                            <span className="text-dark/40"> · {row.currentAbs}</span>
-                          </>
-                        ) : (
-                          row.currentAbs
-                        )}
-                      </td>
-                      <td className="px-4 py-3">
-                        {row.kind === "rate" ? (
-                          <>
-                            {formatRate(row.previousRate)}
-                            <span className="text-dark/40"> · {row.previousAbs}</span>
-                          </>
-                        ) : (
-                          row.previousAbs
-                        )}
-                      </td>
+                      <td className="px-4 py-3">{cell(row.currentRate, row.currentAbs, row.kind)}</td>
+                      <td className="px-4 py-3">{cell(row.previousRate, row.previousAbs, row.kind)}</td>
                       <td className={`px-4 py-3 ${toneClass(tone)}`}>{delta}</td>
                     </tr>
                   );
