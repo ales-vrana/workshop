@@ -66,17 +66,17 @@ export interface Termin {
 export const TERMINY: Termin[] = [
   {
     id: "termin-1",
-    dateISO: "2026-09-24",
-    dayOfWeek: "čtvrtek",
-    startTime: "11:30",
+    dateISO: "2026-10-11",
+    dayOfWeek: "neděle",
+    startTime: "18:00",
     durationMinutes: 120,
-    paymentLink: "https://buy.stripe.com/bJe8wObzqbKvdOK5VnejK2t",
+    paymentLink: "https://buy.stripe.com/fZu00i0UMbKvdOKerTejK2y",
   },
   {
     id: "termin-2",
     dateISO: "2026-10-01",
     dayOfWeek: "čtvrtek",
-    startTime: "18:30",
+    startTime: "19:00",
     durationMinutes: 120,
     paymentLink: "https://buy.stripe.com/dRm8wOcDuaGr9yu4RjejK2v",
   },
