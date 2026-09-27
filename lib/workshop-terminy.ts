@@ -82,7 +82,7 @@ export const TERMINY: Termin[] = [
   },
   {
     id: "termin-3",
-    dateISO: "2026-09-27",
+    dateISO: "2026-09-26",
     dayOfWeek: "neděle",
     startTime: "12:00",
     durationMinutes: 120,
