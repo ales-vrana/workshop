@@ -95,7 +95,7 @@ export function Hero() {
                   id="hero-cta"
                   href="#terminy"
                   variant="on-dark"
-                  className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base"
+                  className="w-full sm:w-auto group !text-[17px] sm:!text-base"
                   ariaLabel="Chci si to zkusit - vybrat termín ukázkové lekce"
                 >
                   Chci si to zkusit

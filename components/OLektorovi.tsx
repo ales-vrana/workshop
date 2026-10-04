@@ -21,10 +21,10 @@ export function OLektorovi() {
       <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
         <p className="h-label text-gold-400 mb-3">Lektor</p>
         <h2 className="h-section text-h2 text-white mb-4">
-          S kým lekci zažiješ
+          S kým lekci zažijete
         </h2>
         <p className="text-base sm:text-lg text-white/70">
-          Praktickou ukázkovou lekcí tě provede:
+          Praktickou ukázkovou lekcí vás provede:
         </p>
       </div>
 
