@@ -1,81 +1,54 @@
 import { Section } from "@/components/ui/Section";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { TerminyCards } from "@/components/TerminyCards";
-import { Calendar, Clock, Monitor, Check } from "lucide-react";
+import { Check, Calendar, Clock, Monitor } from "lucide-react";
 import { WORKSHOP } from "@/lib/config";
+
+/**
+ * Závěr v Alešově hlase.
+ *
+ * Metafora plavání zůstává, „rozhodnutí, které ovlivní další roky" je pryč -
+ * J2 na hraně tíhu nepotřebuje. Místo cenové kotvy je rozpis toho, co je
+ * v ceně (bez vyčíslení v korunách, u školy s ICF akreditací by nafouknutý
+ * balík poškodil důvěru víc, než kolik by přinesl).
+ */
+
+const V_CENE = [
+  `Živá lekce s MCC koučem (${WORKSHOP.duration}, bez záznamu - jste u toho naživo)`,
+  "Praxe v roli kouče i v roli klienta",
+  "PDF s pěti koučovacími otázkami do další praxe",
+  `Skupina maximálně ${WORKSHOP.capacity} lidí`,
+];
 
 export function ClosingCTA() {
   return (
     <Section id="koupit" tone="navy">
       <div className="max-w-3xl mx-auto text-center">
-        <p className="h-label text-gold-400 mb-3">Závěrečné CTA</p>
         <h2 className="h-section text-h2 text-white mb-6">
-          Za {WORKSHOP.duration} budeš vědět, jestli je koučování tvoje cesta
+          Plavat se taky nenaučíte z knihy o plavání
         </h2>
-        <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-6 max-w-2xl mx-auto">
-          Koučování je dovednost, kterou se nenaučíš z knihy. Stejně jako se z knihy nenaučíš
-          plavat nebo lyžovat. Dokud to nezažiješ, je to jen teorie. Vlastní zážitek je nová
-          objevná zkušenost.
-          <br /><br />
-          <strong className="text-white">
-            Tento workshop je první krok, první plavecké tempo, první menší sjezdovka.
-          </strong>
+
+        <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-5 max-w-2xl mx-auto">
+          Můžete si přečíst všechno o technice a pořád nebudete vědět, jestli
+          vás voda unese.
         </p>
+
         <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-10 max-w-2xl mx-auto">
-          Patříš mezi lidi, kteří se rozhodují <strong className="text-white">v praxi, ne v hlavě</strong>?
-          To je vzácnost. Workshop ti dá důkaz.
-          <br /><br />
-          Staneš se <strong className="text-gold-300">koučem i hráčem</strong> - ne jen pozorovatelem.
-          Koučování už nebude teorie, ale praktická zkušenost.
+          Za dvě hodiny to budete vědět. Jestli zjistíte, že to pro vás není,
+          máte za sebou dvě hodiny, které stály za to.{" "}
+          <strong className="text-white">Jestli ano, víte, kam dál.</strong>
         </p>
 
-        <ul className="text-left space-y-4 max-w-2xl mx-auto mb-10">
-          <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-gold-400 mt-0.5" aria-hidden />
-            <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-white">{WORKSHOP.duration} živé praxe</strong> - v roli kouče i klienta
-            </span>
-          </li>
-          <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-gold-400 mt-0.5" aria-hidden />
-            <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-white">S ICF MCC koučem</strong> - držitelem nejvyšší světové certifikace
-            </span>
-          </li>
-          <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-gold-400 mt-0.5" aria-hidden />
-            <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-white">Max {WORKSHOP.capacity} lidí</strong> - malá skupina, osobní pozornost
-            </span>
-          </li>
-          <li className="flex items-start gap-3">
-            <Check className="h-6 w-6 shrink-0 text-gold-400 mt-0.5" aria-hidden />
-            <span className="text-white/90 text-base sm:text-lg">
-              <strong className="text-white">Garance:</strong> pokud po 60 minutách necítíš přínos, vrátím ti 100 % ceny
-            </span>
-          </li>
-        </ul>
-
-        {/* Cenová kotva */}
-        <div className="rounded-xl bg-white/5 border border-white/15 px-5 py-4 max-w-2xl mx-auto mb-10">
-          <p className="text-base sm:text-lg text-white/90 leading-relaxed">
-            <strong className="text-white">{WORKSHOP.price} a {WORKSHOP.duration}.</strong>{" "}
-            Nejlevnější způsob, jak otestovat rozhodnutí, které ovlivní další roky.
-          </p>
-        </div>
-
-        {WORKSHOP.showSpotsScarcity && (
-          <div className="rounded-xl bg-gold-500/15 border border-gold-500/30 px-5 py-4 max-w-2xl mx-auto mb-6">
-            <p className="text-base sm:text-lg font-semibold text-gold-300">
-              ⏳ Zbývá {WORKSHOP.spotsLabel} míst - workshop má omezenou kapacitu
-            </p>
-          </div>
-        )}
-
-        <div className="rounded-xl bg-white/5 border border-white/15 px-5 py-4 max-w-2xl mx-auto mb-10">
-          <p className="text-sm sm:text-base text-white/80">
-            Zkušenost je více než teorie. Vyber si svůj termín a rezervuj své místo.
-          </p>
+        {/* Co je v ceně */}
+        <div className="rounded-2xl bg-white/5 border border-white/15 p-6 sm:p-8 max-w-2xl mx-auto mb-8 text-left">
+          <p className="h-label text-gold-400 mb-5">Co je v ceně</p>
+          <ul className="space-y-3">
+            {V_CENE.map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <Check className="h-5 w-5 shrink-0 text-gold-300 mt-0.5" aria-hidden />
+                <span className="text-white/90 text-base sm:text-lg">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Info row */}
@@ -97,16 +70,16 @@ export function ClosingCTA() {
         </div>
 
         <div className="flex flex-col items-center gap-4">
-          <CTAButton href="#koupit" variant="on-dark" className="w-full sm:w-auto">
-            Chci to zažít - {WORKSHOP.price}
+          <CTAButton href="#terminy" variant="on-dark" className="w-full sm:w-auto">
+            Chci si to zkusit
           </CTAButton>
-          <p className="text-xs text-white/60">
-            Maximální kapacita {WORKSHOP.capacity} účastníků. Po platbě dostaneš e-mailem Zoom link a krátkou přípravu.
+          <p className="text-sm text-white/75 max-w-md">
+            {WORKSHOP.price}. Když vás první hodina nechytne, vrátíme vám je.
+            Bez vysvětlování.
           </p>
-        </div>
-
-        <div className="mt-10 text-left">
-          <TerminyCards />
+          <p className="text-xs text-white/55">
+            Po platbě dostanete e-mailem odkaz na {WORKSHOP.platform} a krátkou přípravu.
+          </p>
         </div>
       </div>
     </Section>

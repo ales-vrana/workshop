@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { MetaPixel } from "@/components/MetaPixel";
 import { EventSchema } from "@/components/EventSchema";
 import { DevWarning } from "@/components/ui/DevWarning";
-import { AttributionTracker } from "@/components/Attribution";
 import { WORKSHOP } from "@/lib/config";
 import "./globals.css";
 
@@ -15,13 +14,13 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://workshop.coachville.eu";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://poznej.coachville.eu/workshop";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `Za ${WORKSHOP.duration} zjistíš o koučování víc než za roky čtení | Aleš Vrána, MCC`,
+  title: "Takhle dalších deset let ne? | Ukázková lekce koučování CoachVille",
   description:
-    `${WORKSHOP.duration} online workshop pro lidi, kteří chtějí koučování zažít v praxi. Živá praxe v roli kouče i klienta s držitelem nejvyšší ICF certifikace MCC. ${WORKSHOP.dateFull}, ${WORKSHOP.timeRange}, ${WORKSHOP.price}. Garance vrácení peněz.`,
+    `${WORKSHOP.duration} online, ve kterých si koučování vyzkoušíte na vlastní kůži a zjistíte, jestli je to cesta, kterou hledáte. Vede Aleš Vrána, ICF Master Certified Coach. ${WORKSHOP.dateFull}, ${WORKSHOP.timeRange}, ${WORKSHOP.price}. První hodina na zkoušku.`,
   keywords: [
     "koučování",
     "workshop koučování",
@@ -35,9 +34,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "cs_CZ",
-    title: `Za ${WORKSHOP.duration} zjistíš o koučování víc než za roky čtení | Aleš Vrána, MCC`,
+    title: "Takhle dalších deset let ne? | Ukázková lekce koučování CoachVille",
     description:
-      `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Bez teorie. Bez závazku. Vyzkoušej si koučovat na vlastní kůži.`,
+      `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Bez teorie a bez skoku do prázdna. Vyzkoušejte si koučování na vlastní kůži.`,
     siteName: "CoachVille Europe",
     images: [
       {
@@ -50,8 +49,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Za ${WORKSHOP.duration} zjistíš o koučování víc než za roky čtení | Aleš Vrána, MCC`,
-    description: `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Cena ${WORKSHOP.price}. Garance vrácení peněz.`,
+    title: "Takhle dalších deset let ne? | Ukázková lekce koučování CoachVille",
+    description: `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. ${WORKSHOP.price}, první hodina na zkoušku.`,
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -86,7 +85,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-white text-dark antialiased">
         <MetaPixel />
-        <AttributionTracker />
         {children}
         <DevWarning />
         <Analytics />

@@ -92,7 +92,7 @@ export function Zkusenosti() {
     <Section id="reference" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">Reference</p>
-        <h2 className="h-section text-h2 text-navy-600 mb-4">Zkušenosti účastníků</h2>
+        <h2 className="h-section text-h2 text-navy-600 mb-4">Lidé, kteří tu seděli před vámi</h2>
         <p className="text-base sm:text-lg text-dark/70">
           Krátké video-reference od lidí, kteří workshop prošli. Klikněte na libovolnou kartu
           a poslechněte si jejich příběh.
@@ -119,8 +119,8 @@ export function Zkusenosti() {
       )}
 
       <div className="flex justify-center mt-10 sm:mt-12">
-        <CTAButton href="#koupit" variant="primary">
-          Chci to zažít - {WORKSHOP.price}
+        <CTAButton href="#terminy" variant="primary">
+          Chci si to zkusit
         </CTAButton>
       </div>
     </Section>

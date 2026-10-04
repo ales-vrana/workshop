@@ -6,12 +6,12 @@ const BADGES = [
   {
     icon: Trophy,
     title: "ICF Master Certified Coach",
-    sub: "Držitel nejvyšší mezinárodní certifikace, 14 let praxe v oboru",
+    sub: "Nejvyšší mezinárodní certifikace v koučování. Na lekci je vždy maximálně 16 lidí, aby se dostalo na každého.",
   },
   {
     icon: GraduationCap,
     title: "Hlavní trenér CoachVille",
-    sub: "Provede tě živou ukázkou i praktickým cvičením, abys poznal/a koučování na vlastní zkušenosti.",
+    sub: "Čtrnáct let učí lidi, kteří přišli přesně odtud: z vedení poboček, ze škol a nemocnic, po výpovědi i po rodičovské.",
   },
 ];
 

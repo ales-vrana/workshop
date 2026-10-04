@@ -7,11 +7,11 @@ import { ShieldCheck } from "lucide-react";
  */
 
 const JISTOTY = [
-  "Nemusíš předem umět koučovat. Dostaneš jednoduchý postup a konkrétní otázky.",
-  "Nikdo tě nebude známkovat. Přicházíš si koučování vyzkoušet.",
-  "Téma si vybíráš ty. Stačí běžná pracovní situace.",
+  "Nemusíte předem nic umět. Dostanete jednoduchý postup a konkrétní otázky.",
+  "Nikdo vás nehodnotí. Přicházíte si koučování vyzkoušet.",
+  "Téma si volíte sami. Stačí běžná pracovní situace, nic citlivého otevírat nemusíte.",
   "Praktické rozhovory ve dvojicích se nenahrávají.",
-  "Cílem je získat vlastní zkušenost s koučovacím rozhovorem.",
+  "Nikdo vám nebude nic prodávat. Na konci se dozvíte, jak pokračovat, pokud budete chtít.",
 ];
 
 export function NemuzesToPokazit() {
@@ -24,7 +24,7 @@ export function NemuzesToPokazit() {
               <ShieldCheck className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden />
             </div>
             <h2 className="h-section text-h2 text-navy-600 leading-tight">
-              Můžeš přijít i s nejistotou
+              Nemusíte nic umět ani nic rozhodovat
             </h2>
           </div>
 

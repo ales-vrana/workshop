@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Section } from "@/components/ui/Section";
-import { CalendarX } from "lucide-react";
+import { Calendar, Clock, Monitor, ArrowRight, CalendarX } from "lucide-react";
 import { getViditelneTerminy, VSECHNY_TERMINY, WORKSHOP, type TerminView } from "@/lib/config";
 import { ZajemceModal } from "@/components/ZajemceModal";
-import { TerminyCards } from "@/components/TerminyCards";
 
 /**
  * Sekce s vypsanými termíny.
@@ -35,12 +34,12 @@ export function Terminy() {
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <p className="h-label mb-3">Termíny</p>
         <h2 className="h-section text-h2 text-navy-600">
-          {prazdno ? "Nové termíny právě připravuji" : "Vyber si termín, který ti sedí"}
+          {prazdno ? "Nové termíny právě připravuji" : "Vyberte si termín, který vám sedí"}
         </h2>
         {!prazdno && (
           <p className="mt-4 text-base sm:text-lg text-dark/70">
-            Všechny termíny {WORKSHOP.duration} online, max {WORKSHOP.capacity} lidí,{" "}
-            {WORKSHOP.price}. Vyber si podle svého kalendáře.
+            Všechny termíny {WORKSHOP.duration} online, max {WORKSHOP.capacity} lidí.
+            Vyberte si podle svého kalendáře.
           </p>
         )}
       </div>
@@ -51,18 +50,74 @@ export function Terminy() {
             <CalendarX className="h-7 w-7" aria-hidden />
           </div>
           <p className="text-base sm:text-lg text-dark/80 leading-relaxed mb-6">
-            Aktuálně nemám vypsaný žádný volný termín. Nech mi kontakt a jakmile vypíšu nový,
-            ozvu se ti dřív, než ho dám na web.
+            Aktuálně nemám vypsaný žádný volný termín. Nechte mi kontakt a jakmile vypíšu nový,
+            ozvu se vám dřív, než ho dám na web.
           </p>
           <ZajemceModal triggerLabel="Chci vědět o novém termínu" />
         </div>
       ) : (
         <>
-          <TerminyCards terminy={terminy} />
+          <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+            {terminy.map((t, idx) => (
+              <article
+                key={t.id}
+                className={`flex flex-col bg-white rounded-2xl p-6 sm:p-7 shadow-soft transition-all hover:shadow-card-hover hover:-translate-y-1 ${
+                  idx === 0 ? "border-2 border-navy-600" : "border border-navy-100/60"
+                }`}
+              >
+                {idx === 0 && (
+                  <p className="inline-flex self-start items-center rounded-full bg-gold-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold-700 mb-4">
+                    Nejbližší termín
+                  </p>
+                )}
+
+                <p className="text-xl sm:text-2xl font-bold text-navy-600 leading-tight mb-1">
+                  {t.dayOfWeek} {t.dateShort}
+                </p>
+
+                <div className="mt-3 space-y-2 text-sm sm:text-base text-dark/70">
+                  <p className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-navy-400 shrink-0" aria-hidden />
+                    {t.timeRange}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Monitor className="h-4 w-4 text-navy-400 shrink-0" aria-hidden />
+                    online přes {WORKSHOP.platform}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 text-navy-400 shrink-0" aria-hidden />
+                    {t.duration}
+                  </p>
+                </div>
+
+                {t.showSpotsScarcity && (
+                  <p className="mt-4 text-sm font-bold text-gold-600">
+                    Zbývá {t.spotsLabel} míst
+                  </p>
+                )}
+
+                <div className="mt-auto pt-6">
+                  <p className="text-2xl font-extrabold text-navy-700 mb-3">{t.price}</p>
+                  <a
+                    href={t.paymentLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex w-full items-center justify-center gap-2 px-5 py-4 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-navy-950 font-bold uppercase tracking-wider text-sm rounded-lg shadow-soft transition-all min-h-[52px] touch-manipulation focus-visible:ring-4 focus-visible:ring-cta-500/40"
+                  >
+                    Chci si to zkusit
+                    <ArrowRight
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                      aria-hidden
+                    />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
 
           <div className="text-center mt-8 sm:mt-10">
             <p className="text-sm sm:text-base text-dark/70 mb-2">
-              Garance: pokud po první hodině necítíš přínos, vrátím ti 100 % ceny.
+              První hodina na zkoušku: když po ní budete mít pocit, že to pro vás není, napíšete a peníze vám vrátím. Bez vysvětlování.
             </p>
             <ZajemceModal />
           </div>

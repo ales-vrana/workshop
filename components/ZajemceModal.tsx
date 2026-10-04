@@ -3,23 +3,23 @@
 import { useEffect, useRef, useState } from "react";
 import { X, Check, Loader2 } from "lucide-react";
 import { WORKSHOP } from "@/lib/config";
-import { getClientAttribution } from "@/lib/attribution";
-import { apiUrl } from "@/lib/paths";
 
 /**
  * Modal pro zájemce, kterému nevyhovuje žádný vypsaný termín.
- * Ukládá kontakt do Workshop Engine (/api/waitlist) a posílá Meta Lead.
+ *
+ * Sbírá jméno, e-mail a telefon a posílá je na Zapier webhook
+ * (PARAMS.leadWebhookUrl). Pokud webhook není nastavený, přepne se
+ * na odeslání přes e-mailového klienta, aby se kontakt neztratil.
+ *
+ * Data se posílají jako application/x-www-form-urlencoded - Zapier je
+ * rozparsuje do polí a prohlížeč neposílá preflight dotaz (žádné CORS potíže).
  */
 
 interface Props {
+  /** Text tlačítka, kterým se modal otevírá */
   triggerLabel?: string;
+  /** Vzhled tlačítka: na světlém nebo tmavém pozadí */
   variant?: "light" | "dark";
-}
-
-function fbqLead(eventId: string) {
-  const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
-  if (!fbq) return;
-  fbq("track", "Lead", { content_name: "waitlist-termin" }, { eventID: eventId });
 }
 
 export function ZajemceModal({
@@ -55,36 +55,38 @@ export function ZajemceModal({
     e.preventDefault();
     setError(null);
 
-    if (!jmeno.trim()) return setError("Vyplň prosím jméno.");
+    if (!jmeno.trim()) return setError("Vyplňte prosím jméno.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim()))
-      return setError("Zkontroluj prosím e-mail.");
+      return setError("Zkontrolujte prosím e-mail.");
 
-    const attribution = getClientAttribution();
-    const eventId = crypto.randomUUID();
+    const webhook = WORKSHOP.leadWebhookUrl;
+
+    // Bez webhooku otevřeme e-mailového klienta - kontakt se neztratí
+    if (!webhook) {
+      const telo = `Jméno: ${jmeno}\nE-mail: ${email}\nTelefon: ${telefon || "-"}\n\nNevyhovuje mi žádný vypsaný termín, dejte mi prosím vědět o dalším.`;
+      window.location.href = `mailto:${WORKSHOP.contactEmail}?subject=${encodeURIComponent(
+        "Zájem o workshop - jiný termín",
+      )}&body=${encodeURIComponent(telo)}`;
+      setDone(true);
+      return;
+    }
+
     setSending(true);
     try {
-      const res = await fetch(apiUrl("/api/waitlist"), {
+      await fetch(webhook, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
           jmeno: jmeno.trim(),
           email: email.trim(),
           telefon: telefon.trim(),
-          visitorId: attribution?.visitorId,
-          attribution,
-          eventId,
-          stranka: window.location.href,
-        }),
+          zdroj: "workshop - nevyhovuje termin",
+          stranka: typeof window !== "undefined" ? window.location.href : "",
+        }).toString(),
       });
-      const json = (await res.json().catch(() => ({}))) as { message?: string; ok?: boolean };
-      if (!res.ok) {
-        setError(json.message || "Odeslání se nepovedlo. Napiš mi prosím na " + WORKSHOP.contactEmail);
-        return;
-      }
-      fbqLead(eventId);
       setDone(true);
     } catch {
-      setError("Odeslání se nepovedlo. Napiš mi prosím na " + WORKSHOP.contactEmail);
+      setError("Odeslání se nepovedlo. Napište mi prosím na " + WORKSHOP.contactEmail);
     } finally {
       setSending(false);
     }
@@ -131,7 +133,7 @@ export function ZajemceModal({
                 </div>
                 <h2 className="text-xl font-bold text-navy-600 mb-2">Mám to, děkuji</h2>
                 <p className="text-base text-dark/70 leading-relaxed">
-                  Až vypíšu nový termín, dám ti vědět jako prvnímu.
+                  Až vypíšu nový termín, dám vám vědět jako prvním.
                 </p>
                 <button
                   type="button"
@@ -145,10 +147,10 @@ export function ZajemceModal({
               <>
                 <p className="h-label mb-2">Chci na workshop</p>
                 <h2 id="zajemce-titulek" className="text-xl sm:text-2xl font-bold text-navy-600 mb-2">
-                  Nevyhovuje ti žádný termín?
+                  Nevyhovuje vám žádný termín?
                 </h2>
                 <p className="text-sm sm:text-base text-dark/70 leading-relaxed mb-6">
-                  Nech mi jméno a e-mail. Jakmile vypíšu nový termín, ozvu se ti dřív, než ho dám na web.
+                  Nechte mi kontakt a jakmile vypíšu nový, ozvu se vám dřív, než ho dám na web.
                 </p>
 
                 <form onSubmit={submit} className="space-y-4">
@@ -194,6 +196,7 @@ export function ZajemceModal({
                       onChange={(e) => setTelefon(e.target.value)}
                       autoComplete="tel"
                       className="w-full px-4 py-3 rounded-lg border border-navy-100 bg-cream text-dark focus-visible:border-teal-400 min-h-[48px]"
+                      placeholder="+420 777 123 456"
                     />
                   </div>
 
@@ -210,13 +213,13 @@ export function ZajemceModal({
                         Odesílám
                       </>
                     ) : (
-                      "Dej mi vědět o novém termínu"
+                      "Dejte mi vědět o novém termínu"
                     )}
                   </button>
 
                   <p className="text-xs text-dark/50 leading-relaxed">
-                    Kontakt použiji jen k tomu, abych ti napsal o dalších termínech workshopu.
-                    Kdykoli se můžeš odhlásit.
+                    Kontakt použiji jen k tomu, abych vám napsal o dalších termínech lekce.
+                    Kdykoli se můžete odhlásit.
                   </p>
                 </form>
               </>

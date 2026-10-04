@@ -31,7 +31,6 @@ export function Footer() {
             <p className="font-semibold text-white mb-2">Ukázková lekce</p>
             <p className="text-white/60">{WORKSHOP.dateFull}</p>
             <p className="text-white/60">{WORKSHOP.timeRange} • {WORKSHOP.platform}</p>
-            <p className="text-white/60">{WORKSHOP.price}</p>
           </div>
           <div>
             <p className="font-semibold text-white mb-2">Kontakt</p>

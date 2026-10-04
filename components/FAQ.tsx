@@ -7,40 +7,48 @@ import { WORKSHOP } from "@/lib/config";
 
 const QA = [
   {
-    q: "Je to pro mě, i když se nechci stát profesionálním koučem?",
-    a: "Ano. Přijít můžeš kvůli vedení lidí, práci v HR nebo dalším rozhovorům ve své současné profesi. Na lekci si vyzkoušíš koučovací přístup a zvážíš, zda ho chceš dál rozvíjet.",
+    q: "Jsem teď bez práce nebo na rodičovské. Je to pro mě?",
+    a: "Ano. Část lidí přichází právě ve chvíli, kdy jim jedna kapitola skončila a další ještě nezačala. Na lekci nepotřebujete zaměstnání ani téma z korporátu - stačí běžná situace, kterou zrovna řešíte.",
+  },
+  {
+    q: "Přijdu po práci úplně vyčerpaná. Zvládnu to?",
+    a: "Lekce není přednáška, kterou je potřeba vydržet. Většinu času mluvíte nebo posloucháte jednoho člověka. Lidé obvykle odcházejí s větší energií, než s jakou přišli.",
+  },
+  {
+    q: "Co když je moje téma osobní?",
+    a: "Téma si volíte sami a stačí běžná pracovní situace. Nic citlivého otevírat nemusíte a rozhovory ve dvojicích se nenahrávají.",
   },
   {
     q: "Potřebuji předchozí zkušenosti?",
-    a: "Ne. Praktickou částí tě provedeme a dostaneš jednoduchý postup pro první rozhovor.",
+    a: "Ne. Praktickou částí vás provedeme a dostanete jednoduchý postup pro první rozhovor.",
   },
   {
-    q: "Co když mi to nebude sedět?",
-    a: "Po prvních 60 minutách víš, jestli jsi správně. Pokud ne, odpoj se z workshopu, napiš mi email a vrátím 100 % ceny. Riziko beru na sebe.",
+    q: "Co když mi to vůbec nepůjde?",
+    a: "To je legitimní výsledek. Dvě hodiny jsou tu právě proto, abyste to zjistili dřív, než se rozhodnete o čemkoli dalším. A když po první hodině budete mít pocit, že to pro vás není, peníze vám vrátíme.",
+  },
+  {
+    q: "Partner říká, že je to jen marketing.",
+    a: "Rozumím. Proto to stojí " + WORKSHOP.price + " a proto vracíme peníze po první hodině. Přijďte se podívat sami.",
+  },
+  {
+    q: "Bude na lekci nějaký prodejní pitch?",
+    a: "Ne. Smyslem lekce je dát vám zážitek, který se sám prodá nebo neprodá. Pokud po ní budete chtít vědět, jak pokračovat, řekneme si všechny možnosti. Pokud ne, odnesete si zkušenost a pět otázek, které můžete použít hned zítra.",
   },
   {
     q: "Musím mít zapnutou kameru?",
-    a: "Ano. Workshop je interaktivní, koučuješ a jsi koučován/a - to bez kamery nejde. Připojit se můžeš z počítače, tabletu nebo telefonu, workshop probíhá na Zoomu.",
+    a: "Ano. Lekce je interaktivní, koučujete a jste koučováni - to bez kamery nejde. Nikdo vás přitom nehodnotí. Připojit se můžete z počítače, tabletu i telefonu.",
   },
   {
     q: "Mohu přijít jen na část?",
-    a: "Pro zkušenost v obou rolích si vyhraď celé dvě hodiny. Záznam ti umožní vrátit se k nahrané části lekce, ale nenahradí vlastní praxi ve dvojici.",
+    a: "Ne, počítejte s celými dvěma hodinami. Lekce se nenahrává a obě role - kouče i klienta - se dají zažít jenom naživo.",
+  },
+  {
+    q: `Lekce je ${WORKSHOP.timeRange}. Stihnu to po práci?`,
+    a: `Pokud se připojíte v ${WORKSHOP.joinTime}, jste v pohodě. V průběhu první hodiny je v pořádku si vzít občerstvení, ve druhé hodině praktikujeme, takže tam se hodí být plně přítomní.`,
   },
   {
     q: "Mám už koučovací výcvik za sebou. Má smysl přijít?",
-    a: "Ano, pokud chceš osobně poznat přístup CoachVille. Počítej s úvodní lekcí přístupnou i začátečníkům. Pokud hledáš návaznost na ICF certifikaci nebo rozvoj vlastní praxe, napiš Alešovi na ales@coachville.eu se svou situací.",
-  },
-  {
-    q: "Je to běžná lekce probíhajícího výcviku?",
-    a: "Je to samostatná praktická ukázková lekce připravená pro zájemce. Umožní ti poznat náš způsob práce, aniž by ses nejprve přihlašoval/a do výcviku.",
-  },
-  {
-    q: "Bude na workshopu nějaký prodejní pitch?",
-    a: "Ne. Princip workshopu je dát ti zážitek, který se sám prodá nebo neprodá. Pokud po workshopu chceš vědět, jak pokračovat dál - řekneme si všechny možnosti. Pokud ne, máš zážitek a 5 nástrojů, které můžeš použít už zítra.",
-  },
-  {
-    q: `Workshop ${WORKSHOP.timeRange}. Stihnu to po práci?`,
-    a: `Pokud se připojíš v ${WORKSHOP.joinTime}, jsi v pohodě. V průběhu první hodiny je v pořádku si vzít občerstvení, ve druhé hodině budeme praktikovat, takže tam se hodí být plně přítomen/přítomna. Pokud potřebuješ skončit dříve, můžeš se podívat na zbytek workshopu ze záznamu.`,
+    a: "Ano, pokud chcete osobně poznat přístup CoachVille. Počítejte s úvodní lekcí přístupnou i začátečníkům. Pokud hledáte návaznost na ICF certifikaci nebo rozvoj vlastní praxe, napište Alešovi na ales@coachville.eu se svou situací.",
   },
 ];
 
@@ -51,7 +59,7 @@ export function FAQ() {
     <Section id="faq" tone="white">
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <p className="h-label mb-3">FAQ</p>
-        <h2 className="h-section text-h2 text-navy-600">Otázky před přihlášením</h2>
+        <h2 className="h-section text-h2 text-navy-600">Otázky, které dostávám nejčastěji</h2>
       </div>
 
       <div className="max-w-3xl mx-auto">
@@ -90,12 +98,12 @@ export function FAQ() {
         {/* Máte další otázku */}
         <div className="mt-8 text-center">
           <p className="text-sm sm:text-base text-dark/70">
-            Máš další otázku, která tu není?{" "}
+            Máte další otázku, která tu není?{" "}
             <a
               href={`mailto:${WORKSHOP.contactEmail}?subject=Workshop%20kou%C4%8Dov%C3%A1n%C3%AD%20-%20dotaz`}
               className="text-teal-500 hover:text-teal-600 font-semibold underline-offset-4 hover:underline"
             >
-              Napiš mi přímo →
+              Napište mi přímo →
             </a>
           </p>
         </div>

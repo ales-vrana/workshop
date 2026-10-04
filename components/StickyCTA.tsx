@@ -4,38 +4,53 @@ import { useEffect, useState } from "react";
 import { WORKSHOP } from "@/lib/config";
 
 /**
- * Sticky lišta s CTA.
+ * Sticky lišta s CTA (UX vlna 1, bod H).
  *
- * Zobrazí se po scrollY > 120. Skryje se, když je v obraze #terminy
- * (IntersectionObserver, threshold 0.1), aby nestála vedle karet termínů.
+ * Zobrazí se, až když hero tlačítko (#hero-cta) odjede z obrazu nahoru.
+ * Skryje se, dokud je v obraze sekce #terminy - tam jsou vlastní tlačítka.
+ * Texty jsou napojené na konfiguraci (cena, délka, nejbližší termín).
  */
 export function StickyCTA() {
-  const [scrolled, setScrolled] = useState(false);
+  const [heroCtaPassed, setHeroCtaPassed] = useState(false);
   const [terminyInView, setTerminyInView] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 120);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
+    const heroCta = document.getElementById("hero-cta");
     const terminy = document.getElementById("terminy");
-    let obs: IntersectionObserver | null = null;
-    if (terminy) {
-      obs = new IntersectionObserver(
-        ([entry]) => setTerminyInView(entry.isIntersecting && entry.intersectionRatio >= 0.1),
-        { threshold: [0, 0.1, 0.25], rootMargin: "0px 0px -55% 0px" },
+
+    const observers: IntersectionObserver[] = [];
+
+    if (heroCta) {
+      const o = new IntersectionObserver(
+        ([entry]) => {
+          // „Prošel" = tlačítko je celé nad horní hranou obrazu
+          setHeroCtaPassed(!entry.isIntersecting && entry.boundingClientRect.bottom < 0);
+        },
+        { threshold: 0 }
       );
-      obs.observe(terminy);
+      o.observe(heroCta);
+      observers.push(o);
+    } else {
+      // Fallback, kdyby tlačítko chybělo: podle scrollu jako dřív
+      const handler = () => setHeroCtaPassed(window.scrollY > 600);
+      handler();
+      window.addEventListener("scroll", handler, { passive: true });
+      observers.push({ disconnect: () => window.removeEventListener("scroll", handler) } as IntersectionObserver);
     }
 
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      obs?.disconnect();
-    };
+    if (terminy) {
+      const o = new IntersectionObserver(
+        ([entry]) => setTerminyInView(entry.isIntersecting),
+        { threshold: 0, rootMargin: "0px 0px -20% 0px" }
+      );
+      o.observe(terminy);
+      observers.push(o);
+    }
+
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
-  const visible = scrolled && !terminyInView;
-  const linkTabIndex = visible ? undefined : -1;
+  const visible = heroCtaPassed && !terminyInView;
 
   return (
     <>
@@ -45,7 +60,6 @@ export function StickyCTA() {
         role="region"
         aria-label="Rychlé CTA"
         aria-hidden={!visible}
-        inert={!visible ? true : undefined}
       >
         <div className="flex items-center gap-3">
           <div className="flex-1 min-w-0">
@@ -64,10 +78,9 @@ export function StickyCTA() {
           </div>
           <a
             href="#terminy"
-            tabIndex={linkTabIndex}
-            className="inline-flex items-center justify-center px-4 py-3 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-bold text-sm uppercase tracking-wide rounded-lg shadow-soft min-h-[44px] whitespace-nowrap"
+            className="inline-flex items-center justify-center px-4 py-3 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-navy-950 font-bold text-sm rounded-lg shadow-soft min-h-[44px] whitespace-nowrap"
           >
-            Vybrat termín · 199 Kč
+            Chci si to zkusit →
           </a>
         </div>
       </div>
@@ -78,7 +91,6 @@ export function StickyCTA() {
         role="region"
         aria-label="Rychlé CTA"
         aria-hidden={!visible}
-        inert={!visible ? true : undefined}
       >
         <div className="mx-auto max-w-content px-6 lg:px-8 pb-4 lg:pb-6">
           <div className="mx-auto max-w-2xl rounded-2xl bg-white/95 backdrop-blur-md shadow-lifted border border-navy-100/60 px-5 py-4 flex items-center gap-5">
@@ -98,15 +110,14 @@ export function StickyCTA() {
                 </span>
               </div>
               <p className="text-base lg:text-lg font-bold text-navy-700 truncate">
-                Ukázková lekce koučování · {WORKSHOP.price} · {WORKSHOP.duration}
+                Ukázková lekce · {WORKSHOP.duration} online · {WORKSHOP.price}
               </p>
             </div>
             <a
               href="#terminy"
-              tabIndex={linkTabIndex}
-              className="inline-flex items-center justify-center px-5 lg:px-6 py-3 lg:py-3.5 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-bold text-sm lg:text-base uppercase tracking-wide rounded-lg shadow-soft hover:shadow-lifted hover:-translate-y-0.5 transition-all min-h-[48px] whitespace-nowrap focus-visible:ring-4 focus-visible:ring-cta-500/40"
+              className="inline-flex items-center justify-center px-5 lg:px-6 py-3 lg:py-3.5 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-navy-950 font-bold text-sm lg:text-base rounded-lg shadow-soft hover:shadow-lifted hover:-translate-y-0.5 transition-all min-h-[48px] whitespace-nowrap focus-visible:ring-4 focus-visible:ring-cta-500/40"
             >
-              Vybrat termín · 199 Kč
+              Chci si to zkusit →
             </a>
           </div>
         </div>

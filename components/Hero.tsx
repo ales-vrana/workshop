@@ -1,20 +1,27 @@
+import { Calendar, Clock, Monitor, ArrowDown } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { HeroReference } from "@/components/HeroReference";
-import { WORKSHOP, COACH } from "@/lib/config";
+import { DveHodinyCompact } from "@/components/DveHodiny";
+import { WORKSHOP, COACH, getViditelneTerminy, type TerminView } from "@/lib/config";
 
 /**
- * Hero sekce.
+ * Hero sekce - verze pro problem aware publikum (J1, J2, J4), vykání.
  *
- * Pořadí na mobilu: štítek → H1 → podtitulek → formát → TLAČÍTKO → cena
- * → řádek s lektorem → úvodní odstavec → garance.
- * Na desktopu dva sloupce 7:5, vpravo portrét lektora s MCC odznakem
- * a pod ním garance. Nejbližší termín v hero schováváme — hypotéza, že
- * konkrétní datum lidi odrazuje dřív, než si vyberou z nabídky.
+ * Pořadí na mobilu: H1 (zrcadlo situace) → podtitulek (co to je a co z toho mám)
+ * → metařádek (parametry) → mikrořádek důvěry → TLAČÍTKO → zkouška místo garance
+ * → nejbližší termín → infografika dvou hodin.
  *
- * Seznam „Program" je v samostatné sekci components/Program.tsx.
+ * Velký portrét lektora je pryč: v první obrazovce potřebuje návštěvník vědět
+ * věci o sobě a o akci, ne o lektorovi. Zůstal mikrořádek s MCC (jediný tvrdý
+ * rozlišovací prvek), velká fotka je v sekci „S kým lekci zažijete".
+ *
+ * Cena je záměrně až pod tlačítkem - první čísla na stránce jsou
+ * „2 hodiny" a „16 lidí".
  */
 
 export function Hero() {
+  const terminy = getViditelneTerminy();
+  const nejblizsi = terminy[0];
+
   return (
     <header className="relative isolate overflow-hidden text-white">
       <div className="absolute inset-0 -z-10">
@@ -29,109 +36,126 @@ export function Hero() {
         <div className="absolute inset-0 hero-overlay" aria-hidden />
       </div>
 
-      <div className="container-x relative pt-8 pb-3 sm:pt-16 sm:pb-14 lg:pt-12 lg:pb-16">
-        {/* ── Dva sloupce: text | portrét ── */}
-        {/* items-stretch: levý sloupec je stejně vysoký jako pravý, takže blok s CTA
-            jde přitlačit ke spodní hraně a nad ním vznikne místo pro karusel */}
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-stretch">
-          {/* Levý sloupec */}
+      <div className="container-x relative pt-12 pb-12 sm:pt-16 sm:pb-14 lg:pt-14 lg:pb-16">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start">
+          {/* Levý sloupec - text a akce */}
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col">
-            {/* H1: tři krátké řádky, ať uppercase display nepřeteče sloupec. */}
             <h1 className="lg:-mt-2">
-              <span className="block h-display text-[28px] leading-[1.1] sm:text-[clamp(2rem,5vw,3rem)] text-white">
-                <span className="block">Vyzkoušej si</span>
-                <span className="block">koučování v roli</span>
-                <span className="block">kouče i klienta</span>
+              <span className="block h-display text-[28px] leading-[1.1] sm:text-[clamp(2.125rem,6.6vw,3.875rem)] text-white">
+                <span className="block">Takhle dalších</span>
+                <span className="block">deset let ne?</span>
               </span>
             </h1>
 
-            {/* Podtitulek - na mobilu menší, aby se CTA vešlo nad ohyb */}
             <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
-              Uvidíš živé koučování, vyzkoušíš si roli kouče i&nbsp;klienta a&nbsp;poznáš, jestli
-              ti sedí, jak učíme. Nemusíš mít předchozí zkušenosti, přijít můžeš i&nbsp;s&nbsp;nejistotou.
+              Dvě hodiny online, ve kterých si koučování vyzkoušíte na vlastní
+              kůži a zjistíte, jestli je to cesta, kterou hledáte. Bez teorie
+              a&nbsp;bez skoku do prázdna.
             </p>
 
-            {/* Citace studentů */}
-            <div className="mt-4 lg:mt-8">
-              <HeroReference />
-            </div>
-
-            {/* Zbylý volný prostor: odtlačí blok s CTA ke spodní hraně hero */}
-            <div className="hidden lg:block flex-1" aria-hidden />
-
-            {/* TLAČÍTKO: scroll k termínům. Měří se jako hero_show_dates. */}
-            <div className="mt-3 sm:mt-5 flex flex-col items-center lg:items-start gap-3">
-              <CTAButton
-                id="hero-cta"
-                href="#terminy"
-                variant="on-dark"
-                arrow="down"
-                className="w-full sm:w-auto group !text-[17px] sm:!text-base whitespace-nowrap !tracking-wide sm:!tracking-wider"
-                ariaLabel="Vybrat termín · 199 Kč"
-              >
-                Vybrat termín · 199 Kč
-              </CTAButton>
-              <p className="text-[13px] text-white/70 text-center lg:text-left">
-                2 hodiny živě na Zoomu · max 16 míst · garance vrácení peněz
-              </p>
-            </div>
-
-            {/* Úvodní odstavec jen na desktopu — na mobilu by zvedl hero přes ohyb. */}
-            <p className="mt-6 hidden lg:block text-lg text-white/75 leading-relaxed max-w-2xl">
-              Vyzkoušej si, jak vést rozhovor, ve kterém druhému pomáháš najít vlastní řešení. Za dvě
-              hodiny uvidíš živé koučování, vyzkoušíš si roli kouče i klienta a poznáš, jak se
-              v CoachVille učíme praxí.
+            <p className="mt-4 text-sm sm:text-base text-white/70">
+              Ukázková lekce výcviku CoachVille · {WORKSHOP.duration} · online
+              přes {WORKSHOP.platform} · max {WORKSHOP.capacity} lidí
             </p>
+
+            {/* Mikrořádek důvěry - MCC je jediný tvrdý rozlišovací prvek */}
+            <div className="mt-5 flex justify-center lg:justify-start">
+              <div className="inline-flex items-center gap-2.5">
+                <div className="relative shrink-0">
+                  <img
+                    src="/workshop/ales-vrana-portrait.jpg"
+                    alt=""
+                    width={40}
+                    height={40}
+                    fetchPriority="high"
+                    className="h-10 w-10 rounded-full object-cover object-top ring-2 ring-white/20"
+                  />
+                  <img
+                    src="/workshop/icf-mcc-badge.webp"
+                    alt=""
+                    width={18}
+                    height={18}
+                    className="absolute -bottom-0.5 -right-0.5 h-[18px] w-[18px] rounded-full bg-white ring-2 ring-navy-900 object-contain p-px"
+                  />
+                </div>
+                <p className="text-[13px] sm:text-sm text-white/80 text-left leading-tight">
+                  Vede <strong className="font-bold text-white">{COACH.fullName}</strong>
+                  <br className="sm:hidden" />
+                  <span className="sm:before:content-['_·_']">
+                    ICF Master Certified Coach · 14 let praxe
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            {/* Tlačítko + vpravo nejbližší termín */}
+            <div className="mt-6 flex flex-col lg:flex-row lg:items-start gap-6 lg:gap-10">
+              <div className="flex flex-col items-center lg:items-start gap-3">
+                <CTAButton
+                  id="hero-cta"
+                  href="#terminy"
+                  variant="on-dark"
+                  className="w-full sm:w-auto group !text-white sm:!text-navy-950 !text-[17px] sm:!text-base"
+                  ariaLabel="Chci si to zkusit - vybrat termín ukázkové lekce"
+                >
+                  Chci si to zkusit
+                </CTAButton>
+                <p className="text-[13px] sm:text-sm text-white/75 text-center lg:text-left max-w-xs">
+                  {WORKSHOP.price}. Když vás první hodina nechytne, vrátíme vám je.
+                  Bez vysvětlování.
+                </p>
+              </div>
+
+              <div className="flex justify-center lg:justify-start lg:pt-1">
+                <TerminInfo nejblizsi={nejblizsi} />
+              </div>
+            </div>
+
+            {/* Odkaz na podrobnosti níže */}
+            <a
+              href="#poznavate-se"
+              className="mt-7 inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors group/more self-center lg:self-start"
+            >
+              <ArrowDown
+                className="h-4 w-4 shrink-0 transition-transform group-hover/more:translate-y-0.5"
+                aria-hidden
+              />
+              <span className="underline underline-offset-4 decoration-white/30 group-hover/more:decoration-white/70">
+                více o lekci níže na stránce
+              </span>
+            </a>
           </div>
 
-          {/* Pravý sloupec - portrét (jen desktop) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col items-center">
-            <div className="relative w-[380px] max-w-full">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden ring-4 ring-white/10 shadow-lifted bg-navy-900">
-                <img
-                  src="/workshop/ales-vrana-portrait.jpg"
-                  alt={`Portrét: ${COACH.fullName}`}
-                  width={662}
-                  height={850}
-                  fetchPriority="high"
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                />
-              </div>
-              <div className="absolute -bottom-5 -left-5 h-[88px] w-[88px] rounded-full bg-white shadow-lifted ring-4 ring-navy-900/40 overflow-hidden">
-                <img
-                  src="/workshop/icf-mcc-badge.webp"
-                  alt="Odznak ICF Master Certified Coach (MCC)"
-                  width={88}
-                  height={88}
-                  className="h-full w-full object-contain p-1.5"
-                />
-              </div>
-            </div>
-            <p className="mt-8 text-lg font-bold text-white text-center">{COACH.fullName}</p>
-            <p className="mt-1 text-sm text-white/70 text-center">
-              hlavní trenér CoachVille · {COACH.certification}
-            </p>
-
-            {/* Garance pod fotkou */}
-            <div className="mt-6 w-full max-w-[380px] rounded-2xl bg-navy-900/55 backdrop-blur-md border border-white/15 px-5 py-4">
-              <Garance />
-            </div>
+          {/* Pravý sloupec - infografika místo portrétu */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end lg:pt-2">
+            <DveHodinyCompact />
           </div>
         </div>
-
       </div>
     </header>
   );
 }
 
-/** Garance: na desktopu pod fotkou lektora, na mobilu na konci textu */
-function Garance() {
+/** Nejbližší termín: vedle tlačítka na desktopu, pod ním na mobilu */
+function TerminInfo({ nejblizsi }: { nejblizsi: TerminView | undefined }) {
   return (
-    <div className="flex flex-col items-center gap-2 text-center">
-      <p className="text-xs sm:text-sm text-white/85 max-w-md font-medium">
-        Max {WORKSHOP.capacity} míst <span className="text-white/40 mx-1">·</span> Garance: po 60 minutách vrácení 100 % ceny bez otázek
-      </p>
-      <p className="text-xs text-white/60 max-w-md">Bez papírování, bez otázek.</p>
+    <div className="flex flex-col items-center lg:items-start gap-2 text-[15px] sm:text-base text-white/85">
+      <div className="flex items-center gap-2">
+        <Calendar className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
+        <span className="font-medium">
+          {nejblizsi ? <>Nejbližší: {nejblizsi.dateFull}</> : <>Nové termíny připravuji</>}
+        </span>
+      </div>
+      <div className="flex items-center gap-2">
+        <Clock className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
+        <span className="font-medium">
+          {nejblizsi ? nejblizsi.timeRange : WORKSHOP.timeRange}
+        </span>
+      </div>
+      <div className="flex items-center gap-2">
+        <Monitor className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
+        <span className="font-medium">{WORKSHOP.platform}</span>
+      </div>
     </div>
   );
 }
