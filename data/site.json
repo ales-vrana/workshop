@@ -1,0 +1,53 @@
+{
+  "siteName": "Případové studie",
+  "tagline": "Případové studie CoachVille. Vyberte si několik momentů, které vás zajímají, anebo si přehrajte celý rozhovor se studentem, jehož sdílení vás zaujalo. S kýmkoliv z nich se můžete spojit.",
+  "baseUrl": "https://poznej.coachville.eu/coachville-momenty",
+  "publishing": {
+    "minMomentsPerTopic": 1,
+    "minGuestsPerTopic": 1,
+    "requireExternalVerifyLink": false,
+    "requireAdmission": false,
+    "note": "Pro ladění v1 jsou prahy snížené. Podle zadání v2: téma se publikuje při 3+ momentech od 2+ lidí, host potřebuje externí ověřovací odkaz a moment s přiznáním."
+  },
+  "community": {
+    "coachesTotal": 417,
+    "coachesWithStrongProof": 300,
+    "coachesWithoutStrongProof": 117,
+    "writtenProofs": 3536,
+    "hardBusinessProofs": 946,
+    "sentence": "Ze 417 koučů v komunitě 300 popsalo aspoň jeden silný důkaz (platba, získaný klient, domluvená ukázka), 117 zatím ne. Kolik se tím živí, nevíme."
+  },
+  "links": {
+    "coachReviews": "https://poznej.coachville.eu/zkusenosti-koucu",
+    "clientReferences": "https://poznej.coachville.eu/zkusenosti-klientu",
+    "questionsPage": "/otazky-pro-hosty"
+  },
+  "footer": {
+    "operator": "Web provozuje CoachVille CZ/SK www.coachville.eu, firma CoachVille LLC Coachville Center for Coaching Mastery - ICF Level 3 akreditovaný výcvik koučů. Rozhovory vede zakladatel školy; hosté jsou studenti výcviku, dostali pozvánku k možnosti sdílet svou zkušenost, bez nároku na odměnu.",
+    "consentNote": "Každý host vidí a schvaluje přesně ty úseky, které tu jsou. Souhlas může kdykoliv odvolat e-mailem na ales@coachville.eu; úsek zmizí do 48 hodin."
+  },
+  "partnerVideo": {
+    "vimeoId": "747245023",
+    "vimeoHash": "e66b2fd57e",
+    "title": "Váš partner se stává koučem",
+    "note": "Toto video si můžete přehrát s partnerem, nebo partnerkou společně."
+  },
+  "contactCta": {
+    "heading": "Chcete to probrat telefonicky?",
+    "text": "Rezervujte si termín 10minutového telefonátu, kde společně zjistíme, jestli dává spolupráce oboustranný smysl pro Vaši situaci.",
+    "button": "Rezervace krátkého telefonátu",
+    "buttonShort": "Rezervovat",
+    "url": "https://calendly.com/cveurope/jak-zacit-s-koucovanim-1?utm_source=web&utm_medium=web&utm_campaign=coachville-momenty&utm_content=lista-telefonat"
+  },
+  "nextSteps": {
+    "eyebrow": "Další krok",
+    "workshop": {
+      "label": "Ukázková lekce tréninku CoachVille",
+      "url": "https://poznej.coachville.eu/workshop?utm_source=web&utm_medium=web&utm_campaign=coachville-momenty"
+    },
+    "call": {
+      "label": "Rezervuj si krátký telefonát s CoachVille",
+      "url": "https://calendly.com/cveurope/jak-zacit-s-koucovanim-1?utm_source=web&utm_medium=web&utm_campaign=coachville-momenty"
+    }
+  }
+}
