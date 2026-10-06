@@ -1,14 +1,19 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /**
- * Ruční karusel referencí v hero sekci.
+ * Karusel referencí v hero sekci.
  *
- * Všech 25 citací zůstává tady — uživatel listuje šipkami nebo prstem.
- * Automatické přepínání je vypnuté (nesoutěží o pozornost s CTA).
- * Zobrazuje se jen aktuální citace, aby karta nenafoukla hero přes ohyb.
+ * Návrh vychází z toho, že většina lidí přichází z reklamy na mobilu:
+ * - karta má na všech slidech stejnou výšku (grid stacking - všechny citace
+ *   leží ve stejné buňce, výšku určí ta nejdelší), takže se tlačítko pod ní
+ *   nikdy neposune a nehrozí omylem kliknuté CTA;
+ * - ovládání je na jednom řádku se štítkem, aby nezabíralo další místo;
+ * - na mobilu se přepíná hlavně prstem, šipky jsou jen doplněk;
+ * - automatika se po prvním ručním zásahu vypne a respektuje
+ *   prefers-reduced-motion.
  */
 
 type Reference = { quote: string; name: string };
@@ -41,13 +46,28 @@ const REFERENCE: Reference[] = [
   { quote: "Je to velmi profesionálně vedené, podporující prostředí, parta úžasných lidí. Je to prostě zdravě návykové.", name: "Zuzana Malá" },
 ];
 
+const AUTO_MS = 6500;
 const SWIPE_MIN_PX = 45;
 
-export function HeroReference() {
+export function HeroReference({ bezStitku = false }: { bezStitku?: boolean } = {}) {
   const [index, setIndex] = useState(0);
+  const [autoOn, setAutoOn] = useState(true);
+  const [paused, setPaused] = useState(false);
   const touch = useRef<{ x: number; y: number; t: number } | null>(null);
 
+  useEffect(() => {
+    if (!autoOn || paused) return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(
+      () => setIndex((i) => (i + 1) % REFERENCE.length),
+      AUTO_MS
+    );
+    return () => window.clearInterval(id);
+  }, [autoOn, paused]);
+
+  /** Ruční přepnutí automatiku natrvalo vypne - uživatel si čte sám. */
   const posun = useCallback((krok: number) => {
+    setAutoOn(false);
     setIndex((i) => (i + krok + REFERENCE.length) % REFERENCE.length);
   }, []);
 
@@ -72,47 +92,64 @@ export function HeroReference() {
   const aktualni = REFERENCE[index];
 
   return (
-    <div className="w-full max-w-xl mx-auto lg:mx-0">
+    <div
+      className="w-full max-w-xl mx-auto lg:mx-0"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
       {/* Štítek a ovládání na jednom řádku - šetří na mobilu celý řádek */}
       <div className="flex items-center justify-between gap-3 mb-2.5">
-        <p className="h-label text-gold-400 !text-[11px] sm:!text-xs">Co říkají studenti</p>
+        {bezStitku ? <span /> : (
+          <p className="h-label text-gold-400 !text-[11px] sm:!text-xs">Co říkají studenti</p>
+        )}
 
         <div className="flex items-center gap-0.5 shrink-0">
           <button
             type="button"
             onClick={() => posun(-1)}
             aria-label="Předchozí reference"
-            className="flex items-center justify-center h-11 w-11 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
+            className="flex items-center justify-center h-9 w-9 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden />
           </button>
-          <span className="text-[11px] tabular-nums text-white/50 min-w-[2.75rem] text-center select-none" aria-hidden>
+          <span className="text-[11px] tabular-nums text-white/50 w-9 text-center select-none">
             {index + 1}/{REFERENCE.length}
           </span>
           <button
             type="button"
             onClick={() => posun(1)}
             aria-label="Další reference"
-            className="flex items-center justify-center h-11 w-11 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
+            className="flex items-center justify-center h-9 w-9 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
           >
             <ChevronRight className="h-5 w-5" aria-hidden />
           </button>
         </div>
       </div>
 
+      {/* Karta: všechny citace ve stejné buňce gridu → jednotná výška bez poskakování */}
       <div
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
-        className="rounded-2xl bg-navy-900/55 backdrop-blur-md border border-white/15 shadow-lifted px-4 py-4 sm:px-6 sm:py-5"
+        className="grid rounded-2xl bg-navy-900/55 backdrop-blur-md border border-white/15 shadow-lifted px-4 py-4 sm:px-6 sm:py-5"
       >
-        <figure className="text-left">
-          <blockquote className="text-[15px] sm:text-base lg:text-[17px] leading-[1.55] text-white/90">
-            „{aktualni.quote}&#8220;
-          </blockquote>
-          <figcaption className="mt-2.5 text-[13px] sm:text-sm font-bold text-gold-300">
-            {aktualni.name}
-          </figcaption>
-        </figure>
+        {REFERENCE.map((r, i) => (
+          <figure
+            key={i}
+            aria-hidden={i !== index}
+            className={`col-start-1 row-start-1 text-left ${
+              i === index ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          >
+            <blockquote className="text-[15px] sm:text-base lg:text-[17px] leading-[1.55] text-white/90">
+              „{r.quote}&#8220;
+            </blockquote>
+            <figcaption className="mt-2.5 text-[13px] sm:text-sm font-bold text-gold-300">
+              {r.name}
+            </figcaption>
+          </figure>
+        ))}
       </div>
 
       <p className="sr-only" role="status" aria-live="polite">

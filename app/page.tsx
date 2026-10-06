@@ -1,12 +1,13 @@
 import { Hero } from "@/components/Hero";
+import { ReferenceLekce } from "@/components/ReferenceLekce";
 import { PoznavateSe } from "@/components/PoznavateSe";
 import { SCimOdejdete } from "@/components/SCimOdejdete";
 import { NemuzesToPokazit } from "@/components/NemuzesToPokazit";
-import { Reference } from "@/components/Reference";
 import { Zkusenosti } from "@/components/Zkusenosti";
 import { ProcPraxi } from "@/components/ProcPraxi";
 import { DveHodiny } from "@/components/DveHodiny";
 import { OLektorovi } from "@/components/OLektorovi";
+import { StudentiVycviku } from "@/components/StudentiVycviku";
 import { Terminy } from "@/components/Terminy";
 import { FAQ } from "@/components/FAQ";
 import { ClosingCTA } from "@/components/ClosingCTA";
@@ -31,6 +32,9 @@ export default function HomePage() {
       {/* Hero - bez Reveal, je nad foldem */}
       <Hero />
 
+      {/* Reference z lekce hned pod hero - sociální důkaz dřív než argumentace */}
+      <ReferenceLekce />
+
       {/* Poznáváte se? - tři situace, kvůli nim člověk pozná, že je tu správně */}
       <PoznavateSe />
 
@@ -43,10 +47,7 @@ export default function HomePage() {
         <NemuzesToPokazit />
       </Reveal>
 
-      {/* Sociální důkaz: textové citace, pak videoreference */}
-      <Reveal>
-        <Reference />
-      </Reveal>
+      {/* Videoreference */}
       <Reveal>
         <Zkusenosti />
       </Reveal>
@@ -59,6 +60,11 @@ export default function HomePage() {
       </Reveal>
       <Reveal>
         <OLektorovi />
+      </Reveal>
+
+      {/* Reference z výcviku - až za lektorem, mluví o kroku po lekci */}
+      <Reveal>
+        <StudentiVycviku />
       </Reveal>
 
       {/* Termíny až tady - stránka je nejdřív o něm, pak o nákupu.

@@ -130,21 +130,20 @@ export function Hero() {
           <div className="lg:col-span-5 flex flex-col items-center lg:items-end gap-4 lg:pt-2">
             <DveHodinyCompact />
 
-            {/* Akreditace ICF Level 3 - vyplňuje prostor pod infografikou
-                a nese tvrdý důkaz kvality školy. Odznak je na bílé dlaždici,
-                protože originál má bílé pozadí. */}
-            <div className="w-full max-w-md flex items-center gap-4 rounded-2xl bg-navy-900/55 backdrop-blur-md border border-white/15 px-4 py-3.5">
-              <div className="shrink-0 h-14 w-14 rounded-xl bg-white p-1 flex items-center justify-center">
-                <img
-                  src="/workshop/icf-level3-badge.png"
-                  alt="Odznak ICF Level 3 - akreditované vzdělávání koučů"
-                  width={56}
-                  height={56}
-                  loading="lazy"
-                  className="h-full w-full object-contain"
-                />
-              </div>
-              <p className="text-sm text-white/80 leading-snug">
+            {/* Akreditace ICF Level 3 - samostatný velký odznak pod kroky,
+                bez rámečku. Bílá dlaždice je jen podklad, protože originál
+                loga má bílé pozadí; odsazení je malé, aby bílé plochy bylo
+                co nejméně. */}
+            <div className="w-full max-w-md flex flex-col items-center gap-4 pt-2">
+              <img
+                src="/workshop/icf-level3-badge.png"
+                alt="Odznak ICF Level 3 - akreditované vzdělávání koučů"
+                width={176}
+                height={176}
+                loading="lazy"
+                className="h-36 w-36 sm:h-44 sm:w-44 rounded-2xl bg-white p-1.5 object-contain shadow-lifted"
+              />
+              <p className="text-base sm:text-lg text-white/85 leading-snug text-center max-w-xs">
                 Jediná škola s nejvyšší akreditací{" "}
                 <strong className="font-bold text-white">ICF Level 3</strong> v ČR a&nbsp;SK
               </p>
