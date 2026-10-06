@@ -31,6 +31,10 @@ const QA = [
     a: "Rozumím. Proto to stojí " + WORKSHOP.price + " a proto vracíme peníze po první hodině. Přijďte se podívat sami.",
   },
   {
+    q: "Kdo je CoachVille?",
+    a: "CoachVille je jedna z prvních koučovacích škol na světě. Založil ji v roce 2001 Thomas Leonard - otec zakladatel oboru koučování a spoluzakladatel ICF, Mezinárodní federace koučování. Celosvětově jsme na trhu 25 let, v ČR a na Slovensku od roku 2014. Připravujeme kouče na všechny mezinárodní certifikace ICF - ACC, PCC i MCC - a jsme jediná škola s nejvyšší akreditací ICF Level 3 v ČR a SK. Naším smyslem je pomáhat lidem stát se skvělými kompetentními profesionálními kouči a využívat koučování jako způsob komunikace v práci, ve vztazích i v podnikání. Naše tréninky můžete neomezeně opakovat, studovat se dá online v češtině i angličtině a studenty propojujeme se zájemci o koučování.",
+  },
+  {
     q: "Bude na lekci nějaký prodejní pitch?",
     a: "Ne. Smyslem lekce je dát vám zážitek, který se sám prodá nebo neprodá. Pokud po ní budete chtít vědět, jak pokračovat, řekneme si všechny možnosti. Pokud ne, odnesete si zkušenost a pět otázek, které můžete použít hned zítra.",
   },
@@ -84,7 +88,7 @@ export function FAQ() {
                 <div
                   id={`faq-panel-${idx}`}
                   role="region"
-                  className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96" : "max-h-0"}`}
+                  className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[48rem]" : "max-h-0"}`}
                 >
                   <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-base text-dark/80 leading-relaxed">
                     {item.a}
