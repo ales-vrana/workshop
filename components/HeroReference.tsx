@@ -114,7 +114,7 @@ export function HeroReference({ bezStitku = false }: { bezStitku?: boolean } = {
           >
             <ChevronLeft className="h-5 w-5" aria-hidden />
           </button>
-          <span className="text-[11px] tabular-nums text-white/50 w-9 text-center select-none">
+          <span className="text-[11px] tabular-nums text-white/50 min-w-[2.75rem] text-center select-none whitespace-nowrap">
             {index + 1}/{REFERENCE.length}
           </span>
           <button

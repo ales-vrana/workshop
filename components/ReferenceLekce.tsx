@@ -137,7 +137,7 @@ export function ReferenceLekce() {
             <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7" aria-hidden />
           </button>
 
-          <span className="text-base sm:text-lg font-bold tabular-nums text-navy-600 select-none w-16 text-center">
+          <span className="text-base sm:text-lg font-bold tabular-nums text-navy-600 select-none min-w-[6rem] text-center whitespace-nowrap">
             {index + 1} / {REFERENCE.length}
           </span>
 
