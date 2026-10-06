@@ -144,8 +144,8 @@ export function Hero() {
                 className="h-36 w-36 sm:h-44 sm:w-44 rounded-2xl bg-white p-1.5 object-contain shadow-lifted"
               />
               <p className="text-base sm:text-lg text-white/85 leading-snug text-center max-w-xs">
-                Jediná škola s nejvyšší akreditací{" "}
-                <strong className="font-bold text-white">ICF Level 3</strong> v ČR a&nbsp;SK
+                CoachVille je jediný výcvik s nejvyšší akreditací{" "}
+                <strong className="font-bold text-white">ICF Level 3</strong> v ČR a&nbsp;SK.
               </p>
             </div>
           </div>
