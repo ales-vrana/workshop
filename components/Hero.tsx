@@ -42,15 +42,17 @@ export function Hero() {
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col">
             <h1 className="lg:-mt-2">
               <span className="block h-display text-[28px] leading-[1.1] sm:text-[clamp(2.125rem,6.6vw,3.875rem)] text-white">
-                <span className="block">Takhle dalších</span>
-                <span className="block">deset let ne?</span>
+                Zažijte koučování na vlastní kůži.
+              </span>
+              {/* Druhá věta menší a ve zlaté - čte se jako pokračování, ne jako druhý nadpis */}
+              <span className="block mt-3 sm:mt-4 text-xl sm:text-2xl lg:text-[1.75rem] leading-snug font-bold text-gold-300">
+                Nejdřív se dívejte, pak to zkusíte.
               </span>
             </h1>
 
             <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
-              Dvě hodiny online, ve kterých si koučování vyzkoušíte na vlastní
-              kůži a zjistíte, jestli je to cesta, kterou hledáte. Bez teorie
-              a&nbsp;bez skoku do prázdna.
+              Dvě hodiny online, po kterých budete vědět, jestli je koučování
+              cesta, kterou hledáte. Bez teorie a&nbsp;bez skoku do prázdna.
             </p>
 
             <p className="mt-4 text-sm sm:text-base text-white/70">

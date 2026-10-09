@@ -18,7 +18,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://poznej.coachville.e
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Takhle dalších deset let ne? | Ukázková lekce koučování CoachVille",
+  title: "Zažijte koučování na vlastní kůži | Ukázková lekce CoachVille",
   description:
     `${WORKSHOP.duration} online, ve kterých si koučování vyzkoušíte na vlastní kůži a zjistíte, jestli je to cesta, kterou hledáte. Vede Aleš Vrána, ICF Master Certified Coach. ${WORKSHOP.dateFull}, ${WORKSHOP.timeRange}, ${WORKSHOP.price}. První hodina na zkoušku.`,
   keywords: [
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "cs_CZ",
-    title: "Takhle dalších deset let ne? | Ukázková lekce koučování CoachVille",
+    title: "Zažijte koučování na vlastní kůži | Ukázková lekce CoachVille",
     description:
       `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Bez teorie a bez skoku do prázdna. Vyzkoušejte si koučování na vlastní kůži.`,
     siteName: "CoachVille Europe",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Takhle dalších deset let ne? | Ukázková lekce koučování CoachVille",
+    title: "Zažijte koučování na vlastní kůži | Ukázková lekce CoachVille",
     description: `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. ${WORKSHOP.price}, první hodina na zkoušku.`,
     images: ["/og-image.jpg"],
   },
