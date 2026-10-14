@@ -14,4 +14,4 @@
  * Dokud je adresa prázdná, formulář nic neztratí: otevře návštěvníkovi
  * e-mail s vyplněnými údaji adresovaný na kontaktní e-mail workshopu.
  */
-export const REGISTRACE_WEBHOOK_URL = "";
+export const REGISTRACE_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/1148915/419bpuj/";
