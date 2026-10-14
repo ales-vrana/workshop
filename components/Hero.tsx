@@ -103,8 +103,8 @@ export function Hero() {
                   Chci si to zkusit
                 </CTAButton>
                 <p className="text-[13px] sm:text-sm text-white/75 text-center lg:text-left max-w-xs">
-                  {WORKSHOP.price}. Když vás první hodina nechytne, vrátíme vám je.
-                  Bez vysvětlování.
+                  Zdarma. Stačí se zaregistrovat, kapacita je {WORKSHOP.capacity} míst
+                  na termín.
                 </p>
               </div>
 

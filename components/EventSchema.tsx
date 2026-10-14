@@ -14,6 +14,7 @@ export function EventSchema() {
     startDate: WORKSHOP.dateISO,
     endDate: WORKSHOP.dateISOEnd,
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+    isAccessibleForFree: true,
     eventStatus: "https://schema.org/EventScheduled",
     location: {
       "@type": "VirtualLocation",
@@ -23,8 +24,8 @@ export function EventSchema() {
     image: [`${WORKSHOP.siteUrl}/og-image.svg`],
     offers: {
       "@type": "Offer",
-      url: WORKSHOP.paymentLink,
-      price: WORKSHOP.priceNumber,
+      url: `${WORKSHOP.siteUrl}#terminy`,
+      price: 0,
       priceCurrency: WORKSHOP.currency,
       availability: "https://schema.org/LimitedAvailability",
       validFrom: `${WORKSHOP.dateISORaw.split("-").slice(0, 2).join("-")}-01T00:00:00+02:00`,

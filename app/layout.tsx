@@ -3,7 +3,6 @@ import { Montserrat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { MetaPixel } from "@/components/MetaPixel";
 import { EventSchema } from "@/components/EventSchema";
-import { DevWarning } from "@/components/ui/DevWarning";
 import { WORKSHOP } from "@/lib/config";
 import "./globals.css";
 
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Zažijte koučování na vlastní kůži | Ukázková lekce CoachVille",
   description:
-    `${WORKSHOP.duration} online, ve kterých si koučování vyzkoušíte na vlastní kůži a zjistíte, jestli je to cesta, kterou hledáte. Vede Aleš Vrána, ICF Master Certified Coach. ${WORKSHOP.dateFull}, ${WORKSHOP.timeRange}, ${WORKSHOP.price}. První hodina na zkoušku.`,
+    `${WORKSHOP.duration} online, ve kterých si koučování vyzkoušíte na vlastní kůži a zjistíte, jestli je to cesta, kterou hledáte. Vede Aleš Vrána, ICF Master Certified Coach. ${WORKSHOP.dateFull}, ${WORKSHOP.timeRange}. Zdarma.`,
   keywords: [
     "koučování",
     "workshop koučování",
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Zažijte koučování na vlastní kůži | Ukázková lekce CoachVille",
-    description: `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. ${WORKSHOP.price}, první hodina na zkoušku.`,
+    description: `${WORKSHOP.duration} živé praxe s držitelem ICF MCC. Zdarma.`,
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -86,7 +85,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white text-dark antialiased">
         <MetaPixel />
         {children}
-        <DevWarning />
         <Analytics />
       </body>
     </html>

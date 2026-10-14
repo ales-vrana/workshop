@@ -24,11 +24,11 @@ const QA = [
   },
   {
     q: "Co když mi to vůbec nepůjde?",
-    a: "To je legitimní výsledek. Dvě hodiny jsou tu právě proto, abyste to zjistili dřív, než se rozhodnete o čemkoli dalším. A když po první hodině budete mít pocit, že to pro vás není, peníze vám vrátíme.",
+    a: "To je legitimní výsledek. Dvě hodiny jsou tu právě proto, abyste to zjistili dřív, než se rozhodnete o čemkoli dalším.",
   },
   {
     q: "Partner říká, že je to jen marketing.",
-    a: "Rozumím. Proto to stojí " + WORKSHOP.price + " a proto vracíme peníze po první hodině. Přijďte se podívat sami.",
+    a: "Rozumím. Proto je lekce zdarma - nic neriskujete. Přijďte se podívat sami a udělejte si vlastní názor.",
   },
   {
     q: "Kdo je CoachVille?",

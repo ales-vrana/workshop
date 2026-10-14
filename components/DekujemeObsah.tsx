@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Check, Calendar, Video, Sparkles, Mail, ExternalLink, ArrowLeft } from "lucide-react";
 import { CalendarButtons } from "@/components/CalendarButtons";
 import { CopyButton } from "@/components/CopyButton";
-import { MetaPixelPurchase } from "@/components/MetaPixelPurchase";
+import { MetaPixelRegistrace } from "@/components/MetaPixelRegistrace";
 import { WORKSHOP, COACH, type TerminView } from "@/lib/config";
 
 /**
@@ -33,8 +33,8 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
 
   return (
     <main className="min-h-screen bg-cream">
-      {/* Konverze pro Meta Pixel */}
-      <MetaPixelPurchase value={termin.priceNumber} terminId={termin.id} />
+      {/* Konverze pro Meta Pixel - registrace zdarma */}
+      <MetaPixelRegistrace terminId={termin.id} />
 
       {/* HERO se success indikátorem */}
       <section className="relative overflow-hidden bg-gradient-to-b from-navy-900 to-navy-600 text-white">

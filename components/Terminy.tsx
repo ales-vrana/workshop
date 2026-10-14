@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Section } from "@/components/ui/Section";
 import { Calendar, Clock, Monitor, ArrowRight, CalendarX } from "lucide-react";
-import { getViditelneTerminy, VSECHNY_TERMINY, WORKSHOP, type TerminView } from "@/lib/config";
+import { getViditelneTerminy, WORKSHOP, type TerminView } from "@/lib/config";
 import { ZajemceModal } from "@/components/ZajemceModal";
+import { RegistraceModal } from "@/components/RegistraceModal";
+import { REGISTRACE_WEBHOOK_URL } from "@/lib/registrace";
 
 /**
  * Sekce s vypsanými termíny.
@@ -26,6 +28,10 @@ export function Terminy() {
     const timer = setInterval(() => setTerminy(getViditelneTerminy(Date.now())), 60_000);
     return () => clearInterval(timer);
   }, []);
+
+  // Termín, pro který je otevřený registrační formulář (null = zavřeno)
+  const [vybrany, setVybrany] = useState<TerminView | null>(null);
+  const zavrit = useCallback(() => setVybrany(null), []);
 
   const prazdno = terminy.length === 0;
 
@@ -97,19 +103,18 @@ export function Terminy() {
                 )}
 
                 <div className="mt-auto pt-6">
-                  <p className="text-2xl font-extrabold text-navy-700 mb-3">{t.price}</p>
-                  <a
-                    href={t.paymentLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <p className="text-2xl font-extrabold text-cta-600 mb-3">Zdarma</p>
+                  <button
+                    type="button"
+                    onClick={() => setVybrany(t)}
                     className="group inline-flex w-full items-center justify-center gap-2 px-5 py-4 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-bold uppercase tracking-wider text-sm rounded-lg shadow-soft transition-all min-h-[52px] touch-manipulation focus-visible:ring-4 focus-visible:ring-cta-500/40"
                   >
-                    Chci si to zkusit
+                    Rezervovat místo
                     <ArrowRight
                       className="h-4 w-4 transition-transform group-hover:translate-x-1"
                       aria-hidden
                     />
-                  </a>
+                  </button>
                 </div>
               </article>
             ))}
@@ -117,20 +122,21 @@ export function Terminy() {
 
           <div className="text-center mt-8 sm:mt-10">
             <p className="text-sm sm:text-base text-dark/70 mb-2">
-              První hodina na zkoušku: když po ní budete mít pocit, že to pro vás není, napíšete a peníze vám vrátím. Bez vysvětlování.
+              Lekce je zdarma. Po registraci vám pošleme odkaz na Zoom a před začátkem připomínku.
             </p>
             <ZajemceModal />
           </div>
         </>
       )}
 
-      {/* Upozornění jen ve vývoji - když termín nemá vyplněný Stripe odkaz */}
-      {process.env.NODE_ENV !== "production" &&
-        VSECHNY_TERMINY.some((t) => t.paymentLink.includes("ZDE_VLOZ")) && (
-          <p className="mt-8 text-center text-sm font-bold text-red-600">
-            Pozor: některý termín nemá vyplněný Stripe odkaz (lib/workshop-terminy.ts)
-          </p>
-        )}
+      {/* Upozornění jen ve vývoji - když není vyplněný webhook registrace */}
+      {process.env.NODE_ENV !== "production" && !REGISTRACE_WEBHOOK_URL && (
+        <p className="mt-8 text-center text-sm font-bold text-red-600">
+          Pozor: není vyplněný webhook registrace (lib/registrace.ts)
+        </p>
+      )}
+
+      <RegistraceModal termin={vybrany} onClose={zavrit} />
     </Section>
   );
 }

@@ -73,7 +73,7 @@ export function StickyCTA() {
               </p>
             )}
             <p className="text-sm font-bold text-navy-600 truncate mt-1">
-              {WORKSHOP.price} · {WORKSHOP.duration} online
+              Zdarma · {WORKSHOP.duration} online
             </p>
           </div>
           <a
@@ -110,7 +110,7 @@ export function StickyCTA() {
                 </span>
               </div>
               <p className="text-base lg:text-lg font-bold text-navy-700 truncate">
-                Ukázková lekce · {WORKSHOP.duration} online · {WORKSHOP.price}
+                Ukázková lekce zdarma · {WORKSHOP.duration} online
               </p>
             </div>
             <a
