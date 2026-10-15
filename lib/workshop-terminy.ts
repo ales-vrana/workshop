@@ -82,10 +82,10 @@ export const TERMINY: Termin[] = [
   },
   {
     id: "termin-3",
-    dateISO: "2026-09-26",
-    dayOfWeek: "neděle",
-    startTime: "12:00",
-    durationMinutes: 120,
+    dateISO: "2026-10-22",
+    dayOfWeek: "čtvrtek",
+    startTime: "11:00",
+    durationMinutes: 90,
     paymentLink: "https://buy.stripe.com/5kQ14mavm3dZ4ea4RjejK2u",
   },
 ];
