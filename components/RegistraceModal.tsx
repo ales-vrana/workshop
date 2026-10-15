@@ -262,7 +262,7 @@ export function RegistraceModal({
                   onChange={(e) => setTelefon(e.target.value)}
                   autoComplete="tel"
                   className={inputClass}
-                  placeholder="+420 777 123 456"
+                  placeholder="777 123 456"
                 />
               </div>
 
