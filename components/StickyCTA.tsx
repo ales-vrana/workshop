@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { WORKSHOP } from "@/lib/config";
+import { WORKSHOP, getViditelneTerminy, type TerminView } from "@/lib/config";
 
 /**
  * Sticky lišta s CTA (UX vlna 1, bod H).
@@ -13,6 +13,10 @@ import { WORKSHOP } from "@/lib/config";
 export function StickyCTA() {
   const [heroCtaPassed, setHeroCtaPassed] = useState(false);
   const [terminyInView, setTerminyInView] = useState(false);
+  // Termíny se načtou až v prohlížeči (lišta je při načtení skrytá)
+  const [terminy, setTerminy] = useState<TerminView[]>([]);
+  useEffect(() => setTerminy(getViditelneTerminy().slice(0, 3)), []);
+  const vice = terminy.length > 1;
 
   useEffect(() => {
     const heroCta = document.getElementById("hero-cta");
@@ -69,7 +73,9 @@ export function StickyCTA() {
               </p>
             ) : (
               <p className="text-[11px] uppercase tracking-wider text-navy-500 font-bold leading-none">
-                Nejbližší: {WORKSHOP.dayOfWeek} {WORKSHOP.dateDayMonth}
+                {vice
+                  ? <>Termíny: {terminy.map((t) => t.dateDayMonth).join(" a ")}</>
+                  : <>Nejbližší: {WORKSHOP.dayOfWeek} {WORKSHOP.dateDayMonth}</>}
               </p>
             )}
             <p className="text-sm font-bold text-navy-600 truncate mt-1">
@@ -106,7 +112,9 @@ export function StickyCTA() {
                   </span>
                 )}
                 <span className="text-xs text-dark/60 font-medium">
-                  nejbližší termín: {WORKSHOP.dayOfWeek} {WORKSHOP.dateShort} · {WORKSHOP.timeRange}
+                  {vice
+                    ? <>termíny: {terminy.map((t) => `${t.dayOfWeek} ${t.dateDayMonth} ${t.timeStart}`).join(" · ")}</>
+                    : <>nejbližší termín: {WORKSHOP.dayOfWeek} {WORKSHOP.dateShort} · {WORKSHOP.timeRange}</>}
                 </span>
               </div>
               <p className="text-base lg:text-lg font-bold text-navy-700 truncate">

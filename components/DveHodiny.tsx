@@ -81,7 +81,7 @@ export function DveHodiny() {
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
         <p className="h-label mb-3">Jak to probíhá</p>
         <h2 className="h-section text-h2 text-navy-600">
-          Dvě hodiny, tři kroky
+          90 minut, tři kroky
         </h2>
         <p className="mt-4 text-base sm:text-lg text-dark/70">
           Žádná přednáška, kterou je potřeba vydržet. Většinu času mluvíte nebo
@@ -112,8 +112,8 @@ export function DveHodiny() {
       </ol>
 
       <p className="text-center text-sm sm:text-base text-dark/60 mt-8 max-w-2xl mx-auto">
-        Lekce se nenahrává. Obě role se dají zažít jenom naživo, proto počítejte
-        s celými {WORKSHOP.duration.toLowerCase()}.
+        Lekce se nenahrává. Obě role se dají zažít jenom naživo, proto si
+        vyhraďte celých 90 minut.
       </p>
     </Section>
   );

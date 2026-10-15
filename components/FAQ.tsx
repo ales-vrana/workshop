@@ -24,7 +24,7 @@ const QA = [
   },
   {
     q: "Co když mi to vůbec nepůjde?",
-    a: "To je legitimní výsledek. Dvě hodiny jsou tu právě proto, abyste to zjistili dřív, než se rozhodnete o čemkoli dalším.",
+    a: "To je legitimní výsledek. Těch 90 minut je tu právě proto, abyste to zjistili dřív, než se rozhodnete o čemkoli dalším.",
   },
   {
     q: "Partner říká, že je to jen marketing.",
@@ -44,11 +44,11 @@ const QA = [
   },
   {
     q: "Mohu přijít jen na část?",
-    a: "Ne, počítejte s celými dvěma hodinami. Lekce se nenahrává a obě role - kouče i klienta - se dají zažít jenom naživo.",
+    a: "Ne, vyhraďte si celých 90 minut. Lekce se nenahrává a obě role - kouče i klienta - se dají zažít jenom naživo.",
   },
   {
-    q: `Lekce je ${WORKSHOP.timeRange}. Stihnu to po práci?`,
-    a: `Pokud se připojíte v ${WORKSHOP.joinTime}, jste v pohodě. V průběhu první hodiny je v pořádku si vzít občerstvení, ve druhé hodině praktikujeme, takže tam se hodí být plně přítomní.`,
+    q: "Kdy se mám připojit?",
+    a: "Ideálně pět minut před začátkem, ať stihnete nastavit kameru a zvuk. Na začátku je v pořádku si vzít občerstvení, ve druhé části praktikujeme, takže tam se hodí být plně přítomní.",
   },
   {
     q: "Mám už koučovací výcvik za sebou. Má smysl přijít?",

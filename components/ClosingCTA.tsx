@@ -1,7 +1,8 @@
 import { Section } from "@/components/ui/Section";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { Check, Calendar, Clock, Monitor } from "lucide-react";
-import { WORKSHOP } from "@/lib/config";
+import { Check } from "lucide-react";
+import { WORKSHOP, getViditelneTerminy } from "@/lib/config";
+import { HeroTerminy } from "@/components/HeroTerminy";
 
 /**
  * Závěr v Alešově hlase.
@@ -33,8 +34,8 @@ export function ClosingCTA() {
         </p>
 
         <p className="text-base sm:text-lg text-white/85 leading-relaxed mb-10 max-w-2xl mx-auto">
-          Za dvě hodiny to budete vědět. Jestli zjistíte, že to pro vás není,
-          máte za sebou dvě hodiny, které stály za to.{" "}
+          Za 90 minut to budete vědět. Jestli zjistíte, že to pro vás není,
+          máte za sebou 90 minut, které stály za to.{" "}
           <strong className="text-white">Jestli ano, víte, kam dál.</strong>
         </p>
 
@@ -51,22 +52,9 @@ export function ClosingCTA() {
           </ul>
         </div>
 
-        {/* Info row */}
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white/85 mb-8 text-sm sm:text-base font-medium">
-          <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-white/70" aria-hidden />
-            {WORKSHOP.dateFull}
-          </div>
-          <div className="hidden sm:block h-4 w-px bg-white/25" aria-hidden />
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-white/70" aria-hidden />
-            {WORKSHOP.timeRange}
-          </div>
-          <div className="hidden sm:block h-4 w-px bg-white/25" aria-hidden />
-          <div className="flex items-center gap-2">
-            <Monitor className="h-4 w-4 text-white/70" aria-hidden />
-            {WORKSHOP.platform}
-          </div>
+        {/* Všechny vypsané termíny, ne jen nejbližší */}
+        <div className="flex justify-center mb-8">
+          <HeroTerminy initial={getViditelneTerminy()} center />
         </div>
 
         <div className="flex flex-col items-center gap-4">

@@ -33,7 +33,7 @@ export function SCimOdejdete() {
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
         <p className="h-label mb-3">S čím odejdete</p>
         <h2 className="h-section text-h2 text-navy-600">
-          Tři otázky, na které za dvě hodiny dostanete odpověď
+          Tři otázky, na které za 90 minut dostanete odpověď
         </h2>
       </div>
 

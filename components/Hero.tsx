@@ -1,26 +1,26 @@
-import { Calendar, Clock, Monitor, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { DveHodinyCompact } from "@/components/DveHodiny";
-import { WORKSHOP, COACH, getViditelneTerminy, type TerminView } from "@/lib/config";
+import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
+import { HeroTerminy } from "@/components/HeroTerminy";
 
 /**
  * Hero sekce - verze pro problem aware publikum (J1, J2, J4), vykání.
  *
  * Pořadí na mobilu: H1 (zrcadlo situace) → podtitulek (co to je a co z toho mám)
  * → metařádek (parametry) → mikrořádek důvěry → TLAČÍTKO → zkouška místo garance
- * → nejbližší termín → infografika dvou hodin.
+ * → všechny vypsané termíny → infografika tří kroků.
  *
  * Velký portrét lektora je pryč: v první obrazovce potřebuje návštěvník vědět
  * věci o sobě a o akci, ne o lektorovi. Zůstal mikrořádek s MCC (jediný tvrdý
  * rozlišovací prvek), velká fotka je v sekci „S kým lekci zažijete".
  *
  * Cena je záměrně až pod tlačítkem - první čísla na stránce jsou
- * „2 hodiny" a „16 lidí".
+ * „90 minut" a „16 lidí".
  */
 
 export function Hero() {
   const terminy = getViditelneTerminy();
-  const nejblizsi = terminy[0];
 
   return (
     <header className="relative isolate overflow-hidden text-white">
@@ -51,7 +51,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
-              Dvě hodiny online, po kterých budete vědět, jestli je koučování
+              90 minut online, po kterých budete vědět, jestli je koučování
               cesta, kterou hledáte. Bez teorie a&nbsp;bez skoku do prázdna.
             </p>
 
@@ -109,7 +109,7 @@ export function Hero() {
               </div>
 
               <div className="flex justify-center lg:justify-start lg:pt-1">
-                <TerminInfo nejblizsi={nejblizsi} />
+                <HeroTerminy initial={terminy} />
               </div>
             </div>
 
@@ -154,29 +154,5 @@ export function Hero() {
         </div>
       </div>
     </header>
-  );
-}
-
-/** Nejbližší termín: vedle tlačítka na desktopu, pod ním na mobilu */
-function TerminInfo({ nejblizsi }: { nejblizsi: TerminView | undefined }) {
-  return (
-    <div className="flex flex-col items-center lg:items-start gap-2 text-[15px] sm:text-base text-white/85">
-      <div className="flex items-center gap-2">
-        <Calendar className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
-        <span className="font-medium">
-          {nejblizsi ? <>Nejbližší: {nejblizsi.dateFull}</> : <>Nové termíny připravuji</>}
-        </span>
-      </div>
-      <div className="flex items-center gap-2">
-        <Clock className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
-        <span className="font-medium">
-          {nejblizsi ? nejblizsi.timeRange : WORKSHOP.timeRange}
-        </span>
-      </div>
-      <div className="flex items-center gap-2">
-        <Monitor className="h-4 w-4 text-white/70 shrink-0" aria-hidden />
-        <span className="font-medium">{WORKSHOP.platform}</span>
-      </div>
-    </div>
   );
 }

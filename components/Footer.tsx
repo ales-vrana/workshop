@@ -1,4 +1,4 @@
-import { WORKSHOP, COACH } from "@/lib/config";
+import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
 
 export function Footer() {
   return (
@@ -29,8 +29,12 @@ export function Footer() {
           </div>
           <div>
             <p className="font-semibold text-white mb-2">Ukázková lekce</p>
-            <p className="text-white/60">{WORKSHOP.dateFull}</p>
-            <p className="text-white/60">{WORKSHOP.timeRange} • {WORKSHOP.platform}</p>
+            {getViditelneTerminy().map((t) => (
+              <p key={t.id} className="text-white/60">
+                {t.dateFull}, {t.timeRange}
+              </p>
+            ))}
+            <p className="text-white/60">online přes {WORKSHOP.platform}</p>
           </div>
           <div>
             <p className="font-semibold text-white mb-2">Kontakt</p>

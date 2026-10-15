@@ -119,14 +119,15 @@ function formatDuration(minutes: number, hasQA: boolean): string {
     else if (hours >= 2 && hours <= 4) text = `${hours} hodiny`;
     else text = `${hours} hodin`;
   } else {
-    text = `${hours.toString().replace(".", ",")} hodiny`;
+    // Necelé hodiny v minutách: 90 → „90 minut" (místo „1,5 hodiny")
+    text = `${minutes} minut`;
   }
   return hasQA ? `${text} + Q&A` : text;
 }
 
 function formatDurationShort(minutes: number): string {
   const hours = minutes / 60;
-  return Number.isInteger(hours) ? `${hours}h` : `${hours.toString().replace(".", ",")}h`;
+  return Number.isInteger(hours) ? `${hours}h` : `${minutes} min`;
 }
 
 function formatPrice(amount: number): string {
