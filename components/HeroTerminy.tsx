@@ -35,6 +35,7 @@ export function HeroTerminy({
 
   const zobrazit = terminy.slice(0, MAX_TERMINU);
   const zarovnani = center ? "items-center" : "items-center lg:items-start";
+  const radek = center ? "justify-center" : "justify-center lg:justify-start";
 
   return (
     <div className={`flex flex-col ${zarovnani} gap-2 text-[15px] sm:text-base text-white/85`}>
@@ -52,13 +53,18 @@ export function HeroTerminy({
       {zobrazit.length > 0 && (
         <ul className={`flex flex-col ${zarovnani} gap-1.5`}>
           {zobrazit.map((t) => (
-            <li key={t.id}>
+            <li key={t.id} className={`flex flex-wrap items-center ${radek} gap-x-2 gap-y-1`}>
               <a
                 href="#terminy"
                 className="font-medium hover:text-white underline-offset-4 decoration-white/30 hover:underline"
               >
                 {t.dateFull}, {t.timeRange}
               </a>
+              {t.posledniMista && (
+                <span className="inline-flex items-center rounded-full bg-gold-300 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-navy-900 leading-none">
+                  Poslední místa
+                </span>
+              )}
             </li>
           ))}
         </ul>

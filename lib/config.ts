@@ -235,6 +235,8 @@ export interface TerminView {
   spotsLeft: number;
   spotsLabel: string;
   showSpotsScarcity: boolean;
+  /** Štítek „Poslední místa" - ručně v workshop-terminy.ts (posledniMista: "ANO") */
+  posledniMista: boolean;
 
   paymentLink: string;
   zoomUrl: string;
@@ -289,6 +291,7 @@ export function buildTermin(t: Termin): TerminView {
     spotsLeft,
     spotsLabel: `${spotsLeft} / ${PARAMS.capacity}`,
     showSpotsScarcity: spotsLeft <= PARAMS.scarcityThreshold,
+    posledniMista: t.posledniMista === "ANO",
 
     paymentLink: t.paymentLink,
     zoomUrl: t.zoomUrl ?? PARAMS.zoomUrl,

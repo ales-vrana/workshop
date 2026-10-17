@@ -21,6 +21,13 @@
  *    Například pro id "termin-1":
  *        https://poznej.coachville.eu/workshop/dekujeme/termin-1
  *
+ * ━━━ ŠTÍTEK „POSLEDNÍ MÍSTA" ━━━
+ *
+ * Každý termín má řádek   posledniMista: "ANO"   nebo   posledniMista: "NE".
+ * Při "ANO" se u termínu zobrazí štítek „Poslední místa" (v kartě termínu
+ * nahoře a v seznamu termínů v úvodu stránky). Při "NE" se nezobrazí nic.
+ * Pište velkými písmeny a v uvozovkách, přesně "ANO" nebo "NE".
+ *
  * ━━━ POZOR NA ID ━━━
  *
  * Id se NEPŘEČÍSLOVÁVÁ. Když termin-1 proběhne, nechte ho v poli
@@ -45,8 +52,14 @@ export interface Termin {
   /** Délka v minutách */
   durationMinutes: number;
 
-  /** Stripe Payment Link pro tento konkrétní termín */
+  /** Stripe Payment Link (u lekce zdarma se nepoužívá, nechte jak je) */
   paymentLink: string;
+
+  /**
+   * Štítek „Poslední místa": "ANO" = zobrazit, "NE" = nezobrazit.
+   * Nepovinné - když řádek chybí, bere se jako "NE".
+   */
+  posledniMista?: "ANO" | "NE";
 
   /** Cena v Kč. Nepovinné - když chybí, použije se výchozí cena z workshop-params.ts */
   priceCZK?: number;
@@ -65,20 +78,13 @@ export interface Termin {
 
 export const TERMINY: Termin[] = [
   {
-    id: "termin-1",
-    dateISO: "2026-10-25",
-    dayOfWeek: "neděle",
-    startTime: "19:00",
-    durationMinutes: 90,
-    paymentLink: "https://buy.stripe.com/fZu00i0UMbKvdOKerTejK2y",
-  },
-  {
     id: "termin-2",
     dateISO: "2026-10-18",
     dayOfWeek: "neděle",
     startTime: "19:00",
     durationMinutes: 90,
     paymentLink: "https://buy.stripe.com/dRm8wOcDuaGr9yu4RjejK2v",
+    posledniMista: "ANO",
   },
   {
     id: "termin-3",
@@ -87,5 +93,15 @@ export const TERMINY: Termin[] = [
     startTime: "11:00",
     durationMinutes: 90,
     paymentLink: "https://buy.stripe.com/5kQ14mavm3dZ4ea4RjejK2u",
+    posledniMista: "ANO",
+  },
+  {
+    id: "termin-1",
+    dateISO: "2026-10-25",
+    dayOfWeek: "neděle",
+    startTime: "19:00",
+    durationMinutes: 90,
+    paymentLink: "https://buy.stripe.com/fZu00i0UMbKvdOKerTejK2y",
+    posledniMista: "NE",
   },
 ];

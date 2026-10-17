@@ -71,10 +71,15 @@ export function Terminy() {
                   idx === 0 ? "border-2 border-navy-600" : "border border-navy-100/60"
                 }`}
               >
-                {idx === 0 && (
-                  <p className="inline-flex self-start items-center rounded-full bg-gold-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold-700 mb-4">
-                    Nejbližší termín
-                  </p>
+                {(idx === 0 || t.posledniMista) && (
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    {idx === 0 && (
+                      <p className="inline-flex items-center rounded-full bg-gold-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold-700">
+                        Nejbližší termín
+                      </p>
+                    )}
+                    {t.posledniMista && <StitekPosledniMista />}
+                  </div>
                 )}
 
                 <p className="text-xl sm:text-2xl font-bold text-navy-600 leading-tight mb-1">
@@ -138,5 +143,19 @@ export function Terminy() {
 
       <RegistraceModal termin={vybrany} onClose={zavrit} />
     </Section>
+  );
+}
+
+/**
+ * Štítek „Poslední místa" na světlém pozadí (karta termínu).
+ * Plná tmavě zlatá s bílým textem (kontrast 6:1), aby se odlišil
+ * od světlého štítku „Nejbližší termín". Tečka je jen ozdoba.
+ */
+export function StitekPosledniMista() {
+  return (
+    <p className="inline-flex items-center gap-1.5 rounded-full bg-gold-700 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+      <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden />
+      Poslední místa
+    </p>
   );
 }
