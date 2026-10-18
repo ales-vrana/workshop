@@ -79,12 +79,12 @@ export interface Termin {
 export const TERMINY: Termin[] = [
   {
     id: "termin-2",
-    dateISO: "2026-10-18",
-    dayOfWeek: "neděle",
-    startTime: "19:00",
+    dateISO: "2026-10-30",
+    dayOfWeek: "pátek",
+    startTime: "12:00",
     durationMinutes: 90,
     paymentLink: "https://buy.stripe.com/dRm8wOcDuaGr9yu4RjejK2v",
-    posledniMista: "ANO",
+    posledniMista: "NE",
   },
   {
     id: "termin-3",
