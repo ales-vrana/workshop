@@ -183,13 +183,25 @@ export function RegistraceModal({
           </div>
         ) : (
           <>
-            <p className="h-label mb-2">Registrace zdarma</p>
-            <h2
-              id="registrace-titulek"
-              className="text-xl sm:text-2xl font-bold text-navy-600 mb-3 pr-8"
-            >
-              Rezervovat místo na ukázkové lekci
-            </h2>
+            {/* Logo akreditace vlevo, nadpis vpravo - důvěra těsně před vyplněním */}
+            <div className="flex items-start gap-3 sm:gap-4 mb-4 pr-8">
+              <img
+                src="/workshop/icf-level3-badge.png"
+                alt="ICF Level 3 - akreditované vzdělávání koučů"
+                width={64}
+                height={64}
+                className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-lg object-contain"
+              />
+              <div className="min-w-0">
+                <p className="h-label mb-1.5">Registrace zdarma</p>
+                <h2
+                  id="registrace-titulek"
+                  className="text-lg sm:text-xl font-bold text-navy-600 leading-snug"
+                >
+                  Zadejte svůj kontakt, přístupové údaje doručíme emailem:
+                </h2>
+              </div>
+            </div>
 
             <div className="rounded-xl bg-cream border border-navy-100/60 px-4 py-3 mb-6 space-y-1.5">
               <p className="flex items-center gap-2 text-base font-semibold text-navy-700">
