@@ -79,9 +79,9 @@ export interface Termin {
 export const TERMINY: Termin[] = [
   {
     id: "termin-2",
-    dateISO: "2026-10-30",
-    dayOfWeek: "pátek",
-    startTime: "12:00",
+    dateISO: "2026-11-15",
+    dayOfWeek: "neděle",
+    startTime: "19:00",
     durationMinutes: 90,
     paymentLink: "https://buy.stripe.com/dRm8wOcDuaGr9yu4RjejK2v",
     posledniMista: "NE",
@@ -97,7 +97,7 @@ export const TERMINY: Termin[] = [
   },
   {
     id: "termin-1",
-    dateISO: "2026-10-25",
+    dateISO: "2026-11-08",
     dayOfWeek: "neděle",
     startTime: "19:00",
     durationMinutes: 90,
