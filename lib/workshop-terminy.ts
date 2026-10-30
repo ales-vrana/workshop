@@ -80,8 +80,8 @@ export const TERMINY: Termin[] = [
   {
     id: "termin-2",
     dateISO: "2026-11-15",
-    dayOfWeek: "neděle",
-    startTime: "19:00",
+    dayOfWeek: "Neděle",
+    startTime: "19:30",
     durationMinutes: 90,
     paymentLink: "https://buy.stripe.com/dRm8wOcDuaGr9yu4RjejK2v",
     posledniMista: "NE",
@@ -98,8 +98,8 @@ export const TERMINY: Termin[] = [
   {
     id: "termin-1",
     dateISO: "2026-11-08",
-    dayOfWeek: "neděle",
-    startTime: "19:00",
+    dayOfWeek: "Neděle",
+    startTime: "19:30",
     durationMinutes: 90,
     paymentLink: "https://buy.stripe.com/fZu00i0UMbKvdOKerTejK2y",
     posledniMista: "NE",
