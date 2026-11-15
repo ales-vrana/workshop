@@ -26,7 +26,7 @@ const SITUACE = [
   },
   {
     title: "Práce bere víc, než vrací.",
-    body: "Telefon v šest ráno i o víkendu. Večer, kdy už nezbývá nic na vlastní život. Nejde o to vydržet. Jde o to, že takhle to dál nechcete.",
+    body: "Práce zabírá většinu času. Ten pak nezbývá na život. Takhle už to dál nechcete.",
   },
   {
     title: "Něco skončilo.",
