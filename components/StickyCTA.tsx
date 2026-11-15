@@ -125,7 +125,7 @@ export function StickyCTA() {
               href="#terminy"
               className="inline-flex items-center justify-center px-5 lg:px-6 py-3 lg:py-3.5 bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-bold text-sm lg:text-base rounded-lg shadow-soft hover:shadow-lifted hover:-translate-y-0.5 transition-all min-h-[48px] whitespace-nowrap focus-visible:ring-4 focus-visible:ring-cta-500/40"
             >
-              Chci si to zkusit →
+              Chci zjistit, jestli je to pro mě →
             </a>
           </div>
         </div>

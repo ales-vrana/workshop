@@ -1,11 +1,14 @@
 import { ArrowDown } from "lucide-react";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { DveHodinyCompact } from "@/components/DveHodiny";
 import { WORKSHOP, COACH, getViditelneTerminy } from "@/lib/config";
 import { HeroTerminy } from "@/components/HeroTerminy";
 
 /**
  * Hero sekce - verze pro problem aware publikum (J1, J2, J4), vykání.
+ *
+ * 11/2026: nadpis „Lidé za vámi chodí pro radu" - jediný znak, který měli
+ * všichni kupující ACC+PCC (WON analýzy), a zároveň první věta akviziční
+ * reklamy, takže člověk po kliknutí ví, že je na správném místě.
  *
  * Pořadí na mobilu: H1 (zrcadlo situace) → podtitulek (co to je a co z toho mám)
  * → metařádek (parametry) → mikrořádek důvěry → TLAČÍTKO → zkouška místo garance
@@ -42,17 +45,18 @@ export function Hero() {
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col">
             <h1 className="lg:-mt-2">
               <span className="block h-display text-[28px] leading-[1.1] sm:text-[clamp(2.125rem,6.6vw,3.875rem)] text-white">
-                Zažijte koučování na vlastní kůži.
+                Lidé za vámi chodí pro radu.
               </span>
               {/* Druhá věta menší a ve zlaté - čte se jako pokračování, ne jako druhý nadpis */}
               <span className="block mt-3 sm:mt-4 text-xl sm:text-2xl lg:text-[1.75rem] leading-snug font-bold text-gold-300">
-                Nejdřív se dívejte, pak to zkusíte.
+                Možná je čas udělat z toho práci, která dává smysl.
               </span>
             </h1>
 
             <p className="mt-4 sm:mt-6 text-base sm:text-xl lg:text-2xl text-white/85 leading-snug font-medium">
-              90 minut online, po kterých budete vědět, jestli je koučování
-              cesta, kterou hledáte. Bez teorie a&nbsp;bez skoku do prázdna.
+              Na ukázkové lekci zdarma uvidíte koučování naživo, sami si ho
+              vyzkoušíte a budete vědět, jestli je to cesta, kterou hledáte. Bez teorie, vedle současné práce a&nbsp;bez skoku
+              do prázdna.
             </p>
 
             <p className="mt-4 text-sm sm:text-base text-white/70">
@@ -98,9 +102,9 @@ export function Hero() {
                   href="#terminy"
                   variant="on-dark"
                   className="w-full sm:w-auto group !text-[17px] sm:!text-base"
-                  ariaLabel="Chci si to zkusit - vybrat termín ukázkové lekce"
+                  ariaLabel="Chci zjistit, jestli je to pro mě - vybrat termín ukázkové lekce"
                 >
-                  Chci si to zkusit
+                  Chci zjistit, jestli je to pro&nbsp;mě
                 </CTAButton>
                 <p className="text-[13px] sm:text-sm text-white/75 text-center lg:text-left max-w-xs">
                   Zdarma. Stačí se zaregistrovat, kapacita je {WORKSHOP.capacity} míst
@@ -128,10 +132,10 @@ export function Hero() {
             </a>
           </div>
 
-          {/* Pravý sloupec - infografika místo portrétu, pod ní akreditace */}
+          {/* Pravý sloupec - akreditace. Infografika tří kroků z hero odešla
+              (11/2026): pro problem aware publikum je v první obrazovce
+              předčasná, kroky jsou podrobně v sekci „Jak to probíhá". */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-end gap-4 lg:pt-2">
-            <DveHodinyCompact />
-
             {/* Akreditace ICF Level 3 - samostatný velký odznak pod kroky,
                 bez rámečku. Bílá dlaždice je jen podklad, protože originál
                 loga má bílé pozadí; odsazení je malé, aby bílé plochy bylo
@@ -148,6 +152,7 @@ export function Hero() {
               <p className="text-base sm:text-lg text-white/85 leading-snug text-center max-w-xs">
                 CoachVille je jediný výcvik s nejvyšší akreditací{" "}
                 <strong className="font-bold text-white">ICF Level 3</strong> v ČR a&nbsp;SK.
+                Připravujeme kouče na mezinárodní certifikace ICF ACC, PCC i&nbsp;MCC.
               </p>
             </div>
           </div>

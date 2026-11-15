@@ -38,6 +38,18 @@ function utm(nazev: string): string {
   return new URLSearchParams(window.location.search).get(nazev) ?? "";
 }
 
+/**
+ * Odpovědi na „Co vás sem přivádí?" - stejné situace jako karty
+ * „Poznáváte se?". Jde do Zapieru jako pole `duvod`.
+ */
+const DUVODY = [
+  "Lidé za mnou chodí pro radu",
+  "Navenek je to v pořádku, ale chci víc",
+  "Práce bere víc, než vrací",
+  "Něco skončilo",
+  "Už o koučování uvažuji",
+];
+
 const inputClass =
   "w-full px-4 py-3 rounded-lg border border-navy-100 bg-cream text-dark text-base focus-visible:border-teal-400 min-h-[48px]";
 
@@ -53,6 +65,7 @@ export function RegistraceModal({
   const [prijmeni, setPrijmeni] = useState("");
   const [email, setEmail] = useState("");
   const [telefon, setTelefon] = useState("");
+  const [duvod, setDuvod] = useState(""); // nepovinné: „Co vás sem přivádí?" (segmentace + VOC)
   const [web, setWeb] = useState(""); // past na roboty - člověk pole nevidí
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
@@ -107,6 +120,7 @@ export function RegistraceModal({
       prijmeni: prijmeni.trim(),
       email: email.trim(),
       telefon: telefon.trim(),
+      duvod,
       registrovano_iso: ted.toISOString(),
       utm_source: utm("utm_source"),
       utm_medium: utm("utm_medium"),
@@ -276,6 +290,25 @@ export function RegistraceModal({
                   className={inputClass}
                   placeholder="777 123 456"
                 />
+              </div>
+
+              <div>
+                <label htmlFor="r-duvod" className="block text-sm font-semibold text-navy-700 mb-1.5">
+                  Co vás sem přivádí? <span className="font-normal text-dark/50">(nepovinné)</span>
+                </label>
+                <select
+                  id="r-duvod"
+                  value={duvod}
+                  onChange={(e) => setDuvod(e.target.value)}
+                  className={inputClass}
+                >
+                  <option value="">Vyberte</option>
+                  {DUVODY.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               {/* Past na roboty: lidé pole nevidí, roboti ho vyplní */}

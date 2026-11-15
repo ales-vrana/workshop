@@ -1,5 +1,5 @@
 import { Section } from "@/components/ui/Section";
-import { Trophy, GraduationCap } from "lucide-react";
+import { Trophy, GraduationCap, Briefcase } from "lucide-react";
 import { COACH } from "@/lib/config";
 
 const BADGES = [
@@ -12,6 +12,11 @@ const BADGES = [
     icon: GraduationCap,
     title: "Hlavní trenér CoachVille",
     sub: "Čtrnáct let učí lidi, kteří přišli přesně odtud: z vedení poboček, ze škol a nemocnic, po výpovědi i po rodičovské.",
+  },
+  {
+    icon: Briefcase,
+    title: "Sám začínal vedle práce",
+    sub: "Než začal učit kouče, pracoval v korporátu. Koučovat začal vedle práce, pak zkrátil úvazek a teprve potom odešel. Ví, jak vypadá změna bez skoku do prázdna.",
   },
 ];
 

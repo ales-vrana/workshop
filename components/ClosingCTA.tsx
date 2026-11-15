@@ -14,6 +14,7 @@ import { HeroTerminy } from "@/components/HeroTerminy";
  */
 
 const V_CENE = [
+  "Odpověď na otázku, jestli je koučování vaše cesta",
   `Živá lekce s MCC koučem (${WORKSHOP.duration}, bez záznamu - jste u toho naživo)`,
   "Praxe v roli kouče i v roli klienta",
   "PDF s pěti koučovacími otázkami do další praxe",
@@ -59,7 +60,7 @@ export function ClosingCTA() {
 
         <div className="flex flex-col items-center gap-4">
           <CTAButton href="#terminy" variant="on-dark" className="w-full sm:w-auto">
-            Chci si to zkusit
+            Chci zjistit, jestli je to pro mě
           </CTAButton>
           <p className="text-sm text-white/75 max-w-md">
             Zdarma. Stačí se zaregistrovat, kapacita je {WORKSHOP.capacity} míst

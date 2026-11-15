@@ -59,8 +59,8 @@ export function SCimOdejdete() {
       </div>
 
       <div className="text-center mt-8 sm:mt-10">
-        <CTAButton href="#terminy" ariaLabel="Chci si to zkusit - vybrat termín">
-          Chci si to zkusit
+        <CTAButton href="#terminy" ariaLabel="Chci zjistit, jestli je to pro mě - vybrat termín">
+          Chci zjistit, jestli je to pro mě
         </CTAButton>
       </div>
     </Section>
