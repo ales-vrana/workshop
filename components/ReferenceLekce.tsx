@@ -150,7 +150,7 @@ export function ReferenceLekce() {
           Reference {index + 1} z {REFERENCE.length}: {REFERENCE[index].quote} {REFERENCE[index].name}
         </p>
 
-        <p className="mt-5 text-center text-sm text-dark/55">
+        <p className="mt-5 text-center text-sm text-dark/70">
           Zpětné vazby účastníků ukázkových lekcí
         </p>
       </div>

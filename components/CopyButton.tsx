@@ -46,8 +46,8 @@ export function CopyButton({
       onClick={handleCopy}
       className={`flex-shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold rounded-md px-2.5 py-1.5 border transition-all min-h-[36px] touch-manipulation
         ${copied
-          ? "bg-teal-50 text-teal-600 border-teal-300"
-          : "bg-white text-teal-500 border-teal-400/30 hover:border-teal-400 hover:bg-teal-50/50"}`}
+          ? "bg-teal-50 text-teal-700 border-teal-300"
+          : "bg-white text-teal-700 border-teal-400/30 hover:border-teal-400 hover:bg-teal-50/50"}`}
       aria-label={copied ? copiedLabel : label}
     >
       {copied ? (

@@ -84,7 +84,7 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
 
           <CalendarButtons termin={termin} />
 
-          <p className="text-xs text-dark/55 mt-4 italic">
+          <p className="text-xs text-dark/70 mt-4 italic">
             Kalendář vám 1 hodinu předem pošle připomenutí. Doporučujeme.
           </p>
         </article>
@@ -128,12 +128,12 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
             className={`mt-4 grid grid-cols-1 ${termin.zoomPassword ? "sm:grid-cols-2" : ""} gap-3 text-sm`}
           >
             <div className="flex items-center justify-between p-3 bg-cream rounded-lg border border-navy-100/40">
-              <span className="text-dark/60">Meeting ID:</span>
+              <span className="text-dark/70">Meeting ID:</span>
               <span className="font-semibold text-navy-700 font-mono">{termin.zoomId}</span>
             </div>
             {termin.zoomPassword && (
               <div className="flex items-center justify-between p-3 bg-cream rounded-lg border border-navy-100/40">
-                <span className="text-dark/60">Heslo:</span>
+                <span className="text-dark/70">Heslo:</span>
                 <span className="font-semibold text-navy-700 font-mono">{termin.zoomPassword}</span>
               </div>
             )}
@@ -157,7 +157,7 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
           <ol className="space-y-4">
             {PREP_STEPS.map((step, idx) => (
               <li key={idx} className="flex gap-3 sm:gap-4">
-                <div className="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-teal-400/15 text-teal-600 font-bold text-sm ring-1 ring-teal-400/30">
+                <div className="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-teal-400/15 text-teal-700 font-bold text-sm ring-1 ring-teal-400/30">
                   {idx + 1}
                 </div>
                 <div className="flex-1 pt-0.5">
@@ -184,14 +184,14 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
             Napište mi na{" "}
             <a
               href={`mailto:${WORKSHOP.contactEmail}?subject=${mailSubject}`}
-              className="text-teal-600 font-semibold underline-offset-4 hover:underline break-words"
+              className="text-teal-700 font-semibold underline-offset-4 hover:underline break-words"
             >
               {WORKSHOP.contactEmail}
             </a>{" "}
             - najdeme řešení. Přesun na další termín, vrácení peněz nebo cokoliv jiného. Bez
             papírování, bez stresu.
           </p>
-          <p className="text-sm text-dark/60 mt-3">- {COACH.fullName}</p>
+          <p className="text-sm text-dark/70 mt-3">- {COACH.fullName}</p>
         </article>
 
         {/* Finální připomenutí */}
@@ -202,7 +202,7 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
               Vidíme se {termin.dateFullLocative} v {termin.joinTime}
             </p>
           </div>
-          <p className="mt-3 text-xs sm:text-sm text-dark/55 italic">
+          <p className="mt-3 text-xs sm:text-sm text-dark/70 italic">
             5 minut před začátkem - start workshopu v {termin.timeStart}
           </p>
         </div>
@@ -211,7 +211,7 @@ export function DekujemeObsah({ termin }: { termin: TerminView }) {
         <div className="text-center pt-4">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-dark/55 hover:text-navy-600 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-dark/70 hover:text-navy-600 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Zpět na hlavní stránku workshopu

@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Písmo: Montserrat (brand manuál v2.0, 3.1 - náhrada č. 2 za Gotham),
+ * hostované přímo z /public/fonts (OFL 1.1, @fontsource-variable/montserrat 5.3.0).
+ *
+ * Proč ne next/font/google: na Vercelu se 11/2026 rozjel hash třídy fontu
+ * mezi HTML a CSS (HTML __variable_811218, CSS __variable_56d453), proměnná
+ * --font-montserrat zůstala nedefinovaná, celé font-family bylo neplatné
+ * a stránka se vykreslovala patkovým písmem (Times). Statické @font-face
+ * nemá na čem se rozjet.
+ *
+ * Variabilní font = jeden soubor pro všechny váhy 100-900. Dva soubory
+ * podle unicode-range: latin + latin-ext (česká a slovenská diakritika).
+ */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("/workshop/fonts/montserrat-latin-ext-wght-normal.woff2") format("woff2-variations"),
+       url("/workshop/fonts/montserrat-latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("/workshop/fonts/montserrat-latin-wght-normal.woff2") format("woff2-variations"),
+       url("/workshop/fonts/montserrat-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
 @layer base {
   :root {
     --navy: #394A82;
@@ -19,7 +52,7 @@
   }
 
   body {
-    font-family: var(--font-montserrat), Gotham, Arial, sans-serif;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -45,14 +78,15 @@
     @apply font-display font-extrabold uppercase tracking-normal;
   }
 
-  /* Nadpisy sekcí (H2): stejný font a váha, ale sentence case - rychlejší čtení */
+  /* Nadpisy sekcí (H2): brand manuál 3.3 - H1 a H2 vždy UPPERCASE, line-height 1.2.
+     Váha 700 (Bold) jako v manuálu, mírně rozvolněný tracking kvůli čitelnosti verzálek. */
   .h-section {
-    @apply font-display font-extrabold tracking-normal;
+    @apply font-display font-bold uppercase tracking-[0.01em];
   }
 
   /* Label (gold uppercase malé) */
   .h-label {
-    @apply text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-gold-700; /* 6,6:1 na bílé; na tmavém pozadí přepsat text-gold-400 */
+    @apply text-[13px] sm:text-sm font-bold uppercase tracking-[0.14em] text-gold-700; /* 6,1:1 na bílé; na tmavém pozadí přepsat text-gold-300 (4,6:1 na navy) */
   }
 
   /* Primární CTA tlačítko - zelená #34A853, tmavý text (kontrast 5,2:1) */
@@ -110,7 +144,7 @@
 
   /* Highlight box */
   .highlight-box {
-    @apply bg-cream border-l-4 border-gold-500 px-5 py-4 rounded-r-lg text-sm sm:text-base;
+    @apply bg-cream border-l-4 border-gold-500 px-5 py-4 rounded-r-lg text-base;
   }
 
   /* Number badge */

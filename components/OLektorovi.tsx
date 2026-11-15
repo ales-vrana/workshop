@@ -24,7 +24,7 @@ export function OLektorovi() {
   return (
     <Section id="lektor" tone="dark">
       <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
-        <p className="h-label text-gold-400 mb-3">Lektor</p>
+        <p className="h-label text-gold-300 mb-3">Lektor</p>
         <h2 className="h-section text-h2 text-white mb-4">
           S kým lekci zažijete
         </h2>

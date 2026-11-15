@@ -35,7 +35,7 @@ export function KalkulackaCTA() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
-          <p className="h-label text-gold-400 mb-3">Dveře A - Koučování jako profese</p>
+          <p className="h-label text-gold-300 mb-3">Dveře A - Koučování jako profese</p>
           <h2 className="h-display text-h2 text-white mb-5">
             Zvažuješ koučování jako profesi?
             <br />
@@ -101,9 +101,9 @@ export function KalkulackaCTA() {
             <Calculator className="h-4 w-4 text-teal-300 shrink-0" aria-hidden />
             <span>
               <strong className="text-teal-300">První placení klienti po 2 měsících</strong>
-              <span className="text-white/40 mx-1.5">·</span>
+              <span className="text-white/70 mx-1.5">·</span>
               <strong className="text-teal-300">Mezinárodní certifikace ICF do 12–15 měsíců</strong>
-              <span className="text-white/40 mx-1.5">·</span>
+              <span className="text-white/70 mx-1.5">·</span>
               <strong className="text-teal-300">Úroveň PCC do 3 let</strong>
             </span>
           </p>

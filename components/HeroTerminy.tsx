@@ -51,17 +51,17 @@ export function HeroTerminy({
       </div>
 
       {zobrazit.length > 0 && (
-        <ul className={`flex flex-col ${zarovnani} gap-1.5`}>
+        <ul className={`flex flex-col ${zarovnani} gap-0`}>
           {zobrazit.map((t) => (
             <li key={t.id} className={`flex flex-wrap items-center ${radek} gap-x-2 gap-y-1`}>
               <a
                 href="#terminy"
-                className="font-medium hover:text-white underline-offset-4 decoration-white/30 hover:underline"
+                className="inline-flex items-center min-h-[44px] whitespace-nowrap font-medium hover:text-white underline-offset-4 decoration-white/30 hover:underline"
               >
                 {t.dateFull}, {t.timeRange}
               </a>
               {t.posledniMista && (
-                <span className="inline-flex items-center rounded-full bg-gold-300 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-navy-900 leading-none">
+                <span className="inline-flex items-center rounded-full bg-gold-300 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-navy-900 leading-none">
                   Poslední místa
                 </span>
               )}

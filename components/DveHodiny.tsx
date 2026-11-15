@@ -39,7 +39,7 @@ const KROKY = [
 export function DveHodinyCompact() {
   return (
     <div className="w-full max-w-md mx-auto lg:mx-0">
-      <p className="h-label text-gold-400 mb-4">
+      <p className="h-label text-gold-300 mb-4">
         {WORKSHOP.duration}, tři kroky
       </p>
 
@@ -111,7 +111,7 @@ export function DveHodiny() {
         })}
       </ol>
 
-      <p className="text-center text-sm sm:text-base text-dark/60 mt-8 max-w-2xl mx-auto">
+      <p className="text-center text-sm sm:text-base text-dark/70 mt-8 max-w-2xl mx-auto">
         Lekce se nenahrává. Obě role se dají zažít jenom naživo, proto si
         vyhraďte celých 90 minut.
       </p>

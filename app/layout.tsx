@@ -1,17 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { MetaPixel } from "@/components/MetaPixel";
 import { EventSchema } from "@/components/EventSchema";
 import { WORKSHOP } from "@/lib/config";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://poznej.coachville.eu/workshop";
 
@@ -67,8 +60,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="cs" className={montserrat.variable}>
+    <html lang="cs">
       <head>
+        {/* Písmo Montserrat (latin + latin-ext pro diakritiku) - načíst hned, ať se text nepřeskakuje */}
+        <link rel="preload" href="/workshop/fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/workshop/fonts/montserrat-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <EventSchema />
         {/* Microsoft Clarity - vloženo přímo do <head>, projekt ykej9fbehc */}
         <script

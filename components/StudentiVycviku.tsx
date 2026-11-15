@@ -12,7 +12,7 @@ export function StudentiVycviku() {
   return (
     <Section id="studenti-vycviku" tone="navy" className="!bg-navy-900">
       <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-10">
-        <p className="h-label text-gold-400 mb-3">Po lekci</p>
+        <p className="h-label text-gold-300 mb-3">Po lekci</p>
         <h2 className="h-section text-h2 text-white">
           A co říkají ti, kdo pokračovali do výcviku
         </h2>

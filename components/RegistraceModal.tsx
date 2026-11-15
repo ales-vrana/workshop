@@ -179,7 +179,7 @@ export function RegistraceModal({
           type="button"
           onClick={onClose}
           aria-label="Zavřít"
-          className="absolute top-4 right-4 p-2 rounded-lg text-dark/40 hover:text-dark hover:bg-cream transition-colors"
+          className="absolute top-4 right-4 p-2 rounded-lg text-dark/70 hover:text-dark hover:bg-cream transition-colors"
         >
           <X className="h-5 w-5" aria-hidden />
         </button>
@@ -273,7 +273,7 @@ export function RegistraceModal({
                   className={inputClass}
                   placeholder="jan@novak.cz"
                 />
-                <p className="mt-1.5 text-xs text-dark/55">Sem vám pošleme odkaz na Zoom.</p>
+                <p className="mt-1.5 text-xs text-dark/70">Sem vám pošleme odkaz na Zoom.</p>
               </div>
 
               <div>
@@ -294,7 +294,7 @@ export function RegistraceModal({
 
               <div>
                 <label htmlFor="r-duvod" className="block text-sm font-semibold text-navy-700 mb-1.5">
-                  Co vás sem přivádí? <span className="font-normal text-dark/50">(nepovinné)</span>
+                  Co vás sem přivádí? <span className="font-normal text-dark/70">(nepovinné)</span>
                 </label>
                 <select
                   id="r-duvod"
@@ -341,7 +341,7 @@ export function RegistraceModal({
                 )}
               </button>
 
-              <p className="text-xs text-dark/50 leading-relaxed">
+              <p className="text-xs text-dark/70 leading-relaxed">
                 Údaje použiji k organizaci lekce: pošlu vám odkaz na Zoom a připomínku před
                 začátkem. Kapacita je {WORKSHOP.capacity} míst na termín.
               </p>

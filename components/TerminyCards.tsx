@@ -33,7 +33,7 @@ export function TerminyCards({ terminy: incoming }: { terminy?: TerminView[] } =
           }`}
         >
           {idx === 0 && (
-            <p className="inline-flex self-start items-center rounded-full bg-gold-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold-700 mb-4">
+            <p className="inline-flex self-start items-center rounded-full bg-gold-500/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold-700 mb-4">
               Nejbližší termín
             </p>
           )}
