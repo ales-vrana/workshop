@@ -13,7 +13,7 @@ const PRESVEDCENI = [
         </p>
         <p>
           Workshop Vás postaví přímo do téhle role. Uvidíte to do 60 minut.
-          <strong className="text-teal-500"> Zážitek &gt; Teorie</strong>
+          <strong className="text-teal-700"> Zážitek &gt; Teorie</strong>
         </p>
       </>
     ),

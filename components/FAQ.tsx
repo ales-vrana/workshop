@@ -117,7 +117,7 @@ export function FAQ() {
             Máte další otázku, která tu není?{" "}
             <a
               href={`mailto:${WORKSHOP.contactEmail}?subject=Workshop%20kou%C4%8Dov%C3%A1n%C3%AD%20-%20dotaz`}
-              className="text-teal-500 hover:text-teal-600 font-semibold underline-offset-4 hover:underline"
+              className="inline-flex items-center min-h-[44px] text-teal-700 hover:text-teal-800 font-semibold underline underline-offset-4"
             >
               Napište mi přímo →
             </a>

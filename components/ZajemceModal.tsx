@@ -94,8 +94,8 @@ export function ZajemceModal({
 
   const triggerClass =
     variant === "dark"
-      ? "text-sm sm:text-base font-semibold text-teal-300 underline underline-offset-4 hover:text-teal-200 transition-colors"
-      : "text-sm sm:text-base font-semibold text-teal-600 underline underline-offset-4 hover:text-teal-700 transition-colors";
+      ? "inline-flex items-center min-h-[44px] text-sm sm:text-base font-semibold text-teal-300 underline underline-offset-4 hover:text-teal-200 transition-colors"
+      : "inline-flex items-center min-h-[44px] text-sm sm:text-base font-semibold text-teal-700 underline underline-offset-4 hover:text-teal-800 transition-colors";
 
   return (
     <>
@@ -121,7 +121,7 @@ export function ZajemceModal({
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Zavřít"
-              className="absolute top-4 right-4 p-2 rounded-lg text-dark/40 hover:text-dark hover:bg-cream transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-lg text-dark/70 hover:text-dark hover:bg-cream transition-colors"
             >
               <X className="h-5 w-5" aria-hidden />
             </button>
@@ -187,7 +187,7 @@ export function ZajemceModal({
 
                   <div>
                     <label htmlFor="z-telefon" className="block text-sm font-semibold text-navy-700 mb-1.5">
-                      Telefon <span className="font-normal text-dark/50">(nepovinné)</span>
+                      Telefon <span className="font-normal text-dark/70">(nepovinné)</span>
                     </label>
                     <input
                       id="z-telefon"
@@ -217,7 +217,7 @@ export function ZajemceModal({
                     )}
                   </button>
 
-                  <p className="text-xs text-dark/50 leading-relaxed">
+                  <p className="text-xs text-dark/70 leading-relaxed">
                     Kontakt použiji jen k tomu, abych vám napsal o dalších termínech lekce.
                     Kdykoli se můžete odhlásit.
                   </p>

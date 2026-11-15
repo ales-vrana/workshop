@@ -44,7 +44,7 @@ export function Hero() {
           {/* Levý sloupec - text a akce */}
           <div className="lg:col-span-7 text-center lg:text-left flex flex-col">
             <h1 className="lg:-mt-2">
-              <span className="block h-display text-[28px] leading-[1.1] sm:text-[clamp(2.125rem,6.6vw,3.875rem)] text-white">
+              <span className="block h-display text-[28px] leading-[1.15] sm:text-[clamp(2.125rem,6.6vw,3.875rem)] text-white">
                 Lidé za vámi chodí pro radu.
               </span>
               {/* Druhá věta menší a ve zlaté - čte se jako pokračování, ne jako druhý nadpis */}
@@ -84,7 +84,7 @@ export function Hero() {
                     className="absolute -bottom-0.5 -right-0.5 h-[18px] w-[18px] rounded-full bg-white ring-2 ring-navy-900 object-contain p-px"
                   />
                 </div>
-                <p className="text-[13px] sm:text-sm text-white/80 text-left leading-tight">
+                <p className="text-sm sm:text-sm text-white/80 text-left leading-tight">
                   Vede <strong className="font-bold text-white">{COACH.fullName}</strong>
                   <br className="sm:hidden" />
                   <span className="sm:before:content-['_·_']">
@@ -106,7 +106,7 @@ export function Hero() {
                 >
                   Chci zjistit, jestli je to pro&nbsp;mě
                 </CTAButton>
-                <p className="text-[13px] sm:text-sm text-white/75 text-center lg:text-left max-w-xs">
+                <p className="text-sm sm:text-sm text-white/75 text-center lg:text-left max-w-xs">
                   Zdarma. Stačí se zaregistrovat, kapacita je {WORKSHOP.capacity} míst
                   na termín.
                 </p>
@@ -120,7 +120,7 @@ export function Hero() {
             {/* Odkaz na podrobnosti níže */}
             <a
               href="#poznavate-se"
-              className="mt-7 inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors group/more self-center lg:self-start"
+              className="mt-5 inline-flex items-center gap-2 min-h-[44px] text-sm text-white/70 hover:text-white transition-colors group/more self-center lg:self-start"
             >
               <ArrowDown
                 className="h-4 w-4 shrink-0 transition-transform group-hover/more:translate-y-0.5"

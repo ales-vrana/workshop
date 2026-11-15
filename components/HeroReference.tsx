@@ -102,7 +102,7 @@ export function HeroReference({ bezStitku = false }: { bezStitku?: boolean } = {
       {/* Štítek a ovládání na jednom řádku - šetří na mobilu celý řádek */}
       <div className="flex items-center justify-between gap-3 mb-2.5">
         {bezStitku ? <span /> : (
-          <p className="h-label text-gold-400 !text-[11px] sm:!text-xs">Co říkají studenti</p>
+          <p className="h-label text-gold-300 !text-xs sm:!text-xs">Co říkají studenti</p>
         )}
 
         <div className="flex items-center gap-0.5 shrink-0">
@@ -110,18 +110,18 @@ export function HeroReference({ bezStitku = false }: { bezStitku?: boolean } = {
             type="button"
             onClick={() => posun(-1)}
             aria-label="Předchozí reference"
-            className="flex items-center justify-center h-9 w-9 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
+            className="flex items-center justify-center h-11 w-11 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
           >
             <ChevronLeft className="h-5 w-5" aria-hidden />
           </button>
-          <span className="text-[11px] tabular-nums text-white/50 min-w-[2.75rem] text-center select-none whitespace-nowrap">
+          <span className="text-xs tabular-nums text-white/70 min-w-[2.75rem] text-center select-none whitespace-nowrap">
             {index + 1}/{REFERENCE.length}
           </span>
           <button
             type="button"
             onClick={() => posun(1)}
             aria-label="Další reference"
-            className="flex items-center justify-center h-9 w-9 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
+            className="flex items-center justify-center h-11 w-11 rounded-full text-white/70 hover:text-white hover:bg-white/10 active:bg-white/15 transition-colors focus-visible:ring-2 focus-visible:ring-white/50"
           >
             <ChevronRight className="h-5 w-5" aria-hidden />
           </button>
@@ -145,7 +145,7 @@ export function HeroReference({ bezStitku = false }: { bezStitku?: boolean } = {
             <blockquote className="text-[15px] sm:text-base lg:text-[17px] leading-[1.55] text-white/90">
               „{r.quote}&#8220;
             </blockquote>
-            <figcaption className="mt-2.5 text-[13px] sm:text-sm font-bold text-gold-300">
+            <figcaption className="mt-2.5 text-sm sm:text-sm font-bold text-gold-300">
               {r.name}
             </figcaption>
           </figure>

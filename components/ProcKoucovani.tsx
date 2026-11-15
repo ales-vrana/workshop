@@ -22,7 +22,7 @@ export function ProcKoucovani() {
     <Section id="proc-koucovani" tone="navy">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8 sm:mb-10">
-          <p className="h-label text-gold-400 mb-3">Proč koučování</p>
+          <p className="h-label text-gold-300 mb-3">Proč koučování</p>
           <h2 className="h-section text-h2 text-white">
             Koučování je práce s lidmi, která se dá dělat profesionálně
           </h2>

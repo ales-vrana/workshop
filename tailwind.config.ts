@@ -61,14 +61,22 @@ const config: Config = {
         dark: "#30302E",
       },
       fontFamily: {
-        sans: ["var(--font-montserrat)", "Gotham", "Arial", "sans-serif"],
-        display: ["var(--font-montserrat)", "Gotham", "Arial", "sans-serif"],
+        // Brand manuál 3.1: Gotham → Montserrat → Arial. Gotham nemáme licencovaný
+        // pro web, Montserrat je hostovaný v /public/fonts (viz globals.css).
+        sans: ["Montserrat", "Arial", "Helvetica", "sans-serif"],
+        display: ["Montserrat", "Arial", "Helvetica", "sans-serif"],
       },
       fontSize: {
         // Custom scale aligned with brand manual (Gotham/Montserrat UPPERCASE)
         // Pozn.: pro UPPERCASE nadpisy ne-negativní tracking (Reichenstein review).
         "hero": ["clamp(2.25rem, 7vw, 4rem)", { lineHeight: "1.05", letterSpacing: "0", fontWeight: "800" }],
-        "h2": ["clamp(1.75rem, 4.5vw, 2.75rem)", { lineHeight: "1.15", letterSpacing: "0.01em", fontWeight: "700" }],
+        // H2 je od 11/2026 UPPERCASE (brand manuál 3.3), proto o stupeň menší na mobilu.
+        "h2": ["clamp(1.5rem, 4.2vw, 2.5rem)", { lineHeight: "1.2", letterSpacing: "0.01em", fontWeight: "700" }],
+        // Brand manuál 3.3: body line-height 1.6-1.8. Výchozí Tailwind má u xs/sm jen 1.33/1.43.
+        "xs": ["0.75rem", { lineHeight: "1.6" }],
+        "sm": ["0.875rem", { lineHeight: "1.6" }],
+        "base": ["1rem", { lineHeight: "1.65" }],
+        "lg": ["1.125rem", { lineHeight: "1.65" }],
         "h3": ["clamp(1.25rem, 3vw, 1.5rem)", { lineHeight: "1.25", letterSpacing: "0.005em", fontWeight: "700" }],
       },
       maxWidth: {

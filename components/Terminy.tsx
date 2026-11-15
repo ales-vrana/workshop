@@ -74,7 +74,7 @@ export function Terminy() {
                 {(idx === 0 || t.posledniMista) && (
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     {idx === 0 && (
-                      <p className="inline-flex items-center rounded-full bg-gold-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-gold-700">
+                      <p className="inline-flex items-center rounded-full bg-gold-500/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold-700">
                         Nejbližší termín
                       </p>
                     )}
@@ -153,7 +153,7 @@ export function Terminy() {
  */
 export function StitekPosledniMista() {
   return (
-    <p className="inline-flex items-center gap-1.5 rounded-full bg-gold-700 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+    <p className="inline-flex items-center gap-1.5 rounded-full bg-gold-700 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
       <span className="h-1.5 w-1.5 rounded-full bg-white" aria-hidden />
       Poslední místa
     </p>

@@ -42,7 +42,7 @@ export function ClosingCTA() {
 
         {/* Co dostanete */}
         <div className="rounded-2xl bg-white/5 border border-white/15 p-6 sm:p-8 max-w-2xl mx-auto mb-8 text-left">
-          <p className="h-label text-gold-400 mb-5">Co dostanete</p>
+          <p className="h-label text-gold-300 mb-5">Co dostanete</p>
           <ul className="space-y-3">
             {V_CENE.map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -66,7 +66,7 @@ export function ClosingCTA() {
             Zdarma. Stačí se zaregistrovat, kapacita je {WORKSHOP.capacity} míst
             na termín.
           </p>
-          <p className="text-xs text-white/55">
+          <p className="text-sm text-white/75">
             Po registraci dostanete e-mailem odkaz na {WORKSHOP.platform} a krátkou přípravu.
           </p>
         </div>

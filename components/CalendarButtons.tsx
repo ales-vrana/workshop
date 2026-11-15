@@ -33,7 +33,7 @@ export function CalendarButtons({ termin }: { termin: TerminView }) {
         </span>
         <span className="flex-1 text-left">
           <span className="block text-sm font-semibold text-navy-700 leading-tight">Google</span>
-          <span className="block text-xs text-dark/55 mt-0.5">Otevřít kalendář</span>
+          <span className="block text-xs text-dark/70 mt-0.5">Otevřít kalendář</span>
         </span>
       </a>
 
@@ -53,7 +53,7 @@ export function CalendarButtons({ termin }: { termin: TerminView }) {
         </span>
         <span className="flex-1 text-left">
           <span className="block text-sm font-semibold text-navy-700 leading-tight">Outlook</span>
-          <span className="block text-xs text-dark/55 mt-0.5">Otevřít kalendář</span>
+          <span className="block text-xs text-dark/70 mt-0.5">Otevřít kalendář</span>
         </span>
       </a>
 
@@ -74,7 +74,7 @@ export function CalendarButtons({ termin }: { termin: TerminView }) {
           <span className="block text-sm font-semibold text-navy-700 leading-tight">
             Apple / iCal
           </span>
-          <span className="block text-xs text-dark/55 mt-0.5">.ics soubor</span>
+          <span className="block text-xs text-dark/70 mt-0.5">.ics soubor</span>
         </span>
       </a>
     </div>

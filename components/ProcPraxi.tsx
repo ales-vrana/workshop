@@ -16,7 +16,7 @@ export function ProcPraxi() {
   return (
     <Section id="proc-praxi" tone="navy">
       <div className="max-w-3xl mx-auto text-center">
-        <p className="h-label text-gold-400 mb-3">Jak to učíme</p>
+        <p className="h-label text-gold-300 mb-3">Jak to učíme</p>
         <h2 className="h-section text-h2 text-white mb-5">
           Koučování se nedá naučit posloucháním
         </h2>

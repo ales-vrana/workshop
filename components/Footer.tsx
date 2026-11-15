@@ -14,7 +14,7 @@ export function Footer() {
             <p className="text-white/60 text-xs mt-2 leading-relaxed">
               CoachVille - koučovací výcvik. Učíme se praxí.
             </p>
-            <p className="text-white/45 text-xs mt-3 leading-relaxed">
+            <p className="text-white/70 text-xs mt-3 leading-relaxed">
               Web provozuje CoachVille LLC,{" "}
               <a
                 href="https://www.coachville.eu"
@@ -47,7 +47,7 @@ export function Footer() {
             </a>
           </div>
         </div>
-        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-white/40">
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-white/70">
           <p>© {new Date().getFullYear()} CoachVille Europe</p>
           <p>Made with care for future coaches.</p>
         </div>
