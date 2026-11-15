@@ -1,6 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { ReferenceLekce } from "@/components/ReferenceLekce";
 import { PoznavateSe } from "@/components/PoznavateSe";
+import { ProcKoucovani } from "@/components/ProcKoucovani";
 import { SCimOdejdete } from "@/components/SCimOdejdete";
 import { NemuzesToPokazit } from "@/components/NemuzesToPokazit";
 import { Zkusenosti } from "@/components/Zkusenosti";
@@ -20,9 +21,10 @@ import { Reveal } from "@/components/ui/Reveal";
  * proběhly, zmizely i z HTML v cache. Filtrování navíc běží i v prohlížeči
  * (komponenta Terminy), takže návštěvník nikdy neuvidí starý termín.
  *
- * Pořadí sekcí podle schválené textace pro J1, J2 a J4 (4. 10. 2026):
- * zrcadlo situace → s čím odejdete → bezpečí → důkaz → přesvědčení →
- * jak to probíhá → lektor → termín a cena → FAQ → závěr.
+ * Pořadí sekcí 11/2026 (problem aware akviziční publikum, úhel „Lidé za vámi
+ * chodí pro radu" z WON analýz ACC+PCC): zrcadlo situace → proč koučování →
+ * s čím odejdete → důkaz z lekce → bezpečí → jak to probíhá → jak učíme →
+ * videoreference → lektor → reference z výcviku → termíny → FAQ → závěr.
  */
 export const revalidate = 3600;
 
@@ -32,19 +34,31 @@ export default function HomePage() {
       {/* Hero - bez Reveal, je nad foldem */}
       <Hero />
 
-      {/* Reference z lekce hned pod hero - sociální důkaz dřív než argumentace */}
-      <ReferenceLekce />
-
-      {/* Poznáváte se? - tři situace, kvůli nim člověk pozná, že je tu správně */}
+      {/* Poznáváte se? - hned pod hero, problem aware člověk se tu pozná */}
       <PoznavateSe />
+
+      {/* Most: proč je koučování odpověď na to, co člověk cítí */}
+      <Reveal>
+        <ProcKoucovani />
+      </Reveal>
 
       <Reveal>
         <SCimOdejdete />
       </Reveal>
 
-      {/* Bezpečí nahoře: pochybnost o sobě je nejčastější brzda */}
+      {/* Reference z lekce - důkaz hned za tím, co si člověk odnese */}
+      <ReferenceLekce />
+
+      {/* Bezpečí: pochybnost o sobě je nejčastější brzda */}
       <Reveal>
         <NemuzesToPokazit />
+      </Reveal>
+
+      <Reveal>
+        <DveHodiny />
+      </Reveal>
+      <Reveal>
+        <ProcPraxi />
       </Reveal>
 
       {/* Videoreference */}
@@ -52,12 +66,6 @@ export default function HomePage() {
         <Zkusenosti />
       </Reveal>
 
-      <Reveal>
-        <ProcPraxi />
-      </Reveal>
-      <Reveal>
-        <DveHodiny />
-      </Reveal>
       <Reveal>
         <OLektorovi />
       </Reveal>

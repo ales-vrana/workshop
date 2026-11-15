@@ -7,6 +7,18 @@ import { WORKSHOP } from "@/lib/config";
 
 const QA = [
   {
+    q: "Je mi přes 50. Není na to pozdě?",
+    a: "Ne. Chodí k nám lidé po dvaceti letech v jednom oboru - z vedení poboček, ze škol a nemocnic. Životní a pracovní zkušenost je v koučování výhoda, ne překážka.",
+  },
+  {
+    q: "Mám náročnou práci a skoro žádný čas.",
+    a: "Lekce je jednou a trvá 90 minut. Když se pak rozhodnete pokračovat, výcvik je online a dá se studovat vedle práce. Na lekci uslyšíte lidi, kteří začínali při plném úvazku.",
+  },
+  {
+    q: "Neumím se prodat. Kde bych vzala klienty?",
+    a: "Na lekci nic prodávat nemusíte. Kdo pokračuje do výcviku, učí se i to, jak získat první klienty, a studenty propojujeme se zájemci o koučování. Sociální sítě nejsou podmínka.",
+  },
+  {
     q: "Jsem teď bez práce nebo na rodičovské. Je to pro mě?",
     a: "Ano. Část lidí přichází právě ve chvíli, kdy jim jedna kapitola skončila a další ještě nezačala. Na lekci nepotřebujete zaměstnání ani téma z korporátu - stačí běžná situace, kterou zrovna řešíte.",
   },

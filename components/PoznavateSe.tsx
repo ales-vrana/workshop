@@ -9,20 +9,28 @@ import { Section } from "@/components/ui/Section";
  * (dataset v2, 394 strategií) - popisujeme scénu, nediagnostikujeme čtenáře.
  *
  * Nahrazuje původní sekce „Pro koho" (role) a „Situace".
+ *
+ * 11/2026: sekce je hned pod hero a má čtvrtou kartu „Lidé za vámi chodí
+ * pro radu" (společný znak všech kupujících ACC+PCC). Pořadí karet:
+ * identita → stabilní, ale prázdná práce → přetížení → konec kapitoly.
  */
 
 const SITUACE = [
   {
-    title: "Něco skončilo.",
-    body: "Práce, projekt, rodičovská, kapitola, která vás držela. Poprvé po letech máte čas - a nechcete ho dát něčemu, co nedává smysl.",
+    title: "Lidé za vámi chodí pro radu.",
+    body: "Kolegové, kamarádi, rodina. Svěřují se vám a odcházejí s lehčí hlavou. Víte, že chcete pracovat s lidmi. Jen jste zatím nevěděli, v jaké podobě.",
+  },
+  {
+    title: "Navenek je všechno v pořádku.",
+    body: "Slušná práce, jistý příjem, žádná krize. Jen tiché vědomí, že takhle dalších deset let nechcete.",
   },
   {
     title: "Práce bere víc, než vrací.",
     body: "Telefon v šest ráno i o víkendu. Večer, kdy už nezbývá nic na vlastní život. Nejde o to vydržet. Jde o to, že takhle to dál nechcete.",
   },
   {
-    title: "Navenek je všechno v pořádku.",
-    body: "Slušná práce, jistý příjem, žádná krize. Jen tiché vědomí, že takhle dalších deset let nechcete.",
+    title: "Něco skončilo.",
+    body: "Práce, projekt, rodičovská, kapitola, která vás držela. Poprvé po letech máte čas - a nechcete ho dát něčemu, co nedává smysl.",
   },
 ];
 
@@ -32,11 +40,11 @@ export function PoznavateSe() {
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <p className="h-label mb-3">Poznáváte se?</p>
         <h2 className="h-section text-h2 text-navy-600">
-          Tři situace, ze kterých k nám lidé chodí nejčastěji
+          Čtyři situace, ze kterých k nám lidé chodí nejčastěji
         </h2>
       </div>
 
-      <div className="grid gap-5 sm:gap-6 lg:grid-cols-3 max-w-5xl mx-auto">
+      <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 max-w-4xl mx-auto">
         {SITUACE.map((s) => (
           <article
             key={s.title}

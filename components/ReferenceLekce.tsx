@@ -25,12 +25,12 @@ type Citace = { quote: string; name: string };
 
 const REFERENCE: Citace[] = [
   {
-    quote: "Zjistila jsem, že to není takový bubák, jak jsem si myslela. Největším nepřítelem je vlastní pochybnost a vnitřní kritik.",
-    name: "Hana Svatošová",
+    quote: "Workshop mi potvrdil dvě věci: že role kouče není tak jednoduchá, jak si někdo může myslet, a že chci být koučem.",
+    name: "Hana Masaříková",
   },
   {
-    quote: "Odpovědi většinou dobře známe, ale je potřeba někdo druhý, aby nám je ukázal. A ty nejjednodušší věci bývají překvapivě nejefektivnější.",
-    name: "Bára Hálová",
+    quote: "Zjistila jsem, že to není takový bubák, jak jsem si myslela. Největším nepřítelem je vlastní pochybnost a vnitřní kritik.",
+    name: "Hana Svatošová",
   },
   {
     quote: "Uvědomil jsem si, že nechám na zkoušku svým zaměstnancům více pravomocí, aby některé záležitosti rozhodli oni.",
@@ -39,6 +39,10 @@ const REFERENCE: Citace[] = [
   {
     quote: "Uvědomila jsem si, co dělám v komunikaci s kolegy špatně. Jak jim podsouvám otázky a očekávám, že odpoví to, co chci slyšet.",
     name: "Ingrid Tacinová",
+  },
+  {
+    quote: "Odpovědi většinou dobře známe, ale je potřeba někdo druhý, aby nám je ukázal. A ty nejjednodušší věci bývají překvapivě nejefektivnější.",
+    name: "Bára Hálová",
   },
   {
     quote: "Zaujalo mě, jak jednoduché otázky vedou k hlubokým odpovědím. Možnost vyzkoušet si obě role byla velmi poučná.",
@@ -51,10 +55,6 @@ const REFERENCE: Citace[] = [
   {
     quote: "Uvědomil jsem si, že koučování může být pro mě cesta. A ne nutně v roli kouče, ale i v roli koučovaného.",
     name: "Adam Veřmiřovský",
-  },
-  {
-    quote: "Workshop mi potvrdil dvě věci: že role kouče není tak jednoduchá, jak si někdo může myslet, a že chci být koučem.",
-    name: "Hana Masaříková",
   },
   {
     quote: "Dal mi vhled do toho, co je koučování podle daného standardu s tradicí. Že to není žádný hej počkej.",
